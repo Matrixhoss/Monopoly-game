@@ -99,6 +99,7 @@ public class Mainboard_GUI extends JFrame{
     ImageIcon p39= new ImageIcon(getClass().getResource("misc/39.png"));
     ImageIcon p40= new ImageIcon(getClass().getResource("misc/40.png"));
     ImageIcon t1= new ImageIcon(getClass().getResource("misc/test.jpg"));
+    ImageIcon t2= new ImageIcon(getClass().getResource("misc/Go-.gif"));
     
     public Mainboard_GUI(int x, int y){
         this.x=x;
@@ -115,6 +116,24 @@ public class Mainboard_GUI extends JFrame{
         b1 = new JButton(p1);
         b1.setBackground(Color.BLACK);
         b1.setBounds(884, 882, 128, 128);
+        b1.addActionListener(
+            new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    //ScaledImage(p40.getImage(), zoom.getWidth(), zoom.getHeight());
+//                    zoom = new JLabel(board);
+//                    zoom.setBounds(1017, 1017, 200, 200);
+//                    c.add(zoom);
+                    //String backupDir = "/Users/al/backups";
+    
+                    // create a jframe
+                    JFrame frame = new JFrame("misc/Go");
+                    // show a joptionpane dialog using showMessageDialog
+                    JOptionPane.showMessageDialog(frame,"Player recieve 200$ as he pass","GO",JOptionPane.INFORMATION_MESSAGE, t2);
+
+                }
+            }
+        );
         c.add(b1);
         
         b2 = new JButton(p2);
