@@ -97,6 +97,7 @@ public class Mainboard_GUI extends JFrame{
     ImageIcon p38= new ImageIcon(getClass().getResource("misc/38.png"));
     ImageIcon p39= new ImageIcon(getClass().getResource("misc/39.png"));
     ImageIcon p40= new ImageIcon(getClass().getResource("misc/40.png"));
+    ImageIcon t1= new ImageIcon(getClass().getResource("misc/test.jpg"));
     
     public Mainboard_GUI(int x, int y){
         this.x=x;
@@ -316,6 +317,13 @@ public class Mainboard_GUI extends JFrame{
 //                    zoom = new JLabel(board);
 //                    zoom.setBounds(1017, 1017, 200, 200);
 //                    c.add(zoom);
+                    //String backupDir = "/Users/al/backups";
+    
+                    // create a jframe
+                    JFrame frame = new JFrame("misc/40.png");
+                    // show a joptionpane dialog using showMessageDialog
+                    JOptionPane.showMessageDialog(frame,"Price: 400","BOARDWALK",JOptionPane.INFORMATION_MESSAGE, t1);
+
                 }
             }
         );
