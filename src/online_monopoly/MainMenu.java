@@ -41,9 +41,12 @@ public class MainMenu extends JFrame{
         start.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+//                _this.setVisible(false);
+//                GameFrame gm = new GameFrame();
+//                gm.setVisible(true);
                 _this.setVisible(false);
-                GameFrame gm = new GameFrame();
-                gm.setVisible(true);
+                Mainboard_GUI mg = new Mainboard_GUI(0, 0);
+                mg.setVisible(true);
             }
         });
         c.add(start);

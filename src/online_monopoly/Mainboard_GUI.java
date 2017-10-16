@@ -316,7 +316,6 @@ public class Mainboard_GUI extends JFrame{
 //                    zoom = new JLabel(board);
 //                    zoom.setBounds(1017, 1017, 200, 200);
 //                    c.add(zoom);
-                    
                 }
             }
         );
