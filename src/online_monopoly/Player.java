@@ -52,15 +52,15 @@ public class Player {
     //imagine Go in (0,0) and x axis increased when go left and y increased when move up
     public void move(int dice){
         for(int i=0;i<dice;i++){
-            if(PositionX==0&&PositionY<10){
-                PositionY+=1;
-            }else if(PositionX<10&&PositionY==10){
+            if(PositionX<10&&PositionY==0){
                 PositionX+=1;
-            }else if(PositionX==10&&PositionY>0){
-                PositionY-=1;
-            }else if(PositionX>0&&PositionY==0){
+            }else if(PositionX==10&&PositionY<10){
+                PositionY+=1;
+            }else if(PositionX>0&&PositionY==10){
                 PositionX-=1;
-            }  
+            }else if(PositionX==0&&PositionY>0){
+                PositionY-=1;
+            } 
         }
     }
     //set player position in jail
