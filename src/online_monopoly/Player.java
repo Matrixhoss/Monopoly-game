@@ -6,6 +6,7 @@
 package online_monopoly;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 /**
  *
@@ -20,14 +21,17 @@ public class Player {
     private int money;
     private String name;
     private Color color;
+    private boolean ChanceEJail; //player has chance card to exit from jail
+    private boolean CommunityEJail; //player has communtiy card to exit from jail
+    private ArrayList<Property> MyProperties=new ArrayList<Property>(); //properties that player has
 
     
     public Player(String name, Color c){
-        name=name;
+        this.name=name;
         color=c;
         PositionX=StartX;
         PositionY=StartY;
-        money=1500;
+        money=1500;     
     }
     
     public int getX(){
@@ -49,6 +53,38 @@ public class Player {
     public void addMoney(int m){
         money+=m;
     }
+    //add property
+    public void addProperty(Property p){
+        MyProperties.add(p);
+    }
+    //check if player has group
+    public boolean checkGroup(int id){
+        int count=0;
+        for(int i=0;i<MyProperties.size();i++){
+            if(MyProperties.get(i).getID()==id)
+                count++;
+        }
+        if(count==3)
+            return true;
+        return false;
+    }
+    //add chance card (exit from jail)
+    public void addChanceCard(boolean c){
+        this.ChanceEJail=c;
+    }
+    //add community card (exit from jail)
+    public void addCommunityCard(boolean c){
+        this.CommunityEJail=c;
+    }
+    //check if player has chance card for exit from jail
+    public boolean hasChanceCard(){
+        return this.ChanceEJail;
+    }
+    //check if player has community card for exit from jail
+    public boolean hasCommunityCard(){
+        return this.CommunityEJail;
+    }
+    
     //imagine Go in (0,0) and x axis increased when go left and y increased when move up
     public void move(int dice){
         for(int i=0;i<dice;i++){
