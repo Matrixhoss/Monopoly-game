@@ -33,20 +33,25 @@ public class Property extends BoardObject {
         this.ownerPlayer = owner;
     }
 
-    public int getGroupID (){
-    return this.groupID;
+    public int getGroupID() {
+        return this.groupID;
     }
-    
-    public int getGroupNum(){
-    return this.groubNum ;
+
+    public int getGroupNum() {
+        return this.groubNum;
     }
+
     // get the rent if the property had been  owned
     public int getRent() {
         if (this.ownerPlayer != null && this.isMortgaged == false) {  // if the property is owned and not Mortgaged
             if (numOfHotels == 0) {
                 switch (this.numOfHouses) {
-                    case 0:
-                        return this.rent[0]; // if the property have no houses
+                    case 0:// if the property have no houses
+                        if (this.ownerPlayer.checkGroup(this) == true) {
+                            return this.rent[0] * 2;
+                        } else {
+                            return this.rent[0];
+                        }
                     case 1:
                         return this.rent[1]; // if the property have 1 houses
                     case 2:
@@ -65,20 +70,28 @@ public class Property extends BoardObject {
     }
 
     // not completed
-    public void buildHouse() {
+    public int buildHouse() {
+        // check if the propery is not Mortgaged
         if (this.isMortgaged == true) {
-            return;
-        }
-        // check the number of houses and hotels //and check if the bank have enough houses    
-        if (numOfHouses > 4 && numOfHotels == 0) {
-            numOfHotels++;
-        } else if (numOfHotels == 4) {
-            numOfHotels = 0;
-            numOfHotels = 1;
+            return 1;
+        } // check if the player have the property group 
+        else if (this.ownerPlayer.checkGroup(this) == false) {
+            return 2;
+        } // check the number of houses and hotels //and check if the bank have enough houses    
+        else {
+            if (numOfHouses > 4 && numOfHotels == 0) {
+                numOfHotels++;
+            } else if (numOfHotels == 4) {
+                numOfHotels = 0;
+                numOfHotels = 1;
+            } else if (numOfHotels == 1) {
+                return 3; // return that you cant build her any more
+            }
+            return 0;
         }
     }
-      
     // mortgage a property 
+
     public int mortgage() {
         // if the property is not Mortgaged
         if (this.isMortgaged == false) {
@@ -97,18 +110,16 @@ public class Property extends BoardObject {
         if (this.isMortgaged == true) {
             double value = this.mortgageValue + this.mortgageValue * .1;
 
-            if (this.ownerPlayer.getMoney() >= value) { 
+            if (this.ownerPlayer.getMoney() >= value) {
                 this.isMortgaged = false;
                 this.ownerPlayer.payMoney((int) value);
                 return 0;
-            } 
-            // case 2 : if the property is Mortgaged and the player dont have the value of Mortgaged + 10 % return 1
+            } // case 2 : if the property is Mortgaged and the player dont have the value of Mortgaged + 10 % return 1
             else {
                 return 1;
             }
-            
-        } 
-        // case 3 : if if the property is not Mortgaged return 2
+
+        } // case 3 : if if the property is not Mortgaged return 2
         else {
             return 2;
         }
