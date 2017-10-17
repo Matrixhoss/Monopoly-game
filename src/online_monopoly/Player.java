@@ -23,6 +23,7 @@ public class Player {
     private Color color;
     private boolean ChanceEJail; //player has chance card to exit from jail
     private boolean CommunityEJail; //player has communtiy card to exit from jail
+    private boolean InJail;//if player in jail it will be true
     private ArrayList<Property> MyProperties=new ArrayList<Property>(); //properties that player has
 
     
@@ -93,7 +94,14 @@ public class Player {
     public boolean hasCommunityCard(){
         return this.CommunityEJail;
     }
-    
+    //check if player in jail
+    public boolean checkInJail(){
+        return this.InJail;
+    }
+    //exit from jail
+    public void exitFromJail(){
+        this.InJail=false;
+    }
     //imagine Go in (0,0) and x axis increased when go left and y increased when move up
     public void move(int dice){
         for(int i=0;i<dice;i++){
@@ -112,5 +120,6 @@ public class Player {
     public void goToJail(){
         PositionX=10;
         PositionY=0;
+        this.InJail=true;
     }
 }
