@@ -53,6 +53,10 @@ public class Player {
     public void addMoney(int m){
         money+=m;
     }
+    
+    public void payMoney(int m){
+        money-=m;
+    }
     //add property
     public void addProperty(Property p){
         MyProperties.add(p);
