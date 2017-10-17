@@ -1,6 +1,8 @@
 //Hossam
 package online_monopoly;
 
+import javax.swing.*;
+
 public class Property extends BoardObject {
 
     private int groupID;               // the id of the group of the property
@@ -40,12 +42,13 @@ public class Property extends BoardObject {
     public int getGroupNum() {
         return this.groubNum;
     }
-    public int getNumOfHouses(){
-    return this.numOfHouses;
+
+    public int getNumOfHouses() {
+        return this.numOfHouses;
     }
-    
-    public int getNumOfHotels(){
-    return this.numOfHotels;
+
+    public int getNumOfHotels() {
+        return this.numOfHotels;
     }
 
     // get the rent if the property had been  owned
@@ -131,5 +134,19 @@ public class Property extends BoardObject {
             return 2;
         }
 
+    }
+
+    public void handleLuxTax(int x) {    //Function should receive an integer from the choice of the option panal
+        if (x == 0) {
+            ownerPlayer.payMoney(50);
+        } else {
+            Double d = ownerPlayer.getTotalMoney() * 0.1;
+            int P = d.intValue();
+            ownerPlayer.payMoney(P);
+        }
+    }
+
+    public void handleIncomeTax() {
+        ownerPlayer.payMoney(200);
     }
 }
