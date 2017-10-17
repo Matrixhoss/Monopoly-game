@@ -116,6 +116,10 @@ public class Player {
             } 
         }
     }
+    //move back
+    public void moveBack(int moves){
+        
+    }
     //set player position in jail
     public void goToJail(){
         PositionX=10;
@@ -144,7 +148,7 @@ public class Player {
         int TotalM=this.money;
         for(int i=0;i<MyProperties.size();i++){
             Property p=MyProperties.get(i);
-            TotalM+=(p.getNumOfHouses()*100+p.getNumOfHotels()*100);//lsh m5l
+            TotalM+=(p.getNumOfHouses()*50+p.getNumOfHotels()*100);//lsh m5l
         }
         return TotalM;
     }
