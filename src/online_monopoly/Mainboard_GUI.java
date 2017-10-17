@@ -14,7 +14,7 @@ public class Mainboard_GUI extends JFrame{
     public int x,y;
     public JLabel zoom;
     public JLabel background;
-    public JLabel ff;
+   // public JLabel ff;
     public JFrame _this;
     public JButton b1;
     public JButton b2;
@@ -99,9 +99,48 @@ public class Mainboard_GUI extends JFrame{
     ImageIcon p38= new ImageIcon(getClass().getResource("misc/38.png"));
     ImageIcon p39= new ImageIcon(getClass().getResource("misc/39.png"));
     ImageIcon p40= new ImageIcon(getClass().getResource("misc/40.png"));
-    ImageIcon t1= new ImageIcon(getClass().getResource("misc/test.jpg"));
-    ImageIcon t2= new ImageIcon(getClass().getResource("misc/Go-.gif"));
     
+    ImageIcon z1= new ImageIcon(getClass().getResource("misc/z1.gif"));
+    ImageIcon z2= new ImageIcon(getClass().getResource("misc/z2.png"));
+//    ImageIcon z3= new ImageIcon(getClass().getResource("misc/z3.png"));
+//    ImageIcon z4= new ImageIcon(getClass().getResource("misc/z4.png"));
+//    ImageIcon z5= new ImageIcon(getClass().getResource("misc/z5.png"));
+//    ImageIcon z6= new ImageIcon(getClass().getResource("misc/z6.png"));
+//    ImageIcon z7= new ImageIcon(getClass().getResource("misc/z7.png"));
+//    ImageIcon z8= new ImageIcon(getClass().getResource("misc/z8.png"));
+//    ImageIcon z9= new ImageIcon(getClass().getResource("misc/z9.png"));
+//    ImageIcon z10= new ImageIcon(getClass().getResource("misc/z10.png"));
+//    ImageIcon z11= new ImageIcon(getClass().getResource("misc/z11.png"));
+//    ImageIcon z12= new ImageIcon(getClass().getResource("misc/z12.png"));
+//    ImageIcon z13= new ImageIcon(getClass().getResource("misc/z13.png"));
+//    ImageIcon z14= new ImageIcon(getClass().getResource("misc/z14.png"));
+//    ImageIcon z15= new ImageIcon(getClass().getResource("misc/z15.png"));
+//    ImageIcon z16= new ImageIcon(getClass().getResource("misc/z16.png"));
+//    ImageIcon z17= new ImageIcon(getClass().getResource("misc/z17.png"));
+//    ImageIcon z18= new ImageIcon(getClass().getResource("misc/z18.png"));
+//    ImageIcon z19= new ImageIcon(getClass().getResource("misc/z19.png"));
+//    ImageIcon z20= new ImageIcon(getClass().getResource("misc/z20.png"));
+//    ImageIcon z21= new ImageIcon(getClass().getResource("misc/z21.png"));
+//    ImageIcon z22= new ImageIcon(getClass().getResource("misc/z22.png"));
+//    ImageIcon z23= new ImageIcon(getClass().getResource("misc/z23.png"));
+//    ImageIcon z24= new ImageIcon(getClass().getResource("misc/z24.png"));
+//    ImageIcon z25= new ImageIcon(getClass().getResource("misc/z25.png"));
+//    ImageIcon z26= new ImageIcon(getClass().getResource("misc/z26.png"));
+//    ImageIcon z27= new ImageIcon(getClass().getResource("misc/z27.png"));
+//    ImageIcon z28= new ImageIcon(getClass().getResource("misc/z28.png"));
+//    ImageIcon z29= new ImageIcon(getClass().getResource("misc/z29.png"));
+//    ImageIcon z30= new ImageIcon(getClass().getResource("misc/z30.png"));
+//    ImageIcon z31= new ImageIcon(getClass().getResource("misc/z31.png"));
+//    ImageIcon z32= new ImageIcon(getClass().getResource("misc/z32.png"));
+//    ImageIcon z33= new ImageIcon(getClass().getResource("misc/z33.png"));
+//    ImageIcon z34= new ImageIcon(getClass().getResource("misc/z34.png"));
+//    ImageIcon z35= new ImageIcon(getClass().getResource("misc/z35.png"));
+//    ImageIcon z36= new ImageIcon(getClass().getResource("misc/z36.png"));
+//    ImageIcon z37= new ImageIcon(getClass().getResource("misc/z37.png"));
+//    ImageIcon z38= new ImageIcon(getClass().getResource("misc/z38.png"));
+//    ImageIcon z39= new ImageIcon(getClass().getResource("misc/z39.png"));
+    ImageIcon z40= new ImageIcon(getClass().getResource("misc/z40.jpg"));
+//    
     public Mainboard_GUI(int x, int y){
         this.x=x;
         this.y=y;
@@ -122,29 +161,45 @@ public class Mainboard_GUI extends JFrame{
         b1 = new JButton(p1);
         b1.setBackground(Color.BLACK);
         b1.setBounds(884, 882, 128, 128);
-        b1.addActionListener(
-            new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    //ScaledImage(p40.getImage(), zoom.getWidth(), zoom.getHeight());
-//                    zoom = new JLabel(board);
-//                    zoom.setBounds(1017, 1017, 200, 200);
-//                    c.add(zoom);
-                    //String backupDir = "/Users/al/backups";
-    
-                    // create a jframe
-                    JFrame frame = new JFrame("misc/Go");
-                    // show a joptionpane dialog using showMessageDialog
-                    JOptionPane.showMessageDialog(frame,"Player recieve 200$ as he pass","GO",JOptionPane.INFORMATION_MESSAGE, t2);
+        b1.addMouseListener(new MouseAdapter() {
 
-                }
-            }
-        );
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        zoom = new JLabel(z1);
+        zoom.setBounds(200, 200, 400, 400);
+    
+        zoom.setVisible(true);
+        background.add(zoom);
+        if (mEvt.getModifiers() == MouseEvent.BUTTON1_MASK) {
+           System.out.println("Mouse dragging as entered");
+        }
+
+     }
+
+  });
         c.add(b1);
         
         b2 = new JButton(p2);
         b2.setBackground(Color.BLACK);
         b2.setBounds(800, 882, 84, 128);
+        b2.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        zoom = new JLabel(z2);
+        zoom.setBounds(200, 200, 400, 400);
+    
+        zoom.setVisible(true);
+        background.add(zoom);
+        if (mEvt.getModifiers() == MouseEvent.BUTTON1_MASK) {
+           System.out.println("Mouse dragging as entered");
+        }
+
+     }
+
+  });
         c.add(b2);
         
         b3 = new JButton(p3);
@@ -350,32 +405,23 @@ public class Mainboard_GUI extends JFrame{
 //                c.add(f);
 //            }
 //        });
-        b40.addMouseListener(new java.awt.event.MouseAdapter() {
-    public void mouseEntered(java.awt.event.MouseEvent evt) {
-        ff = new JLabel(t2);
-        
-        ff.setText("Right");
-        ff.setBounds(1000, 800, 120, 120);
-        c.add(ff);
-    }
-});
-        b40.addActionListener(
-            new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    //ScaledImage(p40.getImage(), zoom.getWidth(), zoom.getHeight());
-//                    zoom = new JLabel(board);
-//                    zoom.setBounds(1017, 1017, 200, 200);
-//                    c.add(zoom);
-                    //String backupDir = "/Users/al/backups";
+b40.addMouseListener(new MouseAdapter() {
 
-                            // create a jframe
-                            //JFrame frame = new JFrame("misc/40.png");
-                            // show a joptionpane dialog using showMessageDialog
-                            //JOptionPane.showMessageDialog(frame,"Price: 400","BOARDWALK",JOptionPane.INFORMATION_MESSAGE, t1);
-                        }  
-                }
-        );
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        zoom = new JLabel(z40);
+        zoom.setBounds(200, 200, 400, 400);
+    
+        zoom.setVisible(true);
+        background.add(zoom);
+        if (mEvt.getModifiers() == MouseEvent.BUTTON1_MASK) {
+           System.out.println("Mouse dragging as entered");
+        }
+
+     }
+
+  });
         c.add(b40);
         
         background = new JLabel(board);
