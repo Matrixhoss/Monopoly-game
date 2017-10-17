@@ -106,41 +106,40 @@ public class Mainboard_GUI extends JFrame{
     ImageIcon z4= new ImageIcon(getClass().getResource("misc/z4.jpg"));
     ImageIcon z5= new ImageIcon(getClass().getResource("misc/z5.jpg"));
     ImageIcon z6= new ImageIcon(getClass().getResource("misc/z6.jpg"));
-//    ImageIcon z7= new ImageIcon(getClass().getResource("misc/z7.png"));
-//    ImageIcon z8= new ImageIcon(getClass().getResource("misc/z8.png"));
-//    ImageIcon z9= new ImageIcon(getClass().getResource("misc/z9.png"));
-//    ImageIcon z10= new ImageIcon(getClass().getResource("misc/z10.png"));
-//    ImageIcon z11= new ImageIcon(getClass().getResource("misc/z11.png"));
-//    ImageIcon z12= new ImageIcon(getClass().getResource("misc/z12.png"));
-//    ImageIcon z13= new ImageIcon(getClass().getResource("misc/z13.png"));
-//    ImageIcon z14= new ImageIcon(getClass().getResource("misc/z14.png"));
-//    ImageIcon z15= new ImageIcon(getClass().getResource("misc/z15.png"));
-//    ImageIcon z16= new ImageIcon(getClass().getResource("misc/z16.png"));
-//    ImageIcon z17= new ImageIcon(getClass().getResource("misc/z17.png"));
-//    ImageIcon z18= new ImageIcon(getClass().getResource("misc/z18.png"));
-//    ImageIcon z19= new ImageIcon(getClass().getResource("misc/z19.png"));
-//    ImageIcon z20= new ImageIcon(getClass().getResource("misc/z20.png"));
-//    ImageIcon z21= new ImageIcon(getClass().getResource("misc/z21.png"));
-//    ImageIcon z22= new ImageIcon(getClass().getResource("misc/z22.png"));
-//    ImageIcon z23= new ImageIcon(getClass().getResource("misc/z23.png"));
-//    ImageIcon z24= new ImageIcon(getClass().getResource("misc/z24.png"));
-//    ImageIcon z25= new ImageIcon(getClass().getResource("misc/z25.png"));
-//    ImageIcon z26= new ImageIcon(getClass().getResource("misc/z26.png"));
-//    ImageIcon z27= new ImageIcon(getClass().getResource("misc/z27.png"));
-//    ImageIcon z28= new ImageIcon(getClass().getResource("misc/z28.png"));
-//    ImageIcon z29= new ImageIcon(getClass().getResource("misc/z29.png"));
-//    ImageIcon z30= new ImageIcon(getClass().getResource("misc/z30.png"));
-//    ImageIcon z31= new ImageIcon(getClass().getResource("misc/z31.png"));
-//    ImageIcon z32= new ImageIcon(getClass().getResource("misc/z32.png"));
-//    ImageIcon z33= new ImageIcon(getClass().getResource("misc/z33.png"));
-//    ImageIcon z34= new ImageIcon(getClass().getResource("misc/z34.png"));
-//    ImageIcon z35= new ImageIcon(getClass().getResource("misc/z35.png"));
-//    ImageIcon z36= new ImageIcon(getClass().getResource("misc/z36.png"));
-//    ImageIcon z37= new ImageIcon(getClass().getResource("misc/z37.png"));
-//    ImageIcon z38= new ImageIcon(getClass().getResource("misc/z38.png"));
-//    ImageIcon z39= new ImageIcon(getClass().getResource("misc/z39.png"));
-    ImageIcon z40= new ImageIcon(getClass().getResource("misc/z40.jpg"));
-//    
+    ImageIcon z7= new ImageIcon(getClass().getResource("misc/z7.JPG"));
+    ImageIcon z8= new ImageIcon(getClass().getResource("misc/z8.jpg"));
+    ImageIcon z9= new ImageIcon(getClass().getResource("misc/z9.jpg"));
+    ImageIcon z10= new ImageIcon(getClass().getResource("misc/z10.jpg"));
+    ImageIcon z11= new ImageIcon(getClass().getResource("misc/z11.jpg"));
+    ImageIcon z12= new ImageIcon(getClass().getResource("misc/z12.jpg"));
+    ImageIcon z13= new ImageIcon(getClass().getResource("misc/z13.jpg"));
+    ImageIcon z14= new ImageIcon(getClass().getResource("misc/z14.jpeg"));
+    ImageIcon z15= new ImageIcon(getClass().getResource("misc/z15.jpg"));
+    ImageIcon z16= new ImageIcon(getClass().getResource("misc/z16.jpg"));
+    ImageIcon z17= new ImageIcon(getClass().getResource("misc/z17.jpeg"));
+    ImageIcon z18= new ImageIcon(getClass().getResource("misc/z3.jpg"));
+    ImageIcon z19= new ImageIcon(getClass().getResource("misc/z19.jpg"));
+    ImageIcon z20= new ImageIcon(getClass().getResource("misc/z20.jpg"));
+    ImageIcon z21= new ImageIcon(getClass().getResource("misc/z21.jpg"));
+    ImageIcon z22= new ImageIcon(getClass().getResource("misc/z22.jpg"));
+    ImageIcon z23= new ImageIcon(getClass().getResource("misc/z8.jpg"));
+    ImageIcon z24= new ImageIcon(getClass().getResource("misc/z24.jpg"));
+    ImageIcon z25= new ImageIcon(getClass().getResource("misc/z25.jpg"));
+    ImageIcon z26= new ImageIcon(getClass().getResource("misc/z26.jpg"));
+    ImageIcon z27= new ImageIcon(getClass().getResource("misc/z27.jpg"));
+    ImageIcon z28= new ImageIcon(getClass().getResource("misc/z28.jpeg"));
+    ImageIcon z29= new ImageIcon(getClass().getResource("misc/z29.jpg"));
+    ImageIcon z30= new ImageIcon(getClass().getResource("misc/z30.jpg"));
+    ImageIcon z31= new ImageIcon(getClass().getResource("misc/z31.jpg"));
+    ImageIcon z32= new ImageIcon(getClass().getResource("misc/z32.jpg"));
+    ImageIcon z33= new ImageIcon(getClass().getResource("misc/z33.jpg"));
+    ImageIcon z34= new ImageIcon(getClass().getResource("misc/z3.jpg"));
+    ImageIcon z35= new ImageIcon(getClass().getResource("misc/z35.jpg"));
+    ImageIcon z36= new ImageIcon(getClass().getResource("misc/z36.jpg"));
+    ImageIcon z37= new ImageIcon(getClass().getResource("misc/z8.jpg"));
+    ImageIcon z38= new ImageIcon(getClass().getResource("misc/z38.jpg"));
+    ImageIcon z39= new ImageIcon(getClass().getResource("misc/z39.jpg"));
+    ImageIcon z40= new ImageIcon(getClass().getResource("misc/z40.jpg"));    
     
     public Mainboard_GUI(int x, int y){
         this.x=x;
@@ -165,25 +164,12 @@ public class Mainboard_GUI extends JFrame{
         b1 = new JButton(p1);
         b1.setBackground(Color.BLACK);
         b1.setBounds(884, 882, 128, 128);
-
         b1.addMouseListener(new MouseAdapter() {
-        
-        
-        
-     @Override
+            @Override
      public void mouseEntered(MouseEvent mEvt) {
         //System.out.println("mouse entered");
-        zoom = new JLabel(z1);
-        zoom.setBounds(200, 200, 400, 400);
-    
-        zoom.setVisible(true);
-        background.add(zoom);
-        if (mEvt.getModifiers() == MouseEvent.BUTTON1_MASK) {
-           System.out.println("Mouse dragging as entered");
-        }
-        
+        ZoomButton(mEvt,z1);
      }
-
   });
         
         c.add(b1);
@@ -261,200 +247,474 @@ public class Mainboard_GUI extends JFrame{
         b7 = new JButton(p7);
         b7.setBackground(Color.BLACK);
         b7.setBounds(380, 882, 84, 128);
+        b7.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z7);
+     }
+
+  });
         c.add(b7);
         
         b8 = new JButton(p8);
         b8.setBackground(Color.BLACK);
         b8.setBounds(296, 882, 84, 128);
+        b8.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z8);
+     }
+
+  });
         c.add(b8);
         
         b9 = new JButton(p9);
         b9.setBackground(Color.BLACK);
         b9.setBounds(212, 882, 84, 128);
+        b9.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z9);
+     }
+
+  });
         c.add(b9);
         
         b10 = new JButton(p10);
         b10.setBackground(Color.BLACK);
         b10.setBounds(128, 882, 84, 128);
+        b10.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z10);
+     }
+
+  });
         c.add(b10);
         
         b11 = new JButton(p11);
         b11.setBackground(Color.BLACK);
         b11.setBounds(0, 882, 128, 128);
+        b11.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z11);
+     }
+
+  });
         c.add(b11);
         
         b12 = new JButton(p12);
         b12.setBackground(Color.BLACK);
         b12.setBounds(0, 798, 128, 84);
+        b12.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z12);
+     }
+
+  });
         c.add(b12);
         
         b13 = new JButton(p13);
         b13.setBackground(Color.BLACK);
         b13.setBounds(0, 714, 128, 84);
+        b13.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z13);
+     }
+
+  });
         c.add(b13);
         
         b14 = new JButton(p14);
         b14.setBackground(Color.BLACK);
         b14.setBounds(0, 630, 128, 84);
+        b14.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z14);
+     }
+
+  });
         c.add(b14);
         
         b15 = new JButton(p15);
         b15.setBackground(Color.BLACK);
         b15.setBounds(0, 546, 128, 84);
+        b15.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z15);
+     }
+
+  });
         c.add(b15);
         
         b16 = new JButton(p16);
         b16.setBackground(Color.BLACK);
         b16.setBounds(0, 462, 128, 84);
+        b16.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z16);
+     }
+
+  });
         c.add(b16);
         
         b17 = new JButton(p17);
         b17.setBackground(Color.BLACK);
         b17.setBounds(0, 378, 128, 84);
+        b17.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z17);
+     }
+
+  });
         c.add(b17);
         
         b18 = new JButton(p18);
         b18.setBackground(Color.BLACK);
         b18.setBounds(0, 294, 128, 84);
+        b18.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z18);
+     }
+
+  });
         c.add(b18);
         
         b19 = new JButton(p19);
         b19.setBackground(Color.BLACK);
         b19.setBounds(0, 210, 128, 84);
+        b19.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z19);
+     }
+
+  });
         c.add(b19);
         
         b20 = new JButton(p20);
         b20.setBackground(Color.BLACK);
         b20.setBounds(0, 126, 128, 84);
+        b20.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z20);
+     }
+
+  });
         c.add(b20);
         
         b21 = new JButton(p21);
         b21.setBackground(Color.BLACK);
         b21.setBounds(0, 0, 128, 128);
+        b21.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z21);
+     }
+
+  });
         c.add(b21);
         
         b22 = new JButton(p22);
         b22.setBackground(Color.BLACK);
         b22.setBounds(128, 0, 84, 128);
+        b22.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z22);
+     }
+
+  });
         c.add(b22);
         
         b23 = new JButton(p23);
         b23.setBackground(Color.BLACK);
         b23.setBounds(212, 0, 84, 128);
+        b23.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z23);
+     }
+
+  });
         c.add(b23);
         
         b24 = new JButton(p24);
         b24.setBackground(Color.BLACK);
         b24.setBounds(296, 0, 84, 128);
+        b24.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z24);
+     }
+
+  });
         c.add(b24);
         
         b25 = new JButton(p25);
         b25.setBackground(Color.BLACK);
         b25.setBounds(380, 0, 84, 128);
+        b25.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z25);
+     }
+
+  });
         c.add(b25);
         
         b26 = new JButton(p26);
         b26.setBackground(Color.BLACK);
         b26.setBounds(464, 0, 84, 128);
+        b26.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z26);
+     }
+
+  });
         c.add(b26);
         
         b27 = new JButton(p27);
         b27.setBackground(Color.BLACK);
         b27.setBounds(548, 0, 84, 128);
+        b27.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z27);
+     }
+
+  });
         c.add(b27);
         
         b28 = new JButton(p28);
         b28.setBackground(Color.BLACK);
         b28.setBounds(632, 0, 84, 128);
+        b28.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z28);
+     }
+
+  });
         c.add(b28);
         
         b29 = new JButton(p29);
         b29.setBackground(Color.BLACK);
         b29.setBounds(716, 0, 84, 128);
+        b29.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z29);
+     }
+
+  });
         c.add(b29);
         
         b30 = new JButton(p30);
         b30.setBackground(Color.BLACK);
         b30.setBounds(800, 0, 84, 128);
+        b30.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z30);
+     }
+
+  });
         c.add(b30);
         
         b31 = new JButton(p31);
         b31.setBackground(Color.BLACK);
         b31.setBounds(884, 0, 128, 128);
+        b31.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z31);
+     }
+
+  });
         c.add(b31);
         
         b32 = new JButton(p32);
         b32.setBackground(Color.BLACK);
         b32.setBounds(884, 128, 128, 84);
+        b32.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z32);
+     }
+
+  });
         c.add(b32);
         
         b33 = new JButton(p33);
         b33.setBackground(Color.BLACK);
         b33.setBounds(884, 212, 128, 84);
+        b33.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z33);
+     }
+
+  });
         c.add(b33);
         
         b34 = new JButton(p34);
         b34.setBackground(Color.BLACK);
         b34.setBounds(884, 296, 128, 84);
+        b34.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z34);
+     }
+
+  });
         c.add(b34);
         
         b35 = new JButton(p35);
         b35.setBackground(Color.BLACK);
         b35.setBounds(884, 380, 128, 84);
+        b35.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z35);
+     }
+
+  });
         c.add(b35);
         
         b36 = new JButton(p36);
         b36.setBackground(Color.BLACK);
         b36.setBounds(884, 464, 128, 84);
+        b36.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z36);
+     }
+
+  });
         c.add(b36);
         
         b37 = new JButton(p37);
         b37.setBackground(Color.BLACK);
         b37.setBounds(884, 548, 128, 84);
+        b37.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z37);
+     }
+
+  });
         c.add(b37);
         
         b38 = new JButton(p38);
         b38.setBackground(Color.BLACK);
         b38.setBounds(884, 632, 128, 84);
+        b38.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z38);
+     }
+
+  });
         c.add(b38);
         
         b39 = new JButton(p39);
         b39.setBackground(Color.BLACK);
         b39.setBounds(884, 716, 128, 84);
+        b39.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z39);
+     }
+
+  });
         c.add(b39);
         
         b40 = new JButton(p40);
         b40.setBackground(Color.BLACK);
         b40.setBounds(884, 800, 128, 84);
-//        b40.addMouseMotionListener(new MouseAdapter() {
-//            public void mouseEntered(MouseEvent e){
-//                int x=e.getX();
-//                int y=e.getY();
-//                
-//                JFrame g = new JFrame();
-//                g.setBounds(x, y, 265, 400);
-//                g.setVisible(true);
-//                c.add(g);
-//                
-//                JLabel f = new JLabel(t2);
-//                f.setBounds(x, y, 265, 400);
-//                c.add(f);
-//            }
-//        });
-b40.addMouseListener(new MouseAdapter() {
+        b40.addMouseListener(new MouseAdapter() {
 
      @Override
      public void mouseEntered(MouseEvent mEvt) {
         //System.out.println("mouse entered");
-        zoom = new JLabel(z40);
-        zoom.setBounds(200, 200, 400, 400);
-    
-        zoom.setVisible(true);
-        background.add(zoom);
-        if (mEvt.getModifiers() == MouseEvent.BUTTON1_MASK) {
-           System.out.println("Mouse dragging as entered");
-        }
-
+        ZoomButton(mEvt,z40);
      }
 
   });

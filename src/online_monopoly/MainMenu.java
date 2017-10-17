@@ -20,7 +20,32 @@ public class MainMenu extends JFrame{
     ImageIcon option_button= new ImageIcon(getClass().getResource("misc/button_options.png"));
     ImageIcon exit_button= new ImageIcon(getClass().getResource("misc/button_exit (1).png"));
     ImageIcon theme_button= new ImageIcon(getClass().getResource("misc/Untitled-5.png"));
-    
+    public static void music() 
+    {       
+        AudioPlayer MGP = AudioPlayer.player;
+        AudioStream BGM;
+        AudioData MD;
+
+        ContinuousAudioDataStream loop = null;
+
+        try
+        {
+            InputStream test = new FileInputStream("misc/Menu_Theme.wav");
+            BGM = new AudioStream(test);
+            AudioPlayer.player.start(BGM);
+            //MD = BGM.getData();
+            //loop = new ContinuousAudioDataStream(MD);
+
+        }
+        catch(FileNotFoundException e){
+            System.out.print(e.toString());
+        }
+        catch(IOException error)
+        {
+            System.out.print(error.toString());
+        }
+        MGP.start(loop);
+    }
     public MainMenu(){
         _this = this;
         
@@ -69,7 +94,7 @@ public class MainMenu extends JFrame{
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    
+                    music();
                 }
             }
         );
@@ -78,14 +103,15 @@ public class MainMenu extends JFrame{
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    JLabel theme;
-                    JFrame hx = new JFrame();
-                    hx.setBounds(450, 450, 400, 300);
-                    hx.setVisible(true);
-                    hx.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                    theme = new JLabel(theme_button);
-                    theme.setBounds(0, 0, 400, 300);
-                    c.add(theme);
+//                    JLabel theme;
+//                    JFrame hx = new JFrame();
+//                    hx.setBounds(450, 450, 400, 300);
+//                    hx.setVisible(true);
+//                    hx.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+//                    theme = new JLabel(theme_button);
+//                    theme.setBounds(0, 0, 400, 300);
+//                    c.add(theme);
+                
                 }
             }
         );
@@ -99,5 +125,5 @@ public class MainMenu extends JFrame{
             }
         );
         this.setLocationRelativeTo(null);
-    }
+    } 
 }
