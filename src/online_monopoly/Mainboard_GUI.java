@@ -174,10 +174,11 @@ public class Mainboard_GUI extends JFrame{
         if (mEvt.getModifiers() == MouseEvent.BUTTON1_MASK) {
            System.out.println("Mouse dragging as entered");
         }
-
+        
      }
 
   });
+        
         c.add(b1);
         
         b2 = new JButton(p2);
@@ -188,15 +189,7 @@ public class Mainboard_GUI extends JFrame{
      @Override
      public void mouseEntered(MouseEvent mEvt) {
         //System.out.println("mouse entered");
-        zoom = new JLabel(z2);
-        zoom.setBounds(200, 200, 400, 400);
-    
-        zoom.setVisible(true);
-        background.add(zoom);
-        if (mEvt.getModifiers() == MouseEvent.BUTTON1_MASK) {
-           System.out.println("Mouse dragging as entered");
-        }
-
+        ZoomButton(mEvt);
      }
 
   });
@@ -529,4 +522,14 @@ b40.addMouseListener(new MouseAdapter() {
 		}
 		return rtn;
 	}
+    public void ZoomButton(MouseEvent mEvt) {
+        zoom = new JLabel(z2);
+        zoom.setBounds(200, 200, 400, 400);
+        zoom.setVisible(true);
+        background.add(zoom);
+        zoom.repaint();
+        if (mEvt.getModifiers() == MouseEvent.BUTTON1_MASK) {
+           System.out.println("Mouse dragging as entered");
+        }    
+    }
 }
