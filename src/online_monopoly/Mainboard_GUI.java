@@ -189,7 +189,7 @@ public class Mainboard_GUI extends JFrame{
      @Override
      public void mouseEntered(MouseEvent mEvt) {
         //System.out.println("mouse entered");
-        ZoomButton(mEvt);
+        ZoomButton(mEvt,z2);
      }
 
   });
@@ -522,8 +522,8 @@ b40.addMouseListener(new MouseAdapter() {
 		}
 		return rtn;
 	}
-    public void ZoomButton(MouseEvent mEvt) {
-        zoom = new JLabel(z2);
+    public void ZoomButton(MouseEvent mEvt,ImageIcon z) {
+        zoom = new JLabel(z);
         zoom.setBounds(200, 200, 400, 400);
         zoom.setVisible(true);
         background.add(zoom);
