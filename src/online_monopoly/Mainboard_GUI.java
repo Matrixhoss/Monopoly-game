@@ -102,10 +102,10 @@ public class Mainboard_GUI extends JFrame{
     
     ImageIcon z1= new ImageIcon(getClass().getResource("misc/z1.gif"));
     ImageIcon z2= new ImageIcon(getClass().getResource("misc/z2.png"));
-//    ImageIcon z3= new ImageIcon(getClass().getResource("misc/z3.png"));
-//    ImageIcon z4= new ImageIcon(getClass().getResource("misc/z4.png"));
-//    ImageIcon z5= new ImageIcon(getClass().getResource("misc/z5.png"));
-//    ImageIcon z6= new ImageIcon(getClass().getResource("misc/z6.png"));
+    ImageIcon z3= new ImageIcon(getClass().getResource("misc/z3.jpg"));
+    ImageIcon z4= new ImageIcon(getClass().getResource("misc/z4.jpg"));
+    ImageIcon z5= new ImageIcon(getClass().getResource("misc/z5.jpg"));
+    ImageIcon z6= new ImageIcon(getClass().getResource("misc/z6.jpg"));
 //    ImageIcon z7= new ImageIcon(getClass().getResource("misc/z7.png"));
 //    ImageIcon z8= new ImageIcon(getClass().getResource("misc/z8.png"));
 //    ImageIcon z9= new ImageIcon(getClass().getResource("misc/z9.png"));
@@ -198,21 +198,57 @@ public class Mainboard_GUI extends JFrame{
         b3 = new JButton(p3);
         b3.setBackground(Color.BLACK);
         b3.setBounds(716, 882, 84, 128);
+        b3.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z3);
+     }
+
+  });
         c.add(b3);
         
         b4 = new JButton(p4);
         b4.setBackground(Color.BLACK);
         b4.setBounds(632, 882, 84, 128);
+        b4.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z4);
+     }
+
+  });
         c.add(b4);
         
         b5 = new JButton(p5);
         b5.setBackground(Color.BLACK);
         b5.setBounds(548, 882, 84, 128);
+        b5.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z5);
+     }
+
+  });
         c.add(b5);
         
         b6 = new JButton(p6);
         b6.setBackground(Color.BLACK);
         b6.setBounds(464, 882, 84, 128);
+        b6.addMouseListener(new MouseAdapter() {
+
+     @Override
+     public void mouseEntered(MouseEvent mEvt) {
+        //System.out.println("mouse entered");
+        ZoomButton(mEvt,z6);
+     }
+
+  });
         c.add(b6);
         
         b7 = new JButton(p7);
