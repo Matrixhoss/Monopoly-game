@@ -122,6 +122,23 @@ public class Player {
         PositionY=0;
         this.InJail=true;
     }
+    //calculate Total Houses
+    public int getTotalHouses(){
+        int NumOfHouses=0;
+        for(int i=0;i<MyProperties.size();i++){
+            NumOfHouses+=MyProperties.get(i).getNumOfHouses();
+        }
+        return NumOfHouses;
+    }
+    //calculate Total Hotels
+    public int getTotalHotels(){
+        int NumOfHotels=0;
+        for(int i=0;i<MyProperties.size();i++){
+            NumOfHotels+=MyProperties.get(i).getNumOfHotels();
+        }
+        return NumOfHotels;
+    }
+    
     //calculate total money with player
     public int getTotalMoney(){
         int TotalM=this.money;
