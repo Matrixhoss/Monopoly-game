@@ -40,6 +40,13 @@ public class Property extends BoardObject {
     public int getGroupNum() {
         return this.groubNum;
     }
+    public int getNumOfHouses(){
+    return this.numOfHouses;
+    }
+    
+    public int getNumOfHotels(){
+    return this.numOfHotels;
+    }
 
     // get the rent if the property had been  owned
     public int getRent() {
