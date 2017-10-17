@@ -12,7 +12,7 @@ import sun.audio.*;
 
 public class Mainboard_GUI extends JFrame{
     public int x,y;
-    public JLabel zoom;
+    public JLabel zoom=new JLabel();
     public JLabel background;
    // public JLabel ff;
     public JFrame _this;
@@ -141,6 +141,7 @@ public class Mainboard_GUI extends JFrame{
 //    ImageIcon z39= new ImageIcon(getClass().getResource("misc/z39.png"));
     ImageIcon z40= new ImageIcon(getClass().getResource("misc/z40.jpg"));
 //    
+    
     public Mainboard_GUI(int x, int y){
         this.x=x;
         this.y=y;
@@ -158,11 +159,17 @@ public class Mainboard_GUI extends JFrame{
         Container c = this.getContentPane();
         c.setLayout(null);
         
+        zoom.setBounds(200, 200, 400, 400);
+        zoom.setVisible(true);
+
         b1 = new JButton(p1);
         b1.setBackground(Color.BLACK);
         b1.setBounds(884, 882, 128, 128);
-        b1.addMouseListener(new MouseAdapter() {
 
+        b1.addMouseListener(new MouseAdapter() {
+        
+        
+        
      @Override
      public void mouseEntered(MouseEvent mEvt) {
         //System.out.println("mouse entered");
@@ -456,6 +463,7 @@ b40.addMouseListener(new MouseAdapter() {
         background = new JLabel(board);
         background.setBounds(128, 128, 756, 756);
         c.add(background);
+        background.add(zoom);
     }
     private Image ScaledImage(Image img, int w, int h){
         BufferedImage resizedImage = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
@@ -559,10 +567,7 @@ b40.addMouseListener(new MouseAdapter() {
 		return rtn;
 	}
     public void ZoomButton(MouseEvent mEvt,ImageIcon z) {
-        zoom = new JLabel(z);
-        zoom.setBounds(200, 200, 400, 400);
-        zoom.setVisible(true);
-        background.add(zoom);
+        zoom.setIcon(z);
         zoom.repaint();
         if (mEvt.getModifiers() == MouseEvent.BUTTON1_MASK) {
            System.out.println("Mouse dragging as entered");
