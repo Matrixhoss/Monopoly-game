@@ -33,6 +33,13 @@ public class Property extends BoardObject {
         this.ownerPlayer = owner;
     }
 
+    public int getGroupID (){
+    return this.groupID;
+    }
+    
+    public int getGroupNum(){
+    return this.groubNum ;
+    }
     // get the rent if the property had been  owned
     public int getRent() {
         if (this.ownerPlayer != null && this.isMortgaged == false) {  // if the property is owned and not Mortgaged
