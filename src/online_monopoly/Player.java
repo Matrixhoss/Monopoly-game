@@ -34,6 +34,11 @@ public class Player {
         money=1500;     
     }
     
+    public void setPosition(int x,int y){
+        this.PositionX=x;
+        this.PositionY=y;
+    }
+    
     public int getX(){
         return PositionX;
     }
@@ -62,13 +67,13 @@ public class Player {
         MyProperties.add(p);
     }
     //check if player has group
-    public boolean checkGroup(int id){
+    public boolean checkGroup(Property p){
         int count=0;
         for(int i=0;i<MyProperties.size();i++){
-            if(MyProperties.get(i).getID()==id)
+            if(MyProperties.get(i).getGroupID()==p.getGroupID())
                 count++;
         }
-        if(count==3)
+        if(count==p.getGroupNum())
             return true;
         return false;
     }
