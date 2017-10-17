@@ -136,17 +136,18 @@ public class Property extends BoardObject {
 
     }
 
-    public void handleLuxTax(int x) {    //Function should receive an integer from the choice of the option panal
+    public void handleLuxTax() {    //Function should receive an integer from the choice of the option panal
+        ownerPlayer.payMoney(100);
+    }
+
+    public void handleIncomeTax(int x) {
         if (x == 0) {
-            ownerPlayer.payMoney(100);
+            ownerPlayer.payMoney(200);
         } else {
             Double d = ownerPlayer.getTotalMoney() * 0.1;
             int P = d.intValue();
             ownerPlayer.payMoney(P);
         }
-    }
 
-    public void handleIncomeTax() {
-        ownerPlayer.payMoney(200);
     }
 }
