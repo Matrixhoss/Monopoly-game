@@ -138,7 +138,7 @@ public class Property extends BoardObject {
 
     public void handleLuxTax(int x) {    //Function should receive an integer from the choice of the option panal
         if (x == 0) {
-            ownerPlayer.payMoney(50);
+            ownerPlayer.payMoney(100);
         } else {
             Double d = ownerPlayer.getTotalMoney() * 0.1;
             int P = d.intValue();
