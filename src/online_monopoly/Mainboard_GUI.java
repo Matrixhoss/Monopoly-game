@@ -14,6 +14,7 @@ public class Mainboard_GUI extends JFrame{
     public int x,y;
     public JLabel zoom;
     public JLabel background;
+    public JLabel ff;
     public JFrame _this;
     public JButton b1;
     public JButton b2;
@@ -108,7 +109,12 @@ public class Mainboard_GUI extends JFrame{
         _this=this;
         this.setTitle("Monopoly");
         this.setResizable(false);
-        this.setBounds(0,0, 1317, 1037);
+        this.setBounds(0,0, 1017, 1037);
+//        this.setSize( Toolkit.getDefaultToolkit().getScreenSize() );
+//        this.setUndecorated(true);
+//        this.setAlwaysOnTop(true);
+//        this.setResizable(false);
+        this.setVisible(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         Container c = this.getContentPane();
         c.setLayout(null);
@@ -329,6 +335,30 @@ public class Mainboard_GUI extends JFrame{
         b40 = new JButton(p40);
         b40.setBackground(Color.BLACK);
         b40.setBounds(884, 800, 128, 84);
+//        b40.addMouseMotionListener(new MouseAdapter() {
+//            public void mouseEntered(MouseEvent e){
+//                int x=e.getX();
+//                int y=e.getY();
+//                
+//                JFrame g = new JFrame();
+//                g.setBounds(x, y, 265, 400);
+//                g.setVisible(true);
+//                c.add(g);
+//                
+//                JLabel f = new JLabel(t2);
+//                f.setBounds(x, y, 265, 400);
+//                c.add(f);
+//            }
+//        });
+        b40.addMouseListener(new java.awt.event.MouseAdapter() {
+    public void mouseEntered(java.awt.event.MouseEvent evt) {
+        ff = new JLabel(t2);
+        
+        ff.setText("Right");
+        ff.setBounds(1000, 800, 120, 120);
+        c.add(ff);
+    }
+});
         b40.addActionListener(
             new ActionListener() {
                 @Override
@@ -338,14 +368,13 @@ public class Mainboard_GUI extends JFrame{
 //                    zoom.setBounds(1017, 1017, 200, 200);
 //                    c.add(zoom);
                     //String backupDir = "/Users/al/backups";
-    
-                    // create a jframe
-                    JFrame frame = new JFrame("misc/40.png");
-                    // show a joptionpane dialog using showMessageDialog
-                    JOptionPane.showMessageDialog(frame,"Price: 400","BOARDWALK",JOptionPane.INFORMATION_MESSAGE, t1);
 
+                            // create a jframe
+                            //JFrame frame = new JFrame("misc/40.png");
+                            // show a joptionpane dialog using showMessageDialog
+                            //JOptionPane.showMessageDialog(frame,"Price: 400","BOARDWALK",JOptionPane.INFORMATION_MESSAGE, t1);
+                        }  
                 }
-            }
         );
         c.add(b40);
         
