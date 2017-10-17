@@ -8,8 +8,8 @@ public class Property extends BoardObject {
     private Player ownerPlayer;        // the player how own the Property
     private int value;
     private int[] rent;                // all rent of the property (with and without houses and hotel)
-    private char numOfHouses;          // the number of houses on the property (0 - 4)
-    private char numOfHotels;          // the number of hotels on the property (0 - 1)
+    private int numOfHouses;          // the number of houses on the property (0 - 4)
+    private int numOfHotels;          // the number of hotels on the property (0 - 1)
     private int mortgageValue;        // the value of mortgage
     private boolean isMortgaged;      // the property is Mortgaged or not
 
