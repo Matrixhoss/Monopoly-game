@@ -14,188 +14,220 @@ import javax.swing.JFrame;
  * @author user1
  */
 public class Player {
+
     private final int step = 50;
     private int PositionX;
     private int PositionY;
-    private final int StartX=0; //player start with this position (x)
-    private final int StartY=0; //player start with this position (y)
+    private final int StartX = 0; //player start with this position (x)
+    private final int StartY = 0; //player start with this position (y)
     private int money;
     private String name;
     private Color color;
     private boolean ChanceEJail; //player has chance card to exit from jail
     private boolean CommunityEJail; //player has communtiy card to exit from jail
     private boolean InJail;//if player in jail it will be true
-    private ArrayList<Property> MyProperties=new ArrayList<Property>(); //properties that player has
-    private int[] Dice=new int[2];
+    private ArrayList<Property> MyProperties = new ArrayList<Property>(); //properties that player has
+    private int[] Dice = new int[2];
 
-    
-    public Player(String name, Color c){
-        this.name=name;
-        color=c;
-        PositionX=StartX;
-        PositionY=StartY;
-        money=1500;     
+    public Player(String name, Color c) {
+        this.name = name;
+        color = c;
+        PositionX = StartX;
+        PositionY = StartY;
+        money = 1500;
     }
-    public Player(String name, Color c,Mainboard_GUI frame){
-        this.name=name;
-        color=c;
-        PositionX=StartX;
-        PositionY=StartY;
-        money=1500;     
+
+    public Player(String name, Color c, Mainboard_GUI frame) {
+        this.name = name;
+        color = c;
+        PositionX = StartX;
+        PositionY = StartY;
+        money = 1500;
     }
-    
-    public void setPosition(int x,int y){
-        this.PositionX=x;
-        this.PositionY=y;
+
+    public void setPosition(int x, int y) {
+        this.PositionX = x;
+        this.PositionY = y;
     }
-    
-    public int getX(){
+
+    public int getX() {
         return PositionX;
     }
 
-    public int getY(){
+    public int getY() {
         return PositionY;
     }
 
     public Color getColor() {
         return color;
     }
-    
-    public int getMoney(){
+
+    public int getMoney() {
         return money;
     }
-    
-    public void addMoney(int m){
-        money+=m;
+
+    public void addMoney(int m) {
+        money += m;
     }
-    
-    public void payMoney(int m){
-        money-=m;
+
+    public void payMoney(int m) {
+        money -= m;
     }
-    
-    public void setDice(int[] D){
-        this.Dice=D;
+
+    public void setDice(int[] D) {
+        this.Dice = D;
     }
-    
-    public int[] getDice(){
+
+    public int[] getDice() {
         return this.Dice;
     }
+
     //add property
-    public void addProperty(Property p){
+    public void addProperty(Property p) {
         MyProperties.add(p);
     }
+
     //check if player has group
-    public boolean checkGroup(Property p){
-        int count=0;
-        for(int i=0;i<MyProperties.size();i++){
-            if(MyProperties.get(i).getGroupID()==p.getGroupID())
+    public boolean checkGroup(Property p) {
+        int count = 0;
+        for (int i = 0; i < MyProperties.size(); i++) {
+            if (MyProperties.get(i).getGroupID() == p.getGroupID()) {
                 count++;
+            }
         }
-        if(count==p.getGroupNum())
+        if (count == p.getGroupNum()) {
             return true;
+        }
         return false;
     }
+
     //add chance card (exit from jail)
-    public void addChanceCard(boolean c){
-        this.ChanceEJail=c;
+    public void addChanceCard(boolean c) {
+        this.ChanceEJail = c;
     }
+
     //add community card (exit from jail)
-    public void addCommunityCard(boolean c){
-        this.CommunityEJail=c;
+    public void addCommunityCard(boolean c) {
+        this.CommunityEJail = c;
     }
+
     //check if player has chance card for exit from jail
-    public boolean hasChanceCard(){
+    public boolean hasChanceCard() {
         return this.ChanceEJail;
     }
+
     //check if player has community card for exit from jail
-    public boolean hasCommunityCard(){
+    public boolean hasCommunityCard() {
         return this.CommunityEJail;
     }
+
     //check if player in jail
-    public boolean checkInJail(){
+    public boolean checkInJail() {
         return this.InJail;
     }
+
     //exit from jail
-    public void exitFromJail(){
-        this.InJail=false;
+    public void exitFromJail() {
+        this.InJail = false;
     }
+
     //imagine Go in (0,0) and x axis increased when go left and y increased when move up
-    public void move(int dice){
-        for(int i=0;i<dice;i++){
-            if(PositionX<10&&PositionY==0){
-                PositionX+=1;
-            }else if(PositionX==10&&PositionY<10){
-                PositionY+=1;
-            }else if(PositionX>0&&PositionY==10){
-                PositionX-=1;
-            }else if(PositionX==0&&PositionY>0){
-                PositionY-=1;
-            } 
+    public void move(int dice) {
+        for (int i = 0; i < dice; i++) {
+            if (PositionX < 10 && PositionY == 0) {
+                PositionX += 1;
+            } else if (PositionX == 10 && PositionY < 10) {
+                PositionY += 1;
+            } else if (PositionX > 0 && PositionY == 10) {
+                PositionX -= 1;
+            } else if (PositionX == 0 && PositionY > 0) {
+                PositionY -= 1;
+            }
         }
     }
+
     //move back
-    public void moveBack(int moves){
-        
+    public void moveBack(int moves) {
+
     }
+
     //set player position in jail
-    public void goToJail(){
-        PositionX=10;
-        PositionY=0;
-        this.InJail=true;
+    public void goToJail() {
+        PositionX = 10;
+        PositionY = 0;
+        this.InJail = true;
     }
+
     //calculate Total Houses
-    public int getTotalHouses(){
-        int NumOfHouses=0;
-        for(int i=0;i<MyProperties.size();i++){
-            NormalProperty p=(NormalProperty)(MyProperties.get(i));
-            NumOfHouses+=p.getNumOfHouses(); // Hossam
+    public int getTotalHouses() {
+        int NumOfHouses = 0;
+        for (int i = 0; i < MyProperties.size(); i++) {
+            NormalProperty p = (NormalProperty) (MyProperties.get(i));
+            NumOfHouses += p.getNumOfHouses(); // Hossam
         }
         return NumOfHouses;
     }
+
     //calculate Total Hotels
-    public int getTotalHotels(){
-        int NumOfHotels=0;
-        for(int i=0;i<MyProperties.size();i++){
-            NormalProperty p=(NormalProperty)(MyProperties.get(i));
-            NumOfHotels+=p.getNumOfHotels(); // Hossam
+    public int getTotalHotels() {
+        int NumOfHotels = 0;
+        for (int i = 0; i < MyProperties.size(); i++) {
+            NormalProperty p = (NormalProperty) (MyProperties.get(i));
+            NumOfHotels += p.getNumOfHotels(); // Hossam
         }
         return NumOfHotels;
     }
-    
+
     //calculate total money with player
-    public int getTotalMoney(){
-        int TotalM=this.money;
-        for(int i=0;i<MyProperties.size();i++){
-            NormalProperty p=(NormalProperty)(MyProperties.get(i));
-            TotalM+=(p.getNumOfHouses()*50+p.getNumOfHotels()*100);//lsh m5l // Hossam
+    public int getTotalMoney() {
+        int TotalM = this.money;
+        for (int i = 0; i < MyProperties.size(); i++) {
+            NormalProperty p = (NormalProperty) (MyProperties.get(i));
+            TotalM += (p.getNumOfHouses() * 50 + p.getNumOfHotels() * 100);//lsh m5l // Hossam
         }
         return TotalM;
     }
-    public void handleJail(int x){
-        switch(x){
+
+    public void handleJail(int Choice) {                //0=pay 50  1=try your luck and roll   2=use card
+        Mainboard_GUI.d.disableRolling();
+        switch (Choice) {
             case 0:
-                this.money-=50;
-                this.InJail=false;
+                this.money -= 50;
+                this.InJail = false;
                 break;
             case 1:
-                this.InJail=false;
+                Mainboard_GUI.d.enableRolling();
                 break;
-            case 2: 
-                if(ChanceEJail==true||CommunityEJail==true){}
-                else if(ChanceEJail==true && CommunityEJail==false){
-                Mainboard_GUI.CC.ReturnChanceJail();}
-                else if(ChanceEJail==false && CommunityEJail==true){
-                Mainboard_GUI.CC.ReturnChestJail();}
-                else if(ChanceEJail==true && CommunityEJail==true){
-                //popup choice
+            case 2:
+                if (ChanceEJail == true || CommunityEJail == true) {
+                    if (ChanceEJail == true && CommunityEJail == false) {
+                        Mainboard_GUI.CC.ReturnChanceJail();
+                    } else if (ChanceEJail == false && CommunityEJail == true) {
+                        Mainboard_GUI.CC.ReturnChestJail();
+                    } else if (ChanceEJail == true && CommunityEJail == true) {
+                        Mainboard_GUI.CC.ReturnChestJail();
+                    }
                 }
-                
-                
-                
-                this.InJail=false;
+
+                this.InJail = false;
                 break;
         }
-    
+
     }
-   
+    public void handleLuxTax() {    //Function should receive an integer from the choice of the option panal
+       Mainboard_GUI.p.payMoney(100);
+    }
+    
+    
+    public void handleIncomeTax(int x) {
+        if (x == 0) {
+            Mainboard_GUI.p.payMoney(200);
+        } else {
+            Double d = Mainboard_GUI.p.getTotalMoney() * 0.1;
+            int P = d.intValue();
+            Mainboard_GUI.p.payMoney(P);
+        }
+
+    }
+
 }
