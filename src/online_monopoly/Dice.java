@@ -9,9 +9,9 @@ public class Dice {
     private boolean roll;
     private boolean jail;
     private Random rand;
-    
-    public boolean test=false;
-    
+
+    public boolean test = false;
+
     public Dice() {
         this.d[0] = 0;
         this.d[1] = 0;
@@ -25,15 +25,9 @@ public class Dice {
     }
 
     public int[] rollDice() {
-        if(!test){
-            d[0]=3;
-            d[1]=4;
-            test=true;
-        }
-        else{
-            this.d[0] = (rand.nextInt(6) + 1);   //random(6)+1 to avoid 0
-            this.d[1] = (rand.nextInt(6) + 1);
-        }
+
+        this.d[0] = (rand.nextInt(6) + 1);   //random(6)+1 to avoid 0
+        this.d[1] = (rand.nextInt(6) + 1);
         if (this.d[0] == this.d[1]) {       //if both dices have the same value 
             dd += 1;                        //add +1 to double dice 
             System.out.println("DD " + dd);
