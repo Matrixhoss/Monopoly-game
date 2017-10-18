@@ -45,7 +45,7 @@ public abstract class Property extends BoardObject {
     }
 
     // get the rent if the property had been  owned
-    abstract public int getRent();
+    abstract public int getRent(Player stopingPlayer);
 
     // mortgage a property 
     public int mortgage() {
@@ -111,7 +111,7 @@ class NormalProperty extends Property {
     }
 
     // get the rent if the property had been  owned
-    public int getRent() {
+    public int getRent(Player stopingPlayer) {
         if (this.ownerPlayer != null && this.isMortgaged == false) {  // if the property is owned and not Mortgaged
             if (numOfHotels == 0) {
                 switch (this.numOfHouses) {
@@ -168,7 +168,7 @@ class Railroad extends Property {
         super(name, id, p, value, rent, mortgageValue, groupID, groubNum);
     }
 
-    public int getRent() {
+    public int getRent(Player stopingPlayer) {
         return 0;
     }
 
@@ -180,13 +180,13 @@ class WaterworksOrElectric extends Property {
         super(name, id, p, value, rent, mortgageValue, groupID, groubNum);
     }
 
-    public int getRent() {
+    public int getRent(Player stopingPlayer) {
         int rent = 0;
         if (this.ownerPlayer != null && this.isMortgaged == false) {
         if (this.ownerPlayer.checkGroup(this) == true) {
-            rent = (this.ownerPlayer.getDice()[0] + this.ownerPlayer.getDice()[1]) * 10;
+            rent = (stopingPlayer.getDice()[0] + stopingPlayer.getDice()[1]) * 10;
         } else {
-            rent = (this.ownerPlayer.getDice()[0] + this.ownerPlayer.getDice()[1]) * 4;
+            rent = (stopingPlayer.getDice()[0] + stopingPlayer.getDice()[1]) * 4;
         }
           }
         return rent;
