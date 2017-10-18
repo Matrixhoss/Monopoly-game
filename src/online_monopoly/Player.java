@@ -6,6 +6,8 @@
 package online_monopoly;
 
 import java.awt.Color;
+import java.awt.event.*;
+import java.awt.*;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 
@@ -14,8 +16,10 @@ import javax.swing.JFrame;
  * @author user1
  */
 public class Player {
-
-    private final int step = 50;
+    
+    private int count=0;
+    private int XonBoard = 924, YonBoard = 950;
+    private final int stepX = 84, stepY = 84;
     private int PositionX;
     private int PositionY;
     private final int StartX = 0; //player start with this position (x)
@@ -27,6 +31,7 @@ public class Player {
     private boolean CommunityEJail; //player has communtiy card to exit from jail
     private boolean InJail;//if player in jail it will be true
     private ArrayList<Property> MyProperties = new ArrayList<Property>(); //properties that player has
+    private Mainboard_GUI Board;
     private int[] Dice = new int[2];
 
     public Player(String name, Color c) {
@@ -43,8 +48,17 @@ public class Player {
         PositionX = StartX;
         PositionY = StartY;
         money = 1500;
+        Board=frame;
+    }
+    
+    public int getXonBoard() {
+        return XonBoard;
     }
 
+    public int getYonBoard() {
+        return YonBoard;
+    }
+    
     public void setPosition(int x, int y) {
         this.PositionX = x;
         this.PositionY = y;
@@ -100,7 +114,56 @@ public class Player {
         }
         return false;
     }
-
+    //imagine Go in (0,0) and x axis increased when go left and y increased when move up
+    public void move(int dice) {
+        count=0;
+        final javax.swing.Timer timer = new javax.swing.Timer(500, null);
+        timer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //System.out.println("X :" + XonBoard + ", X' :" + (PositionX * Fx + Sx) + ",Y :" + YonBoard + ", Y' :" + (PositionY * Fy + Sy));
+                if (count == dice) {
+                    System.out.println("finish");
+                    timer.stop();
+                    return;
+                }
+                if(PositionX ==0 && PositionY == 1){//Go point
+                    PositionY--;
+                    XonBoard= 924;
+                    YonBoard=950;
+                }else if(PositionX ==9 && PositionY == 0){//Jail point
+                    PositionX++;
+                    YonBoard = 950;
+                    XonBoard =84;
+                }else if(PositionX ==10 && PositionY == 9){//free parking
+                    PositionY++;
+                    XonBoard=84;
+                    YonBoard=100;
+                }else if(PositionX ==1 && PositionY == 10){//Go to jail
+                    PositionX--;
+                    XonBoard =924;
+                    YonBoard =100;
+                }else if (PositionX < 10 && PositionY == 0) {
+                    PositionX++;
+                    XonBoard  -=stepX;
+                } else if (PositionX == 10 && PositionY < 10) {
+                    PositionY += 1;
+                    YonBoard -=stepY;
+                } else if (PositionX > 0 && PositionY == 10) {
+                    PositionX -= 1;
+                    XonBoard +=stepX;
+                } else if (PositionX == 0 && PositionY > 0) {
+                    PositionY -= 1;
+                    YonBoard +=stepY;
+                }
+                Board.repaint();
+                System.out.println("x : "+PositionX+" , y : "+PositionY);
+                count++;
+            }
+        });
+        timer.start();
+    }
+    
     //add chance card (exit from jail)
     public void addChanceCard(boolean c) {
         this.ChanceEJail = c;
@@ -129,21 +192,6 @@ public class Player {
     //exit from jail
     public void exitFromJail() {
         this.InJail = false;
-    }
-
-    //imagine Go in (0,0) and x axis increased when go left and y increased when move up
-    public void move(int dice) {
-        for (int i = 0; i < dice; i++) {
-            if (PositionX < 10 && PositionY == 0) {
-                PositionX += 1;
-            } else if (PositionX == 10 && PositionY < 10) {
-                PositionY += 1;
-            } else if (PositionX > 0 && PositionY == 10) {
-                PositionX -= 1;
-            } else if (PositionX == 0 && PositionY > 0) {
-                PositionY -= 1;
-            }
-        }
     }
 
     //move back

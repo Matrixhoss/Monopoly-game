@@ -113,6 +113,7 @@ private void ChangeDices() {
             }
         };
         exec.scheduleAtFixedRate(task, 100, 100, TimeUnit.MILLISECONDS);
-
+        Mainboard_GUI.p.move(roll[0]+roll[1]);
+        
     }
 }

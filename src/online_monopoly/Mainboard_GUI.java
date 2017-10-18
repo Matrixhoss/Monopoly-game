@@ -12,7 +12,7 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import sun.audio.*;
 
 public class Mainboard_GUI extends JFrame {
-    public static Player p=new Player("hesham", Color.red);
+    public static Player p;
     public static CommunityAndChance CC= new CommunityAndChance();
     public static Dice d= new Dice();
     public int x, y;
@@ -145,6 +145,7 @@ public class Mainboard_GUI extends JFrame {
     ImageIcon z40 = new ImageIcon(getClass().getResource("misc/z40.jpg"));
 
     public Mainboard_GUI(int x, int y) {
+        p=new Player("hesham", Color.red,this);
         this.x = x;
         this.y = y;
 
@@ -1159,6 +1160,16 @@ public class Mainboard_GUI extends JFrame {
         return rtn;
     }
 
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g); //To change body of generated methods, choose Tools | Templates.
+        
+        g.setColor(Color.RED);
+        g.fillOval(p.getXonBoard(), p.getYonBoard(), 15, 15);
+        g.dispose();
+        //1017*1037
+    }
+    
     public void ZoomButton(MouseEvent mEvt, ImageIcon z) {
         zoom.setIcon(z);
         zoom.repaint();
