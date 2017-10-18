@@ -37,6 +37,9 @@ Random rand = new Random();
         DiceLbl2 = new javax.swing.JLabel();
         DiceLbl1 = new javax.swing.JLabel();
 
+        setNextFocusableComponent(this);
+        setOpaque(false);
+
         RollBtn.setText("Roll!!");
         RollBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,7 +76,7 @@ Random rand = new Random();
                     .addComponent(DiceLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(RollBtn)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -100,12 +103,12 @@ private void ChangeDices() {
             @Override
             public void run() {
                 secondsToWait -= 100;
-                DiceLbl1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/" + (rand.nextInt(6) + 1) + ".jpg")));
-                DiceLbl2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/" + (rand.nextInt(6) + 1) + ".jpg")));
+                DiceLbl1.setIcon(new javax.swing.ImageIcon(getClass().getResource("misc/dice" + (rand.nextInt(6) + 1) + ".png")));
+                DiceLbl2.setIcon(new javax.swing.ImageIcon(getClass().getResource("misc/dice" + (rand.nextInt(6) + 1) + ".png")));
                 if (secondsToWait == 0) {
                     exec.shutdown();
-                    DiceLbl1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/" + roll[0] + ".jpg")));
-                    DiceLbl1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/" + roll[1] + ".jpg")));
+                    DiceLbl1.setIcon(new javax.swing.ImageIcon(getClass().getResource("misc/dice" + roll[0] + ".png")));
+                    DiceLbl1.setIcon(new javax.swing.ImageIcon(getClass().getResource("misc/dice" + roll[1] + ".png")));
                 }
             }
         };

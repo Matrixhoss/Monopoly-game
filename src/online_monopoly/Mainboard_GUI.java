@@ -881,11 +881,22 @@ public class Mainboard_GUI extends JFrame {
             }
         });
         c.add(b40);
+ 
+        //dice panel
+        DiceGui diceGui = new DiceGui();
+        diceGui.setBounds(700, 128, 150, 120);
+        c.add(diceGui);
+        
+               
 
         background = new JLabel(board);
         background.setBounds(128, 128, 756, 756);
         c.add(background);
         background.add(zoom);
+        
+       
+        
+        
     }
 
     private Image ScaledImage(Image img, int w, int h) {
