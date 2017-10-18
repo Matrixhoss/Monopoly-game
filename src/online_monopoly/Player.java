@@ -25,6 +25,7 @@ public class Player {
     private boolean CommunityEJail; //player has communtiy card to exit from jail
     private boolean InJail;//if player in jail it will be true
     private ArrayList<Property> MyProperties=new ArrayList<Property>(); //properties that player has
+    private int[] Dice=new int[2];
 
     
     public Player(String name, Color c){
@@ -62,6 +63,14 @@ public class Player {
     
     public void payMoney(int m){
         money-=m;
+    }
+    
+    public void setDice(int[] D){
+        this.Dice=D;
+    }
+    
+    public int[] getDice(){
+        return this.Dice;
     }
     //add property
     public void addProperty(Property p){
