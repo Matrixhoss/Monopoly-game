@@ -12,7 +12,7 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import sun.audio.*;
 
 public class Mainboard_GUI extends JFrame {
-
+    public static Player p=new Player("hesham", Color.red);
     public int x, y;
     public JLabel zoom = new JLabel();
     public JLabel background;
