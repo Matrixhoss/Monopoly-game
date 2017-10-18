@@ -8,12 +8,13 @@ public class Property extends BoardObject {
     private int groupID;               // the id of the group of the property
     private int groubNum;              // the number of the porperties within this property 
     private Player ownerPlayer;        // the player how own the Property
-    private int value;
+    private int value;                 // the value of the property 
     private int[] rent;                // all rent of the property (with and without houses and hotel)
-    private int numOfHouses;          // the number of houses on the property (0 - 4)
-    private int numOfHotels;          // the number of hotels on the property (0 - 1)
-    private int mortgageValue;        // the value of mortgage
-    private boolean isMortgaged;      // the property is Mortgaged or not
+    private int houseValue;            // the house or hotel value
+    private int numOfHouses;           // the number of houses on the property (0 - 4)
+    private int numOfHotels;           // the number of hotels on the property (0 - 1)
+    private int mortgageValue;         // the value of mortgage
+    private boolean isMortgaged;       // the property is Mortgaged or not
 
     public Property(String name, int id, int groupID, Point p, int value, int[] rent, int mortgageValue) {
         super(name, id, p);
@@ -49,6 +50,13 @@ public class Property extends BoardObject {
 
     public int getNumOfHotels() {
         return this.numOfHotels;
+    }
+        public int getHouseValue(){
+    return this.houseValue;
+    }
+        
+    public int getPropertyValue(){
+    return this.value;
     }
 
     // get the rent if the property had been  owned
