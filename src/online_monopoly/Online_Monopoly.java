@@ -14,6 +14,8 @@ public  class Online_Monopoly{
     public static void main(String[] args) {
         MainMenu mm = new MainMenu();
         mm.setVisible(true);
+//        ent n = new ent();
+//        n.setVisible(true);
 //      JFrame g = new JFrame("act");
 //      g.setSize(400, 400);
 //       g.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

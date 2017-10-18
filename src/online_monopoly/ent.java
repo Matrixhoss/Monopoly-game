@@ -10,7 +10,8 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import sun.audio.*;
 
-public abstract class  ent extends JFrame implements MouseMotionListener{
+public class  ent extends JFrame{
+    public JFrame test;
     /*public JFrame _this;
     public JLabel ff;
      final ImageIcon icon1 = new ImageIcon("misc/13.png");
@@ -48,11 +49,69 @@ public abstract class  ent extends JFrame implements MouseMotionListener{
 });
         c.add(button);
 }*/
-        public void mouseMoved(MouseEvent me){
-            int x =me.getX();
-            int y =me.getY();
-            System.out.println("fffff"+x+"   "+y);
-        }
+//        public void mouseMoved(MouseEvent me){
+//            int x =me.getX();
+//            int y =me.getY();
+//            System.out.println("fffff"+x+"   "+y);
+//        }
+         //JTextField t1;
+    JLabel back;
+    JButton b;
+    JRadioButton r1,r2;
+    JLabel l;
+    public ent(){
+//        test=this;
+//        this.setTitle("Monopoly");
+//        this.setResizable(false);
+//        this.setLayout(new FlowLayout());
+//        this.setBounds(200, 200, 400, 400);
+//        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        Container c = this.getContentPane();
+//        c.setLayout(null);
+        //t1 = new JTextField(15);
+        b = new JButton("OK");
+        r1 = new JRadioButton("HD");
+        r2 = new JRadioButton("FullHD");
+        l = new JLabel("Choose Your Resolution");
+        ImageIcon backb = new ImageIcon(getClass().getResource("misc/Untitled-5.png"));
         
+        ButtonGroup bg = new ButtonGroup();
+        bg.add(r1);
+        bg.add(r2);
+        
+        //add(t1);
+        add(l);
+        add(b);
+        add(r1);
+        add(r2);
+        add(b);
+        
+        
+        b.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //String name = t1.getText();
+                
+                if(r1.isSelected()){
+                    Mainboard_GUI_HD hd = new Mainboard_GUI_HD(0, 0);
+                }
+                else{
+                    Mainboard_GUI fhd = new Mainboard_GUI(0, 0);
+                }
+                //l.setText(name);
+            }
+        });
+        setLayout(new FlowLayout());
+        setVisible(true);
+        setResizable(false);
+        setBounds(700, 400, 200, 200);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        Container c = this.getContentPane();
+        c.setLayout(null);
+        
+        back = new JLabel(backb);
+        back.setSize(200, 200);
+        c.add(back);
+    }
         
 }

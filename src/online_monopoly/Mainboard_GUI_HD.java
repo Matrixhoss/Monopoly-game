@@ -1,5 +1,4 @@
 package online_monopoly;
-
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.Point2D;
@@ -11,8 +10,8 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import sun.audio.*;
 
-public class Mainboard_GUI extends JFrame {
-
+public class Mainboard_GUI_HD extends JFrame{
+    
     public int x, y;
     public JLabel zoom = new JLabel();
     public JLabel background;
@@ -59,97 +58,97 @@ public class Mainboard_GUI extends JFrame {
     public JButton b39;
     public JButton b40;
 
-    ImageIcon board = new ImageIcon(getClass().getResource("misc/monoi.png"));
-    ImageIcon p1 = new ImageIcon(getClass().getResource("misc/1.png"));
-    ImageIcon p2 = new ImageIcon(getClass().getResource("misc/2.png"));
-    ImageIcon p3 = new ImageIcon(getClass().getResource("misc/3.png"));
-    ImageIcon p4 = new ImageIcon(getClass().getResource("misc/4.png"));
-    ImageIcon p5 = new ImageIcon(getClass().getResource("misc/5.png"));
-    ImageIcon p6 = new ImageIcon(getClass().getResource("misc/6.png"));
-    ImageIcon p7 = new ImageIcon(getClass().getResource("misc/7.png"));
-    ImageIcon p8 = new ImageIcon(getClass().getResource("misc/8.png"));
-    ImageIcon p9 = new ImageIcon(getClass().getResource("misc/9.png"));
-    ImageIcon p10 = new ImageIcon(getClass().getResource("misc/10.png"));
-    ImageIcon p11 = new ImageIcon(getClass().getResource("misc/11.png"));
-    ImageIcon p12 = new ImageIcon(getClass().getResource("misc/12.png"));
-    ImageIcon p13 = new ImageIcon(getClass().getResource("misc/13.png"));
-    ImageIcon p14 = new ImageIcon(getClass().getResource("misc/14.png"));
-    ImageIcon p15 = new ImageIcon(getClass().getResource("misc/15.png"));
-    ImageIcon p16 = new ImageIcon(getClass().getResource("misc/16.png"));
-    ImageIcon p17 = new ImageIcon(getClass().getResource("misc/17.png"));
-    ImageIcon p18 = new ImageIcon(getClass().getResource("misc/18.png"));
-    ImageIcon p19 = new ImageIcon(getClass().getResource("misc/19.png"));
-    ImageIcon p20 = new ImageIcon(getClass().getResource("misc/20.png"));
-    ImageIcon p21 = new ImageIcon(getClass().getResource("misc/21.png"));
-    ImageIcon p22 = new ImageIcon(getClass().getResource("misc/22.png"));
-    ImageIcon p23 = new ImageIcon(getClass().getResource("misc/23.png"));
-    ImageIcon p24 = new ImageIcon(getClass().getResource("misc/24.png"));
-    ImageIcon p25 = new ImageIcon(getClass().getResource("misc/25.png"));
-    ImageIcon p26 = new ImageIcon(getClass().getResource("misc/26.png"));
-    ImageIcon p27 = new ImageIcon(getClass().getResource("misc/27.png"));
-    ImageIcon p28 = new ImageIcon(getClass().getResource("misc/28.png"));
-    ImageIcon p29 = new ImageIcon(getClass().getResource("misc/29.png"));
-    ImageIcon p30 = new ImageIcon(getClass().getResource("misc/30.png"));
-    ImageIcon p31 = new ImageIcon(getClass().getResource("misc/31.png"));
-    ImageIcon p32 = new ImageIcon(getClass().getResource("misc/32.png"));
-    ImageIcon p33 = new ImageIcon(getClass().getResource("misc/33.png"));
-    ImageIcon p34 = new ImageIcon(getClass().getResource("misc/34.png"));
-    ImageIcon p35 = new ImageIcon(getClass().getResource("misc/35.png"));
-    ImageIcon p36 = new ImageIcon(getClass().getResource("misc/36.png"));
-    ImageIcon p37 = new ImageIcon(getClass().getResource("misc/37.png"));
-    ImageIcon p38 = new ImageIcon(getClass().getResource("misc/38.png"));
-    ImageIcon p39 = new ImageIcon(getClass().getResource("misc/39.png"));
-    ImageIcon p40 = new ImageIcon(getClass().getResource("misc/40.png"));
+    ImageIcon board = new ImageIcon(getClass().getResource("mischd/monoi.png"));
+    ImageIcon p1 = new ImageIcon(getClass().getResource("mischd/1.png"));
+    ImageIcon p2 = new ImageIcon(getClass().getResource("mischd/2.png"));
+    ImageIcon p3 = new ImageIcon(getClass().getResource("mischd/3.png"));
+    ImageIcon p4 = new ImageIcon(getClass().getResource("mischd/4.png"));
+    ImageIcon p5 = new ImageIcon(getClass().getResource("mischd/5.png"));
+    ImageIcon p6 = new ImageIcon(getClass().getResource("mischd/6.png"));
+    ImageIcon p7 = new ImageIcon(getClass().getResource("mischd/7.png"));
+    ImageIcon p8 = new ImageIcon(getClass().getResource("mischd/8.png"));
+    ImageIcon p9 = new ImageIcon(getClass().getResource("mischd/9.png"));
+    ImageIcon p10 = new ImageIcon(getClass().getResource("mischd/10.png"));
+    ImageIcon p11 = new ImageIcon(getClass().getResource("mischd/11.png"));
+    ImageIcon p12 = new ImageIcon(getClass().getResource("mischd/12.png"));
+    ImageIcon p13 = new ImageIcon(getClass().getResource("mischd/13.png"));
+    ImageIcon p14 = new ImageIcon(getClass().getResource("mischd/14.png"));
+    ImageIcon p15 = new ImageIcon(getClass().getResource("mischd/15.png"));
+    ImageIcon p16 = new ImageIcon(getClass().getResource("mischd/16.png"));
+    ImageIcon p17 = new ImageIcon(getClass().getResource("mischd/17.png"));
+    ImageIcon p18 = new ImageIcon(getClass().getResource("mischd/18.png"));
+    ImageIcon p19 = new ImageIcon(getClass().getResource("mischd/19.png"));
+    ImageIcon p20 = new ImageIcon(getClass().getResource("mischd/20.png"));
+    ImageIcon p21 = new ImageIcon(getClass().getResource("mischd/21.png"));
+    ImageIcon p22 = new ImageIcon(getClass().getResource("mischd/22.png"));
+    ImageIcon p23 = new ImageIcon(getClass().getResource("mischd/23.png"));
+    ImageIcon p24 = new ImageIcon(getClass().getResource("mischd/24.png"));
+    ImageIcon p25 = new ImageIcon(getClass().getResource("mischd/25.png"));
+    ImageIcon p26 = new ImageIcon(getClass().getResource("mischd/26.png"));
+    ImageIcon p27 = new ImageIcon(getClass().getResource("mischd/27.png"));
+    ImageIcon p28 = new ImageIcon(getClass().getResource("mischd/28.png"));
+    ImageIcon p29 = new ImageIcon(getClass().getResource("mischd/29.png"));
+    ImageIcon p30 = new ImageIcon(getClass().getResource("mischd/30.png"));
+    ImageIcon p31 = new ImageIcon(getClass().getResource("mischd/31.png"));
+    ImageIcon p32 = new ImageIcon(getClass().getResource("mischd/32.png"));
+    ImageIcon p33 = new ImageIcon(getClass().getResource("mischd/33.png"));
+    ImageIcon p34 = new ImageIcon(getClass().getResource("mischd/34.png"));
+    ImageIcon p35 = new ImageIcon(getClass().getResource("mischd/35.png"));
+    ImageIcon p36 = new ImageIcon(getClass().getResource("mischd/36.png"));
+    ImageIcon p37 = new ImageIcon(getClass().getResource("mischd/37.png"));
+    ImageIcon p38 = new ImageIcon(getClass().getResource("mischd/38.png"));
+    ImageIcon p39 = new ImageIcon(getClass().getResource("mischd/39.png"));
+    ImageIcon p40 = new ImageIcon(getClass().getResource("mischd/40.png"));
 
-    ImageIcon z1 = new ImageIcon(getClass().getResource("misc/z1.gif"));
-    ImageIcon z2 = new ImageIcon(getClass().getResource("misc/z2.png"));
-    ImageIcon z3 = new ImageIcon(getClass().getResource("misc/z3.jpg"));
-    ImageIcon z4 = new ImageIcon(getClass().getResource("misc/z4.jpg"));
-    ImageIcon z5 = new ImageIcon(getClass().getResource("misc/z5.jpg"));
-    ImageIcon z6 = new ImageIcon(getClass().getResource("misc/z6.jpg"));
-    ImageIcon z7 = new ImageIcon(getClass().getResource("misc/z7.JPG"));
-    ImageIcon z8 = new ImageIcon(getClass().getResource("misc/z8.jpg"));
-    ImageIcon z9 = new ImageIcon(getClass().getResource("misc/z9.jpg"));
-    ImageIcon z10 = new ImageIcon(getClass().getResource("misc/z10.jpg"));
-    ImageIcon z11 = new ImageIcon(getClass().getResource("misc/z11.jpg"));
-    ImageIcon z12 = new ImageIcon(getClass().getResource("misc/z12.jpg"));
-    ImageIcon z13 = new ImageIcon(getClass().getResource("misc/z13.jpg"));
-    ImageIcon z14 = new ImageIcon(getClass().getResource("misc/z14.jpeg"));
-    ImageIcon z15 = new ImageIcon(getClass().getResource("misc/z15.jpg"));
-    ImageIcon z16 = new ImageIcon(getClass().getResource("misc/z16.jpg"));
-    ImageIcon z17 = new ImageIcon(getClass().getResource("misc/z17.jpeg"));
-    ImageIcon z18 = new ImageIcon(getClass().getResource("misc/z3.jpg"));
-    ImageIcon z19 = new ImageIcon(getClass().getResource("misc/z19.jpg"));
-    ImageIcon z20 = new ImageIcon(getClass().getResource("misc/z20.jpg"));
-    ImageIcon z21 = new ImageIcon(getClass().getResource("misc/z21.jpg"));
-    ImageIcon z22 = new ImageIcon(getClass().getResource("misc/z22.jpg"));
-    ImageIcon z23 = new ImageIcon(getClass().getResource("misc/z8.jpg"));
-    ImageIcon z24 = new ImageIcon(getClass().getResource("misc/z24.jpg"));
-    ImageIcon z25 = new ImageIcon(getClass().getResource("misc/z25.jpg"));
-    ImageIcon z26 = new ImageIcon(getClass().getResource("misc/z26.jpg"));
-    ImageIcon z27 = new ImageIcon(getClass().getResource("misc/z27.jpg"));
-    ImageIcon z28 = new ImageIcon(getClass().getResource("misc/z28.jpeg"));
-    ImageIcon z29 = new ImageIcon(getClass().getResource("misc/z29.jpg"));
-    ImageIcon z30 = new ImageIcon(getClass().getResource("misc/z30.jpg"));
-    ImageIcon z31 = new ImageIcon(getClass().getResource("misc/z31.jpg"));
-    ImageIcon z32 = new ImageIcon(getClass().getResource("misc/z32.jpg"));
-    ImageIcon z33 = new ImageIcon(getClass().getResource("misc/z33.jpg"));
-    ImageIcon z34 = new ImageIcon(getClass().getResource("misc/z3.jpg"));
-    ImageIcon z35 = new ImageIcon(getClass().getResource("misc/z35.jpg"));
-    ImageIcon z36 = new ImageIcon(getClass().getResource("misc/z36.jpg"));
-    ImageIcon z37 = new ImageIcon(getClass().getResource("misc/z8.jpg"));
-    ImageIcon z38 = new ImageIcon(getClass().getResource("misc/z38.jpg"));
-    ImageIcon z39 = new ImageIcon(getClass().getResource("misc/z39.jpg"));
-    ImageIcon z40 = new ImageIcon(getClass().getResource("misc/z40.jpg"));
+    ImageIcon z1 = new ImageIcon(getClass().getResource("mischd/z1.gif"));
+    ImageIcon z2 = new ImageIcon(getClass().getResource("mischd/z2.png"));
+    ImageIcon z3 = new ImageIcon(getClass().getResource("mischd/z3.jpg"));
+    ImageIcon z4 = new ImageIcon(getClass().getResource("mischd/z4.jpg"));
+    ImageIcon z5 = new ImageIcon(getClass().getResource("mischd/z5.jpg"));
+    ImageIcon z6 = new ImageIcon(getClass().getResource("mischd/z6.jpg"));
+    ImageIcon z7 = new ImageIcon(getClass().getResource("mischd/z7.JPG"));
+    ImageIcon z8 = new ImageIcon(getClass().getResource("mischd/z8.jpg"));
+    ImageIcon z9 = new ImageIcon(getClass().getResource("mischd/z9.jpg"));
+    ImageIcon z10 = new ImageIcon(getClass().getResource("mischd/z10.jpg"));
+    ImageIcon z11 = new ImageIcon(getClass().getResource("mischd/z11.jpg"));
+    ImageIcon z12 = new ImageIcon(getClass().getResource("mischd/z12.jpg"));
+    ImageIcon z13 = new ImageIcon(getClass().getResource("mischd/z13.jpg"));
+    ImageIcon z14 = new ImageIcon(getClass().getResource("mischd/z14.jpeg"));
+    ImageIcon z15 = new ImageIcon(getClass().getResource("mischd/z15.jpg"));
+    ImageIcon z16 = new ImageIcon(getClass().getResource("mischd/z16.jpg"));
+    ImageIcon z17 = new ImageIcon(getClass().getResource("mischd/z17.jpeg"));
+    ImageIcon z18 = new ImageIcon(getClass().getResource("mischd/z3.jpg"));
+    ImageIcon z19 = new ImageIcon(getClass().getResource("mischd/z19.jpg"));
+    ImageIcon z20 = new ImageIcon(getClass().getResource("mischd/z20.jpg"));
+    ImageIcon z21 = new ImageIcon(getClass().getResource("mischd/z21.jpg"));
+    ImageIcon z22 = new ImageIcon(getClass().getResource("mischd/z22.jpg"));
+    ImageIcon z23 = new ImageIcon(getClass().getResource("mischd/z8.jpg"));
+    ImageIcon z24 = new ImageIcon(getClass().getResource("mischd/z24.jpg"));
+    ImageIcon z25 = new ImageIcon(getClass().getResource("mischd/z25.jpg"));
+    ImageIcon z26 = new ImageIcon(getClass().getResource("mischd/z26.jpg"));
+    ImageIcon z27 = new ImageIcon(getClass().getResource("mischd/z27.jpg"));
+    ImageIcon z28 = new ImageIcon(getClass().getResource("mischd/z28.jpeg"));
+    ImageIcon z29 = new ImageIcon(getClass().getResource("mischd/z29.jpg"));
+    ImageIcon z30 = new ImageIcon(getClass().getResource("mischd/z30.jpg"));
+    ImageIcon z31 = new ImageIcon(getClass().getResource("mischd/z31.jpg"));
+    ImageIcon z32 = new ImageIcon(getClass().getResource("mischd/z32.jpg"));
+    ImageIcon z33 = new ImageIcon(getClass().getResource("mischd/z33.jpg"));
+    ImageIcon z34 = new ImageIcon(getClass().getResource("mischd/z3.jpg"));
+    ImageIcon z35 = new ImageIcon(getClass().getResource("mischd/z35.jpg"));
+    ImageIcon z36 = new ImageIcon(getClass().getResource("mischd/z36.jpg"));
+    ImageIcon z37 = new ImageIcon(getClass().getResource("mischd/z8.jpg"));
+    ImageIcon z38 = new ImageIcon(getClass().getResource("mischd/z38.jpg"));
+    ImageIcon z39 = new ImageIcon(getClass().getResource("mischd/z39.jpg"));
+    ImageIcon z40 = new ImageIcon(getClass().getResource("mischd/z40.jpg"));
 
-    public Mainboard_GUI(int x, int y) {
+    public Mainboard_GUI_HD(int x, int y) {
         this.x = x;
         this.y = y;
 
         _this = this;
         this.setTitle("Monopoly");
         this.setResizable(false);
-        this.setBounds(0, 0, 1017, 1037);
+        this.setBounds(0, 0, 700, 725);
 //        this.setSize( Toolkit.getDefaultToolkit().getScreenSize() );
 //        this.setUndecorated(true);
 //        this.setAlwaysOnTop(true);
@@ -159,12 +158,12 @@ public class Mainboard_GUI extends JFrame {
         Container c = this.getContentPane();
         c.setLayout(null);
 
-        zoom.setBounds(200, 200, 400, 400);
+        zoom.setBounds(190, 100, 199, 300);
         zoom.setVisible(true);
 
         b1 = new JButton(p1);
         b1.setBackground(Color.BLACK);
-        b1.setBounds(884, 882, 128, 128);
+        b1.setBounds(620, 620, 80, 80);
         b1.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent mEvt) {
@@ -182,7 +181,7 @@ public class Mainboard_GUI extends JFrame {
 
         b2 = new JButton(p2);
         b2.setBackground(Color.BLACK);
-        b2.setBounds(800, 882, 84, 128);
+        b2.setBounds(560, 620, 60, 80);
         b2.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -200,7 +199,7 @@ public class Mainboard_GUI extends JFrame {
 
         b3 = new JButton(p3);
         b3.setBackground(Color.BLACK);
-        b3.setBounds(716, 882, 84, 128);
+        b3.setBounds(500, 620, 60, 80);
         b3.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -218,7 +217,7 @@ public class Mainboard_GUI extends JFrame {
 
         b4 = new JButton(p4);
         b4.setBackground(Color.BLACK);
-        b4.setBounds(632, 882, 84, 128);
+        b4.setBounds(440, 620, 60, 80);
         b4.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -236,7 +235,7 @@ public class Mainboard_GUI extends JFrame {
 
         b5 = new JButton(p5);
         b5.setBackground(Color.BLACK);
-        b5.setBounds(548, 882, 84, 128);
+        b5.setBounds(380, 620, 60, 80);
         b5.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -254,7 +253,7 @@ public class Mainboard_GUI extends JFrame {
 
         b6 = new JButton(p6);
         b6.setBackground(Color.BLACK);
-        b6.setBounds(464, 882, 84, 128);
+        b6.setBounds(320, 620, 60, 80);
         b6.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -272,7 +271,7 @@ public class Mainboard_GUI extends JFrame {
 
         b7 = new JButton(p7);
         b7.setBackground(Color.BLACK);
-        b7.setBounds(380, 882, 84, 128);
+        b7.setBounds(260, 620, 60, 80);
         b7.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -290,7 +289,7 @@ public class Mainboard_GUI extends JFrame {
 
         b8 = new JButton(p8);
         b8.setBackground(Color.BLACK);
-        b8.setBounds(296, 882, 84, 128);
+        b8.setBounds(200, 620, 60, 80);
         b8.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -308,7 +307,7 @@ public class Mainboard_GUI extends JFrame {
 
         b9 = new JButton(p9);
         b9.setBackground(Color.BLACK);
-        b9.setBounds(212, 882, 84, 128);
+        b9.setBounds(140, 620, 60, 80);
         b9.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -326,7 +325,7 @@ public class Mainboard_GUI extends JFrame {
 
         b10 = new JButton(p10);
         b10.setBackground(Color.BLACK);
-        b10.setBounds(128, 882, 84, 128);
+        b10.setBounds(80, 620, 60, 80);
         b10.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -344,7 +343,7 @@ public class Mainboard_GUI extends JFrame {
 
         b11 = new JButton(p11);
         b11.setBackground(Color.BLACK);
-        b11.setBounds(0, 882, 128, 128);
+        b11.setBounds(0, 620, 80, 80);
         b11.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -362,7 +361,7 @@ public class Mainboard_GUI extends JFrame {
 
         b12 = new JButton(p12);
         b12.setBackground(Color.BLACK);
-        b12.setBounds(0, 798, 128, 84);
+        b12.setBounds(0, 560, 80, 60);
         b12.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -380,7 +379,7 @@ public class Mainboard_GUI extends JFrame {
 
         b13 = new JButton(p13);
         b13.setBackground(Color.BLACK);
-        b13.setBounds(0, 714, 128, 84);
+        b13.setBounds(0, 500, 80, 60);
         b13.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -398,7 +397,7 @@ public class Mainboard_GUI extends JFrame {
 
         b14 = new JButton(p14);
         b14.setBackground(Color.BLACK);
-        b14.setBounds(0, 630, 128, 84);
+        b14.setBounds(0, 440, 80, 60);
         b14.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -416,7 +415,7 @@ public class Mainboard_GUI extends JFrame {
 
         b15 = new JButton(p15);
         b15.setBackground(Color.BLACK);
-        b15.setBounds(0, 546, 128, 84);
+        b15.setBounds(0, 380, 80, 60);
         b15.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -434,7 +433,7 @@ public class Mainboard_GUI extends JFrame {
 
         b16 = new JButton(p16);
         b16.setBackground(Color.BLACK);
-        b16.setBounds(0, 462, 128, 84);
+        b16.setBounds(0, 320, 80, 60);
         b16.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -452,7 +451,7 @@ public class Mainboard_GUI extends JFrame {
 
         b17 = new JButton(p17);
         b17.setBackground(Color.BLACK);
-        b17.setBounds(0, 378, 128, 84);
+        b17.setBounds(0, 260, 80, 60);
         b17.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -470,7 +469,7 @@ public class Mainboard_GUI extends JFrame {
 
         b18 = new JButton(p18);
         b18.setBackground(Color.BLACK);
-        b18.setBounds(0, 294, 128, 84);
+        b18.setBounds(0, 200, 80, 60);
         b18.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -488,7 +487,7 @@ public class Mainboard_GUI extends JFrame {
 
         b19 = new JButton(p19);
         b19.setBackground(Color.BLACK);
-        b19.setBounds(0, 210, 128, 84);
+        b19.setBounds(0, 140, 80, 60);
         b19.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -506,7 +505,7 @@ public class Mainboard_GUI extends JFrame {
 
         b20 = new JButton(p20);
         b20.setBackground(Color.BLACK);
-        b20.setBounds(0, 126, 128, 84);
+        b20.setBounds(0, 80, 80, 60);
         b20.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -524,7 +523,7 @@ public class Mainboard_GUI extends JFrame {
 
         b21 = new JButton(p21);
         b21.setBackground(Color.BLACK);
-        b21.setBounds(0, 0, 128, 128);
+        b21.setBounds(0, 0, 80, 80);
         b21.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -542,7 +541,7 @@ public class Mainboard_GUI extends JFrame {
 
         b22 = new JButton(p22);
         b22.setBackground(Color.BLACK);
-        b22.setBounds(128, 0, 84, 128);
+        b22.setBounds(80, 0, 60, 80);
         b22.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -560,7 +559,7 @@ public class Mainboard_GUI extends JFrame {
 
         b23 = new JButton(p23);
         b23.setBackground(Color.BLACK);
-        b23.setBounds(212, 0, 84, 128);
+        b23.setBounds(140, 0, 60, 80);
         b23.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -578,7 +577,7 @@ public class Mainboard_GUI extends JFrame {
 
         b24 = new JButton(p24);
         b24.setBackground(Color.BLACK);
-        b24.setBounds(296, 0, 84, 128);
+        b24.setBounds(200, 0, 60, 80);
         b24.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -596,7 +595,7 @@ public class Mainboard_GUI extends JFrame {
 
         b25 = new JButton(p25);
         b25.setBackground(Color.BLACK);
-        b25.setBounds(380, 0, 84, 128);
+        b25.setBounds(260, 0, 60, 80);
         b25.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -614,7 +613,7 @@ public class Mainboard_GUI extends JFrame {
 
         b26 = new JButton(p26);
         b26.setBackground(Color.BLACK);
-        b26.setBounds(464, 0, 84, 128);
+        b26.setBounds(320, 0, 60, 80);
         b26.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -632,7 +631,7 @@ public class Mainboard_GUI extends JFrame {
 
         b27 = new JButton(p27);
         b27.setBackground(Color.BLACK);
-        b27.setBounds(548, 0, 84, 128);
+        b27.setBounds(380, 0, 60, 80);
         b27.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -650,7 +649,7 @@ public class Mainboard_GUI extends JFrame {
 
         b28 = new JButton(p28);
         b28.setBackground(Color.BLACK);
-        b28.setBounds(632, 0, 84, 128);
+        b28.setBounds(440, 0, 60, 80);
         b28.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -668,7 +667,7 @@ public class Mainboard_GUI extends JFrame {
 
         b29 = new JButton(p29);
         b29.setBackground(Color.BLACK);
-        b29.setBounds(716, 0, 84, 128);
+        b29.setBounds(500, 0, 60, 80);
         b29.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -686,7 +685,7 @@ public class Mainboard_GUI extends JFrame {
 
         b30 = new JButton(p30);
         b30.setBackground(Color.BLACK);
-        b30.setBounds(800, 0, 84, 128);
+        b30.setBounds(560, 0, 60, 80);
         b30.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -704,7 +703,7 @@ public class Mainboard_GUI extends JFrame {
 
         b31 = new JButton(p31);
         b31.setBackground(Color.BLACK);
-        b31.setBounds(884, 0, 128, 128);
+        b31.setBounds(620, 0, 80, 80);
         b31.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -722,7 +721,7 @@ public class Mainboard_GUI extends JFrame {
 
         b32 = new JButton(p32);
         b32.setBackground(Color.BLACK);
-        b32.setBounds(884, 128, 128, 84);
+        b32.setBounds(620, 80, 80, 60);
         b32.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -740,7 +739,7 @@ public class Mainboard_GUI extends JFrame {
 
         b33 = new JButton(p33);
         b33.setBackground(Color.BLACK);
-        b33.setBounds(884, 212, 128, 84);
+        b33.setBounds(620, 140, 80, 60);
         b33.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -758,7 +757,7 @@ public class Mainboard_GUI extends JFrame {
 
         b34 = new JButton(p34);
         b34.setBackground(Color.BLACK);
-        b34.setBounds(884, 296, 128, 84);
+        b34.setBounds(620, 200, 80, 60);
         b34.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -776,7 +775,7 @@ public class Mainboard_GUI extends JFrame {
 
         b35 = new JButton(p35);
         b35.setBackground(Color.BLACK);
-        b35.setBounds(884, 380, 128, 84);
+        b35.setBounds(620, 260, 80, 60);
         b35.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -794,7 +793,7 @@ public class Mainboard_GUI extends JFrame {
 
         b36 = new JButton(p36);
         b36.setBackground(Color.BLACK);
-        b36.setBounds(884, 464, 128, 84);
+        b36.setBounds(620, 320, 80, 60);
         b36.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -812,7 +811,7 @@ public class Mainboard_GUI extends JFrame {
 
         b37 = new JButton(p37);
         b37.setBackground(Color.BLACK);
-        b37.setBounds(884, 548, 128, 84);
+        b37.setBounds(620, 380, 80, 60);
         b37.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -830,7 +829,7 @@ public class Mainboard_GUI extends JFrame {
 
         b38 = new JButton(p38);
         b38.setBackground(Color.BLACK);
-        b38.setBounds(884, 632, 128, 84);
+        b38.setBounds(620, 440, 80, 60);
         b38.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -848,7 +847,7 @@ public class Mainboard_GUI extends JFrame {
 
         b39 = new JButton(p39);
         b39.setBackground(Color.BLACK);
-        b39.setBounds(884, 716, 128, 84);
+        b39.setBounds(620, 500, 80, 60);
         b39.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -866,7 +865,7 @@ public class Mainboard_GUI extends JFrame {
 
         b40 = new JButton(p40);
         b40.setBackground(Color.BLACK);
-        b40.setBounds(884, 800, 128, 84);
+        b40.setBounds(620, 560, 80, 60);
         b40.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -888,7 +887,7 @@ public class Mainboard_GUI extends JFrame {
         c.add(diceGui);
 
         background = new JLabel(board);
-        background.setBounds(128, 128, 756, 756);
+        background.setBounds(80, 80, 540, 540);
         c.add(background);
         background.add(zoom);
     }

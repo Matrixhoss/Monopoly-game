@@ -69,9 +69,11 @@ public class MainMenu extends JFrame{
 //                _this.setVisible(false);
 //                GameFrame gm = new GameFrame();
 //                gm.setVisible(true);
-                _this.setVisible(false);
-                Mainboard_GUI mg = new Mainboard_GUI(0, 0);
-                mg.setVisible(true);
+ //               _this.setVisible(false);
+//                Mainboard_GUI mg = new Mainboard_GUI(0, 0);
+//                mg.setVisible(true);
+//Mainboard_GUI_HD mg = new Mainboard_GUI_HD(0, 0);
+//                mg.setVisible(true);
             }
         });
         c.add(start);
@@ -94,7 +96,8 @@ public class MainMenu extends JFrame{
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    music();
+                    ent n = new ent();
+                    n.setVisible(true);
                 }
             }
         );
@@ -111,7 +114,6 @@ public class MainMenu extends JFrame{
 //                    theme = new JLabel(theme_button);
 //                    theme.setBounds(0, 0, 400, 300);
 //                    c.add(theme);
-                
                 }
             }
         );
@@ -125,5 +127,6 @@ public class MainMenu extends JFrame{
             }
         );
         this.setLocationRelativeTo(null);
-    } 
+    }  
+   
 }
