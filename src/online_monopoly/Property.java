@@ -181,7 +181,15 @@ class WaterworksOrElectric extends Property {
     }
 
     public int getRent() {
-        return 0;
+        int rent = 0;
+        if (this.ownerPlayer != null && this.isMortgaged == false) {
+        if (this.ownerPlayer.checkGroup(this) == true) {
+            rent = (this.ownerPlayer.getDice()[0] + this.ownerPlayer.getDice()[1]) * 10;
+        } else {
+            rent = (this.ownerPlayer.getDice()[0] + this.ownerPlayer.getDice()[1]) * 4;
+        }
+          }
+        return rent;
     }
 }
 
@@ -206,13 +214,13 @@ class Jail extends BoardObject {
                 d.enableRolling();
                 break;
             case 2:
-                    if (p.hasChanceCard() && !p.hasCommunityCard()) {
-                        CC.ReturnChanceJail();
-                    } else if (!p.hasChanceCard() && p.hasCommunityCard()) {
-                        CC.ReturnChestJail();
-                    } else if (p.hasChanceCard() && p.hasCommunityCard()) {
-                        CC.ReturnChestJail();
-                    }
+                if (p.hasChanceCard() && !p.hasCommunityCard()) {
+                    CC.ReturnChanceJail();
+                } else if (!p.hasChanceCard() && p.hasCommunityCard()) {
+                    CC.ReturnChestJail();
+                } else if (p.hasChanceCard() && p.hasCommunityCard()) {
+                    CC.ReturnChestJail();
+                }
                 p.exitFromJail();
                 break;
         }
