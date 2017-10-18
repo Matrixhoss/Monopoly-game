@@ -84,22 +84,7 @@ public abstract class Property extends BoardObject {
 
     }
     
-    
-    public void handleLuxTax() {    //Function should receive an integer from the choice of the option panal
-        ownerPlayer.payMoney(100);
-    }
-    
-    
-    public void handleIncomeTax(int x) {
-        if (x == 0) {
-            ownerPlayer.payMoney(200);
-        } else {
-            Double d = ownerPlayer.getTotalMoney() * 0.1;
-            int P = d.intValue();
-            ownerPlayer.payMoney(P);
-        }
-
-    }               //REMIND ME HANDLE GUI OF TAX , HANDLE Position logic( ana 3aref ma3naha eh)
+                   
 }
 
 class NormalProperty extends Property{

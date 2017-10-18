@@ -52,4 +52,11 @@ public class Dice {
 
     }
 
+    public void enableRolling() {
+        this.roll = true;
+    }
+    public void disableRolling() {
+        this.roll = true;
+    }
+
 }
