@@ -13,6 +13,7 @@ import sun.audio.*;
 
 public class Mainboard_GUI extends JFrame {
     public static Player p=new Player("hesham", Color.red);
+    public static CommunityAndChance CC= new CommunityAndChance();
     public int x, y;
     public JLabel zoom = new JLabel();
     public JLabel background;
