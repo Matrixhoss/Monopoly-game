@@ -221,5 +221,20 @@ class Jail extends BoardObject{
         }
 
     }
+      public void handleLuxTax() {    //Function should receive an integer from the choice of the option panal
+       Mainboard_GUI.p.payMoney(100);
+    }
+    
+    
+    public void handleIncomeTax(int x) {
+        if (x == 0) {
+            Mainboard_GUI.p.payMoney(200);
+        } else {
+            Double d = Mainboard_GUI.p.getTotalMoney() * 0.1;
+            int P = d.intValue();
+            Mainboard_GUI.p.payMoney(P);
+        }
+
+    }
     
 }

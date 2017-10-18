@@ -236,46 +236,6 @@ public class Player {
         return TotalM;
     }
 
-    public void handleJail(int Choice) {                //0=pay 50  1=try your luck and roll   2=use card
-        Mainboard_GUI.d.disableRolling();
-        switch (Choice) {
-            case 0:
-                this.money -= 50;
-                this.InJail = false;
-                break;
-            case 1:
-                Mainboard_GUI.d.enableRolling();
-                break;
-            case 2:
-                if (ChanceEJail == true || CommunityEJail == true) {
-                    if (ChanceEJail == true && CommunityEJail == false) {
-                        Mainboard_GUI.CC.ReturnChanceJail();
-                    } else if (ChanceEJail == false && CommunityEJail == true) {
-                        Mainboard_GUI.CC.ReturnChestJail();
-                    } else if (ChanceEJail == true && CommunityEJail == true) {
-                        Mainboard_GUI.CC.ReturnChestJail();
-                    }
-                }
-
-                this.InJail = false;
-                break;
-        }
-
-    }
-    public void handleLuxTax() {    //Function should receive an integer from the choice of the option panal
-       Mainboard_GUI.p.payMoney(100);
-    }
     
-    
-    public void handleIncomeTax(int x) {
-        if (x == 0) {
-            Mainboard_GUI.p.payMoney(200);
-        } else {
-            Double d = Mainboard_GUI.p.getTotalMoney() * 0.1;
-            int P = d.intValue();
-            Mainboard_GUI.p.payMoney(P);
-        }
-
-    }
 
 }
