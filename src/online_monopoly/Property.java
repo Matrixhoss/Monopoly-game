@@ -13,16 +13,15 @@ public abstract class Property extends BoardObject {
     private int groupID;               // the id of the group of the property
     private int groubNum;              // the number of the porperties within this property 
 
-
-    public Property(String name, int id, Point p, int value, int[] rent, int mortgageValue ,int groupID, int groubNum) {
+    public Property(String name, int id, Point p, int value, int[] rent, int mortgageValue, int groupID, int groubNum) {
         super(name, id, p);
         this.ownerPlayer = null;
         this.mortgageValue = mortgageValue;
         this.value = value;
         this.rent = rent;
         this.isMortgaged = false;
-        this.groubNum =groubNum;
-        this.groupID =groupID;
+        this.groubNum = groubNum;
+        this.groupID = groupID;
     }
 
     public Player getOwner() {
@@ -32,19 +31,18 @@ public abstract class Property extends BoardObject {
     public void setOwner(Player owner) {
         this.ownerPlayer = owner;
     }
-        
-    public int getPropertyValue(){
-    return this.value;
+
+    public int getPropertyValue() {
+        return this.value;
     }
-    
-         public int getGroupID() {
+
+    public int getGroupID() {
         return this.groupID;
     }
 
     public int getGroupNum() {
         return this.groubNum;
     }
-
 
     // get the rent if the property had been  owned
     abstract public int getRent();
@@ -83,17 +81,17 @@ public abstract class Property extends BoardObject {
         }
 
     }
-    
-                   
+
 }
 
-class NormalProperty extends Property{
+class NormalProperty extends Property {
+
     private int houseValue;            // the house or hotel value
     private int numOfHouses;           // the number of houses on the property (0 - 4)
     private int numOfHotels;           // the number of hotels on the property (0 - 1)
-  
-    public NormalProperty(String name, int id, Point p,int value,int[] rent,int mortgageValue ,int groupID, int groubNum, int houseValue) {
-        super(name, id, p, value, rent, mortgageValue ,groupID, groubNum);
+
+    public NormalProperty(String name, int id, Point p, int value, int[] rent, int mortgageValue, int groupID, int groubNum, int houseValue) {
+        super(name, id, p, value, rent, mortgageValue, groupID, groubNum);
         this.houseValue = houseValue;
         this.numOfHouses = numOfHouses;
         this.numOfHotels = numOfHotels;
@@ -107,12 +105,12 @@ class NormalProperty extends Property{
     public int getNumOfHotels() {
         return this.numOfHotels;
     }
-        public int getHouseValue(){
-    return this.houseValue;
+
+    public int getHouseValue() {
+        return this.houseValue;
     }
-        
-        
-            // get the rent if the property had been  owned
+
+    // get the rent if the property had been  owned
     public int getRent() {
         if (this.ownerPlayer != null && this.isMortgaged == false) {  // if the property is owned and not Mortgaged
             if (numOfHotels == 0) {
@@ -139,7 +137,7 @@ class NormalProperty extends Property{
         return 0;
 
     }
-    
+
     // not completed
     public int buildHouse() {
         // check if the propery is not Mortgaged
@@ -161,80 +159,90 @@ class NormalProperty extends Property{
             return 0;
         }
     }
-    
+
 }
 
-class Railroad extends Property{
+class Railroad extends Property {
 
-    public Railroad(String name, int id, Point p, int value, int[] rent, int mortgageValue ,int groupID, int groubNum) {
-      super(name, id, p, value, rent, mortgageValue ,groupID, groubNum);
-    }
-    
-    public int getRent (){
-    return 0 ;
+    public Railroad(String name, int id, Point p, int value, int[] rent, int mortgageValue, int groupID, int groubNum) {
+        super(name, id, p, value, rent, mortgageValue, groupID, groubNum);
     }
 
-
+    public int getRent() {
+        return 0;
+    }
 
 }
 
 class WaterworksOrElectric extends Property {
 
-
-  public WaterworksOrElectric(String name, int id, Point p, int value, int[] rent, int mortgageValue ,int groupID, int groubNum) {
-      super(name, id, p, value, rent, mortgageValue ,groupID, groubNum);
+    public WaterworksOrElectric(String name, int id, Point p, int value, int[] rent, int mortgageValue, int groupID, int groubNum) {
+        super(name, id, p, value, rent, mortgageValue, groupID, groubNum);
     }
 
-  public int getRent(){
-      return 0 ;
-  }
+    public int getRent() {
+        return 0;
+    }
 }
 
-class Jail extends BoardObject{
-    
+class Jail extends BoardObject {
+
+    private Player p = Mainboard_GUI.p;
+    private Dice d = Mainboard_GUI.d;
+    private CommunityAndChance CC = Mainboard_GUI.CC;
+
     public Jail(String name, int id, Point p) {
         super(name, id, p);
     }
-      public void handleJail(int Choice) {                //0=pay 50  1=try your luck and roll   2=use card
-        Mainboard_GUI.d.disableRolling();
+
+    public void handleJail(int Choice) {                //0=pay 50  1=try your luck and roll   2=use card
+        d.disableRolling();
         switch (Choice) {
             case 0:
-                Mainboard_GUI.p.payMoney(50);
-                Mainboard_GUI.p.exitFromJail();
+                p.payMoney(50);
+                p.exitFromJail();
                 break;
             case 1:
-                Mainboard_GUI.d.enableRolling();
+                d.enableRolling();
                 break;
             case 2:
-                if ( Mainboard_GUI.p.hasChanceCard()|| Mainboard_GUI.p.hasCommunityCard()) {
-                    if (Mainboard_GUI.p.hasChanceCard() && !Mainboard_GUI.p.hasCommunityCard()) {
-                        Mainboard_GUI.CC.ReturnChanceJail();
-                    } else if (!Mainboard_GUI.p.hasChanceCard() && Mainboard_GUI.p.hasCommunityCard()) {
-                        Mainboard_GUI.CC.ReturnChestJail();
-                    } else if (Mainboard_GUI.p.hasChanceCard()&&  Mainboard_GUI.p.hasCommunityCard()) {
-                        Mainboard_GUI.CC.ReturnChestJail();
+                    if (p.hasChanceCard() && !p.hasCommunityCard()) {
+                        CC.ReturnChanceJail();
+                    } else if (!p.hasChanceCard() && p.hasCommunityCard()) {
+                        CC.ReturnChestJail();
+                    } else if (p.hasChanceCard() && p.hasCommunityCard()) {
+                        CC.ReturnChestJail();
                     }
-                }
-
-                Mainboard_GUI.p.exitFromJail();
+                p.exitFromJail();
                 break;
         }
 
     }
-      public void handleLuxTax() {    //Function should receive an integer from the choice of the option panal
-       Mainboard_GUI.p.payMoney(100);
+}
+
+class Tax extends BoardObject {
+
+    private Player p = Mainboard_GUI.p;
+    private Dice d = Mainboard_GUI.d;
+    private CommunityAndChance CC = Mainboard_GUI.CC;
+
+    public Tax(String name, int id, Point p) {
+        super(name, id, p);
     }
-    
-    
-    public void handleIncomeTax(int x) {
-        if (x == 0) {
-            Mainboard_GUI.p.payMoney(200);
+
+    public void handleLuxTax() {    //Function should receive an integer from the choice of the option panal
+        p.payMoney(100);
+    }
+
+    public void handleIncomeTax(int Choice) {
+        if (Choice == 0) {
+            p.payMoney(200);
         } else {
-            Double d = Mainboard_GUI.p.getTotalMoney() * 0.1;
+            Double d = p.getTotalMoney() * 0.1;
             int P = d.intValue();
-            Mainboard_GUI.p.payMoney(P);
+            p.payMoney(P);
         }
 
     }
-    
+
 }
