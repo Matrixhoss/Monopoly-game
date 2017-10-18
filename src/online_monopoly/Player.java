@@ -130,7 +130,7 @@ public class Player {
     public int getTotalHouses(){
         int NumOfHouses=0;
         for(int i=0;i<MyProperties.size();i++){
-            NumOfHouses+=MyProperties.get(i).getNumOfHouses();
+          //  NumOfHouses+=MyProperties.get(i).getNumOfHouses(); // Hossam
         }
         return NumOfHouses;
     }
@@ -138,7 +138,7 @@ public class Player {
     public int getTotalHotels(){
         int NumOfHotels=0;
         for(int i=0;i<MyProperties.size();i++){
-            NumOfHotels+=MyProperties.get(i).getNumOfHotels();
+          //  NumOfHotels+=MyProperties.get(i).getNumOfHotels(); // Hossam
         }
         return NumOfHotels;
     }
@@ -148,7 +148,7 @@ public class Player {
         int TotalM=this.money;
         for(int i=0;i<MyProperties.size();i++){
             Property p=MyProperties.get(i);
-            TotalM+=(p.getNumOfHouses()*50+p.getNumOfHotels()*100);//lsh m5l
+         //   TotalM+=(p.getNumOfHouses()*50+p.getNumOfHotels()*100);//lsh m5l // Hossam
         }
         return TotalM;
     }
