@@ -7,6 +7,7 @@ package online_monopoly;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 
 /**
  *
@@ -29,6 +30,13 @@ public class Player {
 
     
     public Player(String name, Color c){
+        this.name=name;
+        color=c;
+        PositionX=StartX;
+        PositionY=StartY;
+        money=1500;     
+    }
+    public Player(String name, Color c,Mainboard_GUI frame){
         this.name=name;
         color=c;
         PositionX=StartX;
@@ -163,4 +171,31 @@ public class Player {
         }
         return TotalM;
     }
+    public void handleJail(int x){
+        switch(x){
+            case 0:
+                this.money-=50;
+                this.InJail=false;
+                break;
+            case 1:
+                this.InJail=false;
+                break;
+            case 2: 
+                if(ChanceEJail==true||CommunityEJail==true){}
+                else if(ChanceEJail==true && CommunityEJail==false){
+                Mainboard_GUI.CC.ReturnChanceJail();}
+                else if(ChanceEJail==false && CommunityEJail==true){
+                Mainboard_GUI.CC.ReturnChestJail();}
+                else if(ChanceEJail==true && CommunityEJail==true){
+                //popup choice
+                }
+                
+                
+                
+                this.InJail=false;
+                break;
+        }
+    
+    }
+   
 }
