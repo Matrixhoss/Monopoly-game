@@ -189,3 +189,37 @@ class WaterworksOrElectric extends Property {
       return 0 ;
   }
 }
+
+class Jail extends BoardObject{
+    
+    public Jail(String name, int id, Point p) {
+        super(name, id, p);
+    }
+      public void handleJail(int Choice) {                //0=pay 50  1=try your luck and roll   2=use card
+        Mainboard_GUI.d.disableRolling();
+        switch (Choice) {
+            case 0:
+                Mainboard_GUI.p.payMoney(50);
+                Mainboard_GUI.p.exitFromJail();
+                break;
+            case 1:
+                Mainboard_GUI.d.enableRolling();
+                break;
+            case 2:
+                if ( Mainboard_GUI.p.hasChanceCard()|| Mainboard_GUI.p.hasCommunityCard()) {
+                    if (Mainboard_GUI.p.hasChanceCard() && !Mainboard_GUI.p.hasCommunityCard()) {
+                        Mainboard_GUI.CC.ReturnChanceJail();
+                    } else if (!Mainboard_GUI.p.hasChanceCard() && Mainboard_GUI.p.hasCommunityCard()) {
+                        Mainboard_GUI.CC.ReturnChestJail();
+                    } else if (Mainboard_GUI.p.hasChanceCard()&&  Mainboard_GUI.p.hasCommunityCard()) {
+                        Mainboard_GUI.CC.ReturnChestJail();
+                    }
+                }
+
+                Mainboard_GUI.p.exitFromJail();
+                break;
+        }
+
+    }
+    
+}
