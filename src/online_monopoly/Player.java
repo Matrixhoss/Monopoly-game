@@ -18,8 +18,8 @@ import javax.swing.JFrame;
 public class Player {
     
     private int count=0;
-    private int XonBoard = 924, YonBoard = 950;
-    private final int stepX = 84, stepY = 84;
+    private int XonBoard = 924, YonBoard = 950; // position of player on gui
+    private final int stepX = 84, stepY = 84;   
     private int PositionX;
     private int PositionY;
     private final int StartX = 0; //player start with this position (x)
@@ -51,56 +51,123 @@ public class Player {
         Board=frame;
     }
     
+    public Color getColor() {
+        return color;
+    }
+        
+    //<editor-fold defaultstate="collapsed" desc="control Player Position">
+    //return position of player on gui in x
     public int getXonBoard() {
         return XonBoard;
     }
-
+    //return position of player on gui in y
     public int getYonBoard() {
         return YonBoard;
     }
-    
+    //set real position of player
     public void setPosition(int x, int y) {
         this.PositionX = x;
         this.PositionY = y;
     }
-
+    
+    public void setPosition(Point p) {
+        this.PositionX = p.getX();
+        this.PositionY = p.getY();
+    }
+    
     public int getX() {
         return PositionX;
     }
-
+    
     public int getY() {
         return PositionY;
     }
+//</editor-fold>
 
-    public Color getColor() {
-        return color;
+    //<editor-fold defaultstate="collapsed" desc="Money">
+//calculate total money with player
+    public int getTotalMoney() {
+        int TotalM = this.money;
+        for (int i = 0; i < MyProperties.size(); i++) {
+            NormalProperty p = (NormalProperty) (MyProperties.get(i));
+            TotalM += (p.getNumOfHouses() * 50 + p.getNumOfHotels() * 100);//lsh m5l // Hossam
+        }
+        return TotalM;
     }
-
+    //return money with player
     public int getMoney() {
         return money;
     }
-
+    //to add money to player
     public void addMoney(int m) {
         money += m;
     }
-
+    //make player pay money
     public void payMoney(int m) {
         money -= m;
     }
+//</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="set and get dice">
     public void setDice(int[] D) {
         this.Dice = D;
     }
-
+    
     public int[] getDice() {
         return this.Dice;
     }
+//</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="community and chance">
+    
+    //add chance card (exit from jail)
+    public void addChanceCard(boolean c) {
+        this.ChanceEJail = c;
+    }
+    
+    //add community card (exit from jail)
+    public void addCommunityCard(boolean c) {
+        this.CommunityEJail = c;
+    }
+    
+    //check if player has chance card for exit from jail
+    public boolean hasChanceCard() {
+        return this.ChanceEJail;
+    }
+    
+    //check if player has community card for exit from jail
+    public boolean hasCommunityCard() {
+        return this.CommunityEJail;
+    }
+//</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="Jail">
+    
+    //check if player in jail
+    public boolean checkInJail() {
+        return this.InJail;
+    }
+    
+    //exit from jail
+    public void exitFromJail() {
+        this.InJail = false;
+    }
+    
+    //set player position in jail
+    public void goToJail() {
+        PositionX = 10;
+        PositionY = 0;
+        this.InJail = true;
+    }
+//</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="control player's properties">
 
     //add property
     public void addProperty(Property p) {
         MyProperties.add(p);
     }
-
+    
     //check if player has group
     public boolean checkGroup(Property p) {
         int count = 0;
@@ -114,6 +181,57 @@ public class Player {
         }
         return false;
     }
+    
+    //return number of properties in group
+    public int getNumOfPropertiesInGroup(Property p) {
+        int count=0;
+        for(int i=0;i<MyProperties.size();i++)
+            if (MyProperties.get(i).getGroupID() == p.getGroupID()) {
+                count++;
+            }
+        return count;
+    }
+    
+    //return all of properties in group
+    public ArrayList<Property> getPropertiesInGroup(Property p) {
+        ArrayList<Property> PS=new ArrayList<Property>();
+        for(int i=0;i<MyProperties.size();i++)
+            if (MyProperties.get(i).getGroupID() == p.getGroupID()) {
+                PS.add(MyProperties.get(i));
+            }
+        return PS;
+    }
+//</editor-fold>
+
+    
+    //<editor-fold defaultstate="collapsed" desc="Houses and Hotels">
+    //calculate Total Houses
+    public int getTotalHouses() {
+        int NumOfHouses = 0;
+        for (int i = 0; i < MyProperties.size(); i++) {
+            NormalProperty p = (NormalProperty) (MyProperties.get(i));
+            NumOfHouses += p.getNumOfHouses(); // Hossam
+        }
+        return NumOfHouses;
+    }
+    
+    //calculate Total Hotels
+    public int getTotalHotels() {
+        int NumOfHotels = 0;
+        for (int i = 0; i < MyProperties.size(); i++) {
+            NormalProperty p = (NormalProperty) (MyProperties.get(i));
+            NumOfHotels += p.getNumOfHotels(); // Hossam
+        }
+        return NumOfHotels;
+    }
+    
+//</editor-fold>
+    
+    //move back
+    public void moveBack(int moves) {
+
+    }
+    
     //imagine Go in (0,0) and x axis increased when go left and y increased when move up
     public void move(int dice) {
         count=0;
@@ -164,78 +282,4 @@ public class Player {
         timer.start();
     }
     
-    //add chance card (exit from jail)
-    public void addChanceCard(boolean c) {
-        this.ChanceEJail = c;
-    }
-
-    //add community card (exit from jail)
-    public void addCommunityCard(boolean c) {
-        this.CommunityEJail = c;
-    }
-
-    //check if player has chance card for exit from jail
-    public boolean hasChanceCard() {
-        return this.ChanceEJail;
-    }
-
-    //check if player has community card for exit from jail
-    public boolean hasCommunityCard() {
-        return this.CommunityEJail;
-    }
-
-    //check if player in jail
-    public boolean checkInJail() {
-        return this.InJail;
-    }
-
-    //exit from jail
-    public void exitFromJail() {
-        this.InJail = false;
-    }
-
-    //move back
-    public void moveBack(int moves) {
-
-    }
-
-    //set player position in jail
-    public void goToJail() {
-        PositionX = 10;
-        PositionY = 0;
-        this.InJail = true;
-    }
-
-    //calculate Total Houses
-    public int getTotalHouses() {
-        int NumOfHouses = 0;
-        for (int i = 0; i < MyProperties.size(); i++) {
-            NormalProperty p = (NormalProperty) (MyProperties.get(i));
-            NumOfHouses += p.getNumOfHouses(); // Hossam
-        }
-        return NumOfHouses;
-    }
-
-    //calculate Total Hotels
-    public int getTotalHotels() {
-        int NumOfHotels = 0;
-        for (int i = 0; i < MyProperties.size(); i++) {
-            NormalProperty p = (NormalProperty) (MyProperties.get(i));
-            NumOfHotels += p.getNumOfHotels(); // Hossam
-        }
-        return NumOfHotels;
-    }
-
-    //calculate total money with player
-    public int getTotalMoney() {
-        int TotalM = this.money;
-        for (int i = 0; i < MyProperties.size(); i++) {
-            NormalProperty p = (NormalProperty) (MyProperties.get(i));
-            TotalM += (p.getNumOfHouses() * 50 + p.getNumOfHotels() * 100);//lsh m5l // Hossam
-        }
-        return TotalM;
-    }
-
-    
-
 }
