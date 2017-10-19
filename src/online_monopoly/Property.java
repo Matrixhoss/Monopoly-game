@@ -157,76 +157,95 @@ class NormalProperty extends Property {
 
     }
 
-    
     // not completed
-    public int buildHouse() {
+    public int buildHouse(Bank b) {
         // check if the propery is not Mortgaged
         if (this.isMortgaged == true) {
+            System.out.println("The property is Mortagaged");
             return 1; // the property is Mortgaged
-        }
-        
-        // check if the player have the property group 
+        } // check if the player have the property group 
         else if (this.ownerPlayer.checkGroup(this) == false) {
+            System.out.println("The Player havent the all groub properties");
             return 2; // the the player have not the property group 
-        }
-        
-        // check the number of houses and hotels //and check if the bank have enough houses    
+        } // check the number of houses and hotels //and check if the bank have enough houses    
         else {
             if (numOfHouses < 4 && numOfHotels == 0) {
                 if (this.checkOwnerPlayerMoney(houseValue)) {
-                    numOfHouses++;
-                    this.ownerPlayer.payMoney(houseValue);
+                    if (b.areHousesAvailable(1) == true) {
+                        numOfHouses++;
+                        b.buyHouse();
+                        this.ownerPlayer.payMoney(houseValue);
+                        System.out.println("House Build \n Number of Houses = " + this.numOfHouses + " Number of Hotels = " + this.numOfHotels);
+                        System.out.println("Player Money " + this.ownerPlayer.getMoney());
+                    } else {
+                        System.out.println("the bank have no more houses");
+                        return 5; // the bank have not more houses 
+                    }
 
                 } else {
-
+                    System.out.println("The player have not the value of the house or hotel");
                     return 3; // the player have not the value of house or hotel
                 }
             } else if (numOfHouses == 4) {
                 if (this.checkOwnerPlayerMoney(houseValue)) {
-                    this.numOfHouses = 0;
-                    this.numOfHotels = 1;
-                    this.ownerPlayer.payMoney(houseValue);
+                    if (b.areHotelsAvailable(1) == true) {
+                        this.numOfHouses = 0;
+                        b.sellHouse();
+                        b.sellHouse();
+                        b.sellHouse();
+                        b.sellHouse();
+                        this.numOfHotels = 1;
+                        b.buyHotel();
+                        this.ownerPlayer.payMoney(houseValue);
+                        System.out.println("Hotel Build \n Number of Houses = " + this.numOfHouses + " Number of Hotels = " + this.numOfHotels);
+                        System.out.println("Player Money " + this.ownerPlayer.getMoney());
+                    } else {
+                        System.out.println("the bank have no more hotels");
+                        return 6; // the bank have no more hotels
+                    }
 
                 } else {
-
+                    System.out.println("The player have not the value of the house or hotel");
                     return 3;  // the player have not the value of house or hotel
                 }
             } else if (numOfHotels == 1) {
-
+                System.out.println("The player have 1 Hotel and cant build anymore");
                 return 4; // return that you cant build her any more
             }
-            return 0;
+            System.out.println("Success");
+            return 0; // success
         }
     }
-    
-    public int sellHouse(){
-    if(this.numOfHouses > 0){
-    this.numOfHouses-- ;
-    this.ownerPlayer.addMoney(houseValue/2);
-     return 0 ; // success
-    }
-    else if(this.numOfHotels>0){
-        // frist check the bank aviabalte of houses
-        this.numOfHouses = 4;
-        this.numOfHotels = 0;
-        this.ownerPlayer.addMoney(houseValue/2);
-     return 0 ; // success
-    }
-            
-       
-    
-    else return 1 ; // the player dont have houses or hotels 
-    }
-    
-    @Override
-    public int mortgage(){
-    if (this.numOfHouses>0 || this.numOfHotels>0) {
-        this.sellHouse();
-        return 2 ; // house or hotel sold 
-    }
-    else{
-    return super.mortgage();
-    }
+
+    public int sellHouse(Bank b) {
+        if (this.numOfHouses > 0) {
+            this.numOfHouses--;
+            b.sellHouse();
+            this.ownerPlayer.addMoney(houseValue / 2);
+            System.out.println("Success sell house Number of houses = "+this.numOfHouses+" Number of hotels = "+this.numOfHotels+ " PlayerMoney = "+this.ownerPlayer.getMoney());
+            return 0; // success
+        } else if (this.numOfHotels > 0) {
+            // frist check the bank aviabalte of houses
+            if (b.areHousesAvailable(4) == true) {
+                this.numOfHotels = 0;
+                b.sellHotel();
+                this.numOfHouses = 4;
+                b.buyHouse();
+                b.buyHouse();
+                b.buyHouse();
+                b.buyHouse();
+                this.ownerPlayer.addMoney(houseValue / 2);
+                            System.out.println("Success sell hotel Number of houses = "+this.numOfHouses+"Number of hotels = "+this.numOfHotels+ " PlayerMoney = "+this.ownerPlayer.getMoney());
+
+                return 0; // success
+            } else {
+                System.out.println("The banke have not more houses to replace the hotel");
+                return 2; // the bank have not the houses to replace the hotel
+            }
+        } else {
+            System.out.println("The player dont have houses or hotels");
+            return 1; // the player dont have houses or hotels 
+        }
     }
 
 }

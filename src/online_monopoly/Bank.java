@@ -27,6 +27,15 @@ public class Bank {
         }
         return false;
     }
+    
+    public boolean buyHouse(){
+        if(housesAvailable>0)
+        {
+            housesAvailable--;
+            return true;
+        }
+        return false;
+    }
     public void sellHotel(){
         hotelsAvailable++;
     }
