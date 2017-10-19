@@ -244,6 +244,7 @@ public class Player {
     }
     //imagine Go in (0,0) and x axis increased when go left and y increased when move up
     public void move(int dice) {
+        Moving=true;
         count=0;
         final javax.swing.Timer timer = new javax.swing.Timer(500, null);
         timer.addActionListener(new ActionListener() {
@@ -296,6 +297,7 @@ public class Player {
     
     //move player to spacific position
     public void move(Point p) {
+        Moving=true;
         final javax.swing.Timer timer = new javax.swing.Timer(500, null);
         timer.addActionListener(new ActionListener() {
             @Override
