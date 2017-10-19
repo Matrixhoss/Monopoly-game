@@ -5,6 +5,8 @@
  */
 package online_monopoly;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Hesham
@@ -16,6 +18,7 @@ public class OptionPanel extends javax.swing.JPanel {
    private CommunityAndChance CC;
    private Tax T;
    private Jail J;
+   private JFrame frame;
    
 
     public int getChoice() {
@@ -29,15 +32,16 @@ public class OptionPanel extends javax.swing.JPanel {
     /**
      * Creates new form OptionPanel
      */
-    public OptionPanel(Player P, Jail J) {
+    public OptionPanel(Player P, Jail J,JFrame Frame) {
         this.P =P;
         this.J=J;
         initComponents();
     }
 
-    public OptionPanel(Player P, Tax T) {
+    public OptionPanel(Player P, Tax T, JFrame Frame) {
         this.P =P;
         this.T=T;
+        this.frame=Frame;
         initComponents();
         
         
@@ -102,11 +106,15 @@ public class OptionPanel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         T.handleIncomeTax(P,1);
         System.out.println(P.getMoney());
+        frame.remove(this);
+        frame.repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         T.handleIncomeTax(P,0);
           System.out.println(P.getMoney());
+          frame.remove(this);
+          frame.repaint();
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
