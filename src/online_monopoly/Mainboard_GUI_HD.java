@@ -141,6 +141,28 @@ public class Mainboard_GUI_HD extends JFrame{
     ImageIcon z39 = new ImageIcon(getClass().getResource("mischd/z39.jpg"));
     ImageIcon z40 = new ImageIcon(getClass().getResource("mischd/z40.jpg"));
 
+    
+    public JLabel CommunityLbl;
+    ImageIcon communi_s = new ImageIcon(getClass().getResource("mischd/community_shd.png"));
+
+    public JLabel CommunityCard;
+    ImageIcon communi_1 = new ImageIcon(getClass().getResource("mischd/communtiy_cardhs.png"));
+
+    boolean moveComm = false;
+    boolean backcomm = false;
+    int countCommmoves = 0;
+    
+    
+    public JLabel ChanceLbl;
+    ImageIcon chance_s = new ImageIcon(getClass().getResource("mischd/chance_hdgrop.png"));
+
+    public JLabel chanceCard;
+    ImageIcon chance_1 = new ImageIcon(getClass().getResource("mischd/chance_hd.png"));
+
+    boolean moveChance = false;
+    boolean backChance = false;
+    int countChancemoves = 0;
+    
     public Mainboard_GUI_HD(int x, int y) {
         this.x = x;
         this.y = y;
@@ -881,6 +903,22 @@ public class Mainboard_GUI_HD extends JFrame{
         });
         c.add(b40);
  
+        //community lbl
+        chanceCard = new JLabel(chance_1);
+        chanceCard.setBounds(275, 640, 202, 201);
+        c.add(chanceCard);
+        ChanceLbl = new JLabel(chance_s);
+        ChanceLbl.setBounds(220, 640, 151, 145);
+        c.add(ChanceLbl);
+        
+        //community lbl
+        CommunityCard = new JLabel(communi_1);
+        CommunityCard.setBounds(135, 155, 202, 201);
+        c.add(CommunityCard);
+        CommunityLbl = new JLabel(communi_s);
+        CommunityLbl.setBounds(135, 155, 240, 203);
+        c.add(CommunityLbl);
+        
         //dice panel
         DiceGui diceGui = new DiceGui();
         diceGui.setBounds(475, 80, 150, 120);
@@ -1171,4 +1209,98 @@ public class Mainboard_GUI_HD extends JFrame{
             System.out.println("Mouse dragging as entered");
         }
     }
+    
+    public void pullCommunityCard(String card) {
+        moveComm = true;
+        repaint();
+        Component ff = this;
+        new java.util.Timer().schedule(
+                new java.util.TimerTask() {
+            @Override
+            public void run() {
+                JOptionPane.showMessageDialog(ff, card);
+                CommunityCard.setVisible(true);
+                backcomm = true;
+                repaint();
+
+            }
+        },
+                1000
+        );
+    }
+    
+    public void pullChanceCard(String card) {
+        moveChance = true;
+        repaint();
+        Component ff = this;
+        new java.util.Timer().schedule(
+                new java.util.TimerTask() {
+            @Override
+            public void run() {
+                JOptionPane.showMessageDialog(ff, card);
+                chanceCard.setVisible(true);
+                backChance = true;
+                repaint();
+
+            }
+        },
+                1000
+        );
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g); 
+        //keroo
+        if (moveComm) {
+            CommunityCard.setBounds(CommunityCard.getBounds().x + 2, CommunityCard.getBounds().y + 2, 143, 139);
+            if (CommunityCard.getBounds().x < 390) {
+                countCommmoves++;
+                repaint();
+            } else {
+                CommunityCard.setVisible(false);
+                moveComm = false;
+                System.out.println(countCommmoves);
+            }
+        }
+        if (backcomm) {
+            CommunityCard.setBounds(CommunityCard.getBounds().x - 2, CommunityCard.getBounds().y - 2, 143, 139);
+
+            if (countCommmoves > 0) {
+                countCommmoves--;
+                repaint();
+
+            } else {
+                backcomm = false;
+
+            }
+        }
+        
+        
+        if (moveChance) {
+            chanceCard.setBounds(chanceCard.getBounds().x - 2, chanceCard.getBounds().y - 2, 151, 145);
+            if (chanceCard.getBounds().x > 425) {
+                countChancemoves++;
+                repaint();
+            } else {
+                chanceCard.setVisible(false);
+                moveChance = false;
+                System.out.println(countChancemoves);
+            }
+        }
+        if (backChance) {
+            chanceCard.setBounds(chanceCard.getBounds().x + 2, chanceCard.getBounds().y + 2, 151, 145);
+
+            if (countChancemoves > 0) {
+                countChancemoves--;
+                repaint();
+
+            } else {
+                backChance = false;
+
+            }
+        }
+    }
+    
+    
 }

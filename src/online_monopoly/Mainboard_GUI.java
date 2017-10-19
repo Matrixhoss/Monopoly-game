@@ -160,6 +160,17 @@ public class Mainboard_GUI extends JFrame {
     boolean moveComm = false;
     boolean backcomm = false;
     int countCommmoves = 0;
+    
+    
+    public JLabel ChanceLbl;
+    ImageIcon chance_s = new ImageIcon(getClass().getResource("misc/chande_fullhd.png"));
+
+    public JLabel chanceCard;
+    ImageIcon chance_1 = new ImageIcon(getClass().getResource("misc/chande_sfullhd.png"));
+
+    boolean moveChance = false;
+    boolean backChance = false;
+    int countChancemoves = 0;
 
     public Mainboard_GUI(int x, int y) {
         p = new Player("hesham", Color.red, this);
@@ -816,6 +827,7 @@ public class Mainboard_GUI extends JFrame {
             public void mouseExited(MouseEvent e) {
                 exitButton(e);
             }
+            
         });
         c.add(b35);
 
@@ -851,6 +863,11 @@ public class Mainboard_GUI extends JFrame {
             @Override
             public void mouseExited(MouseEvent e) {
                 exitButton(e);
+            }
+            public void mouseClicked(MouseEvent e) {
+
+                pullChanceCard("Pay hospital fees of $100"); //To change body of generated methods, choose Tools | Templates.
+
             }
         });
         c.add(b37);
@@ -910,11 +927,19 @@ public class Mainboard_GUI extends JFrame {
         c.add(b40);
 
         //community lbl
+        chanceCard = new JLabel(chance_1);
+        chanceCard.setBounds(675, 640, 202, 201);
+        c.add(chanceCard);
+        ChanceLbl = new JLabel(chance_s);
+        ChanceLbl.setBounds(620, 640, 240, 203);
+        c.add(ChanceLbl);
+        
+        //community lbl
         CommunityCard = new JLabel(communi_1);
-        CommunityCard.setBounds(140, 170, 208, 193);
+        CommunityCard.setBounds(135, 155, 202, 201);
         c.add(CommunityCard);
         CommunityLbl = new JLabel(communi_s);
-        CommunityLbl.setBounds(135, 155, 233, 188);
+        CommunityLbl.setBounds(135, 155, 240, 203);
         c.add(CommunityLbl);
 
         //dice panel
@@ -1226,6 +1251,31 @@ public class Mainboard_GUI extends JFrame {
 
             }
         }
+        
+        
+        if (moveChance) {
+            chanceCard.setBounds(chanceCard.getBounds().x - 2, chanceCard.getBounds().y - 2, 202, 201);
+            if (chanceCard.getBounds().x > 425) {
+                countChancemoves++;
+                repaint();
+            } else {
+                chanceCard.setVisible(false);
+                moveChance = false;
+                System.out.println(countChancemoves);
+            }
+        }
+        if (backChance) {
+            chanceCard.setBounds(chanceCard.getBounds().x + 2, chanceCard.getBounds().y + 2, 202, 201);
+
+            if (countChancemoves > 0) {
+                countChancemoves--;
+                repaint();
+
+            } else {
+                backChance = false;
+
+            }
+        }
 
     }
 
@@ -1258,6 +1308,25 @@ public class Mainboard_GUI extends JFrame {
                 JOptionPane.showMessageDialog(ff, card);
                 CommunityCard.setVisible(true);
                 backcomm = true;
+                repaint();
+
+            }
+        },
+                1000
+        );
+    }
+    
+    public void pullChanceCard(String card) {
+        moveChance = true;
+        repaint();
+        Component ff = this;
+        new java.util.Timer().schedule(
+                new java.util.TimerTask() {
+            @Override
+            public void run() {
+                JOptionPane.showMessageDialog(ff, card);
+                chanceCard.setVisible(true);
+                backChance = true;
                 repaint();
 
             }
