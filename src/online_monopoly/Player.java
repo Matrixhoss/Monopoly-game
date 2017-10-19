@@ -279,7 +279,6 @@ public class Player {
     
     //move player to spacific position
     public void move(Point p) {
-        count=0;
         final javax.swing.Timer timer = new javax.swing.Timer(500, null);
         timer.addActionListener(new ActionListener() {
             @Override
@@ -321,7 +320,6 @@ public class Player {
                 }
                 Board.repaint();
                 System.out.println("x : "+PositionX+" , y : "+PositionY);
-                count++;
             }
         });
         timer.start();
