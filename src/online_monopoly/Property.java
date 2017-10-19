@@ -44,6 +44,23 @@ public abstract class Property extends BoardObject {
         return this.groubNum;
     }
 
+    public boolean haveOwner() {
+        return this.ownerPlayer != null;
+    }
+
+    public int buyProperty(Player p) {
+
+        if (this.checkOwnerPlayerMoney(this.value)) {
+            this.setOwner(p);
+            return 0;
+        }
+        return 1; // the player dont have the value of property
+    }
+
+    public boolean checkOwner(Player p) {
+        return p.equals(this.ownerPlayer);
+    }
+
     // get the rent if the property had been  owned
     abstract public int getRent(Player stopingPlayer);
 
@@ -93,6 +110,14 @@ public abstract class Property extends BoardObject {
         }
     }
 
+    public boolean checkOwnerPlayerAllMoney(int value) {
+        if (this.ownerPlayer.getTotalMoney() < value) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public void doInStop(Player stopingPlayer) {
         if (this.ownerPlayer == null) {
 
@@ -101,6 +126,23 @@ public abstract class Property extends BoardObject {
         }
     }
 
+    //pay the rent 
+    public int rent(Player stopingPlayer) {
+        // get the rent value from property 
+        int rent = getRent(stopingPlayer);
+        // check if the player have a money to pay
+        if (this.checkOwnerPlayerMoney(rent)) {
+            stopingPlayer.payMoney(rent);
+            stopingPlayer.setNoMoney(false);
+            return 0; // success
+            // check if the player have properties or houses or hotels can sell or mortgage
+        } else if (this.checkOwnerPlayerAllMoney(rent)) {
+            stopingPlayer.setNoMoney(true); // set the flag true and make player sell sell or mortgage
+            return 1;// the player must sell houses or mortgage a property 
+        } else {
+            return 2; // the player is lose
+        }
+    }
 }
 
 class NormalProperty extends Property {
@@ -284,7 +326,11 @@ class Railroad extends Property {
     }
 
     public int getRent(Player stopingPlayer) {
-        return this.rent[0] * this.ownerPlayer.getNumOfPropertiesInGroup(this);
+        int rent = 0;
+        if (this.ownerPlayer != null && this.isMortgaged == false) {  // if the property is owned and not Mortgaged
+            rent = this.rent[0] * this.ownerPlayer.getNumOfPropertiesInGroup(this);
+        }
+        return rent;
     }
 
 }
@@ -313,12 +359,11 @@ class Jail extends BoardObject {
 //    private Player p = Mainboard_GUI.p;
 //    private Dice d = Mainboard_GUI.d;
 //    private CommunityAndChance CC = Mainboard_GUI.CC;
-
     public Jail(String name, int id, Point p) {
         super(name, id, p);
     }
 
-    public void handleJail(int Choice,Player p,CommunityAndChance CC,Dice d ) {                //0=pay 50  1=try your luck and roll   2=use card
+    public void handleJail(int Choice, Player p, CommunityAndChance CC, Dice d) {                //0=pay 50  1=try your luck and roll   2=use card
         d.disableRolling();
         switch (Choice) {
             case 0:
@@ -345,7 +390,6 @@ class Jail extends BoardObject {
 
 class Tax extends BoardObject {
 
-
     public Tax(String name, int id, Point p) {
         super(name, id, p);
     }
@@ -354,7 +398,7 @@ class Tax extends BoardObject {
         p.payMoney(100);
     }
 
-    public void handleIncomeTax(Player p,int Choice) {
+    public void handleIncomeTax(Player p, int Choice) {
         if (Choice == 0) {
             p.payMoney(200);
         } else {
