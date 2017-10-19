@@ -6,15 +6,21 @@ import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import javax.swing.*;
 import java.io.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.layout.Background;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import sun.audio.*;
 
 public class Mainboard_GUI extends JFrame {
+
     public static Player p;
-    public static CommunityAndChance CC= new CommunityAndChance();
-    public static Dice d= new Dice();
+    public static CommunityAndChance CC = new CommunityAndChance();
+    public static Dice d = new Dice();
     public int x, y;
     public JLabel zoom = new JLabel();
     public JLabel background;
@@ -144,8 +150,18 @@ public class Mainboard_GUI extends JFrame {
     ImageIcon z39 = new ImageIcon(getClass().getResource("misc/z39.jpg"));
     ImageIcon z40 = new ImageIcon(getClass().getResource("misc/z40.jpg"));
 
+    public JLabel CommunityLbl;
+    ImageIcon communi_s = new ImageIcon(getClass().getResource("misc/cummunity_s.png"));
+
+    public JLabel CommunityCard;
+    ImageIcon communi_1 = new ImageIcon(getClass().getResource("misc/community_1.png"));
+
+    boolean moveComm = false;
+    boolean backcomm = false;
+    int countCommmoves = 0;
+
     public Mainboard_GUI(int x, int y) {
-        p=new Player("hesham", Color.red,this);
+        p = new Player("hesham", Color.red, this);
         this.x = x;
         this.y = y;
 
@@ -828,6 +844,15 @@ public class Mainboard_GUI extends JFrame {
             public void mouseExited(MouseEvent e) {
                 exitButton(e);
             }
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    pullCommunityCard("Pay hospital fees of $100"); //To change body of generated methods, choose Tools | Templates.
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Mainboard_GUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         });
         c.add(b37);
 
@@ -884,7 +909,15 @@ public class Mainboard_GUI extends JFrame {
             }
         });
         c.add(b40);
- 
+
+        //community lbl
+        CommunityCard = new JLabel(communi_1);
+        CommunityCard.setBounds(140, 170, 208, 193);
+        c.add(CommunityCard);
+        CommunityLbl = new JLabel(communi_s);
+        CommunityLbl.setBounds(135, 155, 233, 188);
+        c.add(CommunityLbl);
+
         //dice panel
         DiceGui diceGui = new DiceGui();
         diceGui.setBounds(730, 128, 150, 120);
@@ -1163,13 +1196,38 @@ public class Mainboard_GUI extends JFrame {
     @Override
     public void paint(Graphics g) {
         super.paint(g); //To change body of generated methods, choose Tools | Templates.
-        
+
         g.setColor(Color.RED);
         g.fillOval(p.getXonBoard(), p.getYonBoard(), 15, 15);
         g.dispose();
         //1017*1037
+        //keroo
+        if (moveComm) {
+            CommunityCard.setBounds(CommunityCard.getBounds().x + 2, CommunityCard.getBounds().y + 2, 208, 193);
+            if (CommunityCard.getBounds().x < 390) {
+                countCommmoves++;
+                repaint();
+            } else {
+                CommunityCard.setVisible(false);
+                moveComm = false;
+                System.out.println(countCommmoves);
+            }
+        }
+        if (backcomm) {
+            CommunityCard.setBounds(CommunityCard.getBounds().x - 2, CommunityCard.getBounds().y - 2, 208, 193);
+
+            if (countCommmoves > 0) {
+                countCommmoves--;
+                repaint();
+
+            } else {
+                backcomm = false;
+
+            }
+        }
+
     }
-    
+
     public void ZoomButton(MouseEvent mEvt, ImageIcon z) {
         zoom.setIcon(z);
         zoom.repaint();
@@ -1185,4 +1243,24 @@ public class Mainboard_GUI extends JFrame {
             System.out.println("Mouse dragging as entered");
         }
     }
+
+    public void pullCommunityCard(String card) throws InterruptedException {
+        moveComm = true;
+        repaint();
+        Component ff = this;
+        new java.util.Timer().schedule(
+                new java.util.TimerTask() {
+            @Override
+            public void run() {
+                JOptionPane.showMessageDialog(ff, card);
+                CommunityCard.setVisible(true);
+                backcomm = true;
+                repaint();
+
+            }
+        },
+                1000
+        );
+    }
+
 }
