@@ -13,6 +13,12 @@ public class Bank {
     int hotelsAvailable;
     int housesAvailable;
     int money;
+    
+    public Bank(){
+        hotelsAvailable = 16;
+        housesAvailable = 32;
+        money = 20580;
+    }
     public boolean buyHotel(){
         if(hotelsAvailable>0)
         {
@@ -21,13 +27,11 @@ public class Bank {
         }
         return false;
     }
-    public boolean buyHouse(){
-        if(hotelsAvailable>0)
-        {
-            housesAvailable--;
-            return true;
-        }
-        return false;
+    public void sellHotel(){
+        hotelsAvailable++;
+    }
+    public void sellHouse(){
+        housesAvailable++;
     }
     public boolean areHotelsAvailable(int num){
         return hotelsAvailable>=num;
