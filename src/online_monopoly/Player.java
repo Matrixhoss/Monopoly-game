@@ -34,6 +34,7 @@ public class Player {
     private Mainboard_GUI Board;
     private int[] Dice = new int[2];
     private boolean NoMoney=true;//to know if he run out of money
+    private boolean Moving=false;
 
     public Player(String name, Color c) {
         this.name = name;
@@ -237,6 +238,10 @@ public class Player {
     
     //<editor-fold defaultstate="collapsed" desc="Move player in any direction">
     
+    //check if player moving or not
+    public boolean IsMoving(){
+        return this.Moving;
+    }
     //imagine Go in (0,0) and x axis increased when go left and y increased when move up
     public void move(int dice) {
         count=0;
@@ -248,6 +253,7 @@ public class Player {
                 if (count == dice) {
                     System.out.println("finish");
                     timer.stop();
+                    Moving=false;
                     return;
                 }
                 if(PositionX ==0 && PositionY == 1){//Go point
@@ -282,6 +288,7 @@ public class Player {
                 Board.repaint();
                 System.out.println("x : "+PositionX+" , y : "+PositionY);
                 count++;
+                Moving=true;
             }
         });
         timer.start();
@@ -297,6 +304,7 @@ public class Player {
                 if (PositionX==p.getX()&&PositionY==p.getY()) {
                     System.out.println("finish");
                     timer.stop();
+                    Moving=false;
                     return;
                 }
                 if(PositionX ==0 && PositionY == 1){//Go point
@@ -329,6 +337,7 @@ public class Player {
                     YonBoard +=stepY;
                 }
                 Board.repaint();
+                Moving=true;
                 System.out.println("x : "+PositionX+" , y : "+PositionY);
             }
         });
