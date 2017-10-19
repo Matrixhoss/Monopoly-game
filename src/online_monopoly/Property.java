@@ -109,9 +109,24 @@ public abstract class Property extends BoardObject {
             return true;
         }
     }
+    public boolean checkStopingPlayerMoney(Player stopingPlayer,int value) {
+        if (stopingPlayer.getMoney() < value) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     public boolean checkOwnerPlayerAllMoney(int value) {
         if (this.ownerPlayer.getTotalMoney() < value) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+        public boolean checkStopingPlayerAllMoney(Player stopingPlayer,int value) {
+        if (stopingPlayer.getTotalMoney() < value) {
             return false;
         } else {
             return true;
@@ -127,16 +142,16 @@ public abstract class Property extends BoardObject {
     }
 
     //pay the rent 
-    public int rent(Player stopingPlayer) {
+    public int payRent(Player stopingPlayer) {
         // get the rent value from property 
         int rent = getRent(stopingPlayer);
         // check if the player have a money to pay
-        if (this.checkOwnerPlayerMoney(rent)) {
+        if (this.checkStopingPlayerMoney(stopingPlayer, rent)) {
             stopingPlayer.payMoney(rent);
             stopingPlayer.setNoMoney(false);
             return 0; // success
             // check if the player have properties or houses or hotels can sell or mortgage
-        } else if (this.checkOwnerPlayerAllMoney(rent)) {
+        } else if (this.checkStopingPlayerAllMoney(stopingPlayer,rent)) {
             stopingPlayer.setNoMoney(true); // set the flag true and make player sell sell or mortgage
             return 1;// the player must sell houses or mortgage a property 
         } else {
