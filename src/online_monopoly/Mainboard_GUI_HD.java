@@ -5,18 +5,22 @@ import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import javax.swing.*;
 import java.io.*;
+import java.util.HashMap;
 import javafx.scene.layout.Background;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import sun.audio.*;
 
-public class Mainboard_GUI_HD extends JFrame{
+public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
     
+    private Mainboard_GUI_HD _this = this; 
+    
+    private Controller controller;
+    private HashMap<String,Point> playersPos;
     public int x, y;
     public JLabel zoom = new JLabel();
     public JLabel background;
     // public JLabel ff;
-    public JFrame _this;
     public JButton b1;
     public JButton b2;
     public JButton b3;
@@ -166,7 +170,15 @@ public class Mainboard_GUI_HD extends JFrame{
     public Mainboard_GUI_HD(int x, int y) {
         this.x = x;
         this.y = y;
-
+        
+        
+        controller = new Controller();
+        controller.addGUI(this);
+        
+        playersPos = new HashMap<String, Point>();
+        
+        playersPos.put("fadi", new Point(0, 0));
+        
         _this = this;
         this.setTitle("Monopoly");
         this.setResizable(false);
@@ -920,7 +932,7 @@ public class Mainboard_GUI_HD extends JFrame{
         c.add(CommunityLbl);
         
         //dice panel
-        DiceGui diceGui = new DiceGui();
+        DiceGui diceGui = new DiceGui(controller);
         diceGui.setBounds(475, 80, 150, 120);
         c.add(diceGui);
 
@@ -928,6 +940,7 @@ public class Mainboard_GUI_HD extends JFrame{
         background.setBounds(80, 80, 540, 540);
         c.add(background);
         background.add(zoom);
+        this.setLocationRelativeTo(c);
     }
 
     private Image ScaledImage(Image img, int w, int h) {
@@ -1250,7 +1263,8 @@ public class Mainboard_GUI_HD extends JFrame{
 
     @Override
     public void paint(Graphics g) {
-        super.paint(g); 
+        super.paint(g);
+        g.fillRect(0, 0, 50, 50);
         //keroo
         if (moveComm) {
             CommunityCard.setBounds(CommunityCard.getBounds().x + 2, CommunityCard.getBounds().y + 2, 143, 139);
@@ -1302,5 +1316,16 @@ public class Mainboard_GUI_HD extends JFrame{
         }
     }
     
+   
+    
+    @Override
+    public void animatePlayer(String name, int destination, int origin){
+        javax.swing.Timer timer = new javax.swing.Timer(100, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+        });
+    }
     
 }
