@@ -33,6 +33,7 @@ public class Player {
     private ArrayList<Property> MyProperties = new ArrayList<Property>(); //properties that player has
     private Mainboard_GUI Board;
     private int[] Dice = new int[2];
+    private boolean NoMoney=true;//to know if he run out of money
 
     public Player(String name, Color c) {
         this.name = name;
@@ -105,6 +106,15 @@ public class Player {
     public void payMoney(int m) {
         money -= m;
     }
+    //
+    public boolean getNoMoney(){
+        return this.NoMoney;
+    }
+    //
+    public void setNoMoney(boolean N){
+        this.NoMoney=N;
+    }
+    
 //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="set and get dice">
