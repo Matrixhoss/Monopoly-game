@@ -790,6 +790,12 @@ public class Mainboard_GUI extends JFrame {
             public void mouseExited(MouseEvent e) {
                 exitButton(e);
             }
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                
+                    pullCommunityCard("Pay hospital fees of $100"); //To change body of generated methods, choose Tools | Templates.
+               
+            }
         });
         c.add(b34);
 
@@ -843,15 +849,6 @@ public class Mainboard_GUI extends JFrame {
             @Override
             public void mouseExited(MouseEvent e) {
                 exitButton(e);
-            }
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                try {
-                    pullCommunityCard("Pay hospital fees of $100"); //To change body of generated methods, choose Tools | Templates.
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Mainboard_GUI.class.getName()).log(Level.SEVERE, null, ex);
-                }
             }
         });
         c.add(b37);
@@ -1244,7 +1241,7 @@ public class Mainboard_GUI extends JFrame {
         }
     }
 
-    public void pullCommunityCard(String card) throws InterruptedException {
+    public void pullCommunityCard(String card) {
         moveComm = true;
         repaint();
         Component ff = this;
