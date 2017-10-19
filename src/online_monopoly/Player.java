@@ -253,8 +253,8 @@ public class Player {
                 //System.out.println("X :" + XonBoard + ", X' :" + (PositionX * Fx + Sx) + ",Y :" + YonBoard + ", Y' :" + (PositionY * Fy + Sy));
                 if (count == dice) {
                     System.out.println("finish");
-                    timer.stop();
                     Moving=false;
+                    timer.stop();
                     return;
                 }
                 if(PositionX ==0 && PositionY == 1){//Go point
@@ -293,6 +293,7 @@ public class Player {
             }
         });
         timer.start();
+        
     }
     
     //move player to spacific position
@@ -305,8 +306,8 @@ public class Player {
                 //System.out.println("X :" + XonBoard + ", X' :" + (PositionX * Fx + Sx) + ",Y :" + YonBoard + ", Y' :" + (PositionY * Fy + Sy));
                 if (PositionX==p.getX()&&PositionY==p.getY()) {
                     System.out.println("finish");
-                    timer.stop();
                     Moving=false;
+                    timer.stop();
                     return;
                 }
                 if(PositionX ==0 && PositionY == 1){//Go point
