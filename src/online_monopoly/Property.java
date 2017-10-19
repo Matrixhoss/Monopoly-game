@@ -53,8 +53,10 @@ public abstract class Property extends BoardObject {
         if (this.isMortgaged == false) {
             this.isMortgaged = true;
             this.ownerPlayer.addMoney(this.mortgageValue);
+            System.out.println(" Mortgaged");
             return 0;
         } else { // if the property is Mortgaged
+            System.out.println("the property is aready Mortgaged");
             return 1;
         }
 
@@ -82,6 +84,23 @@ public abstract class Property extends BoardObject {
 
     }
 
+    // the function to check if the player have the this value of money or not 
+    public boolean checkOwnerPlayerMoney(int value) {
+        if (this.ownerPlayer.getMoney() < value) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public void doInStop(Player stopingPlayer) {
+        if (this.ownerPlayer == null) {
+
+        } else {
+            getRent(stopingPlayer);
+        }
+    }
+
 }
 
 class NormalProperty extends Property {
@@ -93,8 +112,8 @@ class NormalProperty extends Property {
     public NormalProperty(String name, int id, Point p, int value, int[] rent, int mortgageValue, int groupID, int groubNum, int houseValue) {
         super(name, id, p, value, rent, mortgageValue, groupID, groubNum);
         this.houseValue = houseValue;
-        this.numOfHouses = numOfHouses;
-        this.numOfHotels = numOfHotels;
+        this.numOfHouses = 0;
+        this.numOfHotels = 0;
 
     }
 
@@ -138,26 +157,76 @@ class NormalProperty extends Property {
 
     }
 
+    
     // not completed
     public int buildHouse() {
         // check if the propery is not Mortgaged
         if (this.isMortgaged == true) {
-            return 1;
-        } // check if the player have the property group 
+            return 1; // the property is Mortgaged
+        }
+        
+        // check if the player have the property group 
         else if (this.ownerPlayer.checkGroup(this) == false) {
-            return 2;
-        } // check the number of houses and hotels //and check if the bank have enough houses    
+            return 2; // the the player have not the property group 
+        }
+        
+        // check the number of houses and hotels //and check if the bank have enough houses    
         else {
-            if (numOfHouses > 4 && numOfHotels == 0) {
-                numOfHotels++;
-            } else if (numOfHotels == 4) {
-                numOfHotels = 0;
-                numOfHotels = 1;
+            if (numOfHouses < 4 && numOfHotels == 0) {
+                if (this.checkOwnerPlayerMoney(houseValue)) {
+                    numOfHouses++;
+                    this.ownerPlayer.payMoney(houseValue);
+
+                } else {
+
+                    return 3; // the player have not the value of house or hotel
+                }
+            } else if (numOfHouses == 4) {
+                if (this.checkOwnerPlayerMoney(houseValue)) {
+                    this.numOfHouses = 0;
+                    this.numOfHotels = 1;
+                    this.ownerPlayer.payMoney(houseValue);
+
+                } else {
+
+                    return 3;  // the player have not the value of house or hotel
+                }
             } else if (numOfHotels == 1) {
-                return 3; // return that you cant build her any more
+
+                return 4; // return that you cant build her any more
             }
             return 0;
         }
+    }
+    
+    public int sellHouse(){
+    if(this.numOfHouses > 0){
+    this.numOfHouses-- ;
+    this.ownerPlayer.addMoney(houseValue/2);
+     return 0 ; // success
+    }
+    else if(this.numOfHotels>0){
+        // frist check the bank aviabalte of houses
+        this.numOfHouses = 4;
+        this.numOfHotels = 0;
+        this.ownerPlayer.addMoney(houseValue/2);
+     return 0 ; // success
+    }
+            
+       
+    
+    else return 1 ; // the player dont have houses or hotels 
+    }
+    
+    @Override
+    public int mortgage(){
+    if (this.numOfHouses>0 || this.numOfHotels>0) {
+        this.sellHouse();
+        return 2 ; // house or hotel sold 
+    }
+    else{
+    return super.mortgage();
+    }
     }
 
 }
@@ -183,12 +252,12 @@ class WaterworksOrElectric extends Property {
     public int getRent(Player stopingPlayer) {
         int rent = 0;
         if (this.ownerPlayer != null && this.isMortgaged == false) {
-        if (this.ownerPlayer.checkGroup(this) == true) {
-            rent = (stopingPlayer.getDice()[0] + stopingPlayer.getDice()[1]) * 10;
-        } else {
-            rent = (stopingPlayer.getDice()[0] + stopingPlayer.getDice()[1]) * 4;
+            if (this.ownerPlayer.checkGroup(this) == true) {
+                rent = (stopingPlayer.getDice()[0] + stopingPlayer.getDice()[1]) * 10;
+            } else {
+                rent = (stopingPlayer.getDice()[0] + stopingPlayer.getDice()[1]) * 4;
+            }
         }
-          }
         return rent;
     }
 }
