@@ -21,6 +21,7 @@ public class Mainboard_GUI extends JFrame {
     public static Player p;
     public static CommunityAndChance CC = new CommunityAndChance();
     public static Dice d = new Dice();
+    public static  Tax T = new Tax("Tax", 0,new Point(4,0));
     public int x, y;
     public JLabel zoom = new JLabel();
     public JLabel background;
@@ -919,7 +920,16 @@ public class Mainboard_GUI extends JFrame {
         DiceGui diceGui = new DiceGui();
         diceGui.setBounds(730, 128, 150, 120);
         c.add(diceGui);
-
+        
+        
+        System.out.println(p.getMoney());
+        p.move(new Point(4,0));
+        OptionPanel op = new OptionPanel(p, T);
+        op.setBounds(350, 350,300,300);
+        c.add(op);
+       
+        
+        
         background = new JLabel(board);
         background.setBounds(128, 128, 756, 756);
         c.add(background);
