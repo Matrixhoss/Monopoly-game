@@ -3,6 +3,8 @@ package online_monopoly;
 
 import javax.swing.*;
 
+
+//<editor-fold defaultstate="collapsed" desc="Property class">
 public abstract class Property extends BoardObject {
 
     protected Player ownerPlayer;        // the player how own the Property
@@ -24,6 +26,7 @@ public abstract class Property extends BoardObject {
         this.groupID = groupID;
     }
 
+    //<editor-fold defaultstate="collapsed" desc="setters and geters">
     public Player getOwner() {
         return this.ownerPlayer;
     }
@@ -43,14 +46,17 @@ public abstract class Property extends BoardObject {
     public int getGroupNum() {
         return this.groubNum;
     }
+    //</editor-fold>
+    
 
+    //<editor-fold defaultstate="collapsed" desc="buy property">
     public boolean haveOwner() {
         return this.ownerPlayer != null;
     }
 
     public int buyProperty(Player p) {
 
-        if (this.checkOwnerPlayerMoney(this.value)) {
+        if (this.checkStopingPlayerAllMoney(p, this.value)) {
             this.setOwner(p);
             return 0;
         }
@@ -60,10 +66,10 @@ public abstract class Property extends BoardObject {
     public boolean checkOwner(Player p) {
         return p.equals(this.ownerPlayer);
     }
+//</editor-fold>
 
-    // get the rent if the property had been  owned
-    abstract public int getRent(Player stopingPlayer);
-
+    
+    //<editor-fold defaultstate="collapsed" desc="mortgage">
     // mortgage a property 
     public int mortgage() {
         // if the property is not Mortgaged
@@ -100,7 +106,9 @@ public abstract class Property extends BoardObject {
         }
 
     }
-
+//</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="check player money and total money">
     // the function to check if the player have the this value of money or not 
     public boolean checkOwnerPlayerMoney(int value) {
         if (this.ownerPlayer.getMoney() < value) {
@@ -109,7 +117,8 @@ public abstract class Property extends BoardObject {
             return true;
         }
     }
-    public boolean checkStopingPlayerMoney(Player stopingPlayer,int value) {
+
+    public boolean checkStopingPlayerMoney(Player stopingPlayer, int value) {
         if (stopingPlayer.getMoney() < value) {
             return false;
         } else {
@@ -124,23 +133,18 @@ public abstract class Property extends BoardObject {
             return true;
         }
     }
-    
-        public boolean checkStopingPlayerAllMoney(Player stopingPlayer,int value) {
+
+    public boolean checkStopingPlayerAllMoney(Player stopingPlayer, int value) {
         if (stopingPlayer.getTotalMoney() < value) {
             return false;
         } else {
             return true;
         }
     }
+//</editor-fold>
 
-    public void doInStop(Player stopingPlayer) {
-        if (this.ownerPlayer == null) {
 
-        } else {
-            getRent(stopingPlayer);
-        }
-    }
-
+    //<editor-fold defaultstate="collapsed" desc="Rent">
     //pay the rent 
     public int payRent(Player stopingPlayer) {
         // get the rent value from property 
@@ -151,15 +155,21 @@ public abstract class Property extends BoardObject {
             stopingPlayer.setNoMoney(false);
             return 0; // success
             // check if the player have properties or houses or hotels can sell or mortgage
-        } else if (this.checkStopingPlayerAllMoney(stopingPlayer,rent)) {
+        } else if (this.checkStopingPlayerAllMoney(stopingPlayer, rent)) {
             stopingPlayer.setNoMoney(true); // set the flag true and make player sell sell or mortgage
             return 1;// the player must sell houses or mortgage a property 
         } else {
             return 2; // the player is lose
         }
     }
+      // get the rent if the property had been  owned
+    abstract public int getRent(Player stopingPlayer);
+    //</editor-fold>
 }
+ //</editor-fold>
 
+
+//<editor-fold defaultstate="collapsed" desc="NormalProperty class">
 class NormalProperty extends Property {
 
     private int houseValue;            // the house or hotel value
@@ -174,6 +184,7 @@ class NormalProperty extends Property {
 
     }
 
+    //<editor-fold defaultstate="collapsed" desc="setters and geters">
     public int getNumOfHouses() {
         return this.numOfHouses;
     }
@@ -185,7 +196,8 @@ class NormalProperty extends Property {
     public int getHouseValue() {
         return this.houseValue;
     }
-
+//</editor-fold>
+    
     // get the rent if the property had been  owned
     public int getRent(Player stopingPlayer) {
         if (this.ownerPlayer != null && this.isMortgaged == false) {  // if the property is owned and not Mortgaged
@@ -333,7 +345,10 @@ class NormalProperty extends Property {
     }
 //</editor-fold>
 }
+//</editor-fold>
 
+
+//<editor-fold defaultstate="collapsed" desc="Railroad class">
 class Railroad extends Property {
 
     public Railroad(String name, int id, Point p, int value, int[] rent, int mortgageValue, int groupID, int groubNum) {
@@ -349,7 +364,10 @@ class Railroad extends Property {
     }
 
 }
+//</editor-fold>
 
+
+//<editor-fold defaultstate="collapsed" desc="WaterworksOrElectric class">
 class WaterworksOrElectric extends Property {
 
     public WaterworksOrElectric(String name, int id, Point p, int value, int[] rent, int mortgageValue, int groupID, int groubNum) {
@@ -368,6 +386,7 @@ class WaterworksOrElectric extends Property {
         return rent;
     }
 }
+//</editor-fold>
 
 class Jail extends BoardObject {
 
