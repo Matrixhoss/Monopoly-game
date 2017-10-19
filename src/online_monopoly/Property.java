@@ -310,15 +310,15 @@ class WaterworksOrElectric extends Property {
 
 class Jail extends BoardObject {
 
-    private Player p = Mainboard_GUI.p;
-    private Dice d = Mainboard_GUI.d;
-    private CommunityAndChance CC = Mainboard_GUI.CC;
+//    private Player p = Mainboard_GUI.p;
+//    private Dice d = Mainboard_GUI.d;
+//    private CommunityAndChance CC = Mainboard_GUI.CC;
 
     public Jail(String name, int id, Point p) {
         super(name, id, p);
     }
 
-    public void handleJail(int Choice) {                //0=pay 50  1=try your luck and roll   2=use card
+    public void handleJail(int Choice,Player p,CommunityAndChance CC,Dice d ) {                //0=pay 50  1=try your luck and roll   2=use card
         d.disableRolling();
         switch (Choice) {
             case 0:
@@ -345,19 +345,16 @@ class Jail extends BoardObject {
 
 class Tax extends BoardObject {
 
-    private Player p = Mainboard_GUI.p;
-    private Dice d = Mainboard_GUI.d;
-    private CommunityAndChance CC = Mainboard_GUI.CC;
 
     public Tax(String name, int id, Point p) {
         super(name, id, p);
     }
 
-    public void handleLuxTax() {    //Function should receive an integer from the choice of the option panal
+    public void handleLuxTax(Player p) {    //Function should receive an integer from the choice of the option panal
         p.payMoney(100);
     }
 
-    public void handleIncomeTax(int Choice) {
+    public void handleIncomeTax(Player p,int Choice) {
         if (Choice == 0) {
             p.payMoney(200);
         } else {
