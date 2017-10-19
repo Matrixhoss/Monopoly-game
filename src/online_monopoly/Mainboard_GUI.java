@@ -1231,6 +1231,7 @@ public class Mainboard_GUI extends JFrame {
         if (mEvt.getModifiers() == MouseEvent.BUTTON1_MASK) {
             System.out.println("Mouse dragging as entered");
         }
+        this.repaint();
     }
 
     public void exitButton(MouseEvent mExt) {
@@ -1239,6 +1240,7 @@ public class Mainboard_GUI extends JFrame {
         if (mExt.getModifiers() == MouseEvent.BUTTON1_MASK) {
             System.out.println("Mouse dragging as entered");
         }
+        this.repaint();
     }
 
     public void pullCommunityCard(String card) {
