@@ -27,8 +27,8 @@ public class Controller {
     public void addGUI(GUIInterface gui){
         this.gui = gui;
     }
-    public int[] rollDice(){
-        return dice.rollDice(players.get("fadi"));
+    public static int[] rollDice(){
+        return dice.rollDice();
     }
     public void handleDiceRoll(int diceRoll){
         
