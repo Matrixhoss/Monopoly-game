@@ -12,6 +12,8 @@ import sun.audio.*;
 
 public class  ent extends JFrame{
     public JFrame test;
+    private MainMenu parentMenu;
+    private ent _this = this;
     /*public JFrame _this;
     public JLabel ff;
      final ImageIcon icon1 = new ImageIcon("misc/13.png");
@@ -59,7 +61,8 @@ public class  ent extends JFrame{
     JButton b;
     JRadioButton r1,r2;
     JLabel l;
-    public ent(){
+    public ent(MainMenu menu){
+        this.parentMenu = menu;
 //        test=this;
 //        this.setTitle("Monopoly");
 //        this.setResizable(false);
@@ -99,6 +102,8 @@ public class  ent extends JFrame{
                     Mainboard_GUI fhd = new Mainboard_GUI(0, 0);
                 }
                 //l.setText(name);
+                _this.setVisible(false);
+                parentMenu.setVisible(false);
             }
         });
         setLayout(new FlowLayout());
@@ -112,6 +117,7 @@ public class  ent extends JFrame{
         back = new JLabel(backb);
         back.setSize(200, 200);
         c.add(back);
+        this.setLocationRelativeTo(null);
     }
         
 }

@@ -18,6 +18,9 @@ import sun.audio.*;
 
 public class Mainboard_GUI extends JFrame {
 
+    
+    private Controller controller;
+    private Mainboard_GUI _this;
     public static Player p;
     public static CommunityAndChance CC = new CommunityAndChance();
     public static Dice d = new Dice();
@@ -26,7 +29,6 @@ public class Mainboard_GUI extends JFrame {
     public JLabel zoom = new JLabel();
     public JLabel background;
     // public JLabel ff;
-    public JFrame _this;
     public JButton b1;
     public JButton b2;
     public JButton b3;
@@ -162,10 +164,12 @@ public class Mainboard_GUI extends JFrame {
     int countCommmoves = 0;
 
     public Mainboard_GUI(int x, int y) {
+        
         p = new Player("hesham", Color.red, this);
         this.x = x;
         this.y = y;
 
+        
         _this = this;
         this.setTitle("Monopoly");
         this.setResizable(false);
@@ -918,9 +922,9 @@ public class Mainboard_GUI extends JFrame {
         c.add(CommunityLbl);
 
         //dice panel
-        DiceGui diceGui = new DiceGui();
-        diceGui.setBounds(730, 128, 150, 120);
-        c.add(diceGui);
+        //DiceGui diceGui = new DiceGui();
+//        diceGui.setBounds(730, 128, 150, 120);
+//        c.add(diceGui);
 
        
 
@@ -928,6 +932,7 @@ public class Mainboard_GUI extends JFrame {
         background.setBounds(128, 128, 756, 756);
         c.add(background);
         background.add(zoom);
+        this.setLocationRelativeTo(c);
     }
 
     private Image ScaledImage(Image img, int w, int h) {

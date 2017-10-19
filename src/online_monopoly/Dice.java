@@ -28,7 +28,6 @@ public class Dice {
 
         this.d[0] = (rand.nextInt(6) + 1);   //random(6)+1 to avoid 0
         this.d[1] = (rand.nextInt(6) + 1);
-        Mainboard_GUI.p.setDice(d);
         if (Mainboard_GUI.p.checkInJail() == true) {
             if (this.d[0] == this.d[1]) {
                 Mainboard_GUI.p.exitFromJail();

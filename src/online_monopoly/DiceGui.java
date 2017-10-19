@@ -15,12 +15,13 @@ import java.util.concurrent.TimeUnit;
  * @author Kero
  */
 public class DiceGui extends javax.swing.JPanel {
-    Dice dice = new Dice();
+    Controller controller;
 Random rand = new Random();
     /**
      * Creates new form DiceGui
      */
-    public DiceGui() {
+    public DiceGui(Controller controller) {
+        this.controller = controller;
         initComponents();
     }
 
@@ -94,7 +95,7 @@ Random rand = new Random();
 
 private void ChangeDices() {
 
-        int roll[] = dice.rollDice();
+        int roll[] = Controller.rollDice();
         ScheduledExecutorService exec = Executors.newScheduledThreadPool(1);
         Runnable task = new Runnable() {
             int secondsToWait = 1000;
@@ -109,7 +110,7 @@ private void ChangeDices() {
                     exec.shutdown();
                     DiceLbl1.setIcon(new javax.swing.ImageIcon(getClass().getResource("misc/dice" + roll[0] + ".png")));
                     DiceLbl2.setIcon(new javax.swing.ImageIcon(getClass().getResource("misc/dice" + roll[1] + ".png")));
-                    Mainboard_GUI.p.move(roll[0]+roll[1]);
+                    controller.handleDiceRoll(roll[0]+roll[1]);
                 }
             }
         };
