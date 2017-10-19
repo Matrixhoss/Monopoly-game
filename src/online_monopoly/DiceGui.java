@@ -95,7 +95,7 @@ Random rand = new Random();
 
 private void ChangeDices() {
 
-        int roll[] = Controller.rollDice();
+        int roll[] = controller.rollDice();
         ScheduledExecutorService exec = Executors.newScheduledThreadPool(1);
         Runnable task = new Runnable() {
             int secondsToWait = 1000;
