@@ -883,7 +883,7 @@ public class Mainboard_GUI_HD extends JFrame{
  
         //dice panel
         DiceGui diceGui = new DiceGui();
-        diceGui.setBounds(700, 128, 150, 120);
+        diceGui.setBounds(475, 80, 150, 120);
         c.add(diceGui);
 
         background = new JLabel(board);
