@@ -53,8 +53,7 @@ public class Player {
     
     public Color getColor() {
         return color;
-    }
-        
+    }   
     //<editor-fold defaultstate="collapsed" desc="control Player Position">
     //return position of player on gui in x
     public int getXonBoard() {
@@ -83,7 +82,7 @@ public class Player {
         return PositionY;
     }
 //</editor-fold>
-
+    
     //<editor-fold defaultstate="collapsed" desc="Money">
 //calculate total money with player
     public int getTotalMoney() {
@@ -107,7 +106,7 @@ public class Player {
         money -= m;
     }
 //</editor-fold>
-
+    
     //<editor-fold defaultstate="collapsed" desc="set and get dice">
     public void setDice(int[] D) {
         this.Dice = D;
@@ -140,7 +139,7 @@ public class Player {
         return this.CommunityEJail;
     }
 //</editor-fold>
-
+    
     //<editor-fold defaultstate="collapsed" desc="Jail">
     
     //check if player in jail
@@ -202,7 +201,6 @@ public class Player {
         return PS;
     }
 //</editor-fold>
-
     
     //<editor-fold defaultstate="collapsed" desc="Houses and Hotels">
     //calculate Total Houses
@@ -227,10 +225,7 @@ public class Player {
     
 //</editor-fold>
     
-    //move back
-    public void moveBack(int moves) {
-
-    }
+    //<editor-fold defaultstate="collapsed" desc="Move player in any direction">
     
     //imagine Go in (0,0) and x axis increased when go left and y increased when move up
     public void move(int dice) {
@@ -282,4 +277,58 @@ public class Player {
         timer.start();
     }
     
+    //move player to spacific position
+    public void move(Point p) {
+        count=0;
+        final javax.swing.Timer timer = new javax.swing.Timer(500, null);
+        timer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //System.out.println("X :" + XonBoard + ", X' :" + (PositionX * Fx + Sx) + ",Y :" + YonBoard + ", Y' :" + (PositionY * Fy + Sy));
+                if (PositionX==p.getX()&&PositionY==p.getY()) {
+                    System.out.println("finish");
+                    timer.stop();
+                    return;
+                }
+                if(PositionX ==0 && PositionY == 1){//Go point
+                    PositionY--;
+                    XonBoard= 924;
+                    YonBoard=950;
+                }else if(PositionX ==9 && PositionY == 0){//Jail point
+                    PositionX++;
+                    YonBoard = 950;
+                    XonBoard =84;
+                }else if(PositionX ==10 && PositionY == 9){//free parking
+                    PositionY++;
+                    XonBoard=84;
+                    YonBoard=100;
+                }else if(PositionX ==1 && PositionY == 10){//Go to jail
+                    PositionX--;
+                    XonBoard =924;
+                    YonBoard =100;
+                }else if (PositionX < 10 && PositionY == 0) {
+                    PositionX++;
+                    XonBoard  -=stepX;
+                } else if (PositionX == 10 && PositionY < 10) {
+                    PositionY += 1;
+                    YonBoard -=stepY;
+                } else if (PositionX > 0 && PositionY == 10) {
+                    PositionX -= 1;
+                    XonBoard +=stepX;
+                } else if (PositionX == 0 && PositionY > 0) {
+                    PositionY -= 1;
+                    YonBoard +=stepY;
+                }
+                Board.repaint();
+                System.out.println("x : "+PositionX+" , y : "+PositionY);
+                count++;
+            }
+        });
+        timer.start();
+    }
+    //move back
+    public void moveBack(int moves) {
+        
+    }
+//</editor-fold>
 }
