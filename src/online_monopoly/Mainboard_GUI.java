@@ -947,9 +947,9 @@ public class Mainboard_GUI extends JFrame {
         c.add(CommunityLbl);
 
         //dice panel
-        //DiceGui diceGui = new DiceGui();
-//        diceGui.setBounds(730, 128, 150, 120);
-//        c.add(diceGui);
+        DiceGui diceGui = new DiceGui(controller);
+        diceGui.setBounds(730, 128, 150, 120);
+        c.add(diceGui);
 
        
 
