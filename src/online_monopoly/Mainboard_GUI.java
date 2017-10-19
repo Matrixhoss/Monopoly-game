@@ -21,7 +21,7 @@ public class Mainboard_GUI extends JFrame {
     public static Player p;
     public static CommunityAndChance CC = new CommunityAndChance();
     public static Dice d = new Dice();
-    public static  Tax T = new Tax("Tax", 0,new Point(4,0));
+    public static Tax T = new Tax("Tax", 0, new Point(4, 0));
     public int x, y;
     public JLabel zoom = new JLabel();
     public JLabel background;
@@ -791,11 +791,12 @@ public class Mainboard_GUI extends JFrame {
             public void mouseExited(MouseEvent e) {
                 exitButton(e);
             }
+
             @Override
             public void mouseClicked(MouseEvent e) {
-                
-                    pullCommunityCard("Pay hospital fees of $100"); //To change body of generated methods, choose Tools | Templates.
-               
+
+                pullCommunityCard("Pay hospital fees of $100"); //To change body of generated methods, choose Tools | Templates.
+
             }
         });
         c.add(b34);
@@ -920,16 +921,16 @@ public class Mainboard_GUI extends JFrame {
         DiceGui diceGui = new DiceGui();
         diceGui.setBounds(730, 128, 150, 120);
         c.add(diceGui);
-        
-        
+
         System.out.println(p.getMoney());
-        p.move(new Point(4,0));
+        System.out.println(p.IsMoving());
+        p.move(4);
+        while (p.IsMoving()) {
+        }
         OptionPanel op = new OptionPanel(p, T);
-        op.setBounds(350, 350,300,300);
+        op.setBounds(350, 350, 300, 300);
         c.add(op);
-       
-        
-        
+
         background = new JLabel(board);
         background.setBounds(128, 128, 756, 756);
         c.add(background);
