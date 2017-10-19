@@ -109,12 +109,13 @@ private void ChangeDices() {
                     exec.shutdown();
                     DiceLbl1.setIcon(new javax.swing.ImageIcon(getClass().getResource("misc/dice" + roll[0] + ".png")));
                     DiceLbl2.setIcon(new javax.swing.ImageIcon(getClass().getResource("misc/dice" + roll[1] + ".png")));
+                    Mainboard_GUI.p.move(roll[0]+roll[1]);
                 }
             }
         };
         exec.scheduleAtFixedRate(task, 100, 100, TimeUnit.MILLISECONDS);
         
-        Mainboard_GUI.p.move(roll[0]+roll[1]);
+        
     }
 
 }
