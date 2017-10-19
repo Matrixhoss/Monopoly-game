@@ -922,14 +922,7 @@ public class Mainboard_GUI extends JFrame {
         diceGui.setBounds(730, 128, 150, 120);
         c.add(diceGui);
 
-        System.out.println(p.getMoney());
-        System.out.println(p.IsMoving());
-        p.move(4);
-        while (p.IsMoving()) {
-        }
-        OptionPanel op = new OptionPanel(p, T);
-        op.setBounds(350, 350, 300, 300);
-        c.add(op);
+       
 
         background = new JLabel(board);
         background.setBounds(128, 128, 756, 756);
