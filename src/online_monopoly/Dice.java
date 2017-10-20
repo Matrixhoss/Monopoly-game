@@ -24,13 +24,13 @@ public class Dice {
         return this.roll;
     }
 
-    public int[] rollDice() {
+    public int[] rollDice(Player p) {
 
         this.d[0] = (rand.nextInt(6) + 1);   //random(6)+1 to avoid 0
         this.d[1] = (rand.nextInt(6) + 1);
-        if (Mainboard_GUI.p.checkInJail() == true) {
+        if (p.checkInJail() == true) {
             if (this.d[0] == this.d[1]) {
-                Mainboard_GUI.p.exitFromJail();
+                p.exitFromJail();
                 this.roll = false;
             }
         } else {
@@ -38,7 +38,7 @@ public class Dice {
                 dd += 1;                        //add +1 to double dice 
                 System.out.println("DD " + dd);
                 if (dd == 3) {                  // if player rolls 3 doubles, send him to jail and disable roll                
-                    Mainboard_GUI.p.goToJail();
+                    p.goToJail();
                     this.roll = false;
                 }
             } else {
