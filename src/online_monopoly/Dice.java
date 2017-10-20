@@ -32,6 +32,9 @@ public class Dice {
             if (this.d[0] == this.d[1]) {
                 p.exitFromJail();
                 this.roll = false;
+            } else {
+                this.d[0] = 0;
+                this.d[1] = 0;
             }
         } else {
             if (this.d[0] == this.d[1]) {       //if both dices have the same value 
@@ -54,6 +57,7 @@ public class Dice {
     public void enableRolling() {
         this.roll = true;
     }
+
     public void disableRolling() {
         this.roll = true;
     }
