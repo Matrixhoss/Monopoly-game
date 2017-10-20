@@ -18,8 +18,8 @@ import sun.audio.*;
 
 public class Mainboard_GUI extends JFrame {
 
-    private BuyHouseFrame BH;
-    private Controller controller=new Controller();
+    
+    private Controller controller;
     private Mainboard_GUI _this;
     public static Player p;
     public static CommunityAndChance CC = new CommunityAndChance();
@@ -69,7 +69,6 @@ public class Mainboard_GUI extends JFrame {
     public JButton b38;
     public JButton b39;
     public JButton b40;
-    public JButton buyButton;
 
     ImageIcon board = new ImageIcon(getClass().getResource("misc/monoi.png"));
     ImageIcon p1 = new ImageIcon(getClass().getResource("misc/1.png"));
@@ -153,7 +152,6 @@ public class Mainboard_GUI extends JFrame {
     ImageIcon z38 = new ImageIcon(getClass().getResource("misc/z38.jpg"));
     ImageIcon z39 = new ImageIcon(getClass().getResource("misc/z39.jpg"));
     ImageIcon z40 = new ImageIcon(getClass().getResource("misc/z40.jpg"));
-    
 
     public JLabel CommunityLbl;
     ImageIcon communi_s = new ImageIcon(getClass().getResource("misc/cummunity_s.png"));
@@ -181,7 +179,8 @@ public class Mainboard_GUI extends JFrame {
         p = new Player("hesham", Color.red, this);
         this.x = x;
         this.y = y;
-        BH = new BuyHouseFrame(); 
+
+        
         _this = this;
         this.setTitle("Monopoly");
         this.setResizable(false);
@@ -197,16 +196,7 @@ public class Mainboard_GUI extends JFrame {
 
         zoom.setBounds(200, 200, 400, 400);
         zoom.setVisible(true);
-        
-        buyButton = new JButton("Buy");
-        buyButton.setBounds(200,800,100,50);
-        buyButton.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e){
-                BH.setVisible(true);
-            }
-        });
-        c.add(buyButton);
-        
+
         b1 = new JButton(p1);
         b1.setBackground(Color.BLACK);
         b1.setBounds(884, 882, 128, 128);
@@ -968,8 +958,6 @@ public class Mainboard_GUI extends JFrame {
         c.add(background);
         background.add(zoom);
         this.setLocationRelativeTo(c);
-        
-        
     }
 
     private Image ScaledImage(Image img, int w, int h) {
