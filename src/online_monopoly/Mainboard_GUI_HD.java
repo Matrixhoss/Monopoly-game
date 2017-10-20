@@ -1191,7 +1191,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
     }
     
     @Override
-    public void animatePlayer(String name, int destination, int origin){
+    public void animatePlayer(String name, int destination, int origin, boolean clockWise){
         javax.swing.Timer timer = new javax.swing.Timer(100, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

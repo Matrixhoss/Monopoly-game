@@ -32,7 +32,7 @@ public class Controller {
     }
     public void handleDiceRoll(int diceRoll){
         
-        gui.animatePlayer("fadi", diceRoll + players.get("fadi").position, players.get("fadi").position);
+        gui.animatePlayer("fadi", diceRoll + players.get("fadi").position, players.get("fadi").position, true);
     }
     public int getPlayerPosition(String name){
         return players.get(name).position;

@@ -10,5 +10,5 @@ package online_monopoly;
  * @author fadia
  */
 public interface GUIInterface {
-    public void animatePlayer(String playerName, int destination, int origin);
+    public void animatePlayer(String playerName, int destination, int origin, boolean clockWise);
 }
