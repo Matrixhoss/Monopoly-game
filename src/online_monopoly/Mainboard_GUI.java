@@ -19,7 +19,7 @@ import sun.audio.*;
 public class Mainboard_GUI extends JFrame {
 
     
-    private Controller controller;
+    private Controller controller=new Controller();
     private Mainboard_GUI _this;
     public static Player p;
     public static CommunityAndChance CC = new CommunityAndChance();
