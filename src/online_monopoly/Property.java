@@ -388,15 +388,16 @@ class WaterworksOrElectric extends Property {
 }
 //</editor-fold>
 
+//<editor-fold defaultstate="collapsed" desc="Jail class">
 class Jail extends BoardObject {
-
+    
 //    private Player p = Mainboard_GUI.p;
 //    private Dice d = Mainboard_GUI.d;
 //    private CommunityAndChance CC = Mainboard_GUI.CC;
     public Jail(String name, int id, Point p) {
         super(name, id, p);
     }
-
+    
     public void handleJail(int Choice, Player p, CommunityAndChance CC, Dice d) {                //0=pay 50  1=try your luck and roll   2=use card
         d.disableRolling();
         switch (Choice) {
@@ -418,20 +419,22 @@ class Jail extends BoardObject {
                 p.exitFromJail();
                 break;
         }
-
+        
     }
 }
+//</editor-fold>
 
+//<editor-fold defaultstate="collapsed" desc="Tax class">
 class Tax extends BoardObject {
-
+    
     public Tax(String name, int id, Point p) {
         super(name, id, p);
     }
-
+    
     public void handleLuxTax(Player p) {    //Function should receive an integer from the choice of the option panal
         p.payMoney(100);
     }
-
+    
     public void handleIncomeTax(Player p, int Choice) {
         if (Choice == 0) {
             p.payMoney(200);
@@ -440,7 +443,8 @@ class Tax extends BoardObject {
             int P = d.intValue();
             p.payMoney(P);
         }
-
+        
     }
-
+    
 }
+//</editor-fold>
