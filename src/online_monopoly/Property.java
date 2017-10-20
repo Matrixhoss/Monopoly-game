@@ -443,6 +443,7 @@ class Tax extends BoardObject {
 }
 //</editor-fold>
 
+ //<editor-fold defaultstate="collapsed" desc="PropertyStander Class">
 class PropertyStander {
 
     // Names 
@@ -631,10 +632,5 @@ class PropertyStander {
     //</editor-fold>        
     
     
-    
-    
-    
-    
-    
-
 }
+    //</editor-fold> 
