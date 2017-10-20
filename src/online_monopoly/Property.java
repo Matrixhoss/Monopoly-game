@@ -3,7 +3,6 @@ package online_monopoly;
 
 import javax.swing.*;
 
-
 //<editor-fold defaultstate="collapsed" desc="Property class">
 public abstract class Property extends BoardObject {
 
@@ -47,7 +46,6 @@ public abstract class Property extends BoardObject {
         return this.groubNum;
     }
     //</editor-fold>
-    
 
     //<editor-fold defaultstate="collapsed" desc="buy property">
     public boolean haveOwner() {
@@ -68,7 +66,6 @@ public abstract class Property extends BoardObject {
     }
 //</editor-fold>
 
-    
     //<editor-fold defaultstate="collapsed" desc="mortgage">
     // mortgage a property 
     public int mortgage() {
@@ -107,7 +104,7 @@ public abstract class Property extends BoardObject {
 
     }
 //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="check player money and total money">
     // the function to check if the player have the this value of money or not 
     public boolean checkOwnerPlayerMoney(int value) {
@@ -143,7 +140,6 @@ public abstract class Property extends BoardObject {
     }
 //</editor-fold>
 
-
     //<editor-fold defaultstate="collapsed" desc="Rent">
     //pay the rent 
     public int payRent(Player stopingPlayer) {
@@ -162,12 +158,12 @@ public abstract class Property extends BoardObject {
             return 2; // the player is lose
         }
     }
-      // get the rent if the property had been  owned
+    // get the rent if the property had been  owned
+
     abstract public int getRent(Player stopingPlayer);
     //</editor-fold>
 }
- //</editor-fold>
-
+//</editor-fold>
 
 //<editor-fold defaultstate="collapsed" desc="NormalProperty class">
 class NormalProperty extends Property {
@@ -197,7 +193,7 @@ class NormalProperty extends Property {
         return this.houseValue;
     }
 //</editor-fold>
-    
+
     // get the rent if the property had been  owned
     public int getRent(Player stopingPlayer) {
         if (this.ownerPlayer != null && this.isMortgaged == false) {  // if the property is owned and not Mortgaged
@@ -347,7 +343,6 @@ class NormalProperty extends Property {
 }
 //</editor-fold>
 
-
 //<editor-fold defaultstate="collapsed" desc="Railroad class">
 class Railroad extends Property {
 
@@ -365,7 +360,6 @@ class Railroad extends Property {
 
 }
 //</editor-fold>
-
 
 //<editor-fold defaultstate="collapsed" desc="WaterworksOrElectric class">
 class WaterworksOrElectric extends Property {
@@ -390,14 +384,14 @@ class WaterworksOrElectric extends Property {
 
 //<editor-fold defaultstate="collapsed" desc="Jail class">
 class Jail extends BoardObject {
-    
+
 //    private Player p = Mainboard_GUI.p;
 //    private Dice d = Mainboard_GUI.d;
 //    private CommunityAndChance CC = Mainboard_GUI.CC;
     public Jail(String name, int id, Point p) {
         super(name, id, p);
     }
-    
+
     public void handleJail(int Choice, Player p, CommunityAndChance CC, Dice d) {                //0=pay 50  1=try your luck and roll   2=use card
         d.disableRolling();
         switch (Choice) {
@@ -419,22 +413,22 @@ class Jail extends BoardObject {
                 p.exitFromJail();
                 break;
         }
-        
+
     }
 }
 //</editor-fold>
 
 //<editor-fold defaultstate="collapsed" desc="Tax class">
 class Tax extends BoardObject {
-    
+
     public Tax(String name, int id, Point p) {
         super(name, id, p);
     }
-    
+
     public void handleLuxTax(Player p) {    //Function should receive an integer from the choice of the option panal
         p.payMoney(100);
     }
-    
+
     public void handleIncomeTax(Player p, int Choice) {
         if (Choice == 0) {
             p.payMoney(200);
@@ -443,8 +437,204 @@ class Tax extends BoardObject {
             int P = d.intValue();
             p.payMoney(P);
         }
-        
+
     }
-    
+
 }
 //</editor-fold>
+
+class PropertyStander {
+
+    // Names 
+    //<editor-fold defaultstate="collapsed" desc="Groups">
+    final public static int BrownGroup = 1;
+    final public static int LightBlueGroup = 2;
+    final public static int PinkGroup = 3;
+    final public static int OrangeGroup = 4;
+    final public static int RedGroup = 5;
+    final public static int YelloGroup = 6;
+    final public static int GreenGroup = 7;
+    final public static int BlueGroup = 8;
+    final public static int RailRoadGroup = 8;
+    final public static int WaterElectricGroup = 9;
+    //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="Groups (Number of properties in group)">
+    final public static int BrownGroupNum = 2;
+    final public static int LightBlueGroupNum = 3;
+    final public static int RozeGroupNum = 3;
+    final public static int OrangeGroupNum = 3;
+    final public static int RedGroupNum = 3;
+    final public static int YelloGroupNum = 3;
+    final public static int GreenGroupNum = 3;
+    final public static int BlueGroupNum = 2;
+    final public static int RailRoadGroupNum = 4;
+    final public static int WaterElectricGroupNum = 2;
+
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Value of properties">
+    //Brown
+    final public static int V_MediterraneanAvenue = 60;
+    final public static int V_BalticAvenue = 60;
+    //Light Blue
+    final public static int V_OrientalAvenue = 100;
+    final public static int V_VermontAvenue = 100;
+    final public static int V_ConnecticutAvenue = 120;
+    //Pink
+    final public static int V_StCharlesPlace = 140;
+    final public static int V_StatesAvenue = 140;
+    final public static int V_VirginiaAvenue = 160;
+    //Orange
+    final public static int V_StJamesPlace = 180;
+    final public static int V_TennesseeAvenue = 180;
+    final public static int V_NewYorkAvenue = 200;
+    //Red
+    final public static int V_KentuckyAvenue = 220;
+    final public static int V_IndianaAvenue = 220;
+    final public static int V_IllinoisAvenue = 240;
+    //Yellow
+    final public static int V_AtlanticAvenue = 260;
+    final public static int V_VentnorAvenue = 260;
+    final public static int V_MarvinGardens = 280;
+    //Green
+    final public static int V_PacificAvenue = 300;
+    final public static int V_NorthCarolinaAvenue = 300;
+    final public static int V_PennsylvaniaAvenue = 320;
+    //Dark Blue
+    final public static int V_ParkPlace = 350;
+    final public static int V_Boardwalk = 400;
+    //Stations
+    final public static int V_ReadingRailroad = 200;
+    final public static int V_PennsylvaniaRailroad = 200;
+    final public static int V_BORailroad = 200;
+    final public static int V_ShortLine = 200;
+    //Utilities
+    final public static int V_ElectricCompany = 150;
+    final public static int V_WaterWorks = 150;
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Mortgage of properties">
+    //Brown
+    final public static int M_MediterraneanAvenue = 30;
+    final public static int M_BalticAvenue = 30;
+    //Light Blue
+    final public static int M_OrientalAvenue = 50;
+    final public static int M_VermontAvenue = 50;
+    final public static int M_ConnecticutAvenue = 60;
+    //Pink
+    final public static int M_StCharlesPlace = 70;
+    final public static int M_StatesAvenue = 70;
+    final public static int M_VirginiaAvenue = 80;
+    //Orange
+    final public static int M_StJamesPlace = 90;
+    final public static int M_TennesseeAvenue = 90;
+    final public static int M_NewYorkAvenue = 100;
+    //Red
+    final public static int M_KentuckyAvenue = 110;
+    final public static int M_IndianaAvenue = 100;
+    final public static int M_IllinoisAvenue = 120;
+    //Yellow
+    final public static int M_AtlanticAvenue = 130;
+    final public static int M_VentnorAvenue = 130;
+    final public static int M_MarvinGardens = 140;
+    //Green
+    final public static int M_PacificAvenue = 150;
+    final public static int M_NorthCarolinaAvenue = 150;
+    final public static int M_PennsylvaniaAvenue = 160;
+    //Dark Blue
+    final public static int M_ParkPlace = 175;
+    final public static int M_Boardwalk = 200;
+    //Stations
+    final public static int M_ReadingRailroad = 100;
+    final public static int M_PennsylvaniaRailroad = 100;
+    final public static int M_BORailroad = 100;
+    final public static int M_ShortLine = 100;
+    //Utilities
+    final public static int M_ElectricCompany = 75;
+    final public static int M_WaterWorks = 75;
+    //</editor-fold> 
+    
+    //<editor-fold defaultstate="collapsed" desc="Rent of properties">
+    //Brown
+    final public static int[] R_MediterraneanAvenue = {4,10,30,90,160,250};
+    final public static int[] R_BalticAvenue = {8,20,60,180,230,450};
+    //Light Blue
+    final public static int[] R_OrientalAvenue = {6,30,90,270,400,550};
+    final public static int[] R_VermontAvenue = {6,30,90,270,400,550};
+    final public static int[] R_ConnecticutAvenue = {8,40,100,300,450,600};
+    //Pink
+    final public static int[] R_StCharlesPlace = {10,50,150,450,625,750};
+    final public static int[] R_StatesAvenue = {10,50,150,450,625,750};
+    final public static int[] R_VirginiaAvenue = {12,60,180,500,700,900};
+    //Orange
+    final public static int[] R_StJamesPlace = {14,70,200,550,750,950};
+    final public static int[] R_TennesseeAvenue = {14,70,200,550,750,950};
+    final public static int[] R_NewYorkAvenue = {16,80,220,600,800,1000};
+    //Red
+    final public static int[] R_KentuckyAvenue = {18,90,250,700,875,1050};
+    final public static int[] R_IndianaAvenue = {18,90,250,700,875,1050};
+    final public static int[] R_IllinoisAvenue = {20,100,300,750,925,1100};
+    //Yellow
+    final public static int[] R_AtlanticAvenue = {22,110,330,800,975,1150};
+    final public static int[] R_VentnorAvenue = {22,110,330,800,975,1150};
+    final public static int[] R_MarvinGardens = {24,120,360,850,1025,1200};
+    //Green
+    final public static int[] R_PacificAvenue = {26,130,390,900,1100,1275};
+    final public static int[] R_NorthCarolinaAvenue = {26,52,120,390,900,1100,1275};
+    final public static int[] R_PennsylvaniaAvenue = {28,150,450,1000,1200,1400};
+    //Dark Blue
+    final public static int[] R_ParkPlace = {35,175,500,1100,1300,1500};
+    final public static int[] R_Boardwalk = {50,200,600,1400,1700,2000};
+    //Stations
+    final public static int[] R_ReadingRailroad = {25};
+    final public static int[] R_PennsylvaniaRailroad = {25};
+    final public static int[] R_BORailroad = {25};
+    final public static int[] R_ShortLine = {25};
+    //Utilities
+    final public static int[] R_ElectricCompany = {0};
+    final public static int[] R_WaterWorks = {0};
+    //</editor-fold> 
+    
+    //<editor-fold defaultstate="collapsed" desc="HouseValue of properties">
+    //Brown
+    final public static int H_MediterraneanAvenue = 50;
+    final public static int H_BalticAvenue = 50;
+    //Light Blue
+    final public static int H_OrientalAvenue = 50;
+    final public static int H_VermontAvenue = 50;
+    final public static int H_ConnecticutAvenue = 50;
+    //Pink
+    final public static int H_StCharlesPlace = 100;
+    final public static int H_StatesAvenue = 100;
+    final public static int H_VirginiaAvenue = 100;
+    //Orange
+    final public static int H_StJamesPlace = 100;
+    final public static int H_TennesseeAvenue = 100;
+    final public static int H_NewYorkAvenue = 100;
+    //Red
+    final public static int H_KentuckyAvenue = 150;
+    final public static int H_IndianaAvenue = 150;
+    final public static int H_IllinoisAvenue = 150;
+    //Yellow
+    final public static int H_AtlanticAvenue = 150;
+    final public static int H_VentnorAvenue = 150;
+    final public static int H_MarvinGardens = 150;
+    //Green
+    final public static int H_PacificAvenue = 200;
+    final public static int H_NorthCarolinaAvenue = 200;
+    final public static int H_PennsylvaniaAvenue = 200;
+    //Dark Blue
+    final public static int H_ParkPlace = 200;
+    final public static int H_Boardwalk = 200;
+
+    //</editor-fold>        
+    
+    
+    
+    
+    
+    
+    
+
+}
