@@ -28,25 +28,25 @@ public class Dice {
 
         this.d[0] = (rand.nextInt(6) + 1);   //random(6)+1 to avoid 0
         this.d[1] = (rand.nextInt(6) + 1);
-        if (Mainboard_GUI.p.checkInJail() == true) {
-            if (this.d[0] == this.d[1]) {
-                Mainboard_GUI.p.exitFromJail();
-                this.roll = false;
-            }
-        } else {
-            if (this.d[0] == this.d[1]) {       //if both dices have the same value 
-                dd += 1;                        //add +1 to double dice 
-                System.out.println("DD " + dd);
-                if (dd == 3) {                  // if player rolls 3 doubles, send him to jail and disable roll                
-                    Mainboard_GUI.p.goToJail();
-                    this.roll = false;
-                }
-            } else {
-                dd = 0;                         // after normal roll, disable the roll button
-                this.roll = false;
-                System.out.println("DD " + dd);
-            }
-        }
+//        if (Mainboard_GUI.p.checkInJail() == true) {
+//            if (this.d[0] == this.d[1]) {
+//                Mainboard_GUI.p.exitFromJail();
+//                this.roll = false;
+//            }
+//        } else {
+//            if (this.d[0] == this.d[1]) {       //if both dices have the same value 
+//                dd += 1;                        //add +1 to double dice 
+//                System.out.println("DD " + dd);
+//                if (dd == 3) {                  // if player rolls 3 doubles, send him to jail and disable roll                
+//                    Mainboard_GUI.p.goToJail();
+//                    this.roll = false;
+//                }
+//            } else {
+//                dd = 0;                         // after normal roll, disable the roll button
+//                this.roll = false;
+//                System.out.println("DD " + dd);
+//            }
+//        }
         return d;
 
     }

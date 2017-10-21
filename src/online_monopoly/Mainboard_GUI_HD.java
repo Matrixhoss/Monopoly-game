@@ -1,4 +1,5 @@
 package online_monopoly;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.Point2D;
@@ -10,57 +11,62 @@ import javafx.scene.layout.Background;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import sun.audio.*;
+import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
-    
-    private Mainboard_GUI_HD _this = this; 
-    
+public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
+
+    private int count;
+
+    private Mainboard_GUI_HD _this = this;
+    private BoardMapper boardMapper;
     private Controller controller;
-    private HashMap<String,Point> playersPos;
+    private HashMap<String, Point> playersPos;
     public int x, y;
     public JLabel zoom = new JLabel();
     public JLabel background;
     // public JLabel ff;
-    public JButton b1;
-    public JButton b2;
-    public JButton b3;
-    public JButton b4;
-    public JButton b5;
-    public JButton b6;
-    public JButton b7;
-    public JButton b8;
-    public JButton b9;
-    public JButton b10;
-    public JButton b11;
-    public JButton b12;
-    public JButton b13;
-    public JButton b14;
-    public JButton b15;
-    public JButton b16;
-    public JButton b17;
-    public JButton b18;
-    public JButton b19;
-    public JButton b20;
-    public JButton b21;
-    public JButton b22;
-    public JButton b23;
-    public JButton b24;
-    public JButton b25;
-    public JButton b26;
-    public JButton b27;
-    public JButton b28;
-    public JButton b29;
-    public JButton b30;
-    public JButton b31;
-    public JButton b32;
-    public JButton b33;
-    public JButton b34;
-    public JButton b35;
-    public JButton b36;
-    public JButton b37;
-    public JButton b38;
-    public JButton b39;
-    public JButton b40;
+    public JLabel b1;
+    public JLabel b2;
+    public JLabel b3;
+    public JLabel b4;
+    public JLabel b5;
+    public JLabel b6;
+    public JLabel b7;
+    public JLabel b8;
+    public JLabel b9;
+    public JLabel b10;
+    public JLabel b11;
+    public JLabel b12;
+    public JLabel b13;
+    public JLabel b14;
+    public JLabel b15;
+    public JLabel b16;
+    public JLabel b17;
+    public JLabel b18;
+    public JLabel b19;
+    public JLabel b20;
+    public JLabel b21;
+    public JLabel b22;
+    public JLabel b23;
+    public JLabel b24;
+    public JLabel b25;
+    public JLabel b26;
+    public JLabel b27;
+    public JLabel b28;
+    public JLabel b29;
+    public JLabel b30;
+    public JLabel b31;
+    public JLabel b32;
+    public JLabel b33;
+    public JLabel b34;
+    public JLabel b35;
+    public JLabel b36;
+    public JLabel b37;
+    public JLabel b38;
+    public JLabel b39;
+    public JLabel b40;
 
     ImageIcon board = new ImageIcon(getClass().getResource("mischd/monoi.png"));
     ImageIcon p1 = new ImageIcon(getClass().getResource("mischd/1.png"));
@@ -145,18 +151,22 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
     ImageIcon z39 = new ImageIcon(getClass().getResource("mischd/z39.jpg"));
     ImageIcon z40 = new ImageIcon(getClass().getResource("mischd/z40.jpg"));
 
+    private JLabel btn;
+
     public Mainboard_GUI_HD(int x, int y) {
         this.x = x;
         this.y = y;
-        
-        
+
+        //pass in image side length in pixels
+        boardMapper = new BoardMapper(700);
+
         controller = new Controller();
         controller.addGUI(this);
-        
+
         playersPos = new HashMap<String, Point>();
-        
-        playersPos.put("fadi", new Point(0, 0));
-        
+
+        playersPos.put("fadi", boardMapper.getMapping(0));
+
         _this = this;
         this.setTitle("Monopoly");
         this.setResizable(false);
@@ -173,7 +183,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         zoom.setBounds(190, 100, 199, 300);
         zoom.setVisible(true);
 
-        b1 = new JButton(p1);
+        b1 = new JLabel(p1);
         b1.setBackground(Color.BLACK);
         b1.setBounds(620, 620, 80, 80);
         b1.addMouseListener(new MouseAdapter() {
@@ -191,7 +201,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
 
         c.add(b1);
 
-        b2 = new JButton(p2);
+        b2 = new JLabel(p2);
         b2.setBackground(Color.BLACK);
         b2.setBounds(560, 620, 60, 80);
         b2.addMouseListener(new MouseAdapter() {
@@ -209,7 +219,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b2);
 
-        b3 = new JButton(p3);
+        b3 = new JLabel(p3);
         b3.setBackground(Color.BLACK);
         b3.setBounds(500, 620, 60, 80);
         b3.addMouseListener(new MouseAdapter() {
@@ -227,7 +237,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b3);
 
-        b4 = new JButton(p4);
+        b4 = new JLabel(p4);
         b4.setBackground(Color.BLACK);
         b4.setBounds(440, 620, 60, 80);
         b4.addMouseListener(new MouseAdapter() {
@@ -245,7 +255,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b4);
 
-        b5 = new JButton(p5);
+        b5 = new JLabel(p5);
         b5.setBackground(Color.BLACK);
         b5.setBounds(380, 620, 60, 80);
         b5.addMouseListener(new MouseAdapter() {
@@ -263,7 +273,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b5);
 
-        b6 = new JButton(p6);
+        b6 = new JLabel(p6);
         b6.setBackground(Color.BLACK);
         b6.setBounds(320, 620, 60, 80);
         b6.addMouseListener(new MouseAdapter() {
@@ -281,7 +291,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b6);
 
-        b7 = new JButton(p7);
+        b7 = new JLabel(p7);
         b7.setBackground(Color.BLACK);
         b7.setBounds(260, 620, 60, 80);
         b7.addMouseListener(new MouseAdapter() {
@@ -299,7 +309,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b7);
 
-        b8 = new JButton(p8);
+        b8 = new JLabel(p8);
         b8.setBackground(Color.BLACK);
         b8.setBounds(200, 620, 60, 80);
         b8.addMouseListener(new MouseAdapter() {
@@ -317,7 +327,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b8);
 
-        b9 = new JButton(p9);
+        b9 = new JLabel(p9);
         b9.setBackground(Color.BLACK);
         b9.setBounds(140, 620, 60, 80);
         b9.addMouseListener(new MouseAdapter() {
@@ -335,7 +345,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b9);
 
-        b10 = new JButton(p10);
+        b10 = new JLabel(p10);
         b10.setBackground(Color.BLACK);
         b10.setBounds(80, 620, 60, 80);
         b10.addMouseListener(new MouseAdapter() {
@@ -353,7 +363,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b10);
 
-        b11 = new JButton(p11);
+        b11 = new JLabel(p11);
         b11.setBackground(Color.BLACK);
         b11.setBounds(0, 620, 80, 80);
         b11.addMouseListener(new MouseAdapter() {
@@ -371,7 +381,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b11);
 
-        b12 = new JButton(p12);
+        b12 = new JLabel(p12);
         b12.setBackground(Color.BLACK);
         b12.setBounds(0, 560, 80, 60);
         b12.addMouseListener(new MouseAdapter() {
@@ -389,7 +399,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b12);
 
-        b13 = new JButton(p13);
+        b13 = new JLabel(p13);
         b13.setBackground(Color.BLACK);
         b13.setBounds(0, 500, 80, 60);
         b13.addMouseListener(new MouseAdapter() {
@@ -407,7 +417,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b13);
 
-        b14 = new JButton(p14);
+        b14 = new JLabel(p14);
         b14.setBackground(Color.BLACK);
         b14.setBounds(0, 440, 80, 60);
         b14.addMouseListener(new MouseAdapter() {
@@ -425,7 +435,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b14);
 
-        b15 = new JButton(p15);
+        b15 = new JLabel(p15);
         b15.setBackground(Color.BLACK);
         b15.setBounds(0, 380, 80, 60);
         b15.addMouseListener(new MouseAdapter() {
@@ -443,7 +453,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b15);
 
-        b16 = new JButton(p16);
+        b16 = new JLabel(p16);
         b16.setBackground(Color.BLACK);
         b16.setBounds(0, 320, 80, 60);
         b16.addMouseListener(new MouseAdapter() {
@@ -461,7 +471,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b16);
 
-        b17 = new JButton(p17);
+        b17 = new JLabel(p17);
         b17.setBackground(Color.BLACK);
         b17.setBounds(0, 260, 80, 60);
         b17.addMouseListener(new MouseAdapter() {
@@ -479,7 +489,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b17);
 
-        b18 = new JButton(p18);
+        b18 = new JLabel(p18);
         b18.setBackground(Color.BLACK);
         b18.setBounds(0, 200, 80, 60);
         b18.addMouseListener(new MouseAdapter() {
@@ -497,7 +507,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b18);
 
-        b19 = new JButton(p19);
+        b19 = new JLabel(p19);
         b19.setBackground(Color.BLACK);
         b19.setBounds(0, 140, 80, 60);
         b19.addMouseListener(new MouseAdapter() {
@@ -515,7 +525,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b19);
 
-        b20 = new JButton(p20);
+        b20 = new JLabel(p20);
         b20.setBackground(Color.BLACK);
         b20.setBounds(0, 80, 80, 60);
         b20.addMouseListener(new MouseAdapter() {
@@ -533,7 +543,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b20);
 
-        b21 = new JButton(p21);
+        b21 = new JLabel(p21);
         b21.setBackground(Color.BLACK);
         b21.setBounds(0, 0, 80, 80);
         b21.addMouseListener(new MouseAdapter() {
@@ -551,7 +561,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b21);
 
-        b22 = new JButton(p22);
+        b22 = new JLabel(p22);
         b22.setBackground(Color.BLACK);
         b22.setBounds(80, 0, 60, 80);
         b22.addMouseListener(new MouseAdapter() {
@@ -569,7 +579,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b22);
 
-        b23 = new JButton(p23);
+        b23 = new JLabel(p23);
         b23.setBackground(Color.BLACK);
         b23.setBounds(140, 0, 60, 80);
         b23.addMouseListener(new MouseAdapter() {
@@ -587,7 +597,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b23);
 
-        b24 = new JButton(p24);
+        b24 = new JLabel(p24);
         b24.setBackground(Color.BLACK);
         b24.setBounds(200, 0, 60, 80);
         b24.addMouseListener(new MouseAdapter() {
@@ -605,7 +615,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b24);
 
-        b25 = new JButton(p25);
+        b25 = new JLabel(p25);
         b25.setBackground(Color.BLACK);
         b25.setBounds(260, 0, 60, 80);
         b25.addMouseListener(new MouseAdapter() {
@@ -623,7 +633,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b25);
 
-        b26 = new JButton(p26);
+        b26 = new JLabel(p26);
         b26.setBackground(Color.BLACK);
         b26.setBounds(320, 0, 60, 80);
         b26.addMouseListener(new MouseAdapter() {
@@ -641,7 +651,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b26);
 
-        b27 = new JButton(p27);
+        b27 = new JLabel(p27);
         b27.setBackground(Color.BLACK);
         b27.setBounds(380, 0, 60, 80);
         b27.addMouseListener(new MouseAdapter() {
@@ -659,7 +669,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b27);
 
-        b28 = new JButton(p28);
+        b28 = new JLabel(p28);
         b28.setBackground(Color.BLACK);
         b28.setBounds(440, 0, 60, 80);
         b28.addMouseListener(new MouseAdapter() {
@@ -677,7 +687,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b28);
 
-        b29 = new JButton(p29);
+        b29 = new JLabel(p29);
         b29.setBackground(Color.BLACK);
         b29.setBounds(500, 0, 60, 80);
         b29.addMouseListener(new MouseAdapter() {
@@ -695,7 +705,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b29);
 
-        b30 = new JButton(p30);
+        b30 = new JLabel(p30);
         b30.setBackground(Color.BLACK);
         b30.setBounds(560, 0, 60, 80);
         b30.addMouseListener(new MouseAdapter() {
@@ -713,7 +723,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b30);
 
-        b31 = new JButton(p31);
+        b31 = new JLabel(p31);
         b31.setBackground(Color.BLACK);
         b31.setBounds(620, 0, 80, 80);
         b31.addMouseListener(new MouseAdapter() {
@@ -731,7 +741,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b31);
 
-        b32 = new JButton(p32);
+        b32 = new JLabel(p32);
         b32.setBackground(Color.BLACK);
         b32.setBounds(620, 80, 80, 60);
         b32.addMouseListener(new MouseAdapter() {
@@ -749,7 +759,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b32);
 
-        b33 = new JButton(p33);
+        b33 = new JLabel(p33);
         b33.setBackground(Color.BLACK);
         b33.setBounds(620, 140, 80, 60);
         b33.addMouseListener(new MouseAdapter() {
@@ -767,7 +777,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b33);
 
-        b34 = new JButton(p34);
+        b34 = new JLabel(p34);
         b34.setBackground(Color.BLACK);
         b34.setBounds(620, 200, 80, 60);
         b34.addMouseListener(new MouseAdapter() {
@@ -785,7 +795,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b34);
 
-        b35 = new JButton(p35);
+        b35 = new JLabel(p35);
         b35.setBackground(Color.BLACK);
         b35.setBounds(620, 260, 80, 60);
         b35.addMouseListener(new MouseAdapter() {
@@ -803,7 +813,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b35);
 
-        b36 = new JButton(p36);
+        b36 = new JLabel(p36);
         b36.setBackground(Color.BLACK);
         b36.setBounds(620, 320, 80, 60);
         b36.addMouseListener(new MouseAdapter() {
@@ -821,7 +831,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b36);
 
-        b37 = new JButton(p37);
+        b37 = new JLabel(p37);
         b37.setBackground(Color.BLACK);
         b37.setBounds(620, 380, 80, 60);
         b37.addMouseListener(new MouseAdapter() {
@@ -839,7 +849,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b37);
 
-        b38 = new JButton(p38);
+        b38 = new JLabel(p38);
         b38.setBackground(Color.BLACK);
         b38.setBounds(620, 440, 80, 60);
         b38.addMouseListener(new MouseAdapter() {
@@ -857,7 +867,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b38);
 
-        b39 = new JButton(p39);
+        b39 = new JLabel(p39);
         b39.setBackground(Color.BLACK);
         b39.setBounds(620, 500, 80, 60);
         b39.addMouseListener(new MouseAdapter() {
@@ -875,7 +885,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         });
         c.add(b39);
 
-        b40 = new JButton(p40);
+        b40 = new JLabel(p40);
         b40.setBackground(Color.BLACK);
         b40.setBounds(620, 560, 80, 60);
         b40.addMouseListener(new MouseAdapter() {
@@ -892,7 +902,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
             }
         });
         c.add(b40);
- 
+
         //dice panel
         DiceGui diceGui = new DiceGui(controller);
         diceGui.setBounds(475, 80, 150, 120);
@@ -902,6 +912,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
         background.setBounds(80, 80, 540, 540);
         c.add(background);
         background.add(zoom);
+
         this.setLocationRelativeTo(c);
     }
 
@@ -1184,20 +1195,56 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface{
             System.out.println("Mouse dragging as entered");
         }
     }
+
     @Override
-    public void paint(Graphics g){
+    public void paint(Graphics g) {
         super.paint(g);
-        g.fillRect(0, 0, 50, 50);
+        g.setColor(Color.red);
+        g.fillOval(playersPos.get("fadi").getX(), playersPos.get("fadi").getY(), 30, 30);
     }
+
+   
     
+    private int[] stepping;
+
     @Override
-    public void animatePlayer(String name, int destination, int origin, boolean clockWise){
-        javax.swing.Timer timer = new javax.swing.Timer(100, new ActionListener() {
+    public void animatePlayer(String name, int destination, int origin, boolean clockWise) {
+        Point currentPosition = playersPos.get(name);
+        ArrayList<Point> corners = boardMapper.getCorners(origin, destination, clockWise);
+        corners.add(boardMapper.getMapping(destination));
+        boardMapper.getStep(currentPosition, corners.get(0));
+
+        stepping = boardMapper.getStep(currentPosition, corners.get(0));
+        final int margin = 10;
+        final javax.swing.Timer timer = new javax.swing.Timer(50, null);
+        timer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                int x = currentPosition.getX();
+                int y = currentPosition.getY();
+                currentPosition.setX(x + stepping[0]);
+                currentPosition.setY(y + stepping[1]);
+                _this.repaint();
+
+                if (Math.abs((corners.get(0).getX() - currentPosition.getX()) + (corners.get(0).getY() - currentPosition.getY())) < margin) {
+
+                    currentPosition.setX(corners.get(0).getX());
+                    currentPosition.setY(corners.get(0).getY());
+                    _this.repaint();
+                    corners.remove(0);
+                    if (corners.isEmpty()) {
+                        timer.stop();
+                    }
+                    else {
+                        stepping = boardMapper.getStep(currentPosition, corners.get(0));
+                    }
+                }
+
             }
+
         });
+        timer.start();
+        System.out.println("hi3");
     }
-    
+
 }

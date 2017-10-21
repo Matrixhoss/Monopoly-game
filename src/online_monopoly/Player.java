@@ -17,7 +17,7 @@ import javax.swing.JFrame;
  */
 public class Player {
     
-    int position;
+    int position = 0;
     private int count=0;
     private int XonBoard = 924, YonBoard = 950; // position of player on gui
     private final int stepX = 84, stepY = 84;   
