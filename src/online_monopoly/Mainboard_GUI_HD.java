@@ -1212,7 +1212,6 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         Point currentPosition = playersPos.get(name);
         ArrayList<Point> corners = boardMapper.getCorners(origin, destination, clockWise);
         corners.add(boardMapper.getMapping(destination));
-        boardMapper.getStep(currentPosition, corners.get(0));
 
         stepping = boardMapper.getStep(currentPosition, corners.get(0));
         final int margin = 10;

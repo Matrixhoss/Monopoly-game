@@ -410,6 +410,7 @@ class Jail extends BoardObject {
             case 2:
                 if (p.hasChanceCard() && !p.hasCommunityCard()) {
                     CC.ReturnChanceJail();
+                    
                 } else if (!p.hasChanceCard() && p.hasCommunityCard()) {
                     CC.ReturnChestJail();
                 } else if (p.hasChanceCard() && p.hasCommunityCard()) {
