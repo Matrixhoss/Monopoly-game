@@ -18,6 +18,9 @@ public class Point {
         this.y = y;
     }
 
+    public Point clone(){
+        return new Point(this.x, this.y);
+    }
     
     public int getX() {
         return x;

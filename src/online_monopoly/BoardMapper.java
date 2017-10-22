@@ -75,7 +75,7 @@ public class BoardMapper {
             if(i == destination) break;
             if(isCorner(i)) {
                 System.out.println("corner "+i+" added, destination : " + destination);
-                pathCorners.add(positions[i]);
+                pathCorners.add(positions[i].clone());
             }
         }
      
@@ -115,7 +115,7 @@ public class BoardMapper {
         return steps;
     }
     Point getMapping(int index){
-        return positions[index];
+        return positions[index].clone();
     }
     
 }

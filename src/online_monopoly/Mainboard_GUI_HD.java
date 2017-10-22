@@ -1273,7 +1273,9 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        g.fillRect(0, 0, 50, 50);
+        Point p = playersPos.get("fadi");
+        
+        g.fillRect(p.getX(), p.getY(), 50, 50);
         //keroo
         if (moveComm) {
             CommunityCard.setBounds(CommunityCard.getBounds().x + 2, CommunityCard.getBounds().y + 2, 143, 139);

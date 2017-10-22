@@ -35,10 +35,10 @@ public  class Online_Monopoly{
 //            }
 //        }
 
-//        ArrayList<Point>corners = new BoardMapper(700).getCorners(37,2, true);
+//        ArrayList<Point>corners = new BoardMapper(700).getCorners(37,12, true);
 //        for(Point c : corners){
 //            System.out.println(c.getX()+" " +c.getY());
-////        }
+//        }
 //System.out.println(new BoardMapper(700).getMapping(0).getX()+" "+new BoardMapper(700).getMapping(0).getY());
     }  
 }
