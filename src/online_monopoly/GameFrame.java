@@ -143,7 +143,7 @@ public class GameFrame extends javax.swing.JFrame {
         if (!alreadyMoving) {
             alreadyMoving = true;
 
-            int roll[] = dice.rollDice();
+            int roll[] = dice.rollDice(p);
             distanceLeft = (roll[0] + roll[1]) * 50;
             jLabel1.setText(roll[0]+"");
             jLabel2.setText(roll[1]+"");

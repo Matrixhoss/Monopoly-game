@@ -18,8 +18,8 @@ import sun.audio.*;
 
 public class Mainboard_GUI extends JFrame {
 
-    
-    private Controller controller;
+    private BuyHouseFrame BH;
+    private Controller controller=new Controller();
     private Mainboard_GUI _this;
     public static Player p;
     public static CommunityAndChance CC = new CommunityAndChance();
@@ -69,6 +69,7 @@ public class Mainboard_GUI extends JFrame {
     public JButton b38;
     public JButton b39;
     public JButton b40;
+    public JButton buyButton;
 
     ImageIcon board = new ImageIcon(getClass().getResource("misc/monoi.png"));
     ImageIcon p1 = new ImageIcon(getClass().getResource("misc/1.png"));
@@ -152,6 +153,7 @@ public class Mainboard_GUI extends JFrame {
     ImageIcon z38 = new ImageIcon(getClass().getResource("misc/z38.jpg"));
     ImageIcon z39 = new ImageIcon(getClass().getResource("misc/z39.jpg"));
     ImageIcon z40 = new ImageIcon(getClass().getResource("misc/z40.jpg"));
+    
 
     public JLabel CommunityLbl;
     ImageIcon communi_s = new ImageIcon(getClass().getResource("misc/cummunity_s.png"));
@@ -162,14 +164,24 @@ public class Mainboard_GUI extends JFrame {
     boolean moveComm = false;
     boolean backcomm = false;
     int countCommmoves = 0;
+    
+    
+    public JLabel ChanceLbl;
+    ImageIcon chance_s = new ImageIcon(getClass().getResource("misc/chande_fullhd.png"));
+
+    public JLabel chanceCard;
+    ImageIcon chance_1 = new ImageIcon(getClass().getResource("misc/chande_sfullhd.png"));
+
+    boolean moveChance = false;
+    boolean backChance = false;
+    int countChancemoves = 0;
 
     public Mainboard_GUI(int x, int y) {
         
         p = new Player("hesham", Color.red, this);
         this.x = x;
         this.y = y;
-
-        
+        BH = new BuyHouseFrame(); 
         _this = this;
         this.setTitle("Monopoly");
         this.setResizable(false);
@@ -185,7 +197,16 @@ public class Mainboard_GUI extends JFrame {
 
         zoom.setBounds(200, 200, 400, 400);
         zoom.setVisible(true);
-
+        
+        buyButton = new JButton("Buy");
+        buyButton.setBounds(200,800,100,50);
+        buyButton.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e){
+                BH.setVisible(true);
+            }
+        });
+        c.add(buyButton);
+        
         b1 = new JButton(p1);
         b1.setBackground(Color.BLACK);
         b1.setBounds(884, 882, 128, 128);
@@ -820,6 +841,7 @@ public class Mainboard_GUI extends JFrame {
             public void mouseExited(MouseEvent e) {
                 exitButton(e);
             }
+            
         });
         c.add(b35);
 
@@ -855,6 +877,11 @@ public class Mainboard_GUI extends JFrame {
             @Override
             public void mouseExited(MouseEvent e) {
                 exitButton(e);
+            }
+            public void mouseClicked(MouseEvent e) {
+
+                pullChanceCard("Pay hospital fees of $100"); //To change body of generated methods, choose Tools | Templates.
+
             }
         });
         c.add(b37);
@@ -914,15 +941,23 @@ public class Mainboard_GUI extends JFrame {
         c.add(b40);
 
         //community lbl
+        chanceCard = new JLabel(chance_1);
+        chanceCard.setBounds(675, 640, 202, 201);
+        c.add(chanceCard);
+        ChanceLbl = new JLabel(chance_s);
+        ChanceLbl.setBounds(620, 640, 240, 203);
+        c.add(ChanceLbl);
+        
+        //community lbl
         CommunityCard = new JLabel(communi_1);
-        CommunityCard.setBounds(140, 170, 208, 193);
+        CommunityCard.setBounds(135, 155, 202, 201);
         c.add(CommunityCard);
         CommunityLbl = new JLabel(communi_s);
-        CommunityLbl.setBounds(135, 155, 233, 188);
+        CommunityLbl.setBounds(135, 155, 240, 203);
         c.add(CommunityLbl);
 
         //dice panel
-        DiceGui diceGui = new DiceGui(new Controller());
+        DiceGui diceGui = new DiceGui(controller);
         diceGui.setBounds(730, 128, 150, 120);
         c.add(diceGui);
 
@@ -933,6 +968,8 @@ public class Mainboard_GUI extends JFrame {
         c.add(background);
         background.add(zoom);
         this.setLocationRelativeTo(c);
+        
+        
     }
 
     private Image ScaledImage(Image img, int w, int h) {
@@ -1231,6 +1268,31 @@ public class Mainboard_GUI extends JFrame {
 
             }
         }
+        
+        
+        if (moveChance) {
+            chanceCard.setBounds(chanceCard.getBounds().x - 2, chanceCard.getBounds().y - 2, 202, 201);
+            if (chanceCard.getBounds().x > 425) {
+                countChancemoves++;
+                repaint();
+            } else {
+                chanceCard.setVisible(false);
+                moveChance = false;
+                System.out.println(countChancemoves);
+            }
+        }
+        if (backChance) {
+            chanceCard.setBounds(chanceCard.getBounds().x + 2, chanceCard.getBounds().y + 2, 202, 201);
+
+            if (countChancemoves > 0) {
+                countChancemoves--;
+                repaint();
+
+            } else {
+                backChance = false;
+
+            }
+        }
 
     }
 
@@ -1263,6 +1325,25 @@ public class Mainboard_GUI extends JFrame {
                 JOptionPane.showMessageDialog(ff, card);
                 CommunityCard.setVisible(true);
                 backcomm = true;
+                repaint();
+
+            }
+        },
+                1000
+        );
+    }
+    
+    public void pullChanceCard(String card) {
+        moveChance = true;
+        repaint();
+        Component ff = this;
+        new java.util.Timer().schedule(
+                new java.util.TimerTask() {
+            @Override
+            public void run() {
+                JOptionPane.showMessageDialog(ff, card);
+                chanceCard.setVisible(true);
+                backChance = true;
                 repaint();
 
             }
