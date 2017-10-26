@@ -155,10 +155,10 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
 
     
     public JLabel CommunityLbl;
-    ImageIcon communi_s = new ImageIcon(getClass().getResource("mischd/community_shd.png"));
+    ImageIcon communi_s = new ImageIcon(getClass().getResource("mischd/community_s.png"));
 
     public JLabel CommunityCard;
-    ImageIcon communi_1 = new ImageIcon(getClass().getResource("mischd/communtiy_cardhs.png"));
+    ImageIcon communi_1 = new ImageIcon(getClass().getResource("mischd/hd_community.png"));
 
     boolean moveComm = false;
     boolean backcomm = false;
@@ -814,6 +814,13 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
             public void mouseExited(MouseEvent e) {
                 exitButton(e);
             }
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                pullCommunityCard("keroooooo");
+                
+            }
+            
         });
         c.add(b34);
 
@@ -867,6 +874,11 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
             @Override
             public void mouseExited(MouseEvent e) {
                 exitButton(e);
+            }
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                pullChanceCard("keroooooo");
+                
             }
         });
         c.add(b37);
@@ -927,18 +939,18 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
  
         //community lbl
         chanceCard = new JLabel(chance_1);
-        chanceCard.setBounds(275, 640, 202, 201);
+        chanceCard.setBounds(470, 450, 151, 145);
         c.add(chanceCard);
         ChanceLbl = new JLabel(chance_s);
-        ChanceLbl.setBounds(220, 640, 151, 145);
+        ChanceLbl.setBounds(420, 450, 183, 146);
         c.add(ChanceLbl);
         
         //community lbl
         CommunityCard = new JLabel(communi_1);
-        CommunityCard.setBounds(135, 155, 202, 201);
+        CommunityCard.setBounds(100, 80, 202, 201);
         c.add(CommunityCard);
         CommunityLbl = new JLabel(communi_s);
-        CommunityLbl.setBounds(135, 155, 240, 203);
+        CommunityLbl.setBounds(60, 80, 240, 203);
         c.add(CommunityLbl);
         
         //dice panel
@@ -1278,10 +1290,27 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         Point p = playersPos.get("fadi");
         
         g.fillRect(p.getX(), p.getY(), 50, 50);
+        /*
+        //community lbl
+        chanceCard = new JLabel(chance_1);
+        chanceCard.setBounds(470, 450, 151, 145);
+        c.add(chanceCard);
+        ChanceLbl = new JLabel(chance_s);
+        ChanceLbl.setBounds(420, 450, 183, 146);
+        c.add(ChanceLbl);
+        
+        //community lbl
+        CommunityCard = new JLabel(communi_1);
+        CommunityCard.setBounds(100, 80, 202, 201);
+        c.add(CommunityCard);
+        CommunityLbl = new JLabel(communi_s);
+        CommunityLbl.setBounds(60, 80, 240, 203);
+        c.add(CommunityLbl);
+        */
         //keroo
         if (moveComm) {
-            CommunityCard.setBounds(CommunityCard.getBounds().x + 2, CommunityCard.getBounds().y + 2, 143, 139);
-            if (CommunityCard.getBounds().x < 390) {
+            CommunityCard.setBounds(CommunityCard.getBounds().x + 1, CommunityCard.getBounds().y + 1, 202, 201);
+            if (CommunityCard.getBounds().x < 290) {
                 countCommmoves++;
                 repaint();
             } else {
@@ -1291,7 +1320,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
             }
         }
         if (backcomm) {
-            CommunityCard.setBounds(CommunityCard.getBounds().x - 2, CommunityCard.getBounds().y - 2, 143, 139);
+            CommunityCard.setBounds(CommunityCard.getBounds().x - 1, CommunityCard.getBounds().y - 1, 202, 201);
 
             if (countCommmoves > 0) {
                 countCommmoves--;
@@ -1305,8 +1334,8 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         
         
         if (moveChance) {
-            chanceCard.setBounds(chanceCard.getBounds().x - 2, chanceCard.getBounds().y - 2, 151, 145);
-            if (chanceCard.getBounds().x > 425) {
+            chanceCard.setBounds(chanceCard.getBounds().x - 1, chanceCard.getBounds().y - 1, 151, 145);
+            if (chanceCard.getBounds().x > 325) {
                 countChancemoves++;
                 repaint();
             } else {
@@ -1316,7 +1345,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
             }
         }
         if (backChance) {
-            chanceCard.setBounds(chanceCard.getBounds().x + 2, chanceCard.getBounds().y + 2, 151, 145);
+            chanceCard.setBounds(chanceCard.getBounds().x + 1, chanceCard.getBounds().y + 1, 151, 145);
 
             if (countChancemoves > 0) {
                 countChancemoves--;
