@@ -26,7 +26,7 @@ public class Player {
     private final int StartX = 0; //player start with this position (x)
     private final int StartY = 0; //player start with this position (y)
     private int money;
-    private String name;
+    public String name;
     private Color color;
     private boolean ChanceEJail; //player has chance card to exit from jail
     private boolean CommunityEJail; //player has communtiy card to exit from jail

@@ -6,7 +6,7 @@ import javax.swing.*;
 //<editor-fold defaultstate="collapsed" desc="Property class">
 public abstract class Property extends BoardObject {
 
-    protected Player ownerPlayer;        // the player how own the Property
+    public Player ownerPlayer;        // the player how own the Property
     protected int value;                 // the value of the property 
     protected int[] rent;                // all rent of the property (with and without houses and hotel)
     protected int mortgageValue;         // the value of mortgage

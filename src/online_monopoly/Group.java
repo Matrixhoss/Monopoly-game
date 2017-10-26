@@ -16,12 +16,17 @@ import java.util.List;
 public class Group {
 
     private Color color;
-    private int number;
+    private long id;
     private List<Property> properties = new ArrayList<Property>();
+    public int[] propsIndices;
 
     public Group(Color c, int i) {
         color = c;
-        number = i;
+        id = i;
+    }
+    
+    public void setIndices(int[] indices){
+        this.propsIndices = indices;
     }
     
     public void addProperty(Property p){
@@ -32,8 +37,8 @@ public class Group {
         return color;
     }
 
-    public int getNumber() {
-        return number;
+    public long getNumber() {
+        return id;
     }
 
     public List<Property> getProperties() {

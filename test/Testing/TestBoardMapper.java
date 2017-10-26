@@ -15,7 +15,7 @@ import org.junit.*;
 import org.junit.Assert.*;
 import java.util.*;
 public class TestBoardMapper {
-    private BoardMapper boardMapper = new BoardMapper(700);
+    private BoardMapper boardMapper = new BoardMapper(700,50);
     @Test
     public void test(){
         ArrayList<Point> corner = boardMapper.getCorners(0, 39, true);
