@@ -15,12 +15,14 @@ import java.util.concurrent.TimeUnit;
  * @author Kero
  */
 public class DiceGui extends javax.swing.JPanel {
+    private boolean rollEnabled;
     Controller controller;
-Random rand = new Random();
+    Random rand = new Random();
     /**
      * Creates new form DiceGui
      */
     public DiceGui(Controller controller) {
+        this.rollEnabled = true;
         this.controller = controller;
         initComponents();
     }
@@ -93,8 +95,13 @@ Random rand = new Random();
     private javax.swing.JButton RollBtn;
     // End of variables declaration//GEN-END:variables
 
+    public void enableDiceRoll(){
+        this.rollEnabled = true;
+    }
 private void ChangeDices() {
 
+    if(rollEnabled){
+        rollEnabled = false;
         int roll[] = controller.rollDice();
         ScheduledExecutorService exec = Executors.newScheduledThreadPool(1);
         Runnable task = new Runnable() {
@@ -119,5 +126,6 @@ private void ChangeDices() {
         
         
     }
+}
 
 }

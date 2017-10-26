@@ -15,6 +15,7 @@ public class BoardMapper {
     double step = 0.0;
     double cellCenterHeight;
     double sideLength;
+    double charWidth;
     
     Point[] positions = new Point[40];
     private void init(){
@@ -23,40 +24,44 @@ public class BoardMapper {
 //        double stepX = -step;
 //        //1
 //        double stepY = -step;
-        int sigxright = (int)(sideLength-cellCenterHeight);
-        int sigxleft =  (int)(cellCenterHeight*0.5);
-        int sigytop = (int)(cellCenterHeight*0.6);
-        int sigydown = (int)(sideLength-cellCenterHeight);
+//(2*cch-cw)/2 + cw
+        int sigxright = (int)(sideLength-(cellCenterHeight+charWidth)/2);
+        int sigxleft =  (int)((cellCenterHeight-charWidth/2));
+        int sigytop = (int)((cellCenterHeight-charWidth/2));
+        int sigydown = (int)(sideLength-(cellCenterHeight+charWidth)/2);
         positions[0] = new Point(sigxright, sigydown);
         positions[10] = new Point(sigxleft, sigydown); 
         positions[20] = new Point(sigxleft, sigytop);
         positions[30] = new Point(sigxright, sigytop);
         
-        double x = sideLength-cellCenterHeight*2-step/2;
+        double offsetMargin  = 1.3*step;
+        
+        double x = sigxright - offsetMargin;
         for(int i = 1; i <= 9; i++){
             positions[i] = new Point((int)x, sigydown);
             x-=step;
         }
-        double y = sideLength-cellCenterHeight*2-step/2;
+        double y = sigydown - offsetMargin;
         for(int i = 11; i <= 19; i++){
             positions[i] = new Point(sigxleft, (int)y);
             y-=step;
         }
-        x=cellCenterHeight*2 + step;
+        x=sigxleft + offsetMargin;
         for(int i = 21; i <= 29; i++){
             positions[i] = new Point((int)x, sigytop);
             x+=step;
         }
-        y = cellCenterHeight+step/2;
+        y = sigytop + offsetMargin;
         for(int i = 31; i <= 39; i++){
             positions[i] = new Point(sigxright, (int)y);
             y+=step;
         }
     }
-    public BoardMapper(int sideLengthInPixels) {
+    public BoardMapper(int sideLengthInPixels, int charWidth) {
+        this.charWidth = charWidth;
         sideLength = sideLengthInPixels;
-        cellCenterHeight = (40.5/600)*sideLengthInPixels;
-        step = (49.0/600)*sideLengthInPixels;
+        cellCenterHeight = (40.0/600)*sideLengthInPixels;
+        step = (50.0/600)*sideLengthInPixels;
         init();
     }
     

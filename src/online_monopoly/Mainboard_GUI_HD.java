@@ -17,8 +17,10 @@ import java.util.TimerTask;
 
 public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
 
+    
+    private DiceGui diceGui;
     private int count;
-
+    public static boolean isRolling = false;
     private Mainboard_GUI_HD _this = this;
     private BoardMapper boardMapper;
     private Controller controller;
@@ -178,7 +180,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         this.y = y;
 
         //pass in image side length in pixels
-        boardMapper = new BoardMapper(700);
+        boardMapper = new BoardMapper(700,50);
 
         controller = new Controller();
         controller.addGUI(this);
@@ -940,7 +942,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         c.add(CommunityLbl);
         
         //dice panel
-        DiceGui diceGui = new DiceGui(controller);
+        diceGui = new DiceGui(controller);
         diceGui.setBounds(475, 80, 150, 120);
         c.add(diceGui);
 
@@ -1356,6 +1358,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
                     corners.remove(0);
                     if (corners.isEmpty()) {
                         timer.stop();
+                        diceGui.enableDiceRoll();
                     }
                     else {
                         stepping = boardMapper.getStep(currentPosition, corners.get(0));
