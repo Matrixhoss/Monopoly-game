@@ -38,4 +38,12 @@ public class Controller {
     public int getPlayerPosition(String name){
         return players.get(name).position;
     }
+    public void handleNewPosition(int posIndex){
+        if(posIndex == 7 || posIndex == 22 || posIndex == 36){
+            gui.pullChanceCard("hello World!");
+        }else if(posIndex == 2 || posIndex == 17 || posIndex == 33){
+            gui.pullCommunityCard("hello world!");
+        }
+    
+    }
 }

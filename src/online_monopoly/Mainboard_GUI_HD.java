@@ -1246,6 +1246,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         }
     }
     
+    @Override
     public void pullCommunityCard(String card) {
         moveComm = true;
         repaint();
@@ -1265,6 +1266,8 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         );
     }
     
+    
+    @Override
     public void pullChanceCard(String card) {
         moveChance = true;
         repaint();
@@ -1387,6 +1390,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
                     corners.remove(0);
                     if (corners.isEmpty()) {
                         timer.stop();
+                        controller.handleNewPosition(destination);
                         diceGui.enableDiceRoll();
                     }
                     else {
