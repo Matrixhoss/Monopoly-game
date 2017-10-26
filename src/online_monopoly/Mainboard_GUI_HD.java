@@ -1350,7 +1350,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
                 currentPosition.setY(y + stepping[1]);
                 _this.repaint();
 
-                if (Math.abs((corners.get(0).getX() - currentPosition.getX()) + (corners.get(0).getY() - currentPosition.getY())) < margin) {
+                if (boardMapper.inBoundary(currentPosition, corners.get(0), margin)) {
 
                     currentPosition.setX(corners.get(0).getX());
                     currentPosition.setY(corners.get(0).getY());

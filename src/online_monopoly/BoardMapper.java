@@ -25,16 +25,16 @@ public class BoardMapper {
 //        //1
 //        double stepY = -step;
 //(2*cch-cw)/2 + cw
-        int sigxright = (int)(sideLength-(cellCenterHeight+charWidth)/2);
-        int sigxleft =  (int)((cellCenterHeight-charWidth/2));
-        int sigytop = (int)((cellCenterHeight-charWidth/2));
-        int sigydown = (int)(sideLength-(cellCenterHeight+charWidth)/2);
+        int sigxright = (int)(sideLength-(cellCenterHeight+charWidth/2));
+        int sigxleft =  (int)((cellCenterHeight-charWidth/2.0));
+        int sigytop = (int)((cellCenterHeight-charWidth/2.0)+25);
+        int sigydown = (int)(sideLength-(cellCenterHeight+charWidth/2)+30);
         positions[0] = new Point(sigxright, sigydown);
         positions[10] = new Point(sigxleft, sigydown); 
         positions[20] = new Point(sigxleft, sigytop);
         positions[30] = new Point(sigxright, sigytop);
         
-        double offsetMargin  = 1.3*step;
+        double offsetMargin  = 1.25*step;
         
         double x = sigxright - offsetMargin;
         for(int i = 1; i <= 9; i++){
@@ -89,10 +89,9 @@ public class BoardMapper {
     private boolean isCorner(int index){
         return(index == 0 || index == 10 || index == 20 || index == 30);
     }
-    public boolean inBoundary(Point playerPos){
-        int x = playerPos.getX(), y = playerPos.getY();
+    public boolean inBoundary(Point playerPos, Point destination, int margin){
         //int cmpX = positions[10]
-        return((x >= cellCenterHeight && x <= sideLength - cellCenterHeight && (y == cellCenterHeight || y == sideLength - cellCenterHeight)) || (y >= cellCenterHeight && y <= sideLength - cellCenterHeight && (x == cellCenterHeight || x == sideLength - cellCenterHeight)));
+        return(Math.abs((destination.getX() - playerPos.getX()) + (destination.getY() - playerPos.getY())) < margin);
     }
     //returns steps on x-axis and y-axis base on position and destination
     public int[] getStep(Point pos, Point destination){
