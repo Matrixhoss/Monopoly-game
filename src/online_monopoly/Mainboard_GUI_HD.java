@@ -155,7 +155,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
 
     
     public JLabel CommunityLbl;
-    ImageIcon communi_s = new ImageIcon(getClass().getResource("mischd/community_shd.png"));
+    ImageIcon communi_s = new ImageIcon(getClass().getResource("mischd/community_s.png"));
 
     public JLabel CommunityCard;
     ImageIcon communi_1 = new ImageIcon(getClass().getResource("mischd/communtiy_cardhs.png"));
@@ -927,10 +927,10 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
  
         //community lbl
         chanceCard = new JLabel(chance_1);
-        chanceCard.setBounds(275, 640, 202, 201);
+        chanceCard.setBounds(470, 450, 151, 145);
         c.add(chanceCard);
         ChanceLbl = new JLabel(chance_s);
-        ChanceLbl.setBounds(220, 640, 151, 145);
+        ChanceLbl.setBounds(420, 450, 183, 146);
         c.add(ChanceLbl);
         
         //community lbl
