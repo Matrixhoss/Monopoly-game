@@ -5,6 +5,7 @@
  */
 package online_monopoly;
 
+import java.util.ArrayList;
 import online_monopoly.Controller;
 
 /**
@@ -26,12 +27,11 @@ public class BuyHousePanel1 extends javax.swing.JPanel {
     }
 
     private void ButtonsInit() {
-        //get array of owned groups numbers like: ownedGroups = [group3,group5,group7]
-        //OwnedGroupsN = ownedGroups.length();
-        int OwnedGroupsN = 0; //total number of owned Groups by the player
+        ArrayList<Group> ownedGroups = c.getCurrentPlayerGroups();
+        int OwnedGroupsN = ownedGroups.size(); //total number of owned Groups by the player
         switch (OwnedGroupsN) {
             case 1:
-                jButton1.setText("1"); //get First array element & setText To its Color ownedGroups[0].getColor()+"";
+                jButton1.setText(ownedGroups.get(0).getColorName()); //get First array element & setText To its Color ownedGroups[0].getColor()+"";
                 jButton2.setVisible(false);
                 jButton3.setVisible(false);
                 jButton4.setVisible(false);
@@ -41,8 +41,8 @@ public class BuyHousePanel1 extends javax.swing.JPanel {
                 jButton8.setVisible(false);
                 break;
             case 2:
-                jButton1.setText("1"); //get First array element & setText To its Color ownedGroups[0].getColor()+"";
-                jButton2.setText("2"); //get Second array element & setText To its Color ownedGroups[1].getColor()+"";
+                jButton1.setText(ownedGroups.get(0).getColorName()); //get First array element & setText To its Color ownedGroups[0].getColor()+"";
+                jButton2.setText(ownedGroups.get(1).getColorName()); //get Second array element & setText To its Color ownedGroups[1].getColor()+"";
                 jButton2.setVisible(true);
                 jButton3.setVisible(false);
                 jButton4.setVisible(false);
@@ -52,9 +52,9 @@ public class BuyHousePanel1 extends javax.swing.JPanel {
                 jButton8.setVisible(false);
                 break;
             case 3:
-                jButton1.setText("1");
-                jButton2.setText("2");
-                jButton3.setText("3");
+                jButton1.setText(ownedGroups.get(0).getColorName());
+                jButton2.setText(ownedGroups.get(1).getColorName());
+                jButton3.setText(ownedGroups.get(2).getColorName());
                 jButton2.setVisible(true);
                 jButton3.setVisible(true);
                 jButton4.setVisible(false);
@@ -64,10 +64,10 @@ public class BuyHousePanel1 extends javax.swing.JPanel {
                 jButton8.setVisible(false);
                 break;
             case 4:
-                jButton1.setText("1");
-                jButton2.setText("2");
-                jButton3.setText("3");
-                jButton4.setText("4");
+                jButton1.setText(ownedGroups.get(0).getColorName());
+                jButton2.setText(ownedGroups.get(1).getColorName());
+                jButton3.setText(ownedGroups.get(2).getColorName());
+                jButton4.setText(ownedGroups.get(3).getColorName());
                 jButton2.setVisible(true);
                 jButton3.setVisible(true);
                 jButton4.setVisible(true);
@@ -77,11 +77,11 @@ public class BuyHousePanel1 extends javax.swing.JPanel {
                 jButton8.setVisible(false);
                 break;
             case 5:
-                jButton1.setText("1");
-                jButton2.setText("2");
-                jButton3.setText("3");
-                jButton4.setText("4");
-                jButton5.setText("5");
+                jButton1.setText(ownedGroups.get(0).getColorName());
+                jButton2.setText(ownedGroups.get(1).getColorName());
+                jButton3.setText(ownedGroups.get(2).getColorName());
+                jButton4.setText(ownedGroups.get(3).getColorName());
+                jButton5.setText(ownedGroups.get(4).getColorName());
                 jButton2.setVisible(true);
                 jButton3.setVisible(true);
                 jButton4.setVisible(true);
@@ -91,12 +91,12 @@ public class BuyHousePanel1 extends javax.swing.JPanel {
                 jButton8.setVisible(false);
                 break;
             case 6:
-                jButton1.setText("1");
-                jButton2.setText("2");
-                jButton3.setText("3");
-                jButton4.setText("4");
-                jButton5.setText("5");
-                jButton6.setText("6");
+                jButton1.setText(ownedGroups.get(0).getColorName());
+                jButton2.setText(ownedGroups.get(1).getColorName());
+                jButton3.setText(ownedGroups.get(2).getColorName());
+                jButton4.setText(ownedGroups.get(3).getColorName());
+                jButton5.setText(ownedGroups.get(4).getColorName());
+                jButton6.setText(ownedGroups.get(5).getColorName());
                 jButton2.setVisible(true);
                 jButton3.setVisible(true);
                 jButton4.setVisible(true);
@@ -106,13 +106,13 @@ public class BuyHousePanel1 extends javax.swing.JPanel {
                 jButton8.setVisible(false);
                 break;
             case 7:
-                jButton1.setText("1");
-                jButton2.setText("2");
-                jButton3.setText("3");
-                jButton4.setText("4");
-                jButton5.setText("5");
-                jButton6.setText("6");
-                jButton6.setText("7");
+                jButton1.setText(ownedGroups.get(0).getColorName());
+                jButton2.setText(ownedGroups.get(1).getColorName());
+                jButton3.setText(ownedGroups.get(2).getColorName());
+                jButton4.setText(ownedGroups.get(3).getColorName());
+                jButton5.setText(ownedGroups.get(4).getColorName());
+                jButton6.setText(ownedGroups.get(5).getColorName());
+                jButton7.setText(ownedGroups.get(6).getColorName());
                 jButton2.setVisible(true);
                 jButton3.setVisible(true);
                 jButton4.setVisible(true);
@@ -122,14 +122,14 @@ public class BuyHousePanel1 extends javax.swing.JPanel {
                 jButton8.setVisible(false);
                 break;
             case 8:
-                jButton1.setText("1");
-                jButton2.setText("2");
-                jButton3.setText("3");
-                jButton4.setText("4");
-                jButton5.setText("5");
-                jButton6.setText("6");
-                jButton6.setText("7");
-                jButton6.setText("8");
+                jButton1.setText(ownedGroups.get(0).getColorName());
+                jButton2.setText(ownedGroups.get(1).getColorName());
+                jButton3.setText(ownedGroups.get(2).getColorName());
+                jButton4.setText(ownedGroups.get(3).getColorName());
+                jButton5.setText(ownedGroups.get(4).getColorName());
+                jButton6.setText(ownedGroups.get(5).getColorName());
+                jButton7.setText(ownedGroups.get(6).getColorName());
+                jButton8.setText(ownedGroups.get(7).getColorName());
                 jButton2.setVisible(true);
                 jButton3.setVisible(true);
                 jButton4.setVisible(true);
@@ -159,6 +159,7 @@ public class BuyHousePanel1 extends javax.swing.JPanel {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(400, 400));
 
@@ -188,35 +189,44 @@ public class BuyHousePanel1 extends javax.swing.JPanel {
 
         jButton8.setText("jButton8");
 
+        jLabel1.setText("Choose group Color");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(80, 80, 80)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(55, 55, 55)
-                        .addComponent(jButton2))
+                        .addGap(80, 80, 80)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(55, 55, 55)
+                                .addComponent(jButton2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton3)
+                                .addGap(55, 55, 55)
+                                .addComponent(jButton4))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton5)
+                                .addGap(55, 55, 55)
+                                .addComponent(jButton6))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton7)
+                                .addGap(55, 55, 55)
+                                .addComponent(jButton8))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addGap(55, 55, 55)
-                        .addComponent(jButton4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton5)
-                        .addGap(55, 55, 55)
-                        .addComponent(jButton6))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton7)
-                        .addGap(55, 55, 55)
-                        .addComponent(jButton8)))
+                        .addGap(129, 129, 129)
+                        .addComponent(jLabel1)))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(117, Short.MAX_VALUE)
+                .addContainerGap(64, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -260,5 +270,6 @@ public class BuyHousePanel1 extends javax.swing.JPanel {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -11,8 +11,8 @@ public abstract class Property extends BoardObject {
     protected int[] rent;                // all rent of the property (with and without houses and hotel)
     protected int mortgageValue;         // the value of mortgage
     protected boolean isMortgaged;       // the property is Mortgaged or not
-    private int groupID;               // the id of the group of the property
-    private int groubNum;              // the number of the porperties within this property 
+    private final int groupID;               // the id of the group of the property
+    private final int groubNum;              // the number of the porperties within this property 
 
     public Property(String name, int id, Point p, int value, int[] rent, int mortgageValue, int groupID, int groubNum) {
         super(name, id, p);
