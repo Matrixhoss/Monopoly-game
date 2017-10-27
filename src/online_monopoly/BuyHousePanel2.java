@@ -22,10 +22,10 @@ public class BuyHousePanel2 extends javax.swing.JPanel {
             
         } else {
             jButton3.setVisible(true);
-            jButton3.setText("3"); //Third Property Name
+            jButton3.setText(BuyHousePanel1.c.getCurrentPlayerGroups().get(groupNumber).getProperties().get(2).getPropertyName()); //Third Property Name
         }
-        jButton1.setText("1"); //First Property Name groupName.getProperties().get(0).getName();
-        jButton2.setText("2"); //Second Property Name groupName.getProperties().get(1).getName();
+        jButton1.setText(BuyHousePanel1.c.getCurrentPlayerGroups().get(groupNumber).getProperties().get(0).getPropertyName()); //First Property Name
+        jButton2.setText(BuyHousePanel1.c.getCurrentPlayerGroups().get(groupNumber).getProperties().get(1).getPropertyName()); //Second Property Name
     }
 
     /**
