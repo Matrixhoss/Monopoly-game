@@ -4,7 +4,7 @@ package online_monopoly;
 
 
 public class BoardObject {
-    private String name;
+    protected String name;
     private int ID ;
     private Point poistion ;
     private String description;
@@ -15,7 +15,7 @@ public class BoardObject {
     this.poistion = p ;
     }
 
-    public String getPropertyName() {
+    public String getName() {
         return name;
     }
 

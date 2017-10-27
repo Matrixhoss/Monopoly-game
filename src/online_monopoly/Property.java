@@ -45,6 +45,11 @@ public abstract class Property extends BoardObject {
     public int getGroupNum() {
         return this.groubNum;
     }
+        public String getPropertyName() {
+        return name;
+    }
+    
+
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="buy property">
