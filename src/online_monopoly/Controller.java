@@ -75,6 +75,12 @@ public class Controller {
             gui.pullChanceCard("hello World!");
         }else if(posIndex == 2 || posIndex == 17 || posIndex == 33){
             gui.pullCommunityCard("hello world!");
+        }else if(posIndex == 4){
+            //handle income tax
+        }else if(posIndex == 38){
+            //handle luxury tax
+        }else if(posIndex == 30){
+            //Go to jail
         }
     
     }
