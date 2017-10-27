@@ -15,7 +15,7 @@ public class BoardObject {
     this.poistion = p ;
     }
 
-    public String getName() {
+    public String getPropertyName() {
         return name;
     }
 
