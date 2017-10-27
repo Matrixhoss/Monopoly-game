@@ -46,7 +46,7 @@ public abstract class Property extends BoardObject {
         return this.groubNum;
     }
         public String getPropertyName() {
-        return name;
+        return this.name;
     }
     
 
