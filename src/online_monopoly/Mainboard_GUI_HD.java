@@ -192,7 +192,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         _this = this;
         this.setTitle("Monopoly");
         this.setResizable(false);
-        this.setBounds(0, 0, 700, 725);
+        this.setBounds(0, 0, 900, 725);
 //        this.setSize( Toolkit.getDefaultToolkit().getScreenSize() );
 //        this.setUndecorated(true);
 //        this.setAlwaysOnTop(true);
