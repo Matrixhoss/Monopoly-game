@@ -59,7 +59,7 @@ public class Controller {
     }
     public ArrayList<Group> getCurrentPlayerGroups(){
         
-        ArrayList<Group> resGroups = new ArrayList<Group>();
+        ArrayList<Group> resGroups = new ArrayList<>();
         for(int i = 0;i < 8; i++){
             int j = 0;
             for(int x : groups[i].propsIndices){
