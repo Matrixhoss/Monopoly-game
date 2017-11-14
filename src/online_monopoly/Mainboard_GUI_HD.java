@@ -19,7 +19,7 @@ import java.util.TimerTask;
 
 public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
 
-   private void inititaeTurnTimer(int timeSliceInSeconds){
+   private void inititaeTurnTimer(){
        turnTimer = new javax.swing.Timer(1000, null);
        turnTimer.addActionListener(new ActionListener() {
            @Override
@@ -30,14 +30,11 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
                }else{
                    TimerLbl.setText((time-1)+"");
                }
-               if(globalTimerInSeconds == Integer.MAX_VALUE)globalTimerInSeconds = 0;
-               else globalTimerInSeconds++;
            }
        });
        turnTimer.start();
     } 
     private javax.swing.Timer  turnTimer;
-    private int globalTimerInSeconds = 0;
     private int timeSliceInSeconds = 10; 
     
     
@@ -1031,7 +1028,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         playersPanel.setBounds(700, 0, 400, 725);
         c.add(playersPanel);
 
-        inititaeTurnTimer(timeSliceInSeconds);
+        inititaeTurnTimer();
         
         this.setLocationRelativeTo(c);
     }
