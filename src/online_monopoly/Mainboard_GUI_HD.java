@@ -1386,7 +1386,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
 
     @Override
     public void animatePlayer(String name, int destination, int origin, boolean clockWise) {
-        animationPoint = boardMapper.getMapping(players.get(name).position);
+        animationPoint = boardMapper.getMapping(origin);
         movingPlayerName = name;
         playerMoving = true;
         ArrayList<Point> corners = boardMapper.getCorners(origin, destination, clockWise);
@@ -1413,8 +1413,9 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
                     if (corners.isEmpty()) {
                         timer.stop();
                         controller.handleNewPosition(destination);
-                        controller.switchTurn();
                         playerMoving = false;
+                        //below should be in switching turn function
+                        controller.switchTurn();
                         diceGui.enableDiceRoll();
                         
                     }
