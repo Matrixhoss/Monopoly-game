@@ -90,10 +90,15 @@ public class Controller {
         return resGroups;
     }
     public void handleNewPosition(int posIndex){
+        Player p=players.get(playerNames[currentPlayer]);
         if(posIndex == 7 || posIndex == 22 || posIndex == 36){
+            CC.DrawCard("chance",p);
             gui.pullChanceCard("hello World!");
+            System.err.println(p.name+" : "+p.getMoney());
         }else if(posIndex == 2 || posIndex == 17 || posIndex == 33){
+            CC.DrawCard("chest",p);
             gui.pullCommunityCard("hello world!");
+            System.err.println(p.name+" : "+p.getMoney());
         }else if(posIndex == 4){
             //handle income tax
         }else if(posIndex == 38){
