@@ -20,9 +20,23 @@ public class Controller {
     GUIInterface gui;
     Group[] groups;
     int currentPlayer;
+    
+    String[] playerNames = {"Fadi","Hassan","Hossam"};
     BoardObject[] boardsObjects;
 
+    public Hashtable<String, Player> getPlayers(){
+        return players;
+    }
+    
+    public void switchTurn(){
+        currentPlayer = (currentPlayer+1)%playerNames.length;
+    }
+    public Player getCurrentPlayer(){
+        return players.get(playerNames[currentPlayer]);
+    }
     public Controller() {
+        
+        currentPlayer=0;
         
         boardsObjects = new BoardObject[40];
         groups = new Group[8];
@@ -40,19 +54,23 @@ public class Controller {
         groups[7].setIndices(new int[]{37,39});        
         
         players = new Hashtable<>();
-        players.put("fadi", new Player("Fadi", Color.green));
+        
+        players.put("Fadi", new Player("Fadi", Color.green));
+        players.put("Hassan", new Player("Hassan", Color.RED));
+        players.put("Hossam", new Player("Hossam", Color.BLUE));
+        
     }
     
     public void addGUI(GUIInterface gui){
         this.gui = gui;
     }
     public  int[] rollDice(){
-        return dice.rollDice(players.get("fadi"));
+        return dice.rollDice(getCurrentPlayer());
     }
     public void handleDiceRoll(int diceRoll){
-        
-        gui.animatePlayer("fadi", (diceRoll + players.get("fadi").position)%40, players.get("fadi").position, true);
-        players.get("fadi").position=(players.get("fadi").position+diceRoll)%40;
+        Player p = getCurrentPlayer();
+        gui.animatePlayer(p.name, (diceRoll + p.position)%40, p.position, true);
+        players.get(p.name).position=(p.position+diceRoll)%40;
     }
     public int getPlayerPosition(String name){
         return players.get(name).position;
@@ -63,7 +81,7 @@ public class Controller {
         for(int i = 0;i < 8; i++){
             int j = 0;
             for(int x : groups[i].propsIndices){
-                if(((Property)boardsObjects[x]).ownerPlayer.name.equals("fadi")) j++;
+                if(((Property)boardsObjects[x]).ownerPlayer.name.equals(getCurrentPlayer().name)) j++;
             }
             if(j==groups[i].propsIndices.length) resGroups.add(groups[i]);
         }

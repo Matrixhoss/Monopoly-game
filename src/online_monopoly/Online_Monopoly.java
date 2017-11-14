@@ -40,8 +40,8 @@ public class Online_Monopoly {
 //        }
 //System.out.println(new BoardMapper(700).getMapping(0).getX()+" "+new BoardMapper(700).getMapping(0).getY());
 //        System.err.println(1 << 7);
-        int x = 0, y  = 0;
-        System.out.println(BoardMapper.oldToNew(0, 6));
+//        Point p = new Point(3,3);
+//        System.out.println(p==p);
 
     }
 }

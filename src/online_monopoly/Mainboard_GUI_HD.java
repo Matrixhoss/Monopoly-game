@@ -12,12 +12,15 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import sun.audio.*;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
 
-    
+    private boolean playerMoving = false;
+    private String movingPlayerName = "";
+    private Point animationPoint;
     private DiceGui diceGui;
     private int count;
     public static boolean isRolling = false;
@@ -177,6 +180,8 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
     
     PlayersPanel playersPanel = new PlayersPanel();
     
+    Hashtable<String, Player> players;
+    
     public Mainboard_GUI_HD(int x, int y) {
         this.x = x;
         this.y = y;
@@ -186,10 +191,15 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
 
         controller = new Controller();
         controller.addGUI(this);
+        
+        //lazm b3d el controller initialization 34an tkon el player initialises this is until we get
+        //data from GUI
+        players = controller.getPlayers();
+        animationPoint = boardMapper.getMapping(0);
 
-        playersPos = new HashMap<String, Point>();
-
-        playersPos.put("fadi", boardMapper.getMapping(0));
+//        playersPos = new HashMap<String, Point>();
+//
+//        playersPos.put("fadi", boardMapper.getMapping(0));
 
         _this = this;
         this.setTitle("Monopoly");
@@ -1295,9 +1305,14 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        Point p = playersPos.get("fadi");
         
-        g.fillRect(p.getX(), p.getY(), 50, 50);
+        for(Player p : players.values()){
+            g.setColor(p.getColor());
+            Point point = (p.name.equals(movingPlayerName)&&playerMoving)? animationPoint:boardMapper.getMapping(p.position);
+
+            g.fillRect(point.getX(), point.getY(), 50, 50);
+            g.drawString(p.name, point.getX(), point.getY()-10);
+        }
         /*
         //community lbl
         chanceCard = new JLabel(chance_1);
@@ -1371,35 +1386,40 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
 
     @Override
     public void animatePlayer(String name, int destination, int origin, boolean clockWise) {
-        Point currentPosition = playersPos.get(name);
+        animationPoint = boardMapper.getMapping(players.get(name).position);
+        movingPlayerName = name;
+        playerMoving = true;
         ArrayList<Point> corners = boardMapper.getCorners(origin, destination, clockWise);
         corners.add(boardMapper.getMapping(destination));
 
-        stepping = boardMapper.getStep(currentPosition, corners.get(0));
+        stepping = boardMapper.getStep(animationPoint, corners.get(0));
         final int margin = 10;
         final javax.swing.Timer timer = new javax.swing.Timer(50, null);
         timer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int x = currentPosition.getX();
-                int y = currentPosition.getY();
-                currentPosition.setX(x + stepping[0]);
-                currentPosition.setY(y + stepping[1]);
+                int x = animationPoint.getX();
+                int y = animationPoint.getY();
+                animationPoint.setX(x + stepping[0]);
+                animationPoint.setY(y + stepping[1]);
                 _this.repaint();
 
-                if (boardMapper.inBoundary(currentPosition, corners.get(0), margin)) {
+                if (boardMapper.inBoundary(animationPoint, corners.get(0), margin)) {
 
-                    currentPosition.setX(corners.get(0).getX());
-                    currentPosition.setY(corners.get(0).getY());
+                    animationPoint.setX(corners.get(0).getX());
+                    animationPoint.setY(corners.get(0).getY());
                     _this.repaint();
                     corners.remove(0);
                     if (corners.isEmpty()) {
                         timer.stop();
                         controller.handleNewPosition(destination);
+                        controller.switchTurn();
+                        playerMoving = false;
                         diceGui.enableDiceRoll();
+                        
                     }
                     else {
-                        stepping = boardMapper.getStep(currentPosition, corners.get(0));
+                        stepping = boardMapper.getStep(animationPoint, corners.get(0));
                     }
                 }
 
@@ -1407,7 +1427,6 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
 
         });
         timer.start();
-        System.out.println("hi3");
     }
 }
     
