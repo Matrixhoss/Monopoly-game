@@ -181,6 +181,9 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
     PlayersPanel playersPanel = new PlayersPanel();
     
     Hashtable<String, Player> players;
+    JButton EndTurnBtn = new JButton("End Turn");
+    JLabel TimerLbl = new JLabel("Timer");
+    
     
     public Mainboard_GUI_HD(int x, int y) {
         this.x = x;
@@ -205,6 +208,9 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         this.setTitle("Monopoly");
         this.setResizable(false);
         this.setBounds(0, 0, 1200, 725);
+        
+       
+        
 //        this.setSize( Toolkit.getDefaultToolkit().getScreenSize() );
 //        this.setUndecorated(true);
 //        this.setAlwaysOnTop(true);
@@ -213,7 +219,8 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         Container c = this.getContentPane();
         c.setLayout(null);
-
+        
+        
         zoom.setBounds(190, 100, 199, 300);
         zoom.setVisible(true);
 
@@ -949,6 +956,12 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         });
         c.add(b40);
  
+        
+        c.validate();
+        c.repaint();
+        
+        this.validate();
+        this.repaint();
         //community lbl
         chanceCard = new JLabel(chance_1);
         chanceCard.setBounds(470, 450, 151, 145);
@@ -964,6 +977,14 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         CommunityLbl = new JLabel(communi_s);
         CommunityLbl.setBounds(60, 80, 240, 203);
         c.add(CommunityLbl);
+        
+        TimerLbl.setBounds(300, 80,100,30);
+        TimerLbl.setVisible(true);
+        c.add(TimerLbl);
+        
+        EndTurnBtn.setBounds(300, 110,100,30);
+        EndTurnBtn.setVisible(true);
+        c.add(EndTurnBtn);
         
         //dice panel
         diceGui = new DiceGui(controller);
