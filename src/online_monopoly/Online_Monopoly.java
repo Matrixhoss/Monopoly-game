@@ -7,17 +7,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 
+public class Online_Monopoly {
 
-public  class Online_Monopoly{
-    
 //     public void mouseMoved(MouseEvent me){
 //            int x =me.getX();
 //            int y =me.getY();
 //            System.out.println("fffff"+x+"   "+y);
 //        }
     public static void main(String[] args) {
-        MainMenu mm = new MainMenu();
-        mm.setVisible(true);
+//        MainMenu mm = new MainMenu();
+//        mm.setVisible(true);
 //        ent n = new ent();
 //        n.setVisible(true);
 //      JFrame g = new JFrame("act");
@@ -40,7 +39,9 @@ public  class Online_Monopoly{
 //            System.out.println(c.getX()+" " +c.getY());
 //        }
 //System.out.println(new BoardMapper(700).getMapping(0).getX()+" "+new BoardMapper(700).getMapping(0).getY());
-    
 //        System.err.println(1 << 7);
-    }  
+        int x = 0, y  = 0;
+        System.out.println(BoardMapper.oldToNew(0, 6));
+
+    }
 }

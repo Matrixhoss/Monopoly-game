@@ -121,5 +121,18 @@ public class BoardMapper {
     Point getMapping(int index){
         return positions[index].clone();
     }
-    
+    public static int oldToNew(int x, int y){
+        if(y==0) return x;
+        if(x==10) return 10+y;
+        if(y==10) return 20+(10-x);
+        if(x==0) return (10-y)+30;
+        return 0;
+    }
+    public static Point newToOld(int x){
+        if(x<=10) return new Point(x, 0);
+        if(x<=20&&x>10) return new Point(10, x-10);
+        if(x<=30&&x>20) return new Point(30-x,10);
+        if(x<=39&&x>20) return new Point(0,40-x);
+        return null;
+    }
 }
