@@ -16,8 +16,31 @@ import java.util.Hashtable;
 import java.util.Timer;
 import java.util.TimerTask;
 
+
 public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
 
+   private void inititaeTurnTimer(int timeSliceInSeconds){
+       turnTimer = new javax.swing.Timer(1000, null);
+       turnTimer.addActionListener(new ActionListener() {
+           @Override
+           public void actionPerformed(ActionEvent e) {
+               if(globalTimerInSeconds%timeSliceInSeconds == 0){
+                   endTurn();
+               }else{
+                   String t = TimerLbl.getText();
+                   TimerLbl.setText((Integer.parseInt(t)-1)+"");
+               }
+               if(globalTimerInSeconds == Integer.MAX_VALUE)globalTimerInSeconds = 0;
+               else globalTimerInSeconds++;
+           }
+       });
+       turnTimer.start();
+    } 
+    private javax.swing.Timer  turnTimer;
+    private int globalTimerInSeconds = 0;
+    private int timeSliceInSeconds = 10; 
+    
+    
     private boolean playerMoving = false;
     private String movingPlayerName = "";
     private Point animationPoint;
@@ -182,7 +205,8 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
     
     Hashtable<String, Player> players;
     JButton EndTurnBtn = new JButton("End Turn");
-    JLabel TimerLbl = new JLabel("Timer");
+    JLabel TimerLbl = new JLabel(timeSliceInSeconds+"");
+    
     
     
     public Mainboard_GUI_HD(int x, int y) {
@@ -984,6 +1008,12 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         
         EndTurnBtn.setBounds(300, 110,100,30);
         EndTurnBtn.setVisible(true);
+        EndTurnBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                endTurn();
+            }
+        });
         c.add(EndTurnBtn);
         
         //dice panel
@@ -999,6 +1029,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         playersPanel.setBounds(700, 0, 400, 725);
         c.add(playersPanel);
 
+        inititaeTurnTimer(timeSliceInSeconds);
         this.setLocationRelativeTo(c);
     }
 
@@ -1403,6 +1434,12 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
     }
    
     
+    private void endTurn(){
+        TimerLbl.setText(timeSliceInSeconds+"");
+        controller.switchTurn();
+        diceGui.enableDiceRoll();
+    }
+    
     private int[] stepping;
 
     @Override
@@ -1436,8 +1473,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
                         controller.handleNewPosition(destination);
                         playerMoving = false;
                         //below should be in switching turn function
-                        controller.switchTurn();
-                        diceGui.enableDiceRoll();
+                        
                         
                     }
                     else {
