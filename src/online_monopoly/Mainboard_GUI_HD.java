@@ -1363,7 +1363,8 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
             Point point = (p.name.equals(movingPlayerName)&&playerMoving)? animationPoint:boardMapper.getMapping(p.position);
 
             g.fillRect(point.getX(), point.getY(), 50, 50);
-            g.drawString(p.name, point.getX(), point.getY()-10);
+            g.setColor(Color.WHITE);
+            g.drawString(p.name, point.getX()+3, point.getY()+25);
         }
         /*
         //community lbl
