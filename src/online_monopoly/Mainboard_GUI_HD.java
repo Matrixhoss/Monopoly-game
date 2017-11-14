@@ -175,6 +175,8 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
     boolean backChance = false;
     int countChancemoves = 0;
     
+    PlayersPanel playersPanel = new PlayersPanel();
+    
     public Mainboard_GUI_HD(int x, int y) {
         this.x = x;
         this.y = y;
@@ -192,7 +194,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         _this = this;
         this.setTitle("Monopoly");
         this.setResizable(false);
-        this.setBounds(0, 0, 700, 725);
+        this.setBounds(0, 0, 1200, 725);
 //        this.setSize( Toolkit.getDefaultToolkit().getScreenSize() );
 //        this.setUndecorated(true);
 //        this.setAlwaysOnTop(true);
@@ -962,6 +964,9 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         background.setBounds(80, 80, 540, 540);
         c.add(background);
         background.add(zoom);
+        
+        playersPanel.setBounds(700, 0, 400, 725);
+        c.add(playersPanel);
 
         this.setLocationRelativeTo(c);
     }

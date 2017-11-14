@@ -4,7 +4,7 @@ package online_monopoly;
 
 
 public class BoardObject {
-    private String name;
+    protected String name;
     private int ID ;
     private Point poistion ;
     private String description;

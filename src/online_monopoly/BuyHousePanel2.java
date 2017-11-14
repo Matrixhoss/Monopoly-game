@@ -22,10 +22,10 @@ public class BuyHousePanel2 extends javax.swing.JPanel {
             
         } else {
             jButton3.setVisible(true);
-            jButton3.setText("3"); //Third Property Name
+            jButton3.setText(BuyHousePanel1.c.getCurrentPlayerGroups().get(groupNumber).getProperties().get(2).getPropertyName()); //Third Property Name
         }
-        jButton1.setText("1"); //First Property Name groupName.getProperties().get(0).getName();
-        jButton2.setText("2"); //Second Property Name groupName.getProperties().get(1).getName();
+        jButton1.setText(BuyHousePanel1.c.getCurrentPlayerGroups().get(groupNumber).getProperties().get(0).getPropertyName()); //First Property Name
+        jButton2.setText(BuyHousePanel1.c.getCurrentPlayerGroups().get(groupNumber).getProperties().get(1).getPropertyName()); //Second Property Name
     }
 
     /**
@@ -36,13 +36,13 @@ public class BuyHousePanel2 extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
+        jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
-        setLayout(new java.awt.GridBagLayout());
+        jLabel1.setText("Choose property");
 
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -50,30 +50,42 @@ public class BuyHousePanel2 extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(112, 96, 0, 0);
-        add(jButton1, gridBagConstraints);
 
         jButton2.setText("jButton2");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(112, 31, 0, 93);
-        add(jButton2, gridBagConstraints);
 
         jButton3.setText("jButton3");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 152, 108, 0);
-        add(jButton3, gridBagConstraints);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addComponent(jButton1)
+                        .addGap(31, 31, 31)
+                        .addComponent(jButton2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(152, 152, 152)
+                        .addComponent(jButton3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addComponent(jLabel1)))
+                .addGap(93, 93, 93))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addComponent(jLabel1)
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addGap(18, 18, 18)
+                .addComponent(jButton3))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -85,5 +97,6 @@ public class BuyHousePanel2 extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

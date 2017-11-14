@@ -15,8 +15,8 @@ public class Online_Monopoly {
 //            System.out.println("fffff"+x+"   "+y);
 //        }
     public static void main(String[] args) {
-//        MainMenu mm = new MainMenu();
-//        mm.setVisible(true);
+        MainMenu mm = new MainMenu();
+        mm.setVisible(true);
 //        ent n = new ent();
 //        n.setVisible(true);
 //      JFrame g = new JFrame("act");

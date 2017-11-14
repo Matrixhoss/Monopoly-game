@@ -28,7 +28,7 @@ public class Controller {
         groups = new Group[8];
         int[][] indices = new int[8][];
         
-        Color[] colors = {Color.DARK_GRAY, Color.CYAN, Color.MAGENTA,Color.orange,Color.red,Color.yellow, Color.green, Color.blue};
+        Color[] colors = {new Color(182, 220, 240), new Color(161, 115, 99), Color.magenta,Color.orange,Color.red,Color.yellow, Color.green, Color.blue};
         for(int i = 0; i < groups.length; i++) groups[i]=new Group(colors[i], i);
         groups[0].setIndices(new int[]{1, 2});
         groups[1].setIndices(new int[]{6,8,9}); 
@@ -75,6 +75,12 @@ public class Controller {
             gui.pullChanceCard("hello World!");
         }else if(posIndex == 2 || posIndex == 17 || posIndex == 33){
             gui.pullCommunityCard("hello world!");
+        }else if(posIndex == 4){
+            //handle income tax
+        }else if(posIndex == 38){
+            //handle luxury tax
+        }else if(posIndex == 30){
+            //Go to jail
         }
     
     }
