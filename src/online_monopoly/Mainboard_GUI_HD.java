@@ -201,9 +201,9 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
     boolean backChance = false;
     int countChancemoves = 0;
     
-    PlayersPanel playersPanel = new PlayersPanel();
+    PlayersPanel playersPanel;
     
-    Hashtable<String, Player> players;
+    public Hashtable<String, Player> players;
     JButton EndTurnBtn = new JButton("End Turn");
     JLabel TimerLbl = new JLabel(timeSliceInSeconds+"");
     
@@ -224,6 +224,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         players = controller.getPlayers();
         animationPoint = boardMapper.getMapping(0);
 
+         
 //        playersPos = new HashMap<String, Point>();
 //
 //        playersPos.put("fadi", boardMapper.getMapping(0));
@@ -1026,10 +1027,12 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         c.add(background);
         background.add(zoom);
         
+        playersPanel= new PlayersPanel(players);
         playersPanel.setBounds(700, 0, 400, 725);
         c.add(playersPanel);
 
         inititaeTurnTimer(timeSliceInSeconds);
+        
         this.setLocationRelativeTo(c);
     }
 
