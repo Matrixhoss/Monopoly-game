@@ -21,6 +21,7 @@ public class Controller {
     Group[] groups;
     int currentPlayer;
     
+    //all player names should be initialized here and be consisitent with the hashtable
     String[] playerNames = {"Fadi","Hassan","Hossam"};
     BoardObject[] boardsObjects;
 

@@ -24,11 +24,11 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
        turnTimer.addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent e) {
-               if(globalTimerInSeconds%timeSliceInSeconds == 0){
+               int time = Integer.parseInt(TimerLbl.getText());
+               if(time == 0){
                    endTurn();
                }else{
-                   String t = TimerLbl.getText();
-                   TimerLbl.setText((Integer.parseInt(t)-1)+"");
+                   TimerLbl.setText((time-1)+"");
                }
                if(globalTimerInSeconds == Integer.MAX_VALUE)globalTimerInSeconds = 0;
                else globalTimerInSeconds++;
