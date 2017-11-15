@@ -18,12 +18,14 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class Trade_GUI extends JFrame{
     public JLabel background;
+    public JLabel yours;
     public JButton trade;
     public JButton cancel;
     public JComboBox plylist;
     public JTextField money;
     public JComboBox property;
     public JComboBox property_money;
+    public JComboBox my_property;
     
     ImageIcon trade_logo= new ImageIcon(getClass().getResource("mischd/background.jpg"));
     
@@ -44,7 +46,10 @@ public class Trade_GUI extends JFrame{
         plylist.addActionListener(plylist);
         c.add(plylist);
         
-        
+        my_property = new JComboBox();
+        my_property.setBounds(225, 200, 120, 40);
+        my_property.addActionListener(my_property);
+        c.add(my_property);
         
         property = new JComboBox();
         property.setBounds(250, 50, 120, 40);
@@ -97,6 +102,10 @@ public class Trade_GUI extends JFrame{
             }
         );
         c.add(cancel);
+        
+        yours = new JLabel("Your property to exchange");
+        yours.setBounds(50, 200, 180, 40);
+        c.add(yours);
         
         background = new JLabel(trade_logo);
         background.setBounds(0, 0, 600, 400);
