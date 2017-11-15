@@ -138,7 +138,6 @@ It is your birthday - Collect $10 from each player {Not in the deck}
             ChanceCards.remove(0);
             if(s.type==5){
             hassan.addChanceCard(true);
-            return "#2123";
             }
             ChanceCards.add(s);
         }

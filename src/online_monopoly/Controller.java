@@ -95,26 +95,33 @@ public class Controller {
         if(posIndex == 7 || posIndex == 22 || posIndex == 36){
             String card=CC.DrawCardPrint("chance",p);
             gui.pullChanceCard(card);
-            System.err.println(p.name+" : "+p.getMoney());
+            printMoney();
         }else if(posIndex == 2 || posIndex == 17 || posIndex == 33){
             String card=CC.DrawCardPrint("chest",p);
             gui.pullCommunityCard(card);
-            System.err.println(p.name+" : "+p.getMoney());
+            printMoney();
         }else if(posIndex == 0){
             p.addMoney(200);
         }else if(posIndex == 4){
             //handle income tax
             int ch=0;
             TaxAndIncome.handleIncomeTax(p,ch);
-            System.err.println(p.name+" : "+p.getMoney());
+            printMoney();
         }else if(posIndex == 38){
             //handle luxury tax
             TaxAndIncome.handleLuxTax(p);
-            System.err.println(p.name+" : "+p.getMoney());
+            printMoney();
         }else if(posIndex == 30){
             //Go to jail
             
         }
     
+    }
+    private void printMoney(){
+        for(int i=0;i<3;i++){
+          Player p=players.get(playerNames[i]); 
+          System.err.println(p.name+" : "+p.getMoney());  
+        }
+        System.err.println();
     }
 }
