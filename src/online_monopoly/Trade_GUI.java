@@ -21,7 +21,8 @@ public class Trade_GUI extends JFrame{
     public JButton trade;
     public JButton cancel;
     public JComboBox plylist;
-    public JComboBox money;
+    public JTextField money;
+    public JComboBox property;
     public JComboBox property_money;
     
     ImageIcon trade_logo= new ImageIcon(getClass().getResource("mischd/background.jpg"));
@@ -43,11 +44,41 @@ public class Trade_GUI extends JFrame{
         plylist.addActionListener(plylist);
         c.add(plylist);
         
+        
+        
+        property = new JComboBox();
+        property.setBounds(250, 50, 120, 40);
+        property.setVisible(false);
+        property.addActionListener(property);
+        c.add(property);
+        
+        money = new JTextField("Enter amount");
+        money.setBounds(250, 50, 120, 40);
+        money.setVisible(false);
+        c.add(money);
+        
         String[] pro_mon = {"Money", "Property"};
         property_money = new JComboBox(pro_mon);
         property_money.setBounds(100, 50, 120, 40);
         property_money.setSelectedIndex(1);
         property_money.addActionListener(property_money);
+        property_money.addActionListener(
+            new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JComboBox cb = (JComboBox)e.getSource();
+                    String option = (String)cb.getSelectedItem();
+                    if(option.equals("Money")){
+                        money.setVisible(true);
+                        property.setVisible(false);
+                    }
+                    else{
+                        property.setVisible(true);
+                        money.setVisible(false);
+                    }
+                }
+            }
+        );
         c.add(property_money);
         
         trade = new JButton();
