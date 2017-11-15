@@ -401,7 +401,7 @@ public class Player {
         else{
           for (int i=0; i<=Pr1.size();i++){
           P.addProperty(Pr1.get(i));
-         //   this.removeProperty(Pr2.get(i));        Hassan !!!!!!!!!!!
+            this.removeProperty(Pr1.get(i));       
           }
           this.addMoney(m);
         
@@ -421,7 +421,7 @@ public class Player {
         else{
           for (int i=0; i<=Pr1.size();i++){
           this.addProperty(Pr1.get(i));
-         //   P.removeProperty(Pr2.get(i));        Hassan !!!!!!!!!!!
+            P.removeProperty(Pr1.get(i));    
           }
           P.addMoney(m);
     }
