@@ -1482,6 +1482,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
                     if (corners.isEmpty()) {
                         timer.stop();
                         controller.handleNewPosition(destination);
+                        playersPanel.Update(players);
                         playerMoving = false;
                         //below should be in switching turn function
                         

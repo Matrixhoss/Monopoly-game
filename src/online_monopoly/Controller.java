@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class Controller {
     private static CommunityAndChance CC = new CommunityAndChance();
     private static Dice dice = new Dice();
+    private Tax TaxAndIncome=new Tax("TaxAndINcome", -1, new Point(4,0));
     Hashtable<String, Player> players;
     GUIInterface gui;
     Group[] groups;
@@ -95,16 +96,24 @@ public class Controller {
             CC.DrawCard("chance",p);
             gui.pullChanceCard("hello World!");
             System.err.println(p.name+" : "+p.getMoney());
+        }else if(posIndex == 0){
+            p.addMoney(200);
         }else if(posIndex == 2 || posIndex == 17 || posIndex == 33){
             CC.DrawCard("chest",p);
             gui.pullCommunityCard("hello world!");
             System.err.println(p.name+" : "+p.getMoney());
         }else if(posIndex == 4){
             //handle income tax
+            int ch=0;
+            TaxAndIncome.handleIncomeTax(p,ch);
+            System.err.println(p.name+" : "+p.getMoney());
         }else if(posIndex == 38){
             //handle luxury tax
+            TaxAndIncome.handleLuxTax(p);
+            System.err.println(p.name+" : "+p.getMoney());
         }else if(posIndex == 30){
             //Go to jail
+            
         }
     
     }
