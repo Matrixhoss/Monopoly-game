@@ -359,6 +359,66 @@ public class Player {
         
     }
 //</editor-fold>
-    public void tradeP2P(ArrayList<Property> P1,ArrayList<Property> P2,Player plyr){}
-    public void tradeP2M(ArrayList<Property> P1, int m,Player plyr){}
+    public void tradeP2P(ArrayList<Property> Pr1,ArrayList<Property> Pr2,Player P){
+        int x=0;
+        for (int i=0; i<=Pr1.size();i++){
+         if (!this.checkProperty(Pr1.get(i)))
+            x=1;
+        }
+        for (int i=0; i<=Pr2.size();i++){
+         if (!P.checkProperty(Pr2.get(i)))
+            x=1;
+        }
+        if(x==1)
+            System.out.println("Some selections are invalid");
+        else{
+            for (int i=0; i<=Pr2.size();i++){
+            this.addProperty(Pr2.get(i));
+         //   P.removeProperty(Pr2.get(i));        Hassan !!!!!!!!!!!
+            }
+            for (int i=0; i<=Pr1.size();i++){
+        //     this.removeProperty(Pr1.get(i));    Hassan !!!!!!!!!!!
+              P.addProperty(Pr1.get(i));
+            }
+        }
+        
+    }
+    public void tradeP2M(ArrayList<Property> Pr1, int m,Player P){
+        int x=0;
+        for (int i=0; i<=Pr1.size();i++){
+         if (!this.checkProperty(Pr1.get(i)))
+            x=1;
+        }
+        if(P.getTotalMoney()<m)
+            x=1;
+        if(x==1)
+            System.out.println("Some selections are invalid");
+        else{
+          for (int i=0; i<=Pr1.size();i++){
+          P.addProperty(Pr1.get(i));
+         //   this.removeProperty(Pr2.get(i));        Hassan !!!!!!!!!!!
+          }
+          this.addMoney(m);
+        
+        }
+        
+    }
+    public void tradeM2P(ArrayList<Property> Pr1, int m,Player P){
+           int x=0;
+        for (int i=0; i<=Pr1.size();i++){
+         if (!P.checkProperty(Pr1.get(i)))
+            x=1;
+        }
+        if(this.getTotalMoney()<m)
+            x=1;
+        if(x==1)
+            System.out.println("Some selections are invalid");
+        else{
+          for (int i=0; i<=Pr1.size();i++){
+          this.addProperty(Pr1.get(i));
+         //   P.removeProperty(Pr2.get(i));        Hassan !!!!!!!!!!!
+          }
+          P.addMoney(m);
+    }
+    }
 }
