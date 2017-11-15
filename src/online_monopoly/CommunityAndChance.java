@@ -138,7 +138,7 @@ It is your birthday - Collect $10 from each player {Not in the deck}
             ChanceCards.remove(0);
             if(s.type==5){
             hassan.addChanceCard(true);
-            return "";
+            return "#2123";
             }
             ChanceCards.add(s);
         }
@@ -148,13 +148,13 @@ It is your birthday - Collect $10 from each player {Not in the deck}
             ChestCards.remove(0);
             if(s.type==5){
             hassan.addChanceCard(true);
-            return "";
+            return "#sos123";
             }
             ChestCards.add(s);
         }
         else
             //error
-            return "";
+            return "#sba7elfol213";
         
         // check for the chance/community card type and take corresponding action
         // 1 = pay,get, 3=goto, 4=return, 5=out of jail, 2 go to jail, 6 get from all, 7 repairs chance, 8 repair comm
