@@ -104,7 +104,7 @@ public class Controller {
             p.addMoney(200);
         }else if(posIndex == 4){
             //handle income tax
-            int ch=0;
+            int ch=0;//need gui to get the choice of player
             TaxAndIncome.handleIncomeTax(p,ch);
             printMoney();
         }else if(posIndex == 38){
