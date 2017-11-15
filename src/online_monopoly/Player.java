@@ -203,6 +203,13 @@ public class Player {
         return count;
     }
     
+    public boolean checkProperty (Property p){
+    for(int i = 0 ; i<this.MyProperties.size();i++){
+        if(p.equals(MyProperties.get(i))) return true ;
+    }
+    return false ;
+    }
+    
     //return all of properties in group
     public ArrayList<Property> getPropertiesInGroup(Property p) {
         ArrayList<Property> PS=new ArrayList<Property>();
