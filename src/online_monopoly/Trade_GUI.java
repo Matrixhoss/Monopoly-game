@@ -20,6 +20,9 @@ public class Trade_GUI extends JFrame{
     public JLabel background;
     public JButton trade;
     public JButton cancel;
+    public JComboBox plylist;
+    public JComboBox money;
+    public JComboBox property_money;
     
     ImageIcon trade_logo= new ImageIcon(getClass().getResource("mischd/background.jpg"));
     
@@ -32,6 +35,20 @@ public class Trade_GUI extends JFrame{
         
         Container c = this.getContentPane();
         c.setLayout(null);
+        
+        String[] ply = {"player 1", "player 2", "player 3", "player 4"};
+        plylist = new JComboBox(ply);
+        plylist.setBounds(400, 50, 120, 40);
+        plylist.setSelectedIndex(3);
+        plylist.addActionListener(plylist);
+        c.add(plylist);
+        
+        String[] pro_mon = {"Money", "Property"};
+        property_money = new JComboBox(pro_mon);
+        property_money.setBounds(100, 50, 120, 40);
+        property_money.setSelectedIndex(1);
+        property_money.addActionListener(property_money);
+        c.add(property_money);
         
         trade = new JButton();
         trade.setText("Trade");
