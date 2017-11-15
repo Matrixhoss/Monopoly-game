@@ -219,6 +219,11 @@ public class Player {
             }
         return PS;
     }
+    
+    //remove property
+    public void removeProperty(Property p){
+        MyProperties.remove(p);
+    }
 //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Houses and Hotels">
@@ -374,10 +379,10 @@ public class Player {
         else{
             for (int i=0; i<=Pr2.size();i++){
             this.addProperty(Pr2.get(i));
-         //   P.removeProperty(Pr2.get(i));        Hassan !!!!!!!!!!!
+            P.removeProperty(Pr2.get(i));
             }
             for (int i=0; i<=Pr1.size();i++){
-        //     this.removeProperty(Pr1.get(i));    Hassan !!!!!!!!!!!
+            this.removeProperty(Pr1.get(i));
               P.addProperty(Pr1.get(i));
             }
         }
