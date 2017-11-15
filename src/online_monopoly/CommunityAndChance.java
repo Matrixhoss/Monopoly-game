@@ -115,8 +115,8 @@ It is your birthday - Collect $10 from each player {Not in the deck}
         this.DrawCard(type,hassan, false);        
     }
     
-    public void DrawCardPrint(String type, Player hassan){
-        this.DrawCardPrint(type,hassan, false);         
+    public String DrawCardPrint(String type, Player hassan){
+        return this.DrawCardPrint(type,hassan, false);         
     }
     
     public void ReturnChanceJail(){
