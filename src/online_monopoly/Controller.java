@@ -96,12 +96,12 @@ public class Controller {
             CC.DrawCard("chance",p);
             gui.pullChanceCard("hello World!");
             System.err.println(p.name+" : "+p.getMoney());
-        }else if(posIndex == 0){
-            p.addMoney(200);
         }else if(posIndex == 2 || posIndex == 17 || posIndex == 33){
             CC.DrawCard("chest",p);
             gui.pullCommunityCard("hello world!");
             System.err.println(p.name+" : "+p.getMoney());
+        }else if(posIndex == 0){
+            p.addMoney(200);
         }else if(posIndex == 4){
             //handle income tax
             int ch=0;
