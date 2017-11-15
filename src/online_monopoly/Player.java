@@ -359,4 +359,6 @@ public class Player {
         
     }
 //</editor-fold>
+    public void tradeP2P(ArrayList<Property> P1,ArrayList<Property> P2,Player plyr){}
+    public void tradeP2M(ArrayList<Property> P1, int m,Player plyr){}
 }
