@@ -93,12 +93,12 @@ public class Controller {
     public void handleNewPosition(int posIndex){
         Player p=players.get(playerNames[currentPlayer]);
         if(posIndex == 7 || posIndex == 22 || posIndex == 36){
-            CC.DrawCard("chance",p);
-            gui.pullChanceCard("hello World!");
+            String card=CC.DrawCardPrint("chance",p);
+            gui.pullChanceCard(card);
             System.err.println(p.name+" : "+p.getMoney());
         }else if(posIndex == 2 || posIndex == 17 || posIndex == 33){
-            CC.DrawCard("chest",p);
-            gui.pullCommunityCard("hello world!");
+            String card=CC.DrawCardPrint("chest",p);
+            gui.pullCommunityCard(card);
             System.err.println(p.name+" : "+p.getMoney());
         }else if(posIndex == 0){
             p.addMoney(200);
