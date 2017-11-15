@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Timer;
 import java.util.TimerTask;
+import javafx.scene.control.CheckBox;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class Trade_GUI extends JFrame{
@@ -26,7 +27,27 @@ public class Trade_GUI extends JFrame{
     public JComboBox property;
     public JComboBox property_money;
     public JComboBox my_property;
-    
+    public JCheckBox box;
+    public JCheckBox box1;
+    public JCheckBox box2;
+    public JCheckBox box3;
+    public JCheckBox box4;
+    public JCheckBox box5;
+    public JCheckBox box6;
+    public JCheckBox box7;
+    public JCheckBox box8;
+    public JCheckBox box9;
+    public JCheckBox box10;
+    public JCheckBox box11;
+    public JCheckBox box12;
+    public JCheckBox box13;
+    public JCheckBox box14;
+    public JCheckBox box15;
+    public JCheckBox box16;
+    public JCheckBox box17;
+    public JCheckBox box18;
+    public JCheckBox box19;
+    public JCheckBox box20;
     ImageIcon trade_logo= new ImageIcon(getClass().getResource("mischd/background.jpg"));
     
     public Trade_GUI(){
@@ -38,6 +59,11 @@ public class Trade_GUI extends JFrame{
         
         Container c = this.getContentPane();
         c.setLayout(null);
+        
+        box = new JCheckBox();
+        box.setBounds(100, 100, 20, 20);
+        box.setSelected(false);
+        c.add(box);
         
         String[] ply = {"player 1", "player 2", "player 3", "player 4"};
         plylist = new JComboBox(ply);
