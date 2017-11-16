@@ -449,14 +449,14 @@ class Tax extends BoardObject {
 }
 //</editor-fold>
 
- //<editor-fold defaultstate="collapsed" desc="PropertyStander Class">
+//<editor-fold defaultstate="collapsed" desc="PropertyStander Class">
 class PropertyStander {
 
     // Names 
     //<editor-fold defaultstate="collapsed" desc="Groups">
     final public static int BrownGroup = 1;
     final public static int LightBlueGroup = 2;
-    final public static int PinkGroup = 3;
+    final public static int RozeGroup = 3;
     final public static int OrangeGroup = 4;
     final public static int RedGroup = 5;
     final public static int YelloGroup = 6;
@@ -635,8 +635,63 @@ class PropertyStander {
     final public static int H_ParkPlace = 200;
     final public static int H_Boardwalk = 200;
 
-    //</editor-fold>        
+    //</editor-fold>     
     
+    //<editor-fold defaultstate="collapsed" desc="Position">
+    final public static Point P_MediterraneanAvenue = new Point(1,0);
+    final public static Point P_BalticAvenue = new Point(3,0);
+    //Light Blue
+    final public static Point P_OrientalAvenue = new Point(6,0);
+    final public static Point P_VermontAvenue = new Point(8,0);
+    final public static Point P_ConnecticutAvenue = new Point(9,0);
+    //Pink
+    final public static Point P_StCharlesPlace = new Point(10,1);
+    final public static Point P_StatesAvenue = new Point(10,3);
+    final public static Point P_VirginiaAvenue = new Point(10,4);
+    //Orange
+    final public static Point P_StJamesPlace = new Point(10,6);
+    final public static Point P_TennesseeAvenue = new Point(10,8);
+    final public static Point P_NewYorkAvenue = new Point(10,9);
+    //Red
+    final public static Point P_KentuckyAvenue = new Point(9,10);
+    final public static Point P_IndianaAvenue = new Point(7,10);
+    final public static Point P_IllinoisAvenue = new Point(6,10);
+    //Yellow
+    final public static Point P_AtlanticAvenue = new Point(4,10);
+    final public static Point P_VentnorAvenue = new Point(3,10);
+    final public static Point P_MarvinGardens = new Point(1,10);
+    //Green
+    final public static Point P_PacificAvenue = new Point(0,9);
+    final public static Point P_NorthCarolinaAvenue = new Point(0,8);
+    final public static Point P_PennsylvaniaAvenue = new Point(0,6);
+    //Dark Blue
+    final public static Point P_ParkPlace = new Point(0,3);
+    final public static Point P_Boardwalk = new Point(0,1);
+    //Stations
+    final public static Point P_ReadingRailroad = new Point(5,0);
+    final public static Point P_PennsylvaniaRailroad = new Point(10,5);
+    final public static Point P_BORailroad = new Point(5,10);
+    final public static Point P_ShortLine = new Point(0,5);
+    //Utilities
+    final public static Point P_ElectricCompany = new Point(10,2);
+    final public static Point P_WaterWorks = new Point(2,10);
+    //Chance and comm
+    final public static Point P_Chance1 = new Point(7,0);
+    final public static Point P_Chance2 = new Point(8,10);
+    final public static Point P_Chance3 = new Point(0,4);
+    final public static Point P_CommunityChest1  = new Point(2,0);
+    final public static Point P_CommunityChest2  = new Point(10,7);
+    final public static Point P_CommunityChest3  = new Point(0,7);
+    //Jail , Go To Jail , Free Parking , GO
+    final public static Point P_Go = new Point(0,0);
+    final public static Point P_Jail = new Point(10,0);
+    final public static Point P_FreeParking = new Point(10,10);
+    final public static Point P_GoToJail  = new Point(0,10);   
+    // income tax
+    final public static Point P_Tax1 = new Point(4,0);
+    final public static Point P_Tax2 = new Point(0,2);
+    
+    //</editor-fold> 
     
 }
     //</editor-fold> 
