@@ -37,6 +37,13 @@ public class Point {
     public void setY(int y) {
         this.y = y;
     }
+
+    @Override
+    public String toString() {
+        return "X : "+this.x+" , Y : "+this.y;
+    }
+    
+    
     
     public static boolean compare(Point[] Ps,Point p){
         for(int i=0;i<Ps.length;i++){

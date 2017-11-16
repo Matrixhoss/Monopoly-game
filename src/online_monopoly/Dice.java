@@ -50,6 +50,8 @@ public class Dice {
                 System.out.println("DD " + dd);
             }
         }
+        d[0]=1;
+        d[1]=1;
         return d;
 
     }

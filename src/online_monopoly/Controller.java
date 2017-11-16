@@ -129,20 +129,20 @@ public class Controller {
     public static Point IndexToPoint(int index){
         Point result=new Point(0,0);
         if(index<11){
-            result.setX(index%10);
+            result.setX(index);
             result.setY(0);
         }
         else if(index>10&&index<21){
             result.setX(10);
-            result.setY((index-10)%10);
+            result.setY((index-10));
         }
         else if(index>20&&index<31){
-            result.setX(10-((index-10)%10));
+            result.setX(10-(index-20));
             result.setY(10);
         }
         else{
-            result.setX(10-((index-10)%10));
-            result.setY(10);
+            result.setX(0);
+            result.setY(10-(index-30));
         }
         return result;
     }
