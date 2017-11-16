@@ -8,6 +8,7 @@ package online_monopoly;
 import java.awt.Color;
 import java.util.Hashtable;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -113,8 +114,13 @@ public class Controller {
             TaxAndIncome.handleLuxTax(p);
             printMoney();
         }else if(posIndex == 30){
-            //Go to jail
-            
+            //Go to jail    
+        }
+        else if(posIndex==3){
+            int ch=JOptionPane.showConfirmDialog(null,"Do you want to buy this Property", "Buying Property", JOptionPane.YES_NO_OPTION);
+            if(ch==JOptionPane.YES_OPTION){
+                p.addMoney(-500);
+            }
         }
     
     }
@@ -144,6 +150,19 @@ public class Controller {
             result.setX(0);
             result.setY(10-(index-30));
         }
+        return result;
+    }
+    
+    public static int PointToIndex(Point p){
+        int result=0;
+        if(p.getX()>=0&&p.getY()==0)
+            result=p.getX();
+        else if(p.getX()==10&&p.getY()>0)
+            result=p.getX()+p.getY();
+        else if(p.getY()==10&&p.getX()>0)
+            result=20+(10-p.getX());
+        else
+            result=30+(10-p.getY());
         return result;
     }
 }
