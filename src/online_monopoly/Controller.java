@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * @author fadia
  */
 public class Controller {
-    private static CommunityAndChance CC = new CommunityAndChance();
+    private static CommunityAndChance CC ;
     private static Dice dice = new Dice();
     private Tax TaxAndIncome=new Tax("TaxAndINcome", -1, new Point(4,0));
     Hashtable<String, Player> players;
@@ -60,6 +60,7 @@ public class Controller {
         players.put("Fadi", new Player("Fadi", Color.green));
         players.put("Hassan", new Player("Hassan", Color.RED));
         players.put("Hossam", new Player("Hossam", Color.BLUE));
+        CC = new CommunityAndChance(players,playerNames);
         
     }
     
@@ -93,11 +94,11 @@ public class Controller {
     public void handleNewPosition(int posIndex){
         Player p=players.get(playerNames[currentPlayer]);
         if(posIndex == 7 || posIndex == 22 || posIndex == 36){
-            String card=CC.DrawCardPrint("chance",p);
+            String card=CC.DrawCardPrint("chance",this.currentPlayer);
             gui.pullChanceCard(card);
             printMoney();
         }else if(posIndex == 2 || posIndex == 17 || posIndex == 33){
-            String card=CC.DrawCardPrint("chest",p);
+            String card=CC.DrawCardPrint("chest",this.currentPlayer);
             gui.pullCommunityCard(card);
             printMoney();
         }else if(posIndex == 0){
@@ -123,5 +124,26 @@ public class Controller {
           System.err.println(p.name+" : "+p.getMoney());  
         }
         System.err.println();
+    }
+    
+    public static Point IndexToPoint(int index){
+        Point result=new Point(0,0);
+        if(index<11){
+            result.setX(index%10);
+            result.setY(0);
+        }
+        else if(index>10&&index<21){
+            result.setX(10);
+            result.setY((index-10)%10);
+        }
+        else if(index>20&&index<31){
+            result.setX(10-((index-10)%10));
+            result.setY(10);
+        }
+        else{
+            result.setX(10-((index-10)%10));
+            result.setY(10);
+        }
+        return result;
     }
 }

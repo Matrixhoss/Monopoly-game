@@ -22,7 +22,6 @@ public class Mainboard_GUI extends JFrame {
     private Controller controller=new Controller();
     private Mainboard_GUI _this;
     public static Player p;
-    public static CommunityAndChance CC = new CommunityAndChance();
     public static Dice d = new Dice();
     public static Tax T = new Tax("Tax", 0, new Point(4, 0));
     public int x, y;

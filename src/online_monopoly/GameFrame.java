@@ -23,7 +23,7 @@ public class GameFrame extends javax.swing.JFrame {
     int distanceLeft;
     Player p=new Player("HASSAN", Color.red);
     Point[] ch=new Point[6];
-    CommunityAndChance cc=new CommunityAndChance();
+    //CommunityAndChance cc=new CommunityAndChance();
     int step = 5;
 
     Dice dice = new Dice();
@@ -153,7 +153,7 @@ public class GameFrame extends javax.swing.JFrame {
             Point po=new Point(p.getX(),p.getY());
             System.out.println(po.getX()+" , "+po.getY());
             if(Point.compare(ch, po)){
-                cc.DrawCard("chance", p,true);
+                //cc.DrawCard("chance", p,true);
             }
             jLabel3.setText(p.getMoney()+"");    
             final javax.swing.Timer timer = new javax.swing.Timer(50, null);

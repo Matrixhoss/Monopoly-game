@@ -8,6 +8,7 @@ package online_monopoly;
 import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Hashtable;
 import java.util.Random;
 import javax.swing.JOptionPane;
 
@@ -49,10 +50,12 @@ public class CommunityAndChance{
     
     ArrayList<Card> ChanceCards;
     ArrayList<Card> ChestCards;
+    Hashtable<String, Player> players;
+    String[] playerNames;
     
-    
-    public CommunityAndChance(){
-        
+    public CommunityAndChance(Hashtable<String, Player> ps,String[] pNames){
+        this.players=ps;
+        this.playerNames=pNames;
         ChanceCards = new ArrayList<Card>();
         ChestCards = new ArrayList<Card>();
         
@@ -115,7 +118,8 @@ It is your birthday - Collect $10 from each player {Not in the deck}
         this.DrawCard(type,hassan, false);        
     }
     
-    public String DrawCardPrint(String type, Player hassan){
+    public String DrawCardPrint(String type,int currentPlayer){
+        Player hassan=players.get(playerNames[currentPlayer]);
         return this.DrawCardPrint(type,hassan, false);         
     }
     
