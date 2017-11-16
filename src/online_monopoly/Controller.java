@@ -106,7 +106,7 @@ public class Controller {
             p.addMoney(200);
         }else if(posIndex == 4){
             //handle income tax
-            TaxOptionPanel taxPanel=new TaxOptionPanel(p,TaxAndIncome);
+            TaxOptionFrame taxPanel=new TaxOptionFrame(p,TaxAndIncome);
             taxPanel.setVisible(true);
             printMoney();
         }else if(posIndex == 38){
