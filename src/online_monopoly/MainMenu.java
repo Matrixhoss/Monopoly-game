@@ -96,7 +96,7 @@ public class MainMenu extends JFrame{
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    ent n = new ent(_this);
+                    ent n = new ent(MainMenu.this);
                     n.setVisible(true);
                 }
             }

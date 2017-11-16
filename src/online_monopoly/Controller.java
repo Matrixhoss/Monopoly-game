@@ -90,7 +90,7 @@ public class Controller {
         return resGroups;
     }
     public void handleNewPosition(int posIndex){
-        Player p=players.get(playerNames[currentPlayer]);
+        Player p = getCurrentPlayer();
         if(posIndex == 7 || posIndex == 22 || posIndex == 36){
             CC.DrawCard("chance",p);
             gui.pullChanceCard("hello World!");

@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
@@ -209,6 +211,9 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
     public Mainboard_GUI_HD(int x, int y) {
         this.x = x;
         this.y = y;
+       try {
+           UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+       } catch (Exception ex) {}
 
         //pass in image side length in pixels
         boardMapper = new BoardMapper(700,50);
