@@ -5,6 +5,14 @@
  */
 package online_monopoly;
 
+import java.awt.Color;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 /**
  *
  * @author Hesham-Desktop
@@ -15,6 +23,7 @@ public class TaxOptionFrame extends javax.swing.JFrame {
     private int c = 5;
    private Player P;
    private Tax T;
+   ImageIcon trade_logo= new ImageIcon(getClass().getResource("mischd/background.jpg"));
   
    
 
@@ -31,12 +40,16 @@ public class TaxOptionFrame extends javax.swing.JFrame {
      */
     public TaxOptionFrame(){}
     public TaxOptionFrame(Player P, Tax T) {
+        
+        this.setUndecorated(true);
+        this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.BLACK));
+        this.setContentPane(new JLabel(trade_logo));
+        this.setBounds(100, 100, 150, 100);
+        
+        this.pack();
         this.P =P;
         this.T=T;
-     
-        initComponents();
-        
-        
+        initComponents();  
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -102,6 +115,7 @@ public class TaxOptionFrame extends javax.swing.JFrame {
         System.out.println("Before tax:"+P.getMoney());
         T.handleIncomeTax(P,0);
         System.out.println("After tax:"+P.getMoney());
+       this.dispose();
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -109,7 +123,7 @@ public class TaxOptionFrame extends javax.swing.JFrame {
         System.out.println("Before tax:"+P.getMoney());
         T.handleIncomeTax(P,1);
         System.out.println("After tax:"+P.getMoney());
-
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
