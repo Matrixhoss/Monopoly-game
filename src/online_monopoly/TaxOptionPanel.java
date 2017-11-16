@@ -16,7 +16,7 @@ public class TaxOptionPanel extends javax.swing.JPanel {
     private int c = 5;
    private Player P;
    private Tax T;
-   private JFrame frame;
+  
    
 
     public int getChoice() {
@@ -31,10 +31,10 @@ public class TaxOptionPanel extends javax.swing.JPanel {
      * Creates new form OptionPanel
      */
 
-    public TaxOptionPanel(Player P, Tax T, JFrame Frame) {
+    public TaxOptionPanel(Player P, Tax T) {
         this.P =P;
         this.T=T;
-        this.frame=Frame;
+     
         initComponents();
         
         
@@ -97,17 +97,17 @@ public class TaxOptionPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        System.out.println("Before tax:"+P.getMoney());
         T.handleIncomeTax(P,1);
-        System.out.println(P.getMoney());
-        frame.remove(this);
-        frame.repaint();
+        System.out.println("After tax:"+P.getMoney());
+  
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        System.out.println("Before tax:"+P.getMoney());
         T.handleIncomeTax(P,0);
-          System.out.println(P.getMoney());
-          frame.remove(this);
-          frame.repaint();
+          System.out.println("After tax:"+P.getMoney());
+          
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
