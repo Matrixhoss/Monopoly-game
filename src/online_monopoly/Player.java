@@ -203,6 +203,13 @@ public class Player {
         return count;
     }
     
+    public boolean checkProperty (Property p){
+    for(int i = 0 ; i<this.MyProperties.size();i++){
+        if(p.equals(MyProperties.get(i))) return true ;
+    }
+    return false ;
+    }
+    
     //return all of properties in group
     public ArrayList<Property> getPropertiesInGroup(Property p) {
         ArrayList<Property> PS=new ArrayList<Property>();
@@ -211,6 +218,11 @@ public class Player {
                 PS.add(MyProperties.get(i));
             }
         return PS;
+    }
+    
+    //remove property
+    public void removeProperty(Property p){
+        MyProperties.remove(p);
     }
 //</editor-fold>
     
@@ -352,4 +364,66 @@ public class Player {
         
     }
 //</editor-fold>
+    public void tradeP2P(ArrayList<Property> Pr1,ArrayList<Property> Pr2,Player P){
+        int x=0;
+        for (int i=0; i<=Pr1.size();i++){
+         if (!this.checkProperty(Pr1.get(i)))
+            x=1;
+        }
+        for (int i=0; i<=Pr2.size();i++){
+         if (!P.checkProperty(Pr2.get(i)))
+            x=1;
+        }
+        if(x==1)
+            System.out.println("Some selections are invalid");
+        else{
+            for (int i=0; i<=Pr2.size();i++){
+            this.addProperty(Pr2.get(i));
+            P.removeProperty(Pr2.get(i));
+            }
+            for (int i=0; i<=Pr1.size();i++){
+            this.removeProperty(Pr1.get(i));
+              P.addProperty(Pr1.get(i));
+            }
+        }
+        
+    }
+    public void tradeP2M(ArrayList<Property> Pr1, int m,Player P){
+        int x=0;
+        for (int i=0; i<=Pr1.size();i++){
+         if (!this.checkProperty(Pr1.get(i)))
+            x=1;
+        }
+        if(P.getTotalMoney()<m)
+            x=1;
+        if(x==1)
+            System.out.println("Some selections are invalid");
+        else{
+          for (int i=0; i<=Pr1.size();i++){
+          P.addProperty(Pr1.get(i));
+            this.removeProperty(Pr1.get(i));       
+          }
+          this.addMoney(m);
+        
+        }
+        
+    }
+    public void tradeM2P(ArrayList<Property> Pr1, int m,Player P){
+           int x=0;
+        for (int i=0; i<=Pr1.size();i++){
+         if (!P.checkProperty(Pr1.get(i)))
+            x=1;
+        }
+        if(this.getTotalMoney()<m)
+            x=1;
+        if(x==1)
+            System.out.println("Some selections are invalid");
+        else{
+          for (int i=0; i<=Pr1.size();i++){
+          this.addProperty(Pr1.get(i));
+            P.removeProperty(Pr1.get(i));    
+          }
+          P.addMoney(m);
+    }
+    }
 }

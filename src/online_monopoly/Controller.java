@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class Controller {
     private static CommunityAndChance CC = new CommunityAndChance();
     private static Dice dice = new Dice();
+    private Tax TaxAndIncome=new Tax("TaxAndINcome", -1, new Point(4,0));
     Hashtable<String, Player> players;
     GUIInterface gui;
     Group[] groups;
@@ -92,20 +93,35 @@ public class Controller {
     public void handleNewPosition(int posIndex){
         Player p = getCurrentPlayer();
         if(posIndex == 7 || posIndex == 22 || posIndex == 36){
-            CC.DrawCard("chance",p);
-            gui.pullChanceCard("hello World!");
-            System.err.println(p.name+" : "+p.getMoney());
+            String card=CC.DrawCardPrint("chance",p);
+            gui.pullChanceCard(card);
+            printMoney();
         }else if(posIndex == 2 || posIndex == 17 || posIndex == 33){
-            CC.DrawCard("chest",p);
-            gui.pullCommunityCard("hello world!");
-            System.err.println(p.name+" : "+p.getMoney());
+            String card=CC.DrawCardPrint("chest",p);
+            gui.pullCommunityCard(card);
+            printMoney();
+        }else if(posIndex == 0){
+            p.addMoney(200);
         }else if(posIndex == 4){
             //handle income tax
+            int ch=0;//need gui to get the choice of player
+            TaxAndIncome.handleIncomeTax(p,ch);
+            printMoney();
         }else if(posIndex == 38){
             //handle luxury tax
+            TaxAndIncome.handleLuxTax(p);
+            printMoney();
         }else if(posIndex == 30){
             //Go to jail
+            
         }
     
+    }
+    private void printMoney(){
+        for(int i=0;i<3;i++){
+          Player p=players.get(playerNames[i]); 
+          System.err.println(p.name+" : "+p.getMoney());  
+        }
+        System.err.println();
     }
 }

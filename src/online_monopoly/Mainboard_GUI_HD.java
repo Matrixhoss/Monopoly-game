@@ -39,7 +39,6 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
     private javax.swing.Timer  turnTimer;
     private int timeSliceInSeconds = 10; 
     
-    
     private boolean playerMoving = false;
     private String movingPlayerName = "";
     private Point animationPoint;
@@ -53,6 +52,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
     public int x, y;
     public JLabel zoom = new JLabel();
     public JLabel background;
+    public JButton trade;
     // public JLabel ff;
     public JLabel b1;
     public JLabel b2;
@@ -251,6 +251,17 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         zoom.setBounds(190, 100, 199, 300);
         zoom.setVisible(true);
 
+        trade = new JButton();
+        trade.setBounds(100, 550, 120, 40);
+        trade.setText("Trade");
+        trade.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Trade_GUI tg = new Trade_GUI();
+                tg.setVisible(true);
+            }});
+        c.add(trade);
+        
         b1 = new JLabel(p1);
         b1.setBackground(Color.BLACK);
         b1.setBounds(620, 620, 80, 80);
@@ -1477,6 +1488,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
                     if (corners.isEmpty()) {
                         timer.stop();
                         controller.handleNewPosition(destination);
+                        playersPanel.Update(players);
                         playerMoving = false;
                         //below should be in switching turn function
                         

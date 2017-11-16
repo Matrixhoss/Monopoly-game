@@ -51,6 +51,7 @@ public class PlayersPanel extends javax.swing.JPanel {
         Set<String> keys = PlayersP.keySet();
         for(String key: keys){
             Panels.get(k).Setmoney(PlayersP.get(key).getMoney());
+            k++;
         }
         
     }

@@ -115,6 +115,10 @@ It is your birthday - Collect $10 from each player {Not in the deck}
         this.DrawCard(type,hassan, false);        
     }
     
+    public String DrawCardPrint(String type, Player hassan){
+        return this.DrawCardPrint(type,hassan, false);         
+    }
+    
     public void ReturnChanceJail(){
         Card e = new Card(5,"Get Out of Jail Free");
         ChanceCards.add(e);
@@ -123,15 +127,17 @@ It is your birthday - Collect $10 from each player {Not in the deck}
         Card e = new Card(5,"Get Out of Jail Free");
         ChestCards.add(e);
     }
-    
     public void DrawCard(String type, Player hassan, boolean print){
+        this.DrawCardPrint(type, hassan, print);
+    }
+    
+    public String DrawCardPrint(String type, Player hassan, boolean print){
         Card s;
         if(type.equalsIgnoreCase("chance")){
             s = ChanceCards.get(0);
             ChanceCards.remove(0);
             if(s.type==5){
             hassan.addChanceCard(true);
-            return;
             }
             ChanceCards.add(s);
         }
@@ -141,13 +147,13 @@ It is your birthday - Collect $10 from each player {Not in the deck}
             ChestCards.remove(0);
             if(s.type==5){
             hassan.addChanceCard(true);
-            return;
+            return "#sos123";
             }
             ChestCards.add(s);
         }
         else
             //error
-            return;
+            return "#sba7elfol213";
         
         // check for the chance/community card type and take corresponding action
         // 1 = pay,get, 3=goto, 4=return, 5=out of jail, 2 go to jail, 6 get from all, 7 repairs chance, 8 repair comm
@@ -166,21 +172,21 @@ It is your birthday - Collect $10 from each player {Not in the deck}
                 break;
             case 6:
                 // get money from all players somehow.
-                return;
+                break;
             case 7:
                 hassan.payMoney(25*hassan.getTotalHouses());
                 hassan.payMoney(100*hassan.getTotalHotels());
-                return;
+                break;
             case 8:
                 hassan.payMoney(40*hassan.getTotalHouses());
                 hassan.payMoney(115*hassan.getTotalHotels());
-                return;
+                break;
             default:
                 break;
         }
         //here should call the class which will draw gui for card.
         
-        
+        return s.label;
     }
     
     
