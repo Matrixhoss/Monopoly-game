@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.ConsoleHandler;
 import javafx.scene.control.CheckBox;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
@@ -110,7 +111,7 @@ public class Trade_GUI extends JFrame {
 //        box.setBounds(100, 100, 20, 20);
 //        box.setSelected(false);
 //        c.add(box);
-//        
+        Controller cw = new Controller();
         String[] ply = {"player 1", "player 2", "player 3", "player 4"};
         plylist = new JComboBox(ply);
         plylist.setBounds(400, 50, 120, 40);

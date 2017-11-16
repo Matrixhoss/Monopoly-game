@@ -137,9 +137,7 @@ public class Controller {
                 NormalProperty NP = (NormalProperty) p1;
                 BuyPropertyOrPay(NP, p);
             }
-
         }
-
     }
 
     private void printMoney() {
