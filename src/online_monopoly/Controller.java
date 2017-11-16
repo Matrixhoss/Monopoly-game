@@ -106,8 +106,8 @@ public class Controller {
             p.addMoney(200);
         }else if(posIndex == 4){
             //handle income tax
-            int ch=0;//need gui to get the choice of player
-            TaxAndIncome.handleIncomeTax(p,ch);
+            TaxOptionPanel taxPanel=new TaxOptionPanel(p,TaxAndIncome);
+            taxPanel.setVisible(true);
             printMoney();
         }else if(posIndex == 38){
             //handle luxury tax
