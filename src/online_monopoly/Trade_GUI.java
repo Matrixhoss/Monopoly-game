@@ -70,7 +70,11 @@ public class Trade_GUI extends JFrame {
 
     ImageIcon trade_logo = new ImageIcon(getClass().getResource("mischd/background.jpg"));
 
-    public Trade_GUI() {
+    public Trade_GUI(){
+        
+    }
+    public Trade_GUI(Hashtable<String, Player> hesham) {
+        String[] yes;
         this.setTitle("Trading");
         this.setResizable(false);
         this.setBounds(300, 300, 600, 400);
@@ -111,9 +115,12 @@ public class Trade_GUI extends JFrame {
 //        box.setBounds(100, 100, 20, 20);
 //        box.setSelected(false);
 //        c.add(box);
-        Controller cw = new Controller();
-        String[] ply = {"player 1", "player 2", "player 3", "player 4"};
-        plylist = new JComboBox(ply);
+
+        for (int i = 0; i < yes.length; i++) {
+            hesham.get(yes[i]);
+        }
+        //String[] ply = {"player 1", "player 2", "player 3", "player 4"};
+        plylist = new JComboBox(yes);
         plylist.setBounds(400, 50, 120, 40);
         plylist.setSelectedIndex(3);
         plylist.addActionListener(plylist);
