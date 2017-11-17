@@ -30,6 +30,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
                if(time == 0){
                    endTurn();
                }else{
+                   if(time < timeSliceInSeconds*2/3) diceGui.ChangeDices();
                    TimerLbl.setText((time-1)+"");
                }
            }
@@ -37,7 +38,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
        turnTimer.start();
     } 
     private javax.swing.Timer  turnTimer;
-    private int timeSliceInSeconds = 10; 
+    private final int timeSliceInSeconds = 15; 
     
     private boolean playerMoving = false;
     private String movingPlayerName = "";
@@ -531,7 +532,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
             }
         });
         c.add(b15);
-
+        
         b16 = new JLabel(p16);
         b16.setBackground(Color.BLACK);
         b16.setBounds(0, 320, 80, 60);

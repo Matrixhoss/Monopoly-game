@@ -98,7 +98,7 @@ public class DiceGui extends javax.swing.JPanel {
     public void enableDiceRoll(){
         this.rollEnabled = true;
     }
-private void ChangeDices() {
+public void ChangeDices() {
 
     if(rollEnabled){
         rollEnabled = false;
