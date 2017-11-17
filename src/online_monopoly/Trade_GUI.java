@@ -49,7 +49,7 @@ public class Trade_GUI extends JFrame {
     private ArrayList<JCheckBox> Selected1=new ArrayList<JCheckBox>();
     private ArrayList<JCheckBox> Selected2 =new ArrayList<JCheckBox>();
 
-    public Trade_GUI(Hashtable<String, Player> players, String[] Names) {
+    public Trade_GUI(Hashtable<String, Player> players, String[] Names,Player Me) {
         Players = new ArrayList<Player>();
         this.Names = Names;
         this.setTitle("Trading");
@@ -87,7 +87,6 @@ public class Trade_GUI extends JFrame {
         for (int i = 0; i < Names.length; i++) {
             Players.add(players.get(Names[i]));
         }
-        //String[] ply = {"player 1", "player 2", "player 3", "player 4"};
         plylist = new JComboBox();
         plylist.setBounds(400, 50, 120, 40);
 
@@ -171,13 +170,7 @@ public class Trade_GUI extends JFrame {
         PropertyScroll.setBounds(240, 50, 130, 100);
         c.add(PropertyScroll);
 
-        //to be Deleted
-//            for(int i=0; i<15;i++){
-//                y=1;
-//             JCheckBox box = new JCheckBox("Asdasd");
-//             box.setBounds(0,y+1, 50,5000);
-//             PropertyPanel.add(box);}
-        //to Be deleted
+
         Players.get(0).addProperty(new NormalProperty("MediterraneanAvenue", 1, PropertyStander.P_MediterraneanAvenue, PropertyStander.V_MediterraneanAvenue, PropertyStander.R_MediterraneanAvenue, PropertyStander.M_MediterraneanAvenue, PropertyStander.BrownGroup, PropertyStander.BrownGroupNum, PropertyStander.H_MediterraneanAvenue));
         Players.get(0).addProperty(new NormalProperty("OrientalAvenue", 6, PropertyStander.P_OrientalAvenue, PropertyStander.V_OrientalAvenue, PropertyStander.R_OrientalAvenue, PropertyStander.M_OrientalAvenue, PropertyStander.LightBlueGroup, PropertyStander.LightBlueGroupNum, PropertyStander.H_OrientalAvenue));
         Players.get(1).addProperty(new NormalProperty("StJamesPlace", 16, PropertyStander.P_StJamesPlace, PropertyStander.V_StJamesPlace, PropertyStander.R_StJamesPlace, PropertyStander.M_StJamesPlace, PropertyStander.OrangeGroup, PropertyStander.OrangeGroupNum, PropertyStander.H_StJamesPlace));
@@ -188,6 +181,10 @@ public class Trade_GUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 PropertyPanel.removeAll();
+                PropertyPanel.revalidate();
+                PropertyPanel.repaint();
+                PropertyScroll.revalidate();
+                PropertyScroll.repaint();
                 for (int i = 0; i < players.get(plylist.getSelectedItem()).getProperties().size(); i++) {
                    JCheckBox box=new JCheckBox(players.get(plylist.getSelectedItem()).getProperties().get(i).getPropertyName());
                     y = 1;
