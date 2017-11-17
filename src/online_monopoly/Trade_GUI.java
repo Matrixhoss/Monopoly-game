@@ -50,7 +50,7 @@ public class Trade_GUI extends JFrame {
         this.setResizable(false);
         this.setBounds(300, 300, 600, 400);
         this.setVisible(true);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         Container c = this.getContentPane();
         c.setLayout(null);
