@@ -32,7 +32,7 @@ public class Trade_GUI extends JFrame {
     public JComboBox property_money;
     public JComboBox myproperty_money;
     public JComboBox my_property;
-    public boolean show = true;
+//    public boolean show = true;
     int x = 0;
     int y = 95;
     int v = 0;
@@ -55,10 +55,7 @@ public class Trade_GUI extends JFrame {
         Container c = this.getContentPane();
         c.setLayout(null);
         
-        if (show == false) {
-            
-        }
-        else {
+        
             for (int i = 0; i < 27; i++) {
                 myArrayList.add(i, "train");
             }
@@ -70,7 +67,6 @@ public class Trade_GUI extends JFrame {
                 box.setVisible(true);
                 c.add(box);
             }
-        }
             for (int i = 0; i < 27; i++) {
                 myArrayListprop.add(i, "train");
             }
@@ -114,10 +110,10 @@ public class Trade_GUI extends JFrame {
                 String option = (String) cbx.getSelectedItem();
                 if (option.equals("Money")) {
                     my_money.setVisible(true);
-                    show = false;
+//                    show = false;
                     
                 } else {
-                    show = true;
+//                    show = true;
                     my_money.setVisible(false);
                 }
             }
@@ -154,10 +150,10 @@ public class Trade_GUI extends JFrame {
                 String option = (String) cb.getSelectedItem();
                 if (option.equals("Money")) {
                     money.setVisible(true);
-                    show = false;
+//                    show = false;
                     
                 } else {
-                    show = true;
+//                    show = true;
                     money.setVisible(false);
                 }
             }

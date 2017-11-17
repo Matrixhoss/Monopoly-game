@@ -110,6 +110,8 @@ public class Controller {
 
     public void handleNewPosition(int posIndex) {
         Player p = players.get(playerNames[currentPlayer]);
+        p.setPosition(IndexToPoint(p.position));
+        System.out.println("Name : "+p.name+" , Index : "+p.position+" , "+p.getX()+" , "+p.getY());
         if (posIndex == 7 || posIndex == 22 || posIndex == 36) {
             String card = CC.DrawCardPrint("chance", this.currentPlayer);
             gui.pullChanceCard(card);
@@ -118,7 +120,7 @@ public class Controller {
             String card = CC.DrawCardPrint("chest", this.currentPlayer);
             gui.pullCommunityCard(card);
             printMoney();
-        } else if (posIndex == 0) {
+        } else if (posIndex == 0 || posIndex == 40) {
             p.addMoney(200);
         } else if (posIndex == 4) {
             //handle income tax
@@ -129,14 +131,11 @@ public class Controller {
             //handle luxury tax
             TaxAndIncome.handleLuxTax(p);
             printMoney();
-        } else if (posIndex == 30) {
+        } else if (posIndex == 30 || posIndex == 10 || posIndex == 20) {
             //Go to jail    
         } else {
-            BoardObject p1 = boardsObjects[posIndex];
-            if (p1.getClass() == NormalProperty.class) {
-                NormalProperty NP = (NormalProperty) p1;
-                BuyPropertyOrPay(NP, p);
-            }
+            Property p1 = (Property)(boardsObjects[posIndex]);     
+            BuyPropertyOrPay(p1, p);
         }
     }
 
@@ -180,17 +179,19 @@ public class Controller {
         return result;
     }
 
-    private void BuyPropertyOrPay(NormalProperty NP,Player p) {
+    private void BuyPropertyOrPay(Property NP,Player p) {
         if (!NP.haveOwner()) {
             int ch = JOptionPane.showConfirmDialog(null, "Do you want to buy this Property", "Buying Property", JOptionPane.YES_NO_OPTION);
             if (ch == JOptionPane.YES_OPTION) {
                 NP.buyProperty(p);
-                p.payMoney(NP.value);//Hossam we need to talk
+                p.payMoney(NP.value);
             }
         }
         else{
             JOptionPane.showMessageDialog(null, "The Owner need his Rent");
-            NP.payRent(p);//Hossam we need to talk
+            NP.payRent(p);//make playe pay rent
+            NP.getOwner().addMoney(NP.getRent(p));//add money to owner
+            //railway no rent and need to give money to owner
         }
     }
 
