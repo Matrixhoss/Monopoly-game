@@ -32,7 +32,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
                }
            }
        });
-       turnTimer.start();
+//       turnTimer.start();
     } 
     private javax.swing.Timer  turnTimer;
     private int timeSliceInSeconds = 10; 

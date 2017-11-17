@@ -45,14 +45,15 @@ public class Trade_GUI extends JFrame {
     ImageIcon trade_logo = new ImageIcon(getClass().getResource("mischd/background.jpg"));
     private JPanel PropertyPanel1 = new JPanel();
     private JScrollPane PropertyScroll1;
-    private ArrayList<Property> PlayerProperties;
-    private JScrollPane PropertyScroll2;
+    private ArrayList<Property> PlayerProperties = new ArrayList<Property>();
+    private ArrayList<Property> MyProperties = new ArrayList<Property>();
+    private final JScrollPane PropertyScroll2;
     private JPanel PropertyPanel2 = new JPanel();
     private ArrayList<JCheckBox> Selected1 = new ArrayList<JCheckBox>();
     private ArrayList<JCheckBox> Selected2 = new ArrayList<JCheckBox>();
-    private JLabel CurruntPlayer;
+    private final JLabel CurruntPlayer;
     private JLabel OtherPlayer;
-    private JLabel TradingWith;
+    private final JLabel TradingWith;
     private JCheckBox moneycheck;
     private JCheckBox my_moneycheck;
 
@@ -69,8 +70,9 @@ public class Trade_GUI extends JFrame {
         c.setLayout(null);
 
         for (int i = 0; i < Names.length; i++) {    //get Arraylist of players
-            if(players.get(Names[i]).name==Me.name)
+            if (players.get(Names[i]).name == Me.name) {
                 continue;
+            }
             Players.add(players.get(Names[i]));
         }
 
@@ -92,19 +94,21 @@ public class Trade_GUI extends JFrame {
         TradingWith = new JLabel("TradingWith");
         TradingWith.setBounds(220, 10, 150, 50);
         c.add(TradingWith);
-        
+
         moneycheck = new JCheckBox();
-        moneycheck.setBounds(380,266,18,15);
+        moneycheck.setBounds(380, 266, 18, 15);
         c.add(moneycheck);
         moneycheck.addActionListener(
                 new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            if(moneycheck.isSelected())
-                my_moneycheck.setSelected(false);
-            
-            }});
-        
+                if (moneycheck.isSelected()) {
+                    my_moneycheck.setSelected(false);
+                }
+
+            }
+        });
+
         money = new JTextField("Enter Amount");
         money.setBounds(400, 260, 120, 30);
         c.add(money);
@@ -112,21 +116,24 @@ public class Trade_GUI extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 money.setText("");
+
             }
         });
-        
+
         my_moneycheck = new JCheckBox();
-        my_moneycheck.setBounds(30,266,18,15);
+        my_moneycheck.setBounds(30, 266, 18, 15);
         c.add(my_moneycheck);
         my_moneycheck.addActionListener(
                 new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            if(my_moneycheck.isSelected())
-                moneycheck.setSelected(false);
-            
-            }});
-        
+                if (my_moneycheck.isSelected()) {
+                    moneycheck.setSelected(false);
+                }
+
+            }
+        });
+
         my_money = new JTextField("Enter Amount");
         my_money.setBounds(50, 260, 120, 30);
         c.add(my_money);
@@ -150,23 +157,24 @@ public class Trade_GUI extends JFrame {
         PropertyScroll2.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         PropertyScroll2.setBounds(30, 50, 150, 200);
         c.add(PropertyScroll2);
-        
+
         for (int i = 0; i < Me.getProperties().size(); i++) {
-                    JCheckBox box = new JCheckBox(Me.getProperties().get(i).getPropertyName());
-                    y = 1;
-                    box.setBounds(0, y + 1, 50, 5000);
-                    Selected2.add(box);
-                    PropertyPanel2.add(box);}
+            JCheckBox box = new JCheckBox(Me.getProperties().get(i).getPropertyName());
+            y = 1;
+            box.setBounds(0, y + 1, 50, 5000);
+            Selected2.add(box);
+            PropertyPanel2.add(box);
+        }
 
 //        Players.get(0).addProperty(new NormalProperty("MediterraneanAvenue", 1, PropertyStander.P_MediterraneanAvenue, PropertyStander.V_MediterraneanAvenue, PropertyStander.R_MediterraneanAvenue, PropertyStander.M_MediterraneanAvenue, PropertyStander.BrownGroup, PropertyStander.BrownGroupNum, PropertyStander.H_MediterraneanAvenue));
 //        Players.get(0).addProperty(new NormalProperty("OrientalAvenue", 6, PropertyStander.P_OrientalAvenue, PropertyStander.V_OrientalAvenue, PropertyStander.R_OrientalAvenue, PropertyStander.M_OrientalAvenue, PropertyStander.LightBlueGroup, PropertyStander.LightBlueGroupNum, PropertyStander.H_OrientalAvenue));
 //        Players.get(1).addProperty(new NormalProperty("StJamesPlace", 16, PropertyStander.P_StJamesPlace, PropertyStander.V_StJamesPlace, PropertyStander.R_StJamesPlace, PropertyStander.M_StJamesPlace, PropertyStander.OrangeGroup, PropertyStander.OrangeGroupNum, PropertyStander.H_StJamesPlace));
-
         plylist.addActionListener(plylist);
         plylist.addActionListener(
                 new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                OtherPlayer.setText(plylist.getSelectedItem() + "'s items");
                 PropertyPanel1.removeAll();
                 PropertyPanel1.revalidate();
                 PropertyPanel1.repaint();
@@ -192,6 +200,44 @@ public class Trade_GUI extends JFrame {
         trade = new JButton();
         trade.setText("Trade");
         trade.setBounds(150, 300, 120, 40);
+        trade.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (int i = 0; i < Selected1.size(); i++) {
+                    if (Selected1.get(i).isSelected()) {
+                        for (int j = 0; j < players.get(plylist.getSelectedItem()).getProperties().size(); j++) {
+                            System.out.println(Selected1.get(i).getText());
+                            System.out.println(players.get(plylist.getSelectedItem()).getProperties().get(j).name);
+                            if (Selected1.get(i).getText().equals(players.get(plylist.getSelectedItem()).getProperties().get(j).name)) {
+                                PlayerProperties.add(players.get(plylist.getSelectedItem()).getProperties().get(j));
+                            }
+                        }
+                    }
+                }
+                for (int i = 0; i < Selected2.size(); i++) {
+                    if (Selected2.get(i).isSelected()) {
+                        for (int j = 0; j < Me.getProperties().size(); j++) {
+                            if (Selected2.get(i).getText().equals(Me.getProperties().get(j).name)) {
+                                MyProperties.add(Me.getProperties().get(j));
+                            }
+                        }
+                    }
+                }
+
+                if (moneycheck.isSelected()) {
+                    Me.tradeMP2P(PlayerProperties, MyProperties, Integer.parseInt(money.getText()), players.get(plylist.getSelectedItem()), Me);
+                }
+                if (my_moneycheck.isSelected()) {
+                    Me.tradeMP2P(PlayerProperties, MyProperties, Integer.parseInt(my_money.getText()), players.get(plylist.getSelectedItem()), Me);
+                }
+                else{
+                    Me.tradeP2P(PlayerProperties, MyProperties, players.get(plylist.getSelectedItem()), Me);
+                
+                }
+//                dispose();
+            }
+        }
+        );
         c.add(trade);
 
         cancel = new JButton();
@@ -200,7 +246,7 @@ public class Trade_GUI extends JFrame {
         cancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //Trade_GUI.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                dispose();
             }
         }
         );
