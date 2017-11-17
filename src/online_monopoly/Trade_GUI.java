@@ -1,6 +1,7 @@
 package online_monopoly;
 
 import java.awt.Container;
+import java.awt.FlowLayout;
 import java.awt.event.*;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
@@ -39,45 +40,49 @@ public class Trade_GUI extends JFrame {
     int w = 230;
     public ArrayList<String> myArrayList = new ArrayList<String>();
     public ArrayList<String> myArrayListprop = new ArrayList<String>();
-    private  ArrayList<Player> Players ;
-    public  String[] Names;
+    private ArrayList<Player> Players;
+    public String[] Names;
     ImageIcon trade_logo = new ImageIcon(getClass().getResource("mischd/background.jpg"));
+    private JPanel PropertyPanel = new JPanel();
+    private JScrollPane PropertyScroll;
+    private ArrayList<Property> PlayerProperties;
 
-    public Trade_GUI(Hashtable<String, Player> players ,String[] Names) {
+    public Trade_GUI(Hashtable<String, Player> players, String[] Names) {
         Players = new ArrayList<Player>();
-        this.Names=Names;
+        this.Names = Names;
         this.setTitle("Trading");
         this.setResizable(false);
         this.setBounds(300, 300, 600, 400);
         this.setVisible(true);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        
 
+        
         Container c = this.getContentPane();
         c.setLayout(null);
-        
-        
-            for (int i = 0; i < 27; i++) {
-                myArrayList.add(i, "train");
-            }
-            for (String element : myArrayList) {
-                JCheckBox box = new JCheckBox(element);
-                x = x + 20;
-                box.setBounds(x, y, 20, 20);
-                box.setSelected(false);
-                box.setVisible(true);
-                c.add(box);
-            }
-            for (int i = 0; i < 27; i++) {
-                myArrayListprop.add(i, "train");
-            }
-            for (String element : myArrayListprop) {
-                JCheckBox box = new JCheckBox(element);
-                v = v + 20;
-                box.setBounds(v, w, 20, 20);
-                box.setSelected(false);
-                box.setVisible(true);
-                c.add(box);
-            }
+
+        for (int i = 0; i < 27; i++) {
+            myArrayList.add(i, "train");
+        }
+//        for (String element : myArrayList) {
+//            JCheckBox box = new JCheckBox(element);
+//            x = x + 20;
+//            box.setBounds(x, y, 20, 20);
+//            box.setSelected(false);
+//            box.setVisible(true);
+//            c.add(box);
+//        }
+//        for (int i = 0; i < 27; i++) {
+//            myArrayListprop.add(i, "train");
+//        }
+//        for (String element : myArrayListprop) {
+//            JCheckBox box = new JCheckBox(element);
+//            v = v + 20;
+//            box.setBounds(v, w, 20, 20);
+//            box.setSelected(false);
+//            box.setVisible(true);
+//            c.add(box);
+//        }
 
         for (int i = 0; i < Names.length; i++) {
             Players.add(players.get(Names[i]));
@@ -86,7 +91,7 @@ public class Trade_GUI extends JFrame {
         plylist = new JComboBox();
         plylist.setBounds(400, 50, 120, 40);
         plylist.addActionListener(plylist);
-        
+
         for (int i = 0; i < Names.length; i++) {
             plylist.addItem(Names[i]);
         }
@@ -96,7 +101,6 @@ public class Trade_GUI extends JFrame {
 //        my_property.setBounds(225, 190, 120, 40);
 //        my_property.addActionListener(my_property);
 //        c.add(my_property);
-
         String[] mypro_mon = {"Money", "Property"};
         myproperty_money = new JComboBox(mypro_mon);
         myproperty_money.setBounds(225, 190, 120, 40);
@@ -111,7 +115,7 @@ public class Trade_GUI extends JFrame {
                 if (option.equals("Money")) {
                     my_money.setVisible(true);
 //                    show = false;
-                    
+
                 } else {
 //                    show = true;
                     my_money.setVisible(false);
@@ -120,7 +124,7 @@ public class Trade_GUI extends JFrame {
         }
         );
         c.add(myproperty_money);
-        
+
         property = new JComboBox();
         property.setBounds(250, 50, 120, 40);
         property.setVisible(false);
@@ -136,7 +140,7 @@ public class Trade_GUI extends JFrame {
         my_money.setBounds(355, 190, 120, 40);
         my_money.setVisible(false);
         c.add(my_money);
-        
+
         String[] pro_mon = {"Money", "Property"};
         property_money = new JComboBox(pro_mon);
         property_money.setBounds(100, 50, 120, 40);
@@ -151,7 +155,7 @@ public class Trade_GUI extends JFrame {
                 if (option.equals("Money")) {
                     money.setVisible(true);
 //                    show = false;
-                    
+
                 } else {
 //                    show = true;
                     money.setVisible(false);
@@ -160,6 +164,26 @@ public class Trade_GUI extends JFrame {
         }
         );
         c.add(property_money);
+
+        PropertyScroll = new JScrollPane(PropertyPanel);
+        PropertyPanel.setLayout(new BoxLayout(PropertyPanel, BoxLayout.Y_AXIS));
+        PropertyScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        PropertyScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        PropertyScroll.setBounds(240, 50, 130, 100);
+        c.add(PropertyScroll);
+        
+            for(int i=0; i<15;i++){
+                y=1;
+             JCheckBox box = new JCheckBox("Asdasd");
+             box.setBounds(0,y+1, 50,50);
+             PropertyPanel.add(box);}
+           
+//        for (int i = 0; i <= players.get(plylist.getSelectedItem()).getProperties().size(); i++) {
+////            JCheckBox box = new JCheckBox( players.get(plylist.getSelectedItem()).getProperties().get(i).getPropertyName());
+//             JCheckBox box = new JCheckBox("Asdasd");
+//             PropertyScroll.add(box);
+//            
+//        }
 
         trade = new JButton();
         trade.setText("Trade");
