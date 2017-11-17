@@ -46,6 +46,8 @@ public class Trade_GUI extends JFrame {
     private JPanel PropertyPanel = new JPanel();
     private JScrollPane PropertyScroll;
     private ArrayList<Property> PlayerProperties;
+    private ArrayList<JCheckBox> Selected1=new ArrayList<JCheckBox>();
+    private ArrayList<JCheckBox> Selected2 =new ArrayList<JCheckBox>();
 
     public Trade_GUI(Hashtable<String, Player> players, String[] Names) {
         Players = new ArrayList<Player>();
@@ -55,9 +57,7 @@ public class Trade_GUI extends JFrame {
         this.setBounds(300, 300, 600, 400);
         this.setVisible(true);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        
 
-        
         Container c = this.getContentPane();
         c.setLayout(null);
 
@@ -90,7 +90,7 @@ public class Trade_GUI extends JFrame {
         //String[] ply = {"player 1", "player 2", "player 3", "player 4"};
         plylist = new JComboBox();
         plylist.setBounds(400, 50, 120, 40);
-        plylist.addActionListener(plylist);
+
 
         for (int i = 0; i < Names.length; i++) {
             plylist.addItem(Names[i]);
@@ -146,8 +146,7 @@ public class Trade_GUI extends JFrame {
         property_money.setBounds(100, 50, 120, 40);
         property_money.setSelectedIndex(1);
         property_money.addActionListener(property_money);
-        property_money.addActionListener(
-                new ActionListener() {
+        property_money.addActionListener(  new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JComboBox cb = (JComboBox) e.getSource();
@@ -171,19 +170,43 @@ public class Trade_GUI extends JFrame {
         PropertyScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         PropertyScroll.setBounds(240, 50, 130, 100);
         c.add(PropertyScroll);
-        
-            for(int i=0; i<15;i++){
-                y=1;
-             JCheckBox box = new JCheckBox("Asdasd");
-             box.setBounds(0,y+1, 50,50);
-             PropertyPanel.add(box);}
-           
-//        for (int i = 0; i <= players.get(plylist.getSelectedItem()).getProperties().size(); i++) {
-////            JCheckBox box = new JCheckBox( players.get(plylist.getSelectedItem()).getProperties().get(i).getPropertyName());
+
+        //to be Deleted
+//            for(int i=0; i<15;i++){
+//                y=1;
 //             JCheckBox box = new JCheckBox("Asdasd");
-//             PropertyScroll.add(box);
-//            
-//        }
+//             box.setBounds(0,y+1, 50,5000);
+//             PropertyPanel.add(box);}
+        //to Be deleted
+        Players.get(0).addProperty(new NormalProperty("MediterraneanAvenue", 1, PropertyStander.P_MediterraneanAvenue, PropertyStander.V_MediterraneanAvenue, PropertyStander.R_MediterraneanAvenue, PropertyStander.M_MediterraneanAvenue, PropertyStander.BrownGroup, PropertyStander.BrownGroupNum, PropertyStander.H_MediterraneanAvenue));
+        Players.get(0).addProperty(new NormalProperty("OrientalAvenue", 6, PropertyStander.P_OrientalAvenue, PropertyStander.V_OrientalAvenue, PropertyStander.R_OrientalAvenue, PropertyStander.M_OrientalAvenue, PropertyStander.LightBlueGroup, PropertyStander.LightBlueGroupNum, PropertyStander.H_OrientalAvenue));
+        Players.get(1).addProperty(new NormalProperty("StJamesPlace", 16, PropertyStander.P_StJamesPlace, PropertyStander.V_StJamesPlace, PropertyStander.R_StJamesPlace, PropertyStander.M_StJamesPlace, PropertyStander.OrangeGroup, PropertyStander.OrangeGroupNum, PropertyStander.H_StJamesPlace));
+
+        plylist.addActionListener(plylist);
+        plylist.addActionListener(
+                new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PropertyPanel.removeAll();
+                for (int i = 0; i < players.get(plylist.getSelectedItem()).getProperties().size(); i++) {
+                   JCheckBox box=new JCheckBox(players.get(plylist.getSelectedItem()).getProperties().get(i).getPropertyName());
+                    y = 1;
+                    box.setBounds(0, y + 1, 50, 5000);
+                    Selected1.add(box);
+                    PropertyPanel.add(box);
+                    PropertyPanel.revalidate();
+                    PropertyPanel.repaint();
+                    PropertyScroll.revalidate();
+                    PropertyScroll.repaint();
+                    
+                }
+            }
+        }
+        );
+        
+        
+         
+      
 
         trade = new JButton();
         trade.setText("Trade");
