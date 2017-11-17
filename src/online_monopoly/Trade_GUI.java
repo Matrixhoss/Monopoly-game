@@ -69,12 +69,8 @@ public class Trade_GUI extends JFrame {
     public ArrayList<String> myArrayListprop = new ArrayList<String>();
     private  ArrayList<Player> Players ;
     public  String[] Names;
-
     ImageIcon trade_logo = new ImageIcon(getClass().getResource("mischd/background.jpg"));
 
-    public Trade_GUI(){
-        
-    }
     public Trade_GUI(Hashtable<String, Player> players ,String[] Names) {
         Players = new ArrayList<Player>();
         this.Names=Names;
@@ -121,9 +117,10 @@ public class Trade_GUI extends JFrame {
 
         for (int i = 0; i < Names.length; i++) {
             Players.add(players.get(Names[i]));
+            plylist.addItem((String)Names[i]);
         }
         //String[] ply = {"player 1", "player 2", "player 3", "player 4"};
-//        plylist = new JComboBox(yes);
+        plylist = new JComboBox();
         plylist.setBounds(400, 50, 120, 40);
         plylist.setSelectedIndex(3);
         plylist.addActionListener(plylist);
