@@ -225,16 +225,17 @@ public class Trade_GUI extends JFrame {
                 }
 
                 if (moneycheck.isSelected()) {
-                    Me.tradeMP2P(PlayerProperties, MyProperties, Integer.parseInt(money.getText()), players.get(plylist.getSelectedItem()), Me);
-                }
-                if (my_moneycheck.isSelected()) {
+                    Me.tradePM2P(PlayerProperties, MyProperties, Integer.parseInt(money.getText()), players.get(plylist.getSelectedItem()), Me);}
+                
+                    else if (my_moneycheck.isSelected()) {
                     Me.tradeMP2P(PlayerProperties, MyProperties, Integer.parseInt(my_money.getText()), players.get(plylist.getSelectedItem()), Me);
                 }
-                else{
+                    else if (!moneycheck.isSelected() && !my_moneycheck.isSelected()){
                     Me.tradeP2P(PlayerProperties, MyProperties, players.get(plylist.getSelectedItem()), Me);
                 
                 }
-//                dispose();
+               
+                dispose();
             }
         }
         );

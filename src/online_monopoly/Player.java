@@ -381,10 +381,12 @@ public class Player {
         for (int i = 0; i < Pr2.size(); i++) {
             P1.addProperty(Pr2.get(i));
             P2.removeProperty(Pr2.get(i));
+            Pr2.get(i).setOwner(P1);
         }
         for (int i = 0; i < Pr1.size(); i++) {
             P1.removeProperty(Pr1.get(i));
             P2.addProperty(Pr1.get(i));
+             Pr2.get(i).setOwner(P2);
         }
     }
 
@@ -408,16 +410,15 @@ public class Player {
 //    }
 
     public void tradeMP2P(ArrayList<Property> Pr1, ArrayList<Property> Pr2, int m, Player P1,Player P2) {
-        for (int i = 0; i < Pr2.size(); i++) {
-            P1.addProperty(Pr2.get(i));
-            P2.removeProperty(Pr2.get(i));
-        }
-        for (int i = 0; i < Pr1.size(); i++) {
-            P2.addProperty(Pr1.get(i));
-            P1.removeProperty(Pr1.get(i));
-        }
+          tradeP2P(Pr1,Pr2,P1,P2);
         P1.addMoney(m);
         P2.payMoney(m);
+
+    }
+    public void tradePM2P(ArrayList<Property> Pr1, ArrayList<Property> Pr2, int m, Player P1,Player P2) {
+          tradeP2P(Pr1,Pr2,P1,P2);
+        P2.addMoney(m);
+        P1.payMoney(m);
 
     }
 }
