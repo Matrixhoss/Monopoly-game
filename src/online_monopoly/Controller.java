@@ -132,11 +132,8 @@ public class Controller {
         } else if (posIndex == 30) {
             //Go to jail    
         } else {
-            BoardObject p1 = boardsObjects[posIndex];
-            if (p1.getClass() == NormalProperty.class) {
-                NormalProperty NP = (NormalProperty) p1;
-                BuyPropertyOrPay(NP, p);
-            }
+            Property p1 = (Property)(boardsObjects[posIndex]);     
+            BuyPropertyOrPay(p1, p);
         }
     }
 
@@ -191,6 +188,35 @@ public class Controller {
         else{
             JOptionPane.showMessageDialog(null, "The Owner need his Rent");
             NP.payRent(p);//Hossam we need to talk
+        }
+    }
+    private void BuyPropertyOrPay(WaterworksOrElectric NP,Player p) {
+        if (!NP.haveOwner()) {
+            int ch = JOptionPane.showConfirmDialog(null, "Do you want to buy this Property", "Buying Property", JOptionPane.YES_NO_OPTION);
+            if (ch == JOptionPane.YES_OPTION) {
+                NP.buyProperty(p);
+                p.payMoney(NP.value);//Hossam we need to talk
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "The Owner need his Rent");
+            NP.payRent(p);//Hossam we need to talk
+        }
+    }
+    
+    private void BuyPropertyOrPay(Property NP,Player p) {
+        if (!NP.haveOwner()) {
+            int ch = JOptionPane.showConfirmDialog(null, "Do you want to buy this Property", "Buying Property", JOptionPane.YES_NO_OPTION);
+            if (ch == JOptionPane.YES_OPTION) {
+                NP.buyProperty(p);
+                p.payMoney(NP.value);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "The Owner need his Rent");
+            NP.payRent(p);//make playe pay rent
+            NP.getOwner().addMoney(NP.getRent(p));//add money to owner
+            //railway no rent and need to give money to owner
         }
     }
 
