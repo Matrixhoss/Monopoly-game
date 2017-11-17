@@ -43,13 +43,20 @@ public class Trade_GUI extends JFrame {
     private ArrayList<Player> Players;
     public String[] Names;
     ImageIcon trade_logo = new ImageIcon(getClass().getResource("mischd/background.jpg"));
-    private JPanel PropertyPanel = new JPanel();
-    private JScrollPane PropertyScroll;
+    private JPanel PropertyPanel1 = new JPanel();
+    private JScrollPane PropertyScroll1;
     private ArrayList<Property> PlayerProperties;
-    private ArrayList<JCheckBox> Selected1=new ArrayList<JCheckBox>();
-    private ArrayList<JCheckBox> Selected2 =new ArrayList<JCheckBox>();
+    private JScrollPane PropertyScroll2;
+    private JPanel PropertyPanel2 = new JPanel();
+    private ArrayList<JCheckBox> Selected1 = new ArrayList<JCheckBox>();
+    private ArrayList<JCheckBox> Selected2 = new ArrayList<JCheckBox>();
+    private JLabel CurruntPlayer;
+    private JLabel OtherPlayer;
+    private JLabel TradingWith;
+    private JCheckBox moneycheck;
+    private JCheckBox my_moneycheck;
 
-    public Trade_GUI(Hashtable<String, Player> players, String[] Names,Player Me) {
+    public Trade_GUI(Hashtable<String, Player> players, String[] Names, Player Me) {
         Players = new ArrayList<Player>();
         this.Names = Names;
         this.setTitle("Trading");
@@ -61,149 +68,126 @@ public class Trade_GUI extends JFrame {
         Container c = this.getContentPane();
         c.setLayout(null);
 
-        for (int i = 0; i < 27; i++) {
-            myArrayList.add(i, "train");
-        }
-//        for (String element : myArrayList) {
-//            JCheckBox box = new JCheckBox(element);
-//            x = x + 20;
-//            box.setBounds(x, y, 20, 20);
-//            box.setSelected(false);
-//            box.setVisible(true);
-//            c.add(box);
-//        }
-//        for (int i = 0; i < 27; i++) {
-//            myArrayListprop.add(i, "train");
-//        }
-//        for (String element : myArrayListprop) {
-//            JCheckBox box = new JCheckBox(element);
-//            v = v + 20;
-//            box.setBounds(v, w, 20, 20);
-//            box.setSelected(false);
-//            box.setVisible(true);
-//            c.add(box);
-//        }
-
-        for (int i = 0; i < Names.length; i++) {
+        for (int i = 0; i < Names.length; i++) {    //get Arraylist of players
+            if(players.get(Names[i]).name==Me.name)
+                continue;
             Players.add(players.get(Names[i]));
         }
-        plylist = new JComboBox();
-        plylist.setBounds(400, 50, 120, 40);
 
-
-        for (int i = 0; i < Names.length; i++) {
-            plylist.addItem(Names[i]);
+        plylist = new JComboBox();                  //Player's Drop box
+        plylist.setBounds(230, 50, 120, 40);
+        for (int i = 0; i < Players.size(); i++) {
+            plylist.addItem(Players.get(i).name);
         }
         c.add(plylist);
 
-//        my_property = new JComboBox();
-//        my_property.setBounds(225, 190, 120, 40);
-//        my_property.addActionListener(my_property);
-//        c.add(my_property);
-        String[] mypro_mon = {"Money", "Property"};
-        myproperty_money = new JComboBox(mypro_mon);
-        myproperty_money.setBounds(225, 190, 120, 40);
-        myproperty_money.setSelectedIndex(1);
-        myproperty_money.addActionListener(myproperty_money);
-        myproperty_money.addActionListener(
+        CurruntPlayer = new JLabel("Your items");
+        CurruntPlayer.setBounds(50, 10, 100, 50);
+        c.add(CurruntPlayer);
+
+        OtherPlayer = new JLabel(plylist.getSelectedItem() + "'s items");
+        OtherPlayer.setBounds(400, 10, 150, 50);
+        c.add(OtherPlayer);
+
+        TradingWith = new JLabel("TradingWith");
+        TradingWith.setBounds(220, 10, 150, 50);
+        c.add(TradingWith);
+        
+        moneycheck = new JCheckBox();
+        moneycheck.setBounds(380,266,18,15);
+        c.add(moneycheck);
+        moneycheck.addActionListener(
                 new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JComboBox cbx = (JComboBox) e.getSource();
-                String option = (String) cbx.getSelectedItem();
-                if (option.equals("Money")) {
-                    my_money.setVisible(true);
-//                    show = false;
-
-                } else {
-//                    show = true;
-                    my_money.setVisible(false);
-                }
-            }
-        }
-        );
-        c.add(myproperty_money);
-
-        property = new JComboBox();
-        property.setBounds(250, 50, 120, 40);
-        property.setVisible(false);
-        property.addActionListener(property);
-        c.add(property);
-
-        money = new JTextField("Enter amount");
-        money.setBounds(250, 50, 120, 40);
-        money.setVisible(false);
+            if(moneycheck.isSelected())
+                my_moneycheck.setSelected(false);
+            
+            }});
+        
+        money = new JTextField("Enter Amount");
+        money.setBounds(400, 260, 120, 30);
         c.add(money);
-
-        my_money = new JTextField("Enter amount");
-        my_money.setBounds(355, 190, 120, 40);
-        my_money.setVisible(false);
-        c.add(my_money);
-
-        String[] pro_mon = {"Money", "Property"};
-        property_money = new JComboBox(pro_mon);
-        property_money.setBounds(100, 50, 120, 40);
-        property_money.setSelectedIndex(1);
-        property_money.addActionListener(property_money);
-        property_money.addActionListener(  new ActionListener() {
+        money.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                money.setText("");
+            }
+        });
+        
+        my_moneycheck = new JCheckBox();
+        my_moneycheck.setBounds(30,266,18,15);
+        c.add(my_moneycheck);
+        my_moneycheck.addActionListener(
+                new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JComboBox cb = (JComboBox) e.getSource();
-                String option = (String) cb.getSelectedItem();
-                if (option.equals("Money")) {
-                    money.setVisible(true);
-//                    show = false;
-
-                } else {
-//                    show = true;
-                    money.setVisible(false);
-                }
+            if(my_moneycheck.isSelected())
+                moneycheck.setSelected(false);
+            
+            }});
+        
+        my_money = new JTextField("Enter Amount");
+        my_money.setBounds(50, 260, 120, 30);
+        c.add(my_money);
+        my_money.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                my_money.setText("");
             }
-        }
-        );
-        c.add(property_money);
+        });
 
-        PropertyScroll = new JScrollPane(PropertyPanel);
-        PropertyPanel.setLayout(new BoxLayout(PropertyPanel, BoxLayout.Y_AXIS));
-        PropertyScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        PropertyScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        PropertyScroll.setBounds(240, 50, 130, 100);
-        c.add(PropertyScroll);
+        PropertyScroll1 = new JScrollPane(PropertyPanel1);
+        PropertyPanel1.setLayout(new BoxLayout(PropertyPanel1, BoxLayout.Y_AXIS));
+        PropertyScroll1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        PropertyScroll1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        PropertyScroll1.setBounds(380, 50, 150, 200);
+        c.add(PropertyScroll1);
 
+        PropertyScroll2 = new JScrollPane(PropertyPanel2);
+        PropertyPanel2.setLayout(new BoxLayout(PropertyPanel2, BoxLayout.Y_AXIS));
+        PropertyScroll2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        PropertyScroll2.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        PropertyScroll2.setBounds(30, 50, 150, 200);
+        c.add(PropertyScroll2);
+        
+        for (int i = 0; i < Me.getProperties().size(); i++) {
+                    JCheckBox box = new JCheckBox(Me.getProperties().get(i).getPropertyName());
+                    y = 1;
+                    box.setBounds(0, y + 1, 50, 5000);
+                    Selected2.add(box);
+                    PropertyPanel2.add(box);}
 
-        Players.get(0).addProperty(new NormalProperty("MediterraneanAvenue", 1, PropertyStander.P_MediterraneanAvenue, PropertyStander.V_MediterraneanAvenue, PropertyStander.R_MediterraneanAvenue, PropertyStander.M_MediterraneanAvenue, PropertyStander.BrownGroup, PropertyStander.BrownGroupNum, PropertyStander.H_MediterraneanAvenue));
-        Players.get(0).addProperty(new NormalProperty("OrientalAvenue", 6, PropertyStander.P_OrientalAvenue, PropertyStander.V_OrientalAvenue, PropertyStander.R_OrientalAvenue, PropertyStander.M_OrientalAvenue, PropertyStander.LightBlueGroup, PropertyStander.LightBlueGroupNum, PropertyStander.H_OrientalAvenue));
-        Players.get(1).addProperty(new NormalProperty("StJamesPlace", 16, PropertyStander.P_StJamesPlace, PropertyStander.V_StJamesPlace, PropertyStander.R_StJamesPlace, PropertyStander.M_StJamesPlace, PropertyStander.OrangeGroup, PropertyStander.OrangeGroupNum, PropertyStander.H_StJamesPlace));
+//        Players.get(0).addProperty(new NormalProperty("MediterraneanAvenue", 1, PropertyStander.P_MediterraneanAvenue, PropertyStander.V_MediterraneanAvenue, PropertyStander.R_MediterraneanAvenue, PropertyStander.M_MediterraneanAvenue, PropertyStander.BrownGroup, PropertyStander.BrownGroupNum, PropertyStander.H_MediterraneanAvenue));
+//        Players.get(0).addProperty(new NormalProperty("OrientalAvenue", 6, PropertyStander.P_OrientalAvenue, PropertyStander.V_OrientalAvenue, PropertyStander.R_OrientalAvenue, PropertyStander.M_OrientalAvenue, PropertyStander.LightBlueGroup, PropertyStander.LightBlueGroupNum, PropertyStander.H_OrientalAvenue));
+//        Players.get(1).addProperty(new NormalProperty("StJamesPlace", 16, PropertyStander.P_StJamesPlace, PropertyStander.V_StJamesPlace, PropertyStander.R_StJamesPlace, PropertyStander.M_StJamesPlace, PropertyStander.OrangeGroup, PropertyStander.OrangeGroupNum, PropertyStander.H_StJamesPlace));
 
         plylist.addActionListener(plylist);
         plylist.addActionListener(
                 new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PropertyPanel.removeAll();
-                PropertyPanel.revalidate();
-                PropertyPanel.repaint();
-                PropertyScroll.revalidate();
-                PropertyScroll.repaint();
+                PropertyPanel1.removeAll();
+                PropertyPanel1.revalidate();
+                PropertyPanel1.repaint();
+                PropertyScroll1.revalidate();
+                PropertyScroll1.repaint();
                 for (int i = 0; i < players.get(plylist.getSelectedItem()).getProperties().size(); i++) {
-                   JCheckBox box=new JCheckBox(players.get(plylist.getSelectedItem()).getProperties().get(i).getPropertyName());
+                    OtherPlayer.setText(plylist.getSelectedItem() + "'s items");
+                    JCheckBox box = new JCheckBox(players.get(plylist.getSelectedItem()).getProperties().get(i).getPropertyName());
                     y = 1;
                     box.setBounds(0, y + 1, 50, 5000);
                     Selected1.add(box);
-                    PropertyPanel.add(box);
-                    PropertyPanel.revalidate();
-                    PropertyPanel.repaint();
-                    PropertyScroll.revalidate();
-                    PropertyScroll.repaint();
-                    
+                    PropertyPanel1.add(box);
+                    PropertyPanel1.revalidate();
+                    PropertyPanel1.repaint();
+                    PropertyScroll1.revalidate();
+                    PropertyScroll1.repaint();
+
                 }
             }
         }
         );
-        
-        
-         
-      
 
         trade = new JButton();
         trade.setText("Trade");
@@ -221,10 +205,6 @@ public class Trade_GUI extends JFrame {
         }
         );
         c.add(cancel);
-
-        yours = new JLabel("Your property/money to exchange");
-        yours.setBounds(20, 200, 200, 40);
-        c.add(yours);
 
         background = new JLabel(trade_logo);
         background.setBounds(0, 0, 600, 400);
