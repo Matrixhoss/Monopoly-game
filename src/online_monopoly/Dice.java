@@ -49,7 +49,7 @@ public class Dice {
                 this.roll = false;
                 System.out.println("DD " + dd);
             }
-        }
+        }   
         return d;
 
     }

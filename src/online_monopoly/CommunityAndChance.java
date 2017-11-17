@@ -8,6 +8,7 @@ package online_monopoly;
 import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Hashtable;
 import java.util.Random;
 import javax.swing.JOptionPane;
 
@@ -49,10 +50,12 @@ public class CommunityAndChance{
     
     ArrayList<Card> ChanceCards;
     ArrayList<Card> ChestCards;
+    Hashtable<String, Player> players;
+    String[] playerNames;
     
-    
-    public CommunityAndChance(){
-        
+    public CommunityAndChance(Hashtable<String, Player> ps,String[] pNames){
+        this.players=ps;
+        this.playerNames=pNames;
         ChanceCards = new ArrayList<Card>();
         ChestCards = new ArrayList<Card>();
         
@@ -71,6 +74,7 @@ public class CommunityAndChance{
         ChanceCards.add(new Card(3,"Take a trip to Reading Railroad",new Point(5,0)));
         ChanceCards.add(new Card(3,"Take a walk on the Boardwalk ",new Point(0,1)));
         ChanceCards.add(new Card(3,"Advance to St. Charles Place – If you pass Go, collect $200",new Point(6,10)));
+        ChanceCards.add(new Card(6,"You have been elected Chairman of the Board – Pay each player $50",-50));
         
 
         
@@ -91,6 +95,7 @@ public class CommunityAndChance{
         ChestCards.add(new Card(5,"Get out of Jail Free – This card may be kept until needed, or traded/sold"));
         ChestCards.add(new Card(2,"Go to Jail"));
         ChestCards.add(new Card(8,"You are assessed for street repairs – $40 per house – $115 per hotel"));
+        ChestCards.add(new Card(6,"It is your birthday - Collect $10 from each player {Not in the deck",10));
         
         Collections.shuffle(ChanceCards);
         Collections.shuffle(ChestCards);
@@ -98,25 +103,23 @@ public class CommunityAndChance{
         //void RandomChance(){
         /*
     Advance token to the nearest Railroad and pay owner twice the rental to which he/she {he} is otherwise entitled.
-    You have been elected Chairman of the Board – Pay each player $50  */
+      */
         
         
    // }
    // void RandomChest(){
         /*
-It is your birthday - Collect $10 from each player {Not in the deck}
+}
   */
 // }
         
         
             
     }
-    public void DrawCard(String type, Player hassan){
-        this.DrawCard(type,hassan, false);        
-    }
     
-    public String DrawCardPrint(String type, Player hassan){
-        return this.DrawCardPrint(type,hassan, false);         
+    public String DrawCardPrint(String type,int currentPlayer){
+        Player hassan=players.get(playerNames[currentPlayer]);
+        return this.DrawCardPrint(type,hassan, false, currentPlayer);         
     }
     
     public void ReturnChanceJail(){
@@ -127,11 +130,8 @@ It is your birthday - Collect $10 from each player {Not in the deck}
         Card e = new Card(5,"Get Out of Jail Free");
         ChestCards.add(e);
     }
-    public void DrawCard(String type, Player hassan, boolean print){
-        this.DrawCardPrint(type, hassan, print);
-    }
     
-    public String DrawCardPrint(String type, Player hassan, boolean print){
+    public String DrawCardPrint(String type, Player hassan, boolean print, int currentPlayer){
         Card s;
         if(type.equalsIgnoreCase("chance")){
             s = ChanceCards.get(0);
@@ -172,6 +172,14 @@ It is your birthday - Collect $10 from each player {Not in the deck}
                 break;
             case 6:
                 // get money from all players somehow.
+                for(int i=0;i<playerNames.length;i++){
+                    if(currentPlayer != i){
+                        Player otherplayer =players.get(playerNames[i]);
+                        otherplayer.addMoney(-s.ammount);
+                        hassan.addMoney(s.ammount);
+                    }
+                        
+                }
                 break;
             case 7:
                 hassan.payMoney(25*hassan.getTotalHouses());

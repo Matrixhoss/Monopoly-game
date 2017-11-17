@@ -258,7 +258,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         trade.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Trade_GUI tg = new Trade_GUI();
+                Trade_GUI tg = new Trade_GUI(controller.getPlayers(), controller.playerNames);
                 tg.setVisible(true);
             }});
         c.add(trade);
