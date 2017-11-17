@@ -24,15 +24,17 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
        turnTimer.addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent e) {
-               int time = Integer.parseInt(TimerLbl.getText());
+               playersPanel.Update(players);
+               //for now stop timer
+               /*int time = Integer.parseInt(TimerLbl.getText());
                if(time == 0){
                    endTurn();
                }else{
                    TimerLbl.setText((time-1)+"");
-               }
+               }*/
            }
        });
-//       turnTimer.start();
+       turnTimer.start();
     } 
     private javax.swing.Timer  turnTimer;
     private int timeSliceInSeconds = 10; 
