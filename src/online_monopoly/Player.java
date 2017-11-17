@@ -178,6 +178,9 @@ public class Player {
     public void addProperty(Property p) {
         MyProperties.add(p);
     }
+    public ArrayList<Property> getProperties(){
+    return this.MyProperties;
+    }
     
     //check if player has group
     public boolean checkGroup(Property p) {
