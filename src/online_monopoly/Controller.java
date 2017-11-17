@@ -184,12 +184,13 @@ public class Controller {
         if (!NP.haveOwner()) {
             int ch = JOptionPane.showConfirmDialog(null, "Do you want to buy this Property", "Buying Property", JOptionPane.YES_NO_OPTION);
             if (ch == JOptionPane.YES_OPTION) {
-                p.payMoney(NP.buyProperty(p));//Hossam we need to talk
+                NP.buyProperty(p);
+                p.payMoney(NP.value);//Hossam we need to talk
             }
         }
         else{
             JOptionPane.showMessageDialog(null, "The Owner need his Rent");
-            p.payMoney(NP.getRent(p));//Hossam we need to talk
+            NP.payRent(p);//Hossam we need to talk
         }
     }
 
