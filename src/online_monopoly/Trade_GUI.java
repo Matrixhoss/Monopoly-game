@@ -32,35 +32,7 @@ public class Trade_GUI extends JFrame {
     public JComboBox property_money;
     public JComboBox myproperty_money;
     public JComboBox my_property;
-//    public JCheckBox box;
-//    public JCheckBox box1;
-//    public JCheckBox box2;
-//    public JCheckBox box3;
-//    public JCheckBox box4;
-//    public JCheckBox box5;
-//    public JCheckBox box6;
-//    public JCheckBox box7;
-//    public JCheckBox box8;
-//    public JCheckBox box9;
-//    public JCheckBox box10;
-//    public JCheckBox box11;
-//    public JCheckBox box12;
-//    public JCheckBox box13;
-//    public JCheckBox box14;
-//    public JCheckBox box15;
-//    public JCheckBox box16;
-//    public JCheckBox box17;
-//    public JCheckBox box18;
-//    public JCheckBox box19;
-//    public JCheckBox box20;
-//    public JCheckBox box21;
-//    public JCheckBox box22;
-//    public JCheckBox box23;
-//    public JCheckBox box24;
-//    public JCheckBox box25;
-//    public JCheckBox box26;
-//    public JCheckBox box27;
-    public boolean show = false;
+    public boolean show = true;
     int x = 0;
     int y = 95;
     int v = 0;
@@ -78,12 +50,12 @@ public class Trade_GUI extends JFrame {
         this.setResizable(false);
         this.setBounds(300, 300, 600, 400);
         this.setVisible(true);
-        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         Container c = this.getContentPane();
         c.setLayout(null);
         
-        if (show = false) {
+        if (show == false) {
             
         }
         else {
@@ -110,20 +82,18 @@ public class Trade_GUI extends JFrame {
                 box.setVisible(true);
                 c.add(box);
             }
-//        box = new JCheckBox();
-//        box.setBounds(100, 100, 20, 20);
-//        box.setSelected(false);
-//        c.add(box);
 
         for (int i = 0; i < Names.length; i++) {
             Players.add(players.get(Names[i]));
-            plylist.addItem((String)Names[i]);
         }
         //String[] ply = {"player 1", "player 2", "player 3", "player 4"};
         plylist = new JComboBox();
         plylist.setBounds(400, 50, 120, 40);
-        plylist.setSelectedIndex(3);
         plylist.addActionListener(plylist);
+        
+        for (int i = 0; i < Names.length; i++) {
+            plylist.addItem(Names[i]);
+        }
         c.add(plylist);
 
 //        my_property = new JComboBox();
