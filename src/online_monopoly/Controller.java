@@ -185,13 +185,14 @@ public class Controller {
             if (ch == JOptionPane.YES_OPTION) {
                 NP.buyProperty(p);
                 p.payMoney(NP.value);
+                p.addProperty(NP);
             }
         }
         else{
             JOptionPane.showMessageDialog(null, "The Owner need his Rent");
             NP.payRent(p);//make playe pay rent
             NP.getOwner().addMoney(NP.getRent(p));//add money to owner
-            //railway no rent and need to give money to owner
+            //railway no rent
         }
     }
 
