@@ -19,6 +19,7 @@ import java.util.TimerTask;
 import java.util.logging.ConsoleHandler;
 import javafx.scene.control.CheckBox;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import sun.security.util.PropertyExpander;
 
 public class Trade_GUI extends JFrame {
 
@@ -200,42 +201,58 @@ public class Trade_GUI extends JFrame {
         trade = new JButton();
         trade.setText("Trade");
         trade.setBounds(150, 300, 120, 40);
+
         trade.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (int i = 0; i < Selected1.size(); i++) {
-                    if (Selected1.get(i).isSelected()) {
-                        for (int j = 0; j < players.get(plylist.getSelectedItem()).getProperties().size(); j++) {
-                            System.out.println(Selected1.get(i).getText());
-                            System.out.println(players.get(plylist.getSelectedItem()).getProperties().get(j).name);
-                            if (Selected1.get(i).getText().equals(players.get(plylist.getSelectedItem()).getProperties().get(j).name)) {
-                                PlayerProperties.add(players.get(plylist.getSelectedItem()).getProperties().get(j));
+                try {
+                    int Dflag = 0;
+                    for (int i = 0; i < Selected1.size(); i++) {
+                        if (Selected1.get(i).isSelected()) {
+                            for (int j = 0; j < players.get(plylist.getSelectedItem()).getProperties().size(); j++) {
+                                System.out.println(Selected1.get(i).getText());
+                                System.out.println(players.get(plylist.getSelectedItem()).getProperties().get(j).name);
+                                if (Selected1.get(i).getText().equals(players.get(plylist.getSelectedItem()).getProperties().get(j).name)) {
+                                    PlayerProperties.add(players.get(plylist.getSelectedItem()).getProperties().get(j));
+                                }
                             }
                         }
                     }
-                }
-                for (int i = 0; i < Selected2.size(); i++) {
-                    if (Selected2.get(i).isSelected()) {
-                        for (int j = 0; j < Me.getProperties().size(); j++) {
-                            if (Selected2.get(i).getText().equals(Me.getProperties().get(j).name)) {
-                                MyProperties.add(Me.getProperties().get(j));
+                    for (int i = 0; i < Selected2.size(); i++) {
+                        if (Selected2.get(i).isSelected()) {
+                            for (int j = 0; j < Me.getProperties().size(); j++) {
+                                if (Selected2.get(i).getText().equals(Me.getProperties().get(j).name)) {
+                                    MyProperties.add(Me.getProperties().get(j));
+                                }
                             }
                         }
                     }
-                }
 
-                if (moneycheck.isSelected()) {
-                    Me.tradePM2P(PlayerProperties, MyProperties, Integer.parseInt(money.getText()), players.get(plylist.getSelectedItem()), Me);}
-                
-                    else if (my_moneycheck.isSelected()) {
-                    Me.tradeMP2P(PlayerProperties, MyProperties, Integer.parseInt(my_money.getText()), players.get(plylist.getSelectedItem()), Me);
+                    if (moneycheck.isSelected()) {
+                        if (Selected2.size() == 0) {
+                            JOptionPane.showMessageDialog(null, "Gifting money to another players is not allowed");
+                            Dflag = 1;
+                        } else {
+                            Me.tradePM2P(PlayerProperties, MyProperties, Integer.parseInt(money.getText()), players.get(plylist.getSelectedItem()), Me);
+                        }
+                    } else if (my_moneycheck.isSelected()) {
+                        if (Selected1.size() == 0) {
+                            JOptionPane.showMessageDialog(null, "Gifting money to another players is not allowed");
+                              Dflag = 1;
+                        } else {
+                            Me.tradeMP2P(PlayerProperties, MyProperties, Integer.parseInt(my_money.getText()), players.get(plylist.getSelectedItem()), Me);
+                        }
+                    } else if (!moneycheck.isSelected() && !my_moneycheck.isSelected()) {
+                        Me.tradeP2P(PlayerProperties, MyProperties, players.get(plylist.getSelectedItem()), Me);
+
+                    }
+                    if (Dflag == 0) {
+                        dispose();
+                    }
+                    
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Invalid character where entered, please use numbers only.");
                 }
-                    else if (!moneycheck.isSelected() && !my_moneycheck.isSelected()){
-                    Me.tradeP2P(PlayerProperties, MyProperties, players.get(plylist.getSelectedItem()), Me);
-                
-                }
-               
-                dispose();
             }
         }
         );
