@@ -9,6 +9,8 @@ public class Dice {
     private boolean roll;
     private boolean jail;
     private Random rand;
+    
+    
 
     public boolean test = false;
 

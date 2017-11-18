@@ -28,19 +28,19 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
            public void actionPerformed(ActionEvent e) {
                playersPanel.Update(players);
                //for now stop timer
-               /*int time = Integer.parseInt(TimerLbl.getText());
+               int time = Integer.parseInt(TimerLbl.getText());
                if(time == 0){
                    endTurn();
                }else{
                    if(time < timeSliceInSeconds*2/3) diceGui.ChangeDices();
                    TimerLbl.setText((time-1)+"");
-               }*/
+               }
            }
        });
        turnTimer.start();
     } 
     private javax.swing.Timer  turnTimer;
-    private final int timeSliceInSeconds = 15; 
+    private final int timeSliceInSeconds = 120; 
     
     private boolean playerMoving = false;
     private String movingPlayerName = "";
@@ -1028,7 +1028,8 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         EndTurnBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                endTurn();
+                if(diceGui.currentPlayerHasRolled())endTurn();
+                else JOptionPane.showMessageDialog(null, "Can't end turn before rolling dice.");
             }
         });
         c.add(EndTurnBtn);
@@ -1453,12 +1454,15 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         }
     }
    
+    @Override
+    public void activatePlayer(String playerName){
+        playersPanel.ChangePlayer(playerName);
+    }
     
     private void endTurn(){
         TimerLbl.setText(timeSliceInSeconds+"");
         controller.switchTurn();
         diceGui.enableDiceRoll();
-        playersPanel.ChangePlayer("Hassan");
     }
     
     private int[] stepping;

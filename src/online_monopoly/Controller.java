@@ -35,6 +35,7 @@ public class Controller {
 
     public void switchTurn() {
         currentPlayer = (currentPlayer + 1) % playerNames.length;
+        gui.activatePlayer(getCurrentPlayer().name);
     }
 
     public Player getCurrentPlayer() {

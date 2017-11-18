@@ -13,4 +13,5 @@ public interface GUIInterface {
     public void pullChanceCard(String msg);
     public void pullCommunityCard(String msg);
     public void animatePlayer(String playerName, int destination, int origin, boolean clockWise);
+    public void activatePlayer(String playerName);
 }

@@ -20,8 +20,13 @@ public class DiceGui extends javax.swing.JPanel {
     Random rand = new Random();
     /**
      * Creates new form DiceGui
+     * @return 
      */
+    public boolean currentPlayerHasRolled(){
+        return !rollEnabled;
+    }
     public DiceGui(Controller controller) {
+     
         this.rollEnabled = true;
         this.controller = controller;
         initComponents();
