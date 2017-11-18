@@ -1451,6 +1451,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         TimerLbl.setText(timeSliceInSeconds+"");
         controller.switchTurn();
         diceGui.enableDiceRoll();
+        playersPanel.ChangePlayer("Hassan");
     }
     
     private int[] stepping;
