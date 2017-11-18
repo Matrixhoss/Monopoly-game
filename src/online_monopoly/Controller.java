@@ -192,8 +192,6 @@ public class Controller {
         else{
             JOptionPane.showMessageDialog(null, "The Owner need his Rent");
             NP.payRent(p);//make playe pay rent
-            NP.getOwner().addMoney(NP.getRent(p));//add money to owner
-            //railway no rent
         }
     }
 

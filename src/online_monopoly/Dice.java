@@ -52,7 +52,9 @@ public class Dice {
                 System.out.println("DD " + dd);
             }
         }
+     
         return d;
+        
 
     }
 

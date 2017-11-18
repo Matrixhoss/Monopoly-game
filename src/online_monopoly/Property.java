@@ -151,8 +151,12 @@ public abstract class Property extends BoardObject {
         // get the rent value from property 
         int rent = getRent(stopingPlayer);
         // check if the player have a money to pay
+        if(this.ownerPlayer.equals(stopingPlayer)){
+        return 0 ; 
+        }
         if (this.checkStopingPlayerMoney(stopingPlayer, rent)) {
             stopingPlayer.payMoney(rent);
+            this.ownerPlayer.addMoney(rent);
             stopingPlayer.setNoMoney(false);
             return 0; // success
             // check if the player have properties or houses or hotels can sell or mortgage
