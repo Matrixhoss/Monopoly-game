@@ -26,13 +26,15 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
        turnTimer.addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent e) {
-               int time = Integer.parseInt(TimerLbl.getText());
+               playersPanel.Update(players);
+               //for now stop timer
+               /*int time = Integer.parseInt(TimerLbl.getText());
                if(time == 0){
                    endTurn();
                }else{
                    if(time < timeSliceInSeconds*2/3) diceGui.ChangeDices();
                    TimerLbl.setText((time-1)+"");
-               }
+               }*/
            }
        });
        turnTimer.start();
@@ -258,7 +260,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         trade.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Trade_GUI tg = new Trade_GUI(controller.getPlayers(), controller.playerNames);
+                Trade_GUI tg = new Trade_GUI(controller.getPlayers(), controller.playerNames,controller.getCurrentPlayer());
                 tg.setVisible(true);
             }});
         c.add(trade);
@@ -1456,6 +1458,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         TimerLbl.setText(timeSliceInSeconds+"");
         controller.switchTurn();
         diceGui.enableDiceRoll();
+        playersPanel.ChangePlayer("Hassan");
     }
     
     private int[] stepping;
