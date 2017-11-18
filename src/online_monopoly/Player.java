@@ -386,7 +386,7 @@ public class Player {
         for (int i = 0; i < Pr1.size(); i++) {
             P1.removeProperty(Pr1.get(i));
             P2.addProperty(Pr1.get(i));
-             Pr2.get(i).setOwner(P2);
+             Pr1.get(i).setOwner(P2);
         }
     }
 
