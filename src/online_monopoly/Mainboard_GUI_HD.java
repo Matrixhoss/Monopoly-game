@@ -97,6 +97,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
     public JLabel b38;
     public JLabel b39;
     public JLabel b40;
+    public JLabel playerLbl; 
 
     ImageIcon board = new ImageIcon(getClass().getResource("mischd/monoi.png"));
     ImageIcon p1 = new ImageIcon(getClass().getResource("mischd/1.png"));
@@ -181,6 +182,9 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
     ImageIcon z39 = new ImageIcon(getClass().getResource("mischd/z39.jpg"));
     ImageIcon z40 = new ImageIcon(getClass().getResource("mischd/z40.jpg"));
 
+    ImageIcon playerIcon = new ImageIcon(getClass().getResource("mischd/players.jpg"));
+    
+ 
     
     public JLabel CommunityLbl;
     ImageIcon communi_s = new ImageIcon(getClass().getResource("mischd/community_s.png"));
@@ -237,7 +241,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         _this = this;
         this.setTitle("Monopoly");
         this.setResizable(false);
-        this.setBounds(0, 0, 1200, 725);
+        this.setBounds(0, 0, 1100, 725);
         
        
         
@@ -265,6 +269,8 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
             }});
         c.add(trade);
         
+        
+
         b1 = new JLabel(p1);
         b1.setBackground(Color.BLACK);
         b1.setBounds(620, 620, 80, 80);
@@ -1047,6 +1053,12 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         playersPanel= new PlayersPanel(players);
         playersPanel.setBounds(700, 0, 400, 725);
         c.add(playersPanel);
+        
+ 
+        playerLbl = new JLabel(playerIcon);
+        playerLbl.setBounds(700, 0, 400, 700);
+        c.add(playerLbl);
+        
 
         inititaeTurnTimer();
         

@@ -41,6 +41,10 @@ public class PlayerTab extends javax.swing.JPanel {
         PName = new javax.swing.JLabel();
         Pmoney = new javax.swing.JLabel();
 
+        setOpaque(false);
+        setRequestFocusEnabled(false);
+        setVerifyInputWhenFocusTarget(false);
+
         PName.setText("Name");
 
         Pmoney.setText("Money");
@@ -52,18 +56,18 @@ public class PlayerTab extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(PName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addGap(62, 62, 62)
                 .addComponent(Pmoney)
-                .addGap(51, 51, 51))
+                .addContainerGap(225, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(PName)
                     .addComponent(Pmoney))
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addContainerGap(434, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

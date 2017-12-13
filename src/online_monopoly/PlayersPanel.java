@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Set;
+import javax.swing.UIManager;
 
 /**
  *
@@ -22,6 +23,7 @@ public class PlayersPanel extends javax.swing.JPanel {
     ArrayList<PlayerTab> Panels = new ArrayList<PlayerTab>();
     Hashtable<String ,Player> PlayersP;
     public PlayersPanel(Hashtable<String ,Player> p) {
+        UIManager.put("TabbedPane.contentOpaque", false);
         initComponents();
         this.setMaximumSize(new Dimension(200, 700));
         PlayersP = p;
@@ -32,6 +34,7 @@ public class PlayersPanel extends javax.swing.JPanel {
         }
         for (int i = 0; i < Panels.size(); i++) {
             jTabbedPane1.addTab(Panels.get(i).TabName(), Panels.get(i));
+            
         }
     }
     
@@ -68,9 +71,11 @@ public class PlayersPanel extends javax.swing.JPanel {
         jTabbedPane1 = new javax.swing.JTabbedPane();
 
         setBorder(new javax.swing.border.MatteBorder(null));
+        setOpaque(false);
 
         jTabbedPane1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jTabbedPane1.setDoubleBuffered(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -78,13 +83,14 @@ public class PlayersPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
