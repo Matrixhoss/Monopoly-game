@@ -36,12 +36,19 @@ public class Controller {
     public void switchTurn() {
         currentPlayer = (currentPlayer + 1) % playerNames.length;
         gui.activatePlayer(getCurrentPlayer().name);
+        dice.resetDice();
     }
 
     public Player getCurrentPlayer() {
         return players.get(playerNames[currentPlayer]);
     }
 
+    public void sendCurrentPlayerTojail(){
+        getCurrentPlayer().goToJail();
+    }
+    public int getDoubleDice(){
+        return dice.getDoubleDice();
+    }
     public Controller() {
 
         currentPlayer = 0;

@@ -26,7 +26,6 @@ public class DiceGui extends javax.swing.JPanel {
         return !rollEnabled;
     }
     public DiceGui(Controller controller) {
-     
         this.rollEnabled = true;
         this.controller = controller;
         initComponents();
@@ -90,7 +89,7 @@ public class DiceGui extends javax.swing.JPanel {
 
     private void RollBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RollBtnActionPerformed
         // TODO add your handling code here:
-        ChangeDices();
+        ChangeDicesIfApplicaple();
     }//GEN-LAST:event_RollBtnActionPerformed
 
 
@@ -103,16 +102,23 @@ public class DiceGui extends javax.swing.JPanel {
     public void enableDiceRoll(){
         this.rollEnabled = true;
     }
-public void ChangeDices() {
 
-    if(rollEnabled){
+public void ChangeDicesIfApplicaple() {
+
+    if(controller.getDoubleDice() == 3){
+        controller.sendCurrentPlayerTojail();
         rollEnabled = false;
+    }
+    
+    if(rollEnabled){
+        
         int roll[] = controller.rollDice();
+        if(roll[0] != roll[1]){
+           rollEnabled = false;
+       }
         ScheduledExecutorService exec = Executors.newScheduledThreadPool(1);
         Runnable task = new Runnable() {
             int secondsToWait = 1000;
-            
-
             @Override
             public void run() {
                 secondsToWait -= 100;
@@ -128,7 +134,7 @@ public void ChangeDices() {
             }
         };
         exec.scheduleAtFixedRate(task, 100, 100, TimeUnit.MILLISECONDS);
-        
+       
         
     }
 }

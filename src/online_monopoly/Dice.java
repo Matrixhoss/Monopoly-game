@@ -7,9 +7,7 @@ public class Dice {
     private int[] d = new int[2];           //D stands for dice, array of d is an array of 2 dices
     private int dd;                         // dd stands for DoubleDice
     private boolean roll;
-    private boolean jail;
     private Random rand;
-    
     
 
     public boolean test = false;
@@ -26,6 +24,9 @@ public class Dice {
         return this.roll;
     }
 
+    public int getDoubleDice(){
+        return dd;
+    }
     public int[] rollDice(Player p) {
 
         this.d[0] = (rand.nextInt(6) + 1);   //random(6)+1 to avoid 0
@@ -56,6 +57,11 @@ public class Dice {
         return d;
         
 
+    }
+    
+    public void resetDice(){
+        this.roll=true;
+        this.dd=0;
     }
 
     public void enableRolling() {

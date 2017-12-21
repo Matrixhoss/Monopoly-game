@@ -32,7 +32,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
                if(time == 0){
                    endTurn();
                }else{
-                   if(time < timeSliceInSeconds*2/3) diceGui.ChangeDices();
+                   if(time < timeSliceInSeconds*2/3) diceGui.ChangeDicesIfApplicaple();
                    TimerLbl.setText((time-1)+"");
                }
            }
@@ -1510,6 +1510,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
                         controller.handleNewPosition(destination);
                         playersPanel.Update(players);
                         playerMoving = false;
+                        diceGui.ChangeDicesIfApplicaple();
                         //below should be in switching turn function
                         
                         
