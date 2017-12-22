@@ -39,6 +39,9 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
        });
        turnTimer.start();
     } 
+   
+   private Image charImaage =  new ImageIcon(getClass().getResource("mischd/char2.png")).getImage();
+   
     private javax.swing.Timer  turnTimer;
     private final int timeSliceInSeconds = 120; 
     
@@ -1388,15 +1391,17 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
 
     @Override
     public void paint(Graphics g) {
-        super.paint(g);
+        BufferedImage bf = new BufferedImage(this.getWidth(), this.getHeight(), BufferedImage.TYPE_INT_RGB);
+        Graphics gg = bf.getGraphics();
+        super.paint(gg);
         
         for(Player p : players.values()){
-            g.setColor(p.getColor());
+            gg.setColor(p.getColor());
             Point point = (p.name.equals(movingPlayerName)&&playerMoving)? animationPoint:boardMapper.getMapping(p.position);
-
-            g.fillRect(point.getX(), point.getY(), 50, 50);
-            g.setColor(Color.WHITE);
-            g.drawString(p.name, point.getX()+3, point.getY()+25);
+            gg.drawImage(charImaage, point.getX(), point.getY(), this);
+            gg.setColor(Color.black);
+            gg.setFont(new Font("Garamond", Font.BOLD | Font.PLAIN, 18));
+            gg.drawString(p.name, point.getX()+3, point.getY()-10);
         }
         /*
         //community lbl
@@ -1464,6 +1469,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
 
             }
         }
+        g.drawImage(bf, 0, 0, null);
     }
    
     @Override
