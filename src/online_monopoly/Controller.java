@@ -48,6 +48,7 @@ public class Controller {
 
     public void sendCurrentPlayerTojail() {
         getCurrentPlayer().goToJail();
+//        gui.animatePlayer(getCurrentPlayer().name, 10, getCurrentPlayer().position, true);
     }
 
     public int getDoubleDice() {
@@ -79,7 +80,7 @@ public class Controller {
 
         initializePlayers(playersImagesAssociation);
         CC = new CommunityAndChance(players, playerNames);
-        players.get("Hassan").goToJail();
+       
 
     }
 
@@ -135,29 +136,45 @@ public class Controller {
         return resGroups;
     }
 
-    public void handleNewPosition(int posIndex) {
-        Player p = players.get(playerNames[currentPlayer]);
+public void handleNewPosition(int posIndex) {
+        Player p = this.getCurrentPlayer();
         p.setPosition(IndexToPoint(p.position));
         System.out.println("Name : " + p.name + " , Index : " + p.position + " , " + p.getX() + " , " + p.getY());
         if (posIndex == 7 || posIndex == 22 || posIndex == 36) {
-            String card = CC.DrawCardPrint("chance", this.currentPlayer);
-            gui.pullChanceCard(card);
-            printMoney();
+            Card cd = CC.DrawCardPrint("chance", this.currentPlayer);
+            gui.pullChanceCard(cd.label);
+            if(cd.type==4){
+                gui.animatePlayer(p.name, (-3+ p.position) % 40, p.position, false);
+                players.get(p.name).position = (p.position - 3) % 40;
+                this.handleNewPosition(cd.index % 40);
+            }
+            else if(cd.type==3){
+                gui.animatePlayer(p.name, cd.index % 40, p.position, true);
+                players.get(p.name).position = cd.index % 40;
+                this.handleNewPosition(cd.index % 40);
+            }
         } else if (posIndex == 2 || posIndex == 17 || posIndex == 33) {
-            String card = CC.DrawCardPrint("chest", this.currentPlayer);
-            gui.pullCommunityCard(card);
-            printMoney();
+            Card cd = CC.DrawCardPrint("chest", this.currentPlayer);
+            gui.pullCommunityCard(cd.label);
+            if(cd.type==4){
+                gui.animatePlayer(p.name, (-3+ p.position) % 40, p.position, false);
+                players.get(p.name).position = (p.position - 3) % 40;
+                this.handleNewPosition(cd.index % 40);
+            }
+            else if(cd.type==3){
+                gui.animatePlayer(p.name, cd.index % 40, p.position, true);
+                players.get(p.name).position = cd.index % 40;
+                this.handleNewPosition(cd.index % 40);
+            }
         } else if (posIndex == 0 || posIndex == 40) {
             p.addMoney(200);
         } else if (posIndex == 4) {
             //handle income tax
             TaxOptionFrame taxPanel = new TaxOptionFrame(p, TaxAndIncome);
             taxPanel.setVisible(true);
-            printMoney();
         } else if (posIndex == 38) {
             //handle luxury tax
             TaxAndIncome.handleLuxTax(p);
-            printMoney();
         } else if (posIndex == 30 || posIndex == 10 || posIndex == 20) {
             if (posIndex == 30) {
                     sendCurrentPlayerTojail();
@@ -169,7 +186,7 @@ public class Controller {
     }
 
     private void printMoney() {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < players.size(); i++) {
             Player p = players.get(playerNames[i]);
             System.err.println(p.name + " : " + p.getMoney());
         }

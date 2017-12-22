@@ -23,6 +23,7 @@ class Card
 		public String label;
                 public int ammount = 0;
                 public Point p;
+                public int index;
                 public boolean used=false;
                 
 
@@ -117,7 +118,7 @@ public class CommunityAndChance{
             
     }
     
-    public String DrawCardPrint(String type,int currentPlayer){
+    public Card DrawCardPrint(String type,int currentPlayer){
         Player hassan=players.get(playerNames[currentPlayer]);
         return this.DrawCardPrint(type,hassan, false, currentPlayer);         
     }
@@ -131,7 +132,7 @@ public class CommunityAndChance{
         ChestCards.add(e);
     }
     
-    public String DrawCardPrint(String type, Player hassan, boolean print, int currentPlayer){
+    public Card DrawCardPrint(String type, Player hassan, boolean print, int currentPlayer){
         Card s;
         if(type.equalsIgnoreCase("chance")){
             s = ChanceCards.get(0);
@@ -147,16 +148,17 @@ public class CommunityAndChance{
             ChestCards.remove(0);
             if(s.type==5){
             hassan.addChanceCard(true);
-            return "#sos123";
+            return new Card(5,"#sos123",0);
             }
             ChestCards.add(s);
         }
         else
             //error
-            return "#sba7elfol213";
+            return new Card(5,"#sba7elfol213",0);
         
         // check for the chance/community card type and take corresponding action
         // 1 = pay,get, 3=goto, 4=return, 5=out of jail, 2 go to jail, 6 get from all, 7 repairs chance, 8 repair comm
+ 
         switch (s.type) {
             case 1:
                 hassan.addMoney(s.ammount);
@@ -165,10 +167,13 @@ public class CommunityAndChance{
                 hassan.goToJail();
                 break;
             case 3:
-                hassan.setPosition(s.p.getX(), s.p.getY());
+//                hassan.setPosition(s.p.getX(), s.p.getY());
+                s.index=Controller.PointToIndex(s.p);
                 break;
             case 4:
-                hassan.moveBack(3);
+
+                s.index=Controller.PointToIndex(new Point(hassan.getX(),hassan.getY()))-3;
+//                hassan.moveBack(3);
                 break;
             case 6:
                 // get money from all players somehow.
@@ -194,7 +199,7 @@ public class CommunityAndChance{
         }
         //here should call the class which will draw gui for card.
         
-        return s.label;
+        return s;
     }
     
     
