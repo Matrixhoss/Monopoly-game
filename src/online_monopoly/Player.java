@@ -38,10 +38,11 @@ public class Player {
     private boolean Moving = false;
     public Image characterImage;
     private int TurnsInJail;
-    
-    public Image getImage(){
+
+    public Image getImage() {
         return characterImage;
     }
+
     public Player(String name, Color c) {
         this.name = name;
         color = c;
@@ -50,10 +51,11 @@ public class Player {
         money = 1500;
     }
 
-    public Player(String name, int imageIndex,Color c) {
-        this(name ,c);
-        this.characterImage = new javax.swing.ImageIcon(getClass().getResource("/online_monopoly/mischd/char"+imageIndex+".png")).getImage();
+    public Player(String name, int imageIndex, Color c) {
+        this(name, c);
+        this.characterImage = new javax.swing.ImageIcon(getClass().getResource("/online_monopoly/mischd/char" + imageIndex + ".png")).getImage();
     }
+
     public Player(String name, Color c, Mainboard_GUI frame) {
         this.name = name;
         color = c;
@@ -103,8 +105,10 @@ public class Player {
     public int getTotalMoney() {
         int TotalM = this.money;
         for (int i = 0; i < MyProperties.size(); i++) {
-            NormalProperty p = (NormalProperty) (MyProperties.get(i));
-            TotalM += (p.getNumOfHouses() * 50 + p.getNumOfHotels() * 100);//lsh m5l // Hossam
+            if (MyProperties.get(i).getGroupID() != 9 && MyProperties.get(i).getGroupID() != 10) {
+                NormalProperty p = (NormalProperty) (MyProperties.get(i));
+                TotalM += (p.getNumOfHouses() * 50 + p.getNumOfHotels() * 100);//lsh m5l // Hossam
+            }
         }
         return TotalM;
     }
@@ -184,7 +188,7 @@ public class Player {
         PositionY = 0;
         this.InJail = true;
         this.setPosition(Controller.IndexToPoint(10));
-        this.position=10;
+        this.position = 10;
     }
 //</editor-fold>
 
@@ -388,7 +392,7 @@ public class Player {
     }
 //</editor-fold>
 
-    public void tradeP2P(ArrayList<Property> Pr1, ArrayList<Property> Pr2, Player P1,Player P2) {
+    public void tradeP2P(ArrayList<Property> Pr1, ArrayList<Property> Pr2, Player P1, Player P2) {
         for (int i = 0; i < Pr2.size(); i++) {
             P1.addProperty(Pr2.get(i));
             P2.removeProperty(Pr2.get(i));
@@ -397,7 +401,7 @@ public class Player {
         for (int i = 0; i < Pr1.size(); i++) {
             P1.removeProperty(Pr1.get(i));
             P2.addProperty(Pr1.get(i));
-             Pr1.get(i).setOwner(P2);
+            Pr1.get(i).setOwner(P2);
         }
     }
 
@@ -419,15 +423,15 @@ public class Player {
 //        P2.addMoney(m);
 //
 //    }
-
-    public void tradeMP2P(ArrayList<Property> Pr1, ArrayList<Property> Pr2, int m, Player P1,Player P2) {
-          tradeP2P(Pr1,Pr2,P1,P2);
+    public void tradeMP2P(ArrayList<Property> Pr1, ArrayList<Property> Pr2, int m, Player P1, Player P2) {
+        tradeP2P(Pr1, Pr2, P1, P2);
         P1.addMoney(m);
         P2.payMoney(m);
 
     }
-    public void tradePM2P(ArrayList<Property> Pr1, ArrayList<Property> Pr2, int m, Player P1,Player P2) {
-          tradeP2P(Pr1,Pr2,P1,P2);
+
+    public void tradePM2P(ArrayList<Property> Pr1, ArrayList<Property> Pr2, int m, Player P1, Player P2) {
+        tradeP2P(Pr1, Pr2, P1, P2);
         P2.addMoney(m);
         P1.payMoney(m);
 
@@ -440,5 +444,5 @@ public class Player {
     public void setTurnsInJail(int TurnsInJail) {
         this.TurnsInJail = TurnsInJail;
     }
-    
+
 }
