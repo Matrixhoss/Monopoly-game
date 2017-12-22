@@ -30,7 +30,7 @@ public class PlayersPanel extends javax.swing.JPanel {
         
         Set<String> keys = PlayersP.keySet();
         for(String key: keys){
-            Panels.add(new PlayerTab(PlayersP.get(key).name, PlayersP.get(key).getMoney()));
+            Panels.add(new PlayerTab(PlayersP.get(key).name, PlayersP.get(key).getMoney(),PlayersP.get(key).getProperties()));
         }
         for (int i = 0; i < Panels.size(); i++) {
             jTabbedPane1.addTab(Panels.get(i).TabName(), Panels.get(i));
@@ -54,8 +54,14 @@ public class PlayersPanel extends javax.swing.JPanel {
         Set<String> keys = PlayersP.keySet();
         for(String key: keys){
             Panels.get(k).Setmoney(PlayersP.get(key).getMoney());
+            Panels.get(k).UpdatePanel();
+            Panels.get(k).setChance(PlayersP.get(key).hasChanceCard());
+            Panels.get(k).setCommunity(PlayersP.get(key).hasCommunityCard());
+            //System.out.println(PlayersP.get(key).hasCommunityCard()+ "  " + PlayersP.get(key).hasChanceCard());
+
             k++;
         }
+        
         
     }
 

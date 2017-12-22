@@ -244,7 +244,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         _this = this;
         this.setTitle("Monopoly");
         this.setResizable(false);
-        this.setBounds(0, 0, 1100, 725);
+        this.setBounds(0, 0, 1200, 725);
         
        
         
@@ -1054,13 +1054,13 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         background.add(zoom);
         
         playersPanel= new PlayersPanel(players);
-        playersPanel.setBounds(700, 0, 400, 725);
+        playersPanel.setBounds(700, 0, 450, 725);
         c.add(playersPanel);
         
  
-        playerLbl = new JLabel(playerIcon);
-        playerLbl.setBounds(700, 0, 400, 700);
-        c.add(playerLbl);
+//        playerLbl = new JLabel(playerIcon);
+//        playerLbl.setBounds(700, 0, 400, 700);
+//        c.add(playerLbl);
         
 
         inititaeTurnTimer();
