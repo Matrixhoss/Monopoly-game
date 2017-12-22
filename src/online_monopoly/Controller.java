@@ -39,6 +39,7 @@ public class Controller {
         currentPlayer = (currentPlayer + 1) % playerNames.length;
         gui.activatePlayer(getCurrentPlayer().name);
         dice.resetDice();
+        
         if (getCurrentPlayer().checkInJail()) {
             JOF = new JailOptionFrame(getCurrentPlayer(), j,dice);
             JOF.setVisible(true);

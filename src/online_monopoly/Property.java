@@ -422,6 +422,9 @@ class Jail extends BoardObject {
                 }
                 p.exitFromJail();
                 break;
+            case 3:
+                
+                break;
         }
 
     }
