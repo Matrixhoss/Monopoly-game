@@ -43,6 +43,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
    
     private javax.swing.Timer  turnTimer;
     private final int timeSliceInSeconds = 120; 
+    private JailOptionFrame JOF;
     
     private boolean playerMoving = false;
     private String movingPlayerName = "";
