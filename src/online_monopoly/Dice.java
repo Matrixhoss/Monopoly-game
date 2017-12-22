@@ -69,7 +69,7 @@ public class Dice {
     }
 
     public void disableRolling() {
-        this.roll = true;
+        this.roll = false;
     }
 
 }

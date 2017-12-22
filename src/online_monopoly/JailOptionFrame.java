@@ -15,7 +15,6 @@ import javax.swing.JLabel;
  * @author Hesham-Desktop
  */
 public class JailOptionFrame extends javax.swing.JFrame {
-
     private int c = 5;
     private Player P;
     private Jail J;
@@ -29,7 +28,7 @@ public class JailOptionFrame extends javax.swing.JFrame {
     public JailOptionFrame() {
     }
 
-    public JailOptionFrame(Player P, Jail J) {
+    public JailOptionFrame(Player P, Jail J, Dice D) {
 
         this.setUndecorated(true);
         this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.BLACK));
@@ -37,6 +36,7 @@ public class JailOptionFrame extends javax.swing.JFrame {
         this.setBounds(100, 100, 150, 100);
 
         this.pack();
+        this.D=D;
         this.P = P;
         this.J = J;
         initComponents();

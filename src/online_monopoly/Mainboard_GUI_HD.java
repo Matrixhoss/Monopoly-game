@@ -18,7 +18,6 @@ import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
 
    private void inititaeTurnTimer(){
@@ -100,7 +99,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
     public JLabel b38;
     public JLabel b39;
     public JLabel b40;
-    public JLabel playerLbl; 
+    public JLabel playerLbl;
 
     ImageIcon board = new ImageIcon(getClass().getResource("mischd/monoi.png"));
     ImageIcon p1 = new ImageIcon(getClass().getResource("mischd/1.png"));
@@ -186,9 +185,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
     ImageIcon z40 = new ImageIcon(getClass().getResource("mischd/z40.jpg"));
 
     ImageIcon playerIcon = new ImageIcon(getClass().getResource("mischd/players.jpg"));
-    
- 
-    
+
     public JLabel CommunityLbl;
     ImageIcon communi_s = new ImageIcon(getClass().getResource("mischd/community_s.png"));
 
@@ -198,8 +195,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
     boolean moveComm = false;
     boolean backcomm = false;
     int countCommmoves = 0;
-    
-    
+
     public JLabel ChanceLbl;
     ImageIcon chance_s = new ImageIcon(getClass().getResource("mischd/chance_hdgrop.png"));
 
@@ -209,45 +205,40 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
     boolean moveChance = false;
     boolean backChance = false;
     int countChancemoves = 0;
-    
+
     PlayersPanel playersPanel;
-    
+
     public Hashtable<String, Player> players;
     JButton EndTurnBtn = new JButton("End Turn");
-    JLabel TimerLbl = new JLabel(timeSliceInSeconds+"");
-    
-    
-    
+    JLabel TimerLbl = new JLabel(timeSliceInSeconds + "");
+
     public Mainboard_GUI_HD(int x, int y) {
         this.x = x;
         this.y = y;
-       try {
-           UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-       } catch (Exception ex) {}
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception ex) {
+        }
 
         //pass in image side length in pixels
-        boardMapper = new BoardMapper(700,50);
+        boardMapper = new BoardMapper(700, 50);
 
         controller = new Controller();
         controller.addGUI(this);
-        
+
         //lazm b3d el controller initialization 34an tkon el player initialises this is until we get
         //data from GUI
         players = controller.getPlayers();
         animationPoint = boardMapper.getMapping(0);
 
-         
 //        playersPos = new HashMap<String, Point>();
 //
 //        playersPos.put("fadi", boardMapper.getMapping(0));
-
         _this = this;
         this.setTitle("Monopoly");
         this.setResizable(false);
         this.setBounds(0, 0, 1100, 725);
-        
-       
-        
+
 //        this.setSize( Toolkit.getDefaultToolkit().getScreenSize() );
 //        this.setUndecorated(true);
 //        this.setAlwaysOnTop(true);
@@ -256,8 +247,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         Container c = this.getContentPane();
         c.setLayout(null);
-        
-        
+
         zoom.setBounds(190, 100, 199, 300);
         zoom.setVisible(true);
 
@@ -267,12 +257,11 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         trade.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Trade_GUI tg = new Trade_GUI(controller.getPlayers(), controller.playerNames,controller.getCurrentPlayer());
+                Trade_GUI tg = new Trade_GUI(controller.getPlayers(), controller.playerNames, controller.getCurrentPlayer());
                 tg.setVisible(true);
-            }});
+            }
+        });
         c.add(trade);
-        
-        
 
         b1 = new JLabel(p1);
         b1.setBackground(Color.BLACK);
@@ -543,7 +532,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
             }
         });
         c.add(b15);
-        
+
         b16 = new JLabel(p16);
         b16.setBackground(Color.BLACK);
         b16.setBounds(0, 320, 80, 60);
@@ -887,9 +876,9 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
             @Override
             public void mouseClicked(MouseEvent e) {
                 pullCommunityCard("keroooooo");
-                
+
             }
-            
+
         });
         c.add(b34);
 
@@ -944,10 +933,11 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
             public void mouseExited(MouseEvent e) {
                 exitButton(e);
             }
+
             @Override
             public void mouseClicked(MouseEvent e) {
                 pullChanceCard("keroooooo");
-                
+
             }
         });
         c.add(b37);
@@ -1005,11 +995,10 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
             }
         });
         c.add(b40);
- 
-        
+
         c.validate();
         c.repaint();
-        
+
         this.validate();
         this.repaint();
         //community lbl
@@ -1019,7 +1008,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         ChanceLbl = new JLabel(chance_s);
         ChanceLbl.setBounds(420, 450, 183, 146);
         c.add(ChanceLbl);
-        
+
         //community lbl
         CommunityCard = new JLabel(communi_1);
         CommunityCard.setBounds(100, 80, 202, 201);
@@ -1027,22 +1016,25 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         CommunityLbl = new JLabel(communi_s);
         CommunityLbl.setBounds(60, 80, 240, 203);
         c.add(CommunityLbl);
-        
-        TimerLbl.setBounds(300, 80,100,30);
+
+        TimerLbl.setBounds(300, 80, 100, 30);
         TimerLbl.setVisible(true);
         c.add(TimerLbl);
-        
-        EndTurnBtn.setBounds(300, 110,100,30);
+
+        EndTurnBtn.setBounds(300, 110, 100, 30);
         EndTurnBtn.setVisible(true);
         EndTurnBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(diceGui.currentPlayerHasRolled())endTurn();
-                else JOptionPane.showMessageDialog(null, "Can't end turn before rolling dice.");
+                if (diceGui.currentPlayerHasRolled() || controller.getCurrentPlayer().checkInJail()) {
+                    endTurn();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Can't end turn before rolling dice.");
+                }
             }
         });
         c.add(EndTurnBtn);
-        
+
         //dice panel
         diceGui = new DiceGui(controller);
         diceGui.setBounds(475, 80, 150, 120);
@@ -1052,19 +1044,17 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         background.setBounds(80, 80, 540, 540);
         c.add(background);
         background.add(zoom);
-        
-        playersPanel= new PlayersPanel(players);
+
+        playersPanel = new PlayersPanel(players);
         playersPanel.setBounds(700, 0, 400, 725);
         c.add(playersPanel);
-        
- 
+
         playerLbl = new JLabel(playerIcon);
         playerLbl.setBounds(700, 0, 400, 700);
         c.add(playerLbl);
-        
 
         inititaeTurnTimer();
-        
+
         this.setLocationRelativeTo(c);
     }
 
@@ -1347,7 +1337,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
             System.out.println("Mouse dragging as entered");
         }
     }
-    
+
     @Override
     public void pullCommunityCard(String card) {
         moveComm = true;
@@ -1367,8 +1357,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
                 1000
         );
     }
-    
-    
+
     @Override
     public void pullChanceCard(String card) {
         moveChance = true;
@@ -1419,7 +1408,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         CommunityLbl = new JLabel(communi_s);
         CommunityLbl.setBounds(60, 80, 240, 203);
         c.add(CommunityLbl);
-        */
+         */
         //keroo
         if (moveComm) {
             CommunityCard.setBounds(CommunityCard.getBounds().x + 1, CommunityCard.getBounds().y + 1, 202, 201);
@@ -1444,8 +1433,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
 
             }
         }
-        
-        
+
         if (moveChance) {
             chanceCard.setBounds(chanceCard.getBounds().x - 1, chanceCard.getBounds().y - 1, 151, 145);
             if (chanceCard.getBounds().x > 325) {
@@ -1471,18 +1459,18 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         }
         g.drawImage(bf, 0, 0, null);
     }
-   
+
     @Override
-    public void activatePlayer(String playerName){
+    public void activatePlayer(String playerName) {
         playersPanel.ChangePlayer(playerName);
     }
-    
-    private void endTurn(){
-        TimerLbl.setText(timeSliceInSeconds+"");
+
+    private void endTurn() {
+        TimerLbl.setText(timeSliceInSeconds + "");
         controller.switchTurn();
         diceGui.enableDiceRoll();
     }
-    
+
     private int[] stepping;
 
     @Override
@@ -1518,10 +1506,8 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
                         playerMoving = false;
                         diceGui.ChangeDicesIfApplicaple();
                         //below should be in switching turn function
-                        
-                        
-                    }
-                    else {
+
+                    } else {
                         stepping = boardMapper.getStep(animationPoint, corners.get(0));
                     }
                 }
@@ -1532,4 +1518,3 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         timer.start();
     }
 }
-    

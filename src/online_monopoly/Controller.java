@@ -24,6 +24,8 @@ public class Controller {
     GUIInterface gui;
     Group[] groups;
     int currentPlayer;
+    private JailOptionFrame JOF;
+    private Jail j = new Jail("Jail", 0, IndexToPoint(10));
 
     //all player names should be initialized here and be consisitent with the hashtable
     String[] playerNames = {"Fadi", "Hassan", "Hossam"};
@@ -37,18 +39,24 @@ public class Controller {
         currentPlayer = (currentPlayer + 1) % playerNames.length;
         gui.activatePlayer(getCurrentPlayer().name);
         dice.resetDice();
+        if (getCurrentPlayer().checkInJail()) {
+            JOF = new JailOptionFrame(getCurrentPlayer(), j,dice);
+            JOF.setVisible(true);
+        }
     }
 
     public Player getCurrentPlayer() {
         return players.get(playerNames[currentPlayer]);
     }
 
-    public void sendCurrentPlayerTojail(){
+    public void sendCurrentPlayerTojail() {
         getCurrentPlayer().goToJail();
     }
-    public int getDoubleDice(){
+
+    public int getDoubleDice() {
         return dice.getDoubleDice();
     }
+
     public Controller() {
 
         currentPlayer = 0;
@@ -77,6 +85,7 @@ public class Controller {
         players.put("Hassan", new Player("Hassan", Color.RED));
         players.put("Hossam", new Player("Hossam", Color.BLUE));
         CC = new CommunityAndChance(players, playerNames);
+        players.get("Hassan").goToJail();
 
     }
 
@@ -119,7 +128,7 @@ public class Controller {
     public void handleNewPosition(int posIndex) {
         Player p = players.get(playerNames[currentPlayer]);
         p.setPosition(IndexToPoint(p.position));
-        System.out.println("Name : "+p.name+" , Index : "+p.position+" , "+p.getX()+" , "+p.getY());
+        System.out.println("Name : " + p.name + " , Index : " + p.position + " , " + p.getX() + " , " + p.getY());
         if (posIndex == 7 || posIndex == 22 || posIndex == 36) {
             String card = CC.DrawCardPrint("chance", this.currentPlayer);
             gui.pullChanceCard(card);
@@ -140,9 +149,11 @@ public class Controller {
             TaxAndIncome.handleLuxTax(p);
             printMoney();
         } else if (posIndex == 30 || posIndex == 10 || posIndex == 20) {
-            //Go to jail    
+            if (posIndex == 30) {
+                    sendCurrentPlayerTojail();
+            }
         } else {
-            Property p1 = (Property)(boardsObjects[posIndex]);     
+            Property p1 = (Property) (boardsObjects[posIndex]);
             BuyPropertyOrPay(p1, p);
         }
     }
@@ -187,7 +198,7 @@ public class Controller {
         return result;
     }
 
-    private void BuyPropertyOrPay(Property NP,Player p) {
+    private void BuyPropertyOrPay(Property NP, Player p) {
         if (!NP.haveOwner()) {
             int ch = JOptionPane.showConfirmDialog(null, "Do you want to buy this Property", "Buying Property", JOptionPane.YES_NO_OPTION);
             if (ch == JOptionPane.YES_OPTION) {
@@ -195,8 +206,7 @@ public class Controller {
                 p.payMoney(NP.value);
                 p.addProperty(NP);
             }
-        }
-        else{
+        } else {
             JOptionPane.showMessageDialog(null, "The Owner need his Rent");
             NP.payRent(p);//make playe pay rent
         }

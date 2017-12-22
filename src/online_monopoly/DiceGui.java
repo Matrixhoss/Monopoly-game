@@ -101,20 +101,26 @@ public class DiceGui extends javax.swing.JPanel {
 
     public void enableDiceRoll(){
         this.rollEnabled = true;
+          RollBtn.setEnabled(true);
     }
+    public void disableDiceRoll(){
+        this.rollEnabled = false;
+        RollBtn.setEnabled(false);
+    }
+    
 
 public void ChangeDicesIfApplicaple() {
 
     if(controller.getDoubleDice() == 3){
         controller.sendCurrentPlayerTojail();
-        rollEnabled = false;
+        disableDiceRoll();
     }
     
     if(rollEnabled){
         
         int roll[] = controller.rollDice();
         if(roll[0] != roll[1]){
-           rollEnabled = false;
+           disableDiceRoll();
        }
         ScheduledExecutorService exec = Executors.newScheduledThreadPool(1);
         Runnable task = new Runnable() {
@@ -137,6 +143,7 @@ public void ChangeDicesIfApplicaple() {
        
         
     }
+    
 }
 
 }
