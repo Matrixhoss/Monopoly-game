@@ -8,7 +8,6 @@ public class Dice {
     private int dd;                         // dd stands for DoubleDice
     private boolean roll;
     private Random rand;
-    
 
     public boolean test = false;
 
@@ -24,10 +23,13 @@ public class Dice {
         return this.roll;
     }
 
-    public int getDoubleDice(){
+    public int getDoubleDice() {
         return dd;
     }
+
     public int[] rollDice(Player p) {
+//        this.d[0] = 1;
+//        this.d[1] = 1;
 
         this.d[0] = (rand.nextInt(6) + 1);   //random(6)+1 to avoid 0
         this.d[1] = (rand.nextInt(6) + 1);
@@ -41,34 +43,24 @@ public class Dice {
 //                this.d[1] = 0;
 //            }
 //        } else {
-//            if (this.d[0] == this.d[1]) {       //if both dices have the same value 
-//                dd += 1;                        //add +1 to double dice 
-//                System.out.println("DD " + dd);
-//                if (dd == 3) {                  // if player rolls 3 doubles, send him to jail and disable roll                
-//                    p.goToJail();
-//                    this.roll = false;
-//                }
-//            } else {
-//                dd = 0;                         // after normal roll, disable the roll button
-//                this.roll = false;
-//                System.out.println("DD " + dd);
-//            }
-        
-     
+        if (this.d[0] == this.d[1]) {       //if both dices have the same value 
+            dd += 1;
+//            System.out.println("DD " + dd);
+        }
+
         return d;
-        
 
     }
-    
-    public void resetDice(){
-        this.roll=true;
-        this.dd=0;
+
+    public void resetDice() {
+        this.roll = true;
+        this.dd = 0;
     }
 
     public boolean isRoll() {
         return roll;
     }
-    
+
     public void enableRolling() {
         this.roll = true;
     }

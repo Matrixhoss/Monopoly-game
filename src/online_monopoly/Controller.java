@@ -48,6 +48,7 @@ public class Controller {
 
     public void sendCurrentPlayerTojail() {
         getCurrentPlayer().goToJail();
+//        gui.animatePlayer(getCurrentPlayer().name, 10, getCurrentPlayer().position, true);
     }
 
     public int getDoubleDice() {
@@ -79,7 +80,7 @@ public class Controller {
 
         initializePlayers(playersImagesAssociation);
         CC = new CommunityAndChance(players, playerNames);
-        players.get("Hassan").goToJail();
+       
 
     }
 
@@ -145,8 +146,7 @@ public class Controller {
             printMoney();
         } else if (posIndex == 2 || posIndex == 17 || posIndex == 33) {
             String card = CC.DrawCardPrint("chest", this.currentPlayer);
-            gui.pullCommunityCard(card);
-            printMoney();
+            gui.pullCommunityCard(card);            printMoney();
         } else if (posIndex == 0 || posIndex == 40) {
             p.addMoney(200);
         } else if (posIndex == 4) {
@@ -169,7 +169,7 @@ public class Controller {
     }
 
     private void printMoney() {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < players.size(); i++) {
             Player p = players.get(playerNames[i]);
             System.err.println(p.name + " : " + p.getMoney());
         }

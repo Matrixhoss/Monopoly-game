@@ -119,10 +119,11 @@ public class DiceGui extends javax.swing.JPanel {
     }
 
     public void ChangeDicesIfApplicaple() {
-
+            System.out.println("DD "+controller.getDoubleDice());
         if (controller.getDoubleDice() == 3) {
             controller.sendCurrentPlayerTojail();
             disableDiceRoll();
+            
         }
 
         if (rollEnabled) {
