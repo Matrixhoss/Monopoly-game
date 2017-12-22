@@ -20,34 +20,37 @@ import java.util.logging.Logger;
 
 public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
 
-   private void inititaeTurnTimer(){
-       turnTimer = new javax.swing.Timer(1000, null);
-       turnTimer.addActionListener(new ActionListener() {
-           @Override
-           public void actionPerformed(ActionEvent e) {
-               playersPanel.Update(players);
-               //for now stop timer
-               int time = Integer.parseInt(TimerLbl.getText());
-               if(time == 0){
-                   endTurn();
-               }else{
-                   if(time < timeSliceInSeconds*2/3) diceGui.ChangeDicesIfApplicaple();
-                   TimerLbl.setText((time-1)+"");
-               }
-           }
-       });
-       turnTimer.start();
-    } 
-   
-   private Image charImaage =  new ImageIcon(getClass().getResource("mischd/char2.png")).getImage();
-   
-    private javax.swing.Timer  turnTimer;
-    private final int timeSliceInSeconds = 120; 
-    
+    private void inititaeTurnTimer() {
+        turnTimer = new javax.swing.Timer(1000, null);
+        turnTimer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                playersPanel.Update(players);
+                //for now stop timer
+                int time = Integer.parseInt(TimerLbl.getText());
+                if (time == 0) {
+                    endTurn();
+                } else {
+                    if (time < timeSliceInSeconds * 2 / 3) {
+                        diceGui.ChangeDicesIfApplicaple();
+                    }
+                    TimerLbl.setText((time - 1) + "");
+                }
+            }
+        });
+        turnTimer.start();
+    }
+
+    private Image charImaage = new ImageIcon(getClass().getResource("mischd/char2.png")).getImage();
+    private JailOptionFrame JOF;
+    private javax.swing.Timer turnTimer;
+    private final int timeSliceInSeconds = 120;
+
     private boolean playerMoving = false;
     private String movingPlayerName = "";
     private Point animationPoint;
     private DiceGui diceGui;
+    private Dice d = new Dice();
     private int count;
     public static boolean isRolling = false;
     private Mainboard_GUI_HD _this = this;
@@ -1027,6 +1030,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (diceGui.currentPlayerHasRolled() || controller.getCurrentPlayer().checkInJail()) {
+                    diceGui.disableDiceRoll();
                     endTurn();
                 } else {
                     JOptionPane.showMessageDialog(null, "Can't end turn before rolling dice.");
@@ -1383,14 +1387,14 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         BufferedImage bf = new BufferedImage(this.getWidth(), this.getHeight(), BufferedImage.TYPE_INT_RGB);
         Graphics gg = bf.getGraphics();
         super.paint(gg);
-        
-        for(Player p : players.values()){
+
+        for (Player p : players.values()) {
             gg.setColor(p.getColor());
-            Point point = (p.name.equals(movingPlayerName)&&playerMoving)? animationPoint:boardMapper.getMapping(p.position);
+            Point point = (p.name.equals(movingPlayerName) && playerMoving) ? animationPoint : boardMapper.getMapping(p.position);
             gg.drawImage(charImaage, point.getX(), point.getY(), this);
             gg.setColor(Color.black);
             gg.setFont(new Font("Garamond", Font.BOLD | Font.PLAIN, 18));
-            gg.drawString(p.name, point.getX()+3, point.getY()-10);
+            gg.drawString(p.name, point.getX() + 3, point.getY() - 10);
         }
         /*
         //community lbl
@@ -1468,7 +1472,24 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
     private void endTurn() {
         TimerLbl.setText(timeSliceInSeconds + "");
         controller.switchTurn();
-        diceGui.enableDiceRoll();
+        if (!controller.getCurrentPlayer().checkInJail()) {
+            diceGui.enableDiceRoll();
+        } else {
+            JOF = new JailOptionFrame(controller.getCurrentPlayer(), d);
+            JOF.setVisible(true);
+            switch (JOF.getChoice()) {
+                case 1:
+                    diceGui.enableDiceRoll();
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    diceGui.enableDiceRoll();
+                    break;
+                case 4:
+                    break;
+            }
+        }
     }
 
     private int[] stepping;

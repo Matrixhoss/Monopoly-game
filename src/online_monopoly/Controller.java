@@ -24,8 +24,7 @@ public class Controller {
     GUIInterface gui;
     Group[] groups;
     int currentPlayer;
-    private JailOptionFrame JOF;
-    private Jail j = new Jail("Jail", 0, IndexToPoint(10));
+
 
     //all player names should be initialized here and be consisitent with the hashtable
     String[] playerNames = {"Fadi", "Hassan", "Hossam"};
@@ -38,12 +37,7 @@ public class Controller {
     public void switchTurn() {
         currentPlayer = (currentPlayer + 1) % playerNames.length;
         gui.activatePlayer(getCurrentPlayer().name);
-        dice.resetDice();
-        
-        if (getCurrentPlayer().checkInJail()) {
-            JOF = new JailOptionFrame(getCurrentPlayer(), j,dice);
-            JOF.setVisible(true);
-        }
+        dice.resetDice(); 
     }
 
     public Player getCurrentPlayer() {

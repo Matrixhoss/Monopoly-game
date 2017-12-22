@@ -114,12 +114,12 @@ public class DiceGui extends javax.swing.JPanel {
     }
 
     public void ChangeDicesIfApplicaple() {
-       
+
         if (controller.getDoubleDice() == 3) {
             controller.sendCurrentPlayerTojail();
             disableDiceRoll();
         }
-
+   
         if (rollEnabled) {
 
             int roll[] = controller.rollDice();
@@ -140,7 +140,9 @@ public class DiceGui extends javax.swing.JPanel {
                         DiceLbl1.setIcon(new javax.swing.ImageIcon(getClass().getResource("misc/dice" + roll[0] + ".png")));
                         DiceLbl2.setIcon(new javax.swing.ImageIcon(getClass().getResource("misc/dice" + roll[1] + ".png")));
 //                    Mainboard_GUI.p.move(roll[0]+roll[1]);
-                        controller.handleDiceRoll(roll[0] + roll[1]);
+//                        if (controller.getCurrentPlayer().checkInJail() && roll[0] == roll[1]) {
+                            controller.handleDiceRoll(roll[0] + roll[1]);
+//                        }
                     }
                 }
             };

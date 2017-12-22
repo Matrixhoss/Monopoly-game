@@ -401,33 +401,9 @@ class Jail extends BoardObject {
         super(name, id, p);
     }
 
-    public void handleJail(int Choice, Player p, CommunityAndChance CC, Dice d) {                //0=pay 50  1=try your luck and roll   2=use card
-        d.disableRolling();
-        switch (Choice) {
-            case 0:
-                p.payMoney(50);
-                p.exitFromJail();
-                break;
-            case 1:
-                d.enableRolling();
-                break;
-            case 2:
-                if (p.hasChanceCard() && !p.hasCommunityCard()) {
-                    CC.ReturnChanceJail();
-                    
-                } else if (!p.hasChanceCard() && p.hasCommunityCard()) {
-                    CC.ReturnChestJail();
-                } else if (p.hasChanceCard() && p.hasCommunityCard()) {
-                    CC.ReturnChestJail();
-                }
-                p.exitFromJail();
-                break;
-            case 3:
-                
-                break;
-        }
+    
 
-    }
+    
 }
 //</editor-fold>
 

@@ -35,6 +35,7 @@ public class Dice {
             if (this.d[0] == this.d[1]) {
                 p.exitFromJail();
                 this.roll = false;
+                
             } else {
                 this.d[0] = 0;
                 this.d[1] = 0;
@@ -64,6 +65,10 @@ public class Dice {
         this.dd=0;
     }
 
+    public boolean isRoll() {
+        return roll;
+    }
+    
     public void enableRolling() {
         this.roll = true;
     }

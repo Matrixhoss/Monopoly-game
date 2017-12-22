@@ -15,11 +15,11 @@ import javax.swing.JLabel;
  * @author Hesham-Desktop
  */
 public class JailOptionFrame extends javax.swing.JFrame {
-    private int c = 5;
+
     private Player P;
-    private Jail J;
     private Dice D;
     private CommunityAndChance CC;
+    private int choice;
     ImageIcon trade_logo = new ImageIcon(getClass().getResource("mischd/background.jpg"));
 
     /**
@@ -28,7 +28,7 @@ public class JailOptionFrame extends javax.swing.JFrame {
     public JailOptionFrame() {
     }
 
-    public JailOptionFrame(Player P, Jail J, Dice D) {
+    public JailOptionFrame(Player P, Dice D) {
 
         this.setUndecorated(true);
         this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.BLACK));
@@ -38,10 +38,14 @@ public class JailOptionFrame extends javax.swing.JFrame {
         this.pack();
         this.D=D;
         this.P = P;
-        this.J = J;
+  
         initComponents();
     }
 
+    public int getChoice() {
+        return choice;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -140,23 +144,35 @@ public class JailOptionFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        J.handleJail(1, P, CC, D);
+        D.enableRolling();
+        choice=2;
         this.dispose();
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        J.handleJail(2, P, CC, D);
+                 if (P.hasChanceCard() && !P.hasCommunityCard()) {
+                    CC.ReturnChanceJail();    
+                } else if (!P.hasChanceCard() && P.hasCommunityCard()) {
+                    CC.ReturnChestJail();
+                } else if (P.hasChanceCard() && P.hasCommunityCard()) {
+                    CC.ReturnChestJail();
+                }
+                P.exitFromJail();
+                choice=1;
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-         J.handleJail(0, P, CC, D);
+         P.payMoney(50);
+         P.exitFromJail();
+         choice=3;
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-         J.handleJail(3, P, CC, D);
+//          HANDLE TURN COUNT
+        choice=4;
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
