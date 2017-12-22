@@ -16,16 +16,20 @@ import javax.swing.UIManager;
  * @author Kero
  */
 public class DiceGui extends javax.swing.JPanel {
+
     private boolean rollEnabled;
     Controller controller;
     Random rand = new Random();
+
     /**
      * Creates new form DiceGui
-     * @return 
+     *
+     * @return
      */
-    public boolean currentPlayerHasRolled(){
+    public boolean currentPlayerHasRolled() {
         return !rollEnabled;
     }
+
     public DiceGui(Controller controller) {
         try {
            
@@ -104,44 +108,56 @@ public class DiceGui extends javax.swing.JPanel {
     private javax.swing.JButton RollBtn;
     // End of variables declaration//GEN-END:variables
 
-    public void enableDiceRoll(){
+    public void enableDiceRoll() {
         this.rollEnabled = true;
+        RollBtn.setEnabled(true);
     }
 
-public void ChangeDicesIfApplicaple() {
-
-    if(controller.getDoubleDice() == 3){
-        controller.sendCurrentPlayerTojail();
-        rollEnabled = false;
+    public void disableDiceRoll() {
+        this.rollEnabled = false;
+        RollBtn.setEnabled(false);
     }
-    
-    if(rollEnabled){
-        
-        int roll[] = controller.rollDice();
-        if(roll[0] != roll[1]){
-           rollEnabled = false;
-       }
-        ScheduledExecutorService exec = Executors.newScheduledThreadPool(1);
-        Runnable task = new Runnable() {
-            int secondsToWait = 1000;
-            @Override
-            public void run() {
-                secondsToWait -= 100;
-                DiceLbl1.setIcon(new javax.swing.ImageIcon(getClass().getResource("misc/dice" + (rand.nextInt(6) + 1) + ".png")));
-                DiceLbl2.setIcon(new javax.swing.ImageIcon(getClass().getResource("misc/dice" + (rand.nextInt(6) + 1) + ".png")));
-                if (secondsToWait == 0) {
-                    exec.shutdown();
-                    DiceLbl1.setIcon(new javax.swing.ImageIcon(getClass().getResource("misc/dice" + roll[0] + ".png")));
-                    DiceLbl2.setIcon(new javax.swing.ImageIcon(getClass().getResource("misc/dice" + roll[1] + ".png")));
-//                    Mainboard_GUI.p.move(roll[0]+roll[1]);
-                    controller.handleDiceRoll(roll[0]+roll[1]);
-                }
+
+    public void ChangeDicesIfApplicaple() {
+
+        if (controller.getDoubleDice() == 3) {
+            controller.sendCurrentPlayerTojail();
+            disableDiceRoll();
+        }
+
+        if (rollEnabled) {
+            int roll[] = controller.rollDice();
+            if (roll[0] != roll[1]) {
+                disableDiceRoll();
             }
-        };
-        exec.scheduleAtFixedRate(task, 100, 100, TimeUnit.MILLISECONDS);
-       
-        
+            ScheduledExecutorService exec = Executors.newScheduledThreadPool(1);
+            Runnable task = new Runnable() {
+                int secondsToWait = 1000;
+
+                @Override
+                public void run() {
+                    secondsToWait -= 100;
+                    DiceLbl1.setIcon(new javax.swing.ImageIcon(getClass().getResource("misc/dice" + (rand.nextInt(6) + 1) + ".png")));
+                    DiceLbl2.setIcon(new javax.swing.ImageIcon(getClass().getResource("misc/dice" + (rand.nextInt(6) + 1) + ".png")));
+                    if (secondsToWait == 0) {
+                        exec.shutdown();
+                        DiceLbl1.setIcon(new javax.swing.ImageIcon(getClass().getResource("misc/dice" + roll[0] + ".png")));
+                        DiceLbl2.setIcon(new javax.swing.ImageIcon(getClass().getResource("misc/dice" + roll[1] + ".png")));
+//                    Mainboard_GUI.p.move(roll[0]+roll[1]);
+//                        if (controller.getCurrentPlayer().checkInJail() && roll[0] == roll[1]) {
+                        if (controller.getCurrentPlayer().checkInJail() && roll[0] != roll[1]) {
+                            disableDiceRoll();
+                        }else{
+                        controller.handleDiceRoll(roll[0] + roll[1]);}
+
+//                        }
+                    }
+                }
+            };
+            exec.scheduleAtFixedRate(task, 100, 100, TimeUnit.MILLISECONDS);
+
+        }
+
     }
-}
 
 }

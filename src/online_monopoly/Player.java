@@ -182,6 +182,8 @@ public class Player {
         PositionX = 10;
         PositionY = 0;
         this.InJail = true;
+        this.setPosition(Controller.IndexToPoint(10));
+        this.position=10;
     }
 //</editor-fold>
 

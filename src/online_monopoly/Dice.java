@@ -31,15 +31,16 @@ public class Dice {
 
         this.d[0] = (rand.nextInt(6) + 1);   //random(6)+1 to avoid 0
         this.d[1] = (rand.nextInt(6) + 1);
-        if (p.checkInJail() == true) {
-            if (this.d[0] == this.d[1]) {
-                p.exitFromJail();
-                this.roll = false;
-            } else {
-                this.d[0] = 0;
-                this.d[1] = 0;
-            }
-        } else {
+//        if (p.checkInJail() == true) {
+//            if (this.d[0] == this.d[1]) {
+//                p.exitFromJail();
+//                this.roll = false;
+//                
+//            } else {
+//                this.d[0] = 0;
+//                this.d[1] = 0;
+//            }
+//        } else {
             if (this.d[0] == this.d[1]) {       //if both dices have the same value 
                 dd += 1;                        //add +1 to double dice 
                 System.out.println("DD " + dd);
@@ -52,7 +53,7 @@ public class Dice {
                 this.roll = false;
                 System.out.println("DD " + dd);
             }
-        }
+        
      
         return d;
         
@@ -64,12 +65,16 @@ public class Dice {
         this.dd=0;
     }
 
+    public boolean isRoll() {
+        return roll;
+    }
+    
     public void enableRolling() {
         this.roll = true;
     }
 
     public void disableRolling() {
-        this.roll = true;
+        this.roll = false;
     }
 
 }
