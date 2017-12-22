@@ -36,7 +36,11 @@ public class Player {
     private int[] Dice = new int[2];
     private boolean NoMoney = true;//to know if he run out of money
     private boolean Moving = false;
+    public Image characterImage;
 
+    public Image getImage(){
+        return characterImage;
+    }
     public Player(String name, Color c) {
         this.name = name;
         color = c;
@@ -45,6 +49,10 @@ public class Player {
         money = 1500;
     }
 
+    public Player(String name, int imageIndex,Color c) {
+        this(name ,c);
+        this.characterImage = new javax.swing.ImageIcon(getClass().getResource("/online_monopoly/mischd/char"+imageIndex+".png")).getImage();
+    }
     public Player(String name, Color c, Mainboard_GUI frame) {
         this.name = name;
         color = c;

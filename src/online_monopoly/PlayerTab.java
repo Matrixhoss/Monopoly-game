@@ -5,6 +5,8 @@
  */
 package online_monopoly;
 
+import javax.swing.UIManager;
+
 /**
  *
  * @author Kero
@@ -15,6 +17,10 @@ public class PlayerTab extends javax.swing.JPanel {
      * Creates new form PlayerTab
      */
     public PlayerTab(String Name, int Money) {
+        try {
+           
+           UIManager.setLookAndFeel((UIManager.getInstalledLookAndFeels())[1].getClassName());
+       } catch (Exception ex) {}
         initComponents();
         this.PName.setText(Name);
         this.Pmoney.setText(Money+"");

@@ -9,6 +9,7 @@ import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import javax.swing.UIManager;
 
 /**
  *
@@ -26,6 +27,10 @@ public class DiceGui extends javax.swing.JPanel {
         return !rollEnabled;
     }
     public DiceGui(Controller controller) {
+        try {
+           
+           UIManager.setLookAndFeel((UIManager.getInstalledLookAndFeels())[1].getClassName());
+       } catch (Exception ex) {}
         this.rollEnabled = true;
         this.controller = controller;
         initComponents();

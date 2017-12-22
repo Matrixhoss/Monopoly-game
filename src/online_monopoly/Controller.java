@@ -9,6 +9,8 @@ import com.sun.org.apache.xerces.internal.util.PropertyState;
 import java.awt.Color;
 import java.util.Hashtable;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Random;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,7 +28,7 @@ public class Controller {
     int currentPlayer;
 
     //all player names should be initialized here and be consisitent with the hashtable
-    String[] playerNames = {"Fadi", "Hassan", "Hossam"};
+    String[] playerNames = {};
     BoardObject[] boardsObjects;
 
     public Hashtable<String, Player> getPlayers() {
@@ -49,7 +51,7 @@ public class Controller {
     public int getDoubleDice(){
         return dice.getDoubleDice();
     }
-    public Controller() {
+    public Controller(HashMap<String,String> playersImagesAssociation) {
 
         currentPlayer = 0;
 
@@ -73,13 +75,23 @@ public class Controller {
 
         players = new Hashtable<>();
 
-        players.put("Fadi", new Player("Fadi", Color.green));
-        players.put("Hassan", new Player("Hassan", Color.RED));
-        players.put("Hossam", new Player("Hossam", Color.BLUE));
+        initializePlayers(playersImagesAssociation);
         CC = new CommunityAndChance(players, playerNames);
 
     }
 
+    public final void initializePlayers(HashMap<String,String> playersImagesAssociation){
+        ArrayList<String> playersnames = new ArrayList<>();
+        for(String key: playersImagesAssociation.keySet()){
+            
+            String name = playersImagesAssociation.get(key);
+            if(name != null){
+                players.put(name, new Player(name, Integer.parseInt(key), new Color(new Random().nextInt()%255)));
+                playersnames.add(name);
+            }
+        }
+        this.playerNames = playersnames.toArray(this.playerNames);
+    }
     public void addGUI(GUIInterface gui) {
         this.gui = gui;
     }

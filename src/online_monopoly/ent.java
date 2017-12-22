@@ -61,7 +61,7 @@ public class  ent extends JFrame{
     JButton b;
     JRadioButton r1,r2;
     JLabel l;
-    public ent(MainMenu menu){
+    public ent(MainMenu menu, int x){
         this.parentMenu = menu;
 //        test=this;
 //        this.setTitle("Monopoly");
@@ -96,7 +96,7 @@ public class  ent extends JFrame{
                 //String name = t1.getText();
                 
                 if(r1.isSelected()){
-                    Mainboard_GUI_HD hd = new Mainboard_GUI_HD(0, 0);
+//                    Mainboard_GUI_HD hd = new Mainboard_GUI_HD(0, 0);
                 }
                 else{
                     Mainboard_GUI fhd = new Mainboard_GUI(0, 0);

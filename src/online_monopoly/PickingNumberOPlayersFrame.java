@@ -5,19 +5,29 @@
  */
 package online_monopoly;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import javax.swing.ImageIcon;
 /**
  *
  * @author fadia
  */
-public class PickNumerOPlayers extends javax.swing.JFrame {
+public class PickingNumberOPlayersFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form PickNumerOPlayers
+     * Creates new form PickingNumberOPlayersFrame
      */
     private int selected;
+    public final static int maxNumberOfSupportedPlayers = 4;
     
-    public PickNumerOPlayers() {
+    
+    private final ArrayList<ImageIcon> images = new ArrayList<>();
+    private final HashMap<String,String> playersImagesAssociation = new HashMap<>();
+    
+    public PickingNumberOPlayersFrame() {
+        this.selected = 2;
         initComponents();
+        this.setVisible(true);
         this.setLocationRelativeTo(null);
     }
 
@@ -103,6 +113,11 @@ public class PickNumerOPlayers extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Vivaldi", 1, 18)); // NOI18N
         jButton1.setText("Next");
         jButton1.setOpaque(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, -1, 45));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/online_monopoly/mischd/background.jpg"))); // NOI18N
@@ -131,6 +146,16 @@ public class PickNumerOPlayers extends javax.swing.JFrame {
         this.selected = 4;
     }//GEN-LAST:event_jRadioButton4ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        for(int i = 0; i < maxNumberOfSupportedPlayers; i++){
+            playersImagesAssociation.put(i+"", null);
+            images.add(new javax.swing.ImageIcon(getClass().getResource("/online_monopoly/mischd/charbig"+i+".png")));
+        }
+        new PlayerNameAndCharacterImagePickerFrame(images, playersImagesAssociation, this.selected-1);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -148,20 +173,23 @@ public class PickNumerOPlayers extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PickNumerOPlayers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PickingNumberOPlayersFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PickNumerOPlayers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PickingNumberOPlayersFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PickNumerOPlayers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PickingNumberOPlayersFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PickNumerOPlayers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PickingNumberOPlayersFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PickNumerOPlayers().setVisible(true);
+                new PickingNumberOPlayersFrame().setVisible(true);
             }
         });
     }

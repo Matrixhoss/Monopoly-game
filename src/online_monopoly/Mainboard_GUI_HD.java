@@ -39,8 +39,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
        });
        turnTimer.start();
     } 
-   
-   private Image charImaage =  new ImageIcon(getClass().getResource("mischd/char2.png")).getImage();
+
    
     private javax.swing.Timer  turnTimer;
     private final int timeSliceInSeconds = 120; 
@@ -218,7 +217,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
     
     
     
-    public Mainboard_GUI_HD(int x, int y) {
+    public Mainboard_GUI_HD(int x, int y, HashMap<String, String> playersImagesAssociation) {
         this.x = x;
         this.y = y;
        try {
@@ -228,7 +227,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         //pass in image side length in pixels
         boardMapper = new BoardMapper(700,50);
 
-        controller = new Controller();
+        controller = new Controller(playersImagesAssociation);
         controller.addGUI(this);
         
         //lazm b3d el controller initialization 34an tkon el player initialises this is until we get
@@ -1398,8 +1397,8 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         for(Player p : players.values()){
             gg.setColor(p.getColor());
             Point point = (p.name.equals(movingPlayerName)&&playerMoving)? animationPoint:boardMapper.getMapping(p.position);
-            gg.drawImage(charImaage, point.getX(), point.getY(), this);
-            gg.setColor(Color.black);
+            gg.drawImage(p.getImage(), point.getX(), point.getY(), this);
+            gg.setColor(p.getColor());
             gg.setFont(new Font("Garamond", Font.BOLD | Font.PLAIN, 18));
             gg.drawString(p.name, point.getX()+3, point.getY()-10);
         }
