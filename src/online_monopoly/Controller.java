@@ -84,16 +84,20 @@ public class Controller {
     }
 
     public final void initializePlayers(HashMap<String,String> playersImagesAssociation){
+        Random rand = new Random();
         ArrayList<String> playersnames = new ArrayList<>();
         for(String key: playersImagesAssociation.keySet()){
             
             String name = playersImagesAssociation.get(key);
             if(name != null){
-                players.put(name, new Player(name, Integer.parseInt(key), new Color(new Random().nextInt()%255)));
+                players.put(name, new Player(name, Integer.parseInt(key), new Color(getConstrainedRandomNumber(100), getConstrainedRandomNumber(200),getConstrainedRandomNumber(256))));
                 playersnames.add(name);
             }
         }
         this.playerNames = playersnames.toArray(this.playerNames);
+    }
+    public int getConstrainedRandomNumber(int num){
+        return (Math.abs(new Random().nextInt()))%num;
     }
     public void addGUI(GUIInterface gui) {
         this.gui = gui;

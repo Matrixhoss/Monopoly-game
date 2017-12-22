@@ -1401,7 +1401,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
             gg.drawImage(p.getImage(), point.getX(), point.getY(), this);
             gg.setColor(p.getColor());
             gg.setFont(new Font("Garamond", Font.BOLD | Font.PLAIN, 18));
-            gg.drawString(p.name, point.getX()+3, point.getY()-10);
+            gg.drawString(p.name, point.getX()+3, point.getY()-5);
         }
         /*
         //community lbl
