@@ -61,7 +61,7 @@
                       <Component id="PName" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="Pmoney" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="1" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -114,7 +114,7 @@
                       <Component id="GreenNorthLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="GreenPennsyLbl" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="7" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -181,7 +181,7 @@
                       <Component id="SkyOrientalLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="SkyVermontLbl" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="7" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -245,7 +245,7 @@
                       <Component id="BlueParkLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="BlueBoardwalkLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="7" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -304,7 +304,7 @@
                       <Component id="RedIndianaLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="RedIllinoisLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="7" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -371,7 +371,7 @@
                       <Component id="OrangeTennesseeLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="OrangeNewYork" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="7" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -438,7 +438,7 @@
                       <Component id="PinkStatesLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="PinkVirginiaLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="7" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -505,7 +505,7 @@
                       <Component id="YellowVentNor" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="YellowMarvinLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="7" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -569,7 +569,7 @@
                       <Component id="BrownMiditerLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="BrownBalticLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="7" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -593,7 +593,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="BluePnl3">
+    <Container class="javax.swing.JPanel" name="Communitypnl">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -637,7 +637,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="BluePnl4">
+    <Container class="javax.swing.JPanel" name="CommunityChestpnel">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -665,7 +665,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="CommunityChestCardLbl" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

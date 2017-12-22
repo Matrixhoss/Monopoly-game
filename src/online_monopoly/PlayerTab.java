@@ -6,6 +6,7 @@
 package online_monopoly;
 
 import java.util.ArrayList;
+import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 
 /**
@@ -23,6 +24,7 @@ public class PlayerTab extends javax.swing.JPanel {
 
     PlayerTab(String Name, int Money, ArrayList<Property> prop) {
         try {
+            new JScrollPane(this);
             initComponents();
             this.PName.setText(Name);
             this.Pmoney.setText(Money+"");
@@ -247,9 +249,9 @@ public class PlayerTab extends javax.swing.JPanel {
         BrownPnl = new javax.swing.JPanel();
         BrownMiditerLbl = new javax.swing.JLabel();
         BrownBalticLbl = new javax.swing.JLabel();
-        BluePnl3 = new javax.swing.JPanel();
+        Communitypnl = new javax.swing.JPanel();
         ChanceCardLbl = new javax.swing.JLabel();
-        BluePnl4 = new javax.swing.JPanel();
+        CommunityChestpnel = new javax.swing.JPanel();
         CommunityChestCardLbl = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -281,7 +283,7 @@ public class PlayerTab extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PName)
                     .addComponent(Pmoney))
-                .addGap(0, 1, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 40));
@@ -316,7 +318,7 @@ public class PlayerTab extends javax.swing.JPanel {
                     .addComponent(GreenPacificLbl)
                     .addComponent(GreenNorthLbl)
                     .addComponent(GreenPennsyLbl))
-                .addGap(0, 7, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         add(Greenpnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 210, 110));
@@ -351,7 +353,7 @@ public class PlayerTab extends javax.swing.JPanel {
                     .addComponent(SkyConnicticutLbl)
                     .addComponent(SkyOrientalLbl)
                     .addComponent(SkyVermontLbl))
-                .addGap(0, 7, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         add(SkyPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 210, 110));
@@ -380,7 +382,7 @@ public class PlayerTab extends javax.swing.JPanel {
                 .addGroup(BluePnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BlueParkLbl)
                     .addComponent(BlueBoardwalkLbl))
-                .addGap(0, 7, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         add(BluePnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 140, 110));
@@ -415,7 +417,7 @@ public class PlayerTab extends javax.swing.JPanel {
                     .addComponent(RedKentuckyLbl)
                     .addComponent(RedIndianaLbl)
                     .addComponent(RedIllinoisLbl))
-                .addGap(0, 7, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         add(RedPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 210, 110));
@@ -450,7 +452,7 @@ public class PlayerTab extends javax.swing.JPanel {
                     .addComponent(OrangeStJameslbl)
                     .addComponent(OrangeTennesseeLbl)
                     .addComponent(OrangeNewYork))
-                .addGap(0, 7, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         add(OrangePnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 210, 110));
@@ -485,7 +487,7 @@ public class PlayerTab extends javax.swing.JPanel {
                     .addComponent(PinkStCharlesLbl)
                     .addComponent(PinkStatesLbl)
                     .addComponent(PinkVirginiaLbl))
-                .addGap(0, 7, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         add(PinkPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 210, 110));
@@ -520,7 +522,7 @@ public class PlayerTab extends javax.swing.JPanel {
                     .addComponent(YellowAtlanticLbl)
                     .addComponent(YellowVentNor)
                     .addComponent(YellowMarvinLbl))
-                .addGap(0, 7, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         add(Yellow, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 590, 210, 110));
@@ -549,56 +551,56 @@ public class PlayerTab extends javax.swing.JPanel {
                 .addGroup(BrownPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BrownMiditerLbl)
                     .addComponent(BrownBalticLbl))
-                .addGap(0, 7, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         add(BrownPnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 140, 110));
 
-        BluePnl3.setBorder(javax.swing.BorderFactory.createTitledBorder("Chance"));
+        Communitypnl.setBorder(javax.swing.BorderFactory.createTitledBorder("Chance"));
 
         ChanceCardLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/online_monopoly/mischd/community and chance/chance.png"))); // NOI18N
         ChanceCardLbl.setEnabled(false);
 
-        javax.swing.GroupLayout BluePnl3Layout = new javax.swing.GroupLayout(BluePnl3);
-        BluePnl3.setLayout(BluePnl3Layout);
-        BluePnl3Layout.setHorizontalGroup(
-            BluePnl3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BluePnl3Layout.createSequentialGroup()
+        javax.swing.GroupLayout CommunitypnlLayout = new javax.swing.GroupLayout(Communitypnl);
+        Communitypnl.setLayout(CommunitypnlLayout);
+        CommunitypnlLayout.setHorizontalGroup(
+            CommunitypnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CommunitypnlLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(ChanceCardLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        BluePnl3Layout.setVerticalGroup(
-            BluePnl3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BluePnl3Layout.createSequentialGroup()
+        CommunitypnlLayout.setVerticalGroup(
+            CommunitypnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CommunitypnlLayout.createSequentialGroup()
                 .addComponent(ChanceCardLbl)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        add(BluePnl3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 140, 110));
+        add(Communitypnl, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 140, 110));
 
-        BluePnl4.setBorder(javax.swing.BorderFactory.createTitledBorder("Community Chest"));
+        CommunityChestpnel.setBorder(javax.swing.BorderFactory.createTitledBorder("Community Chest"));
 
         CommunityChestCardLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/online_monopoly/mischd/community and chance/community.png"))); // NOI18N
         CommunityChestCardLbl.setEnabled(false);
 
-        javax.swing.GroupLayout BluePnl4Layout = new javax.swing.GroupLayout(BluePnl4);
-        BluePnl4.setLayout(BluePnl4Layout);
-        BluePnl4Layout.setHorizontalGroup(
-            BluePnl4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BluePnl4Layout.createSequentialGroup()
+        javax.swing.GroupLayout CommunityChestpnelLayout = new javax.swing.GroupLayout(CommunityChestpnel);
+        CommunityChestpnel.setLayout(CommunityChestpnelLayout);
+        CommunityChestpnelLayout.setHorizontalGroup(
+            CommunityChestpnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CommunityChestpnelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(CommunityChestCardLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        BluePnl4Layout.setVerticalGroup(
-            BluePnl4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BluePnl4Layout.createSequentialGroup()
+        CommunityChestpnelLayout.setVerticalGroup(
+            CommunityChestpnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CommunityChestpnelLayout.createSequentialGroup()
                 .addComponent(CommunityChestCardLbl)
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        add(BluePnl4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, 140, 110));
+        add(CommunityChestpnel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, 140, 110));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -606,13 +608,13 @@ public class PlayerTab extends javax.swing.JPanel {
     private javax.swing.JLabel BlueBoardwalkLbl;
     private javax.swing.JLabel BlueParkLbl;
     private javax.swing.JPanel BluePnl;
-    private javax.swing.JPanel BluePnl3;
-    private javax.swing.JPanel BluePnl4;
     private javax.swing.JLabel BrownBalticLbl;
     private javax.swing.JLabel BrownMiditerLbl;
     private javax.swing.JPanel BrownPnl;
     private javax.swing.JLabel ChanceCardLbl;
     private javax.swing.JLabel CommunityChestCardLbl;
+    private javax.swing.JPanel CommunityChestpnel;
+    private javax.swing.JPanel Communitypnl;
     private javax.swing.JLabel GreenNorthLbl;
     private javax.swing.JLabel GreenPacificLbl;
     private javax.swing.JLabel GreenPennsyLbl;
