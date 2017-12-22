@@ -59,6 +59,10 @@ public class Trade_GUI extends JFrame {
     private JCheckBox my_moneycheck;
 
     public Trade_GUI(Hashtable<String, Player> players, String[] Names, Player Me) {
+        try {
+           
+           UIManager.setLookAndFeel((UIManager.getInstalledLookAndFeels())[1].getClassName());
+       } catch (Exception ex) {}
         Players = new ArrayList<Player>();
         this.Names = Names;
         this.setTitle("Trading");

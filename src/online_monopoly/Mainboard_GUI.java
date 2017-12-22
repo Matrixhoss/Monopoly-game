@@ -6,6 +6,7 @@ import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import javax.swing.*;
 import java.io.*;
+import java.util.HashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -19,7 +20,7 @@ import sun.audio.*;
 public class Mainboard_GUI extends JFrame {
 
     private BuyHouseFrame BH;
-    private Controller controller=new Controller();
+    private Controller controller=new Controller(new HashMap<>());
     private Mainboard_GUI _this;
     public static Player p;
     public static Dice d = new Dice();

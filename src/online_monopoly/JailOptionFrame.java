@@ -16,10 +16,9 @@ import javax.swing.JLabel;
  */
 public class JailOptionFrame extends javax.swing.JFrame {
 
-    private int c = 5;
     private Player P;
-    private Jail J;
     private Dice D;
+    private DiceGui DG;
     private CommunityAndChance CC;
     ImageIcon trade_logo = new ImageIcon(getClass().getResource("mischd/background.jpg"));
 
@@ -29,7 +28,7 @@ public class JailOptionFrame extends javax.swing.JFrame {
     public JailOptionFrame() {
     }
 
-    public JailOptionFrame(Player P, Jail J) {
+    public JailOptionFrame(Player P, Dice D, DiceGui DG) {
 
         this.setUndecorated(true);
         this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.BLACK));
@@ -37,8 +36,10 @@ public class JailOptionFrame extends javax.swing.JFrame {
         this.setBounds(100, 100, 150, 100);
 
         this.pack();
+        this.D = D;
+        this.DG = DG;
         this.P = P;
-        this.J = J;
+
         initComponents();
     }
 
@@ -100,63 +101,82 @@ public class JailOptionFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
+                .addGap(171, 171, 171)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(71, 71, 71)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addComponent(jButton3)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGap(26, 26, 26))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton4)
-                        .addGap(144, 144, 144))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(107, 107, 107))))
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(212, 212, 212))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(29, 29, 29)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
+                .addGap(52, 52, 52)
                 .addComponent(jLabel2)
-                .addGap(89, 89, 89)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
-                .addGap(18, 18, 18)
+                .addGap(35, 35, 35)
                 .addComponent(jButton4)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        J.handleJail(1, P, CC, D);
+
+        DG.enableDiceRoll();
         this.dispose();
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        J.handleJail(2, P, CC, D);
+        if (P.hasChanceCard() && !P.hasCommunityCard()) {
+            CC.ReturnChanceJail();
+            P.exitFromJail();
+            DG.enableDiceRoll();
+        } else if (!P.hasChanceCard() && P.hasCommunityCard()) {
+            CC.ReturnChestJail();
+            P.exitFromJail();
+            DG.enableDiceRoll();
+        } else if (P.hasChanceCard() && P.hasCommunityCard()) {
+            CC.ReturnChestJail();
+            P.exitFromJail();
+            DG.enableDiceRoll();
+        } else {
+            System.out.println("Player has no jail card");
+        }
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-         J.handleJail(0, P, CC, D);
+        P.payMoney(50);
+        P.exitFromJail();
+        DG.enableDiceRoll();
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-         J.handleJail(4, P, CC, D);
+//          HANDLE TURN COUNT
+
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 

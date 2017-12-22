@@ -36,7 +36,12 @@ public class Player {
     private int[] Dice = new int[2];
     private boolean NoMoney = true;//to know if he run out of money
     private boolean Moving = false;
-
+    public Image characterImage;
+    private int TurnsInJail;
+    
+    public Image getImage(){
+        return characterImage;
+    }
     public Player(String name, Color c) {
         this.name = name;
         color = c;
@@ -45,6 +50,10 @@ public class Player {
         money = 1500;
     }
 
+    public Player(String name, int imageIndex,Color c) {
+        this(name ,c);
+        this.characterImage = new javax.swing.ImageIcon(getClass().getResource("/online_monopoly/mischd/char"+imageIndex+".png")).getImage();
+    }
     public Player(String name, Color c, Mainboard_GUI frame) {
         this.name = name;
         color = c;
@@ -174,6 +183,8 @@ public class Player {
         PositionX = 10;
         PositionY = 0;
         this.InJail = true;
+        this.setPosition(Controller.IndexToPoint(10));
+        this.position=10;
     }
 //</editor-fold>
 
@@ -421,4 +432,13 @@ public class Player {
         P1.payMoney(m);
 
     }
+
+    public int getTurnsInJail() {
+        return TurnsInJail;
+    }
+
+    public void setTurnsInJail(int TurnsInJail) {
+        this.TurnsInJail = TurnsInJail;
+    }
+    
 }

@@ -23,6 +23,10 @@ public class PlayersPanel extends javax.swing.JPanel {
     ArrayList<PlayerTab> Panels = new ArrayList<PlayerTab>();
     Hashtable<String ,Player> PlayersP;
     public PlayersPanel(Hashtable<String ,Player> p) {
+        try {
+           
+           UIManager.setLookAndFeel((UIManager.getInstalledLookAndFeels())[1].getClassName());
+       } catch (Exception ex) {}
         UIManager.put("TabbedPane.contentOpaque", false);
         initComponents();
         this.setMaximumSize(new Dimension(200, 700));

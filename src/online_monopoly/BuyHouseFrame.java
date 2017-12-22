@@ -5,13 +5,15 @@
  */
 package online_monopoly;
 
+import java.util.HashMap;
+
 /**
  *
  * @author n0krashy
  */
 public class BuyHouseFrame extends javax.swing.JFrame {
 
-    public static BuyHousePanel1 bhp = new BuyHousePanel1(new Controller());
+    public static BuyHousePanel1 bhp = new BuyHousePanel1(new Controller(new HashMap<>()));
 
     /**
      * Creates new form BuyHouseFrame

@@ -6,25 +6,39 @@
 package online_monopoly;
 
 import java.util.ArrayList;
+import javax.swing.UIManager;
 
 /**
  *
  * @author Kero
  */
 public class PlayerTab extends javax.swing.JPanel {
-
+    ArrayList<Property> properties = new ArrayList<>();
     /**
      * Creates new form PlayerTab
      */
-    ArrayList<Property> properties = new ArrayList<>();
+    
+   
+    
+
+    PlayerTab(String Name, int Money, ArrayList<Property> prop) {
+        try {
+            initComponents();
+            this.PName.setText(Name);
+            this.Pmoney.setText(Money+"");
+            this.properties = prop;
+            UIManager.setLookAndFeel((UIManager.getInstalledLookAndFeels())[1].getClassName());
+        } catch (Exception ex) {}
+        
+        
+        
+        
+        
+    }
+
 
     
-    public PlayerTab(String Name, int Money, ArrayList<Property> prop) {
-        initComponents();
-        this.PName.setText(Name);
-        this.Pmoney.setText(Money+"");
-        this.properties = prop;
-    }
+
     
     public String TabName(){
         return this.PName.getText();

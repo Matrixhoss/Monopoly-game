@@ -48,7 +48,10 @@ public class MainMenu extends JFrame{
     }
     public MainMenu(){
         _this = this;
-        
+        try {
+           
+           UIManager.setLookAndFeel((UIManager.getInstalledLookAndFeels())[1].getClassName());
+       } catch (Exception ex) {}
         this.setTitle("Monopoly");
         this.setResizable(false);
         this.setBounds(250, 250, 800, 600);
@@ -96,8 +99,8 @@ public class MainMenu extends JFrame{
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    ent n = new ent(MainMenu.this);
-                    n.setVisible(true);
+                    new PickingNumberOPlayersFrame();
+                    MainMenu.this.dispose();
                 }
             }
         );
