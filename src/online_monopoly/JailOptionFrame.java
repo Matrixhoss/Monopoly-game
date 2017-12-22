@@ -18,8 +18,8 @@ public class JailOptionFrame extends javax.swing.JFrame {
 
     private Player P;
     private Dice D;
+    private DiceGui DG;
     private CommunityAndChance CC;
-    private int choice;
     ImageIcon trade_logo = new ImageIcon(getClass().getResource("mischd/background.jpg"));
 
     /**
@@ -28,7 +28,7 @@ public class JailOptionFrame extends javax.swing.JFrame {
     public JailOptionFrame() {
     }
 
-    public JailOptionFrame(Player P, Dice D) {
+    public JailOptionFrame(Player P, Dice D, DiceGui DG) {
 
         this.setUndecorated(true);
         this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.BLACK));
@@ -36,16 +36,13 @@ public class JailOptionFrame extends javax.swing.JFrame {
         this.setBounds(100, 100, 150, 100);
 
         this.pack();
-        this.D=D;
+        this.D = D;
+        this.DG = DG;
         this.P = P;
-  
+
         initComponents();
     }
 
-    public int getChoice() {
-        return choice;
-    }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -104,31 +101,35 @@ public class JailOptionFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(186, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(107, 107, 107))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
-                .addContainerGap(16, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addGap(56, 56, 56))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton4)
-                        .addGap(144, 144, 144))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(107, 107, 107))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jButton3)
+                .addGap(21, 21, 21))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(29, 29, 29)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(89, 89, 89)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -136,43 +137,48 @@ public class JailOptionFrame extends javax.swing.JFrame {
                     .addComponent(jButton2)
                     .addComponent(jButton3))
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addComponent(jButton4))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        D.enableRolling();
-        choice=2;
+
+        DG.enableDiceRoll();
         this.dispose();
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-                 if (P.hasChanceCard() && !P.hasCommunityCard()) {
-                    CC.ReturnChanceJail();    
-                } else if (!P.hasChanceCard() && P.hasCommunityCard()) {
-                    CC.ReturnChestJail();
-                } else if (P.hasChanceCard() && P.hasCommunityCard()) {
-                    CC.ReturnChestJail();
-                }
-                P.exitFromJail();
-                choice=1;
+        if (P.hasChanceCard() && !P.hasCommunityCard()) {
+            CC.ReturnChanceJail();
+            P.exitFromJail();
+            DG.enableDiceRoll();
+        } else if (!P.hasChanceCard() && P.hasCommunityCard()) {
+            CC.ReturnChestJail();
+            P.exitFromJail();
+            DG.enableDiceRoll();
+        } else if (P.hasChanceCard() && P.hasCommunityCard()) {
+            CC.ReturnChestJail();
+            P.exitFromJail();
+            DG.enableDiceRoll();
+        } else {
+            System.out.println("Player has no jail card");
+        }
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-         P.payMoney(50);
-         P.exitFromJail();
-         choice=3;
+        P.payMoney(50);
+        P.exitFromJail();
+        DG.enableDiceRoll();
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 //          HANDLE TURN COUNT
-        choice=4;
+
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
