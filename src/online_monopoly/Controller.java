@@ -79,7 +79,7 @@ public class Controller {
 
         initializePlayers(playersImagesAssociation);
         CC = new CommunityAndChance(players, playerNames);
-        //players.get("Hassan").goToJail();
+        players.get("Hassan").goToJail();
 
     }
 

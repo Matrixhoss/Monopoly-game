@@ -44,7 +44,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
     private javax.swing.Timer  turnTimer;
     private final int timeSliceInSeconds = 120; 
     private JailOptionFrame JOF;
-    
+    private Dice d = new Dice();
     private boolean playerMoving = false;
     private String movingPlayerName = "";
     private Point animationPoint;
@@ -1479,8 +1479,20 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
     
     private void endTurn(){
         TimerLbl.setText(timeSliceInSeconds+"");
-        controller.switchTurn();
-        diceGui.enableDiceRoll();
+        controller.switchTurn();if (!controller.getCurrentPlayer().checkInJail()) {
+            diceGui.enableDiceRoll();
+        } else {
+            System.out.println("TURSN "+controller.getCurrentPlayer().getTurnsInJail());
+            if (controller.getCurrentPlayer().getTurnsInJail() == 2) {
+                controller.getCurrentPlayer().exitFromJail();
+                diceGui.enableDiceRoll();
+            }else{
+            controller.getCurrentPlayer().setTurnsInJail(controller.getCurrentPlayer().getTurnsInJail() + 1);
+            JOF = new JailOptionFrame(controller.getCurrentPlayer(), d, diceGui);
+            JOF.setVisible(true);
+            }
+        }
+
     }
     
     private int[] stepping;
