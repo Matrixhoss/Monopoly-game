@@ -41,18 +41,18 @@ public class Dice {
 //                this.d[1] = 0;
 //            }
 //        } else {
-            if (this.d[0] == this.d[1]) {       //if both dices have the same value 
-                dd += 1;                        //add +1 to double dice 
-                System.out.println("DD " + dd);
-                if (dd == 3) {                  // if player rolls 3 doubles, send him to jail and disable roll                
-                    p.goToJail();
-                    this.roll = false;
-                }
-            } else {
-                dd = 0;                         // after normal roll, disable the roll button
-                this.roll = false;
-                System.out.println("DD " + dd);
-            }
+//            if (this.d[0] == this.d[1]) {       //if both dices have the same value 
+//                dd += 1;                        //add +1 to double dice 
+//                System.out.println("DD " + dd);
+//                if (dd == 3) {                  // if player rolls 3 doubles, send him to jail and disable roll                
+//                    p.goToJail();
+//                    this.roll = false;
+//                }
+//            } else {
+//                dd = 0;                         // after normal roll, disable the roll button
+//                this.roll = false;
+//                System.out.println("DD " + dd);
+//            }
         
      
         return d;

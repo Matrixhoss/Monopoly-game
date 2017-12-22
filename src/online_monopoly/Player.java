@@ -37,7 +37,8 @@ public class Player {
     private boolean NoMoney = true;//to know if he run out of money
     private boolean Moving = false;
     public Image characterImage;
-
+    private int TurnsInJail;
+    
     public Image getImage(){
         return characterImage;
     }
@@ -431,4 +432,13 @@ public class Player {
         P1.payMoney(m);
 
     }
+
+    public int getTurnsInJail() {
+        return TurnsInJail;
+    }
+
+    public void setTurnsInJail(int TurnsInJail) {
+        this.TurnsInJail = TurnsInJail;
+    }
+    
 }
