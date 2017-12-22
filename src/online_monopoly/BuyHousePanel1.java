@@ -21,9 +21,11 @@ public class BuyHousePanel1 extends javax.swing.JPanel {
      * Creates new form BuyHousePanel
      */
     public BuyHousePanel1(Controller c) {
+
         initComponents();
-        ButtonsInit();
         this.c = c;
+        ButtonsInit();
+
     }
 
     private void ButtonsInit() {
@@ -141,8 +143,8 @@ public class BuyHousePanel1 extends javax.swing.JPanel {
 
         }
     }
-    
-    private void close(int i){
+
+    private void close(int i) {
         setVisible(false);
         BH2 = new BuyHousePanel2(i); //ownedGroups[1].getNumber();
         BuyHouseFrame.jPanel1.add(BH2);
