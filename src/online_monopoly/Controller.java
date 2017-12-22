@@ -153,6 +153,11 @@ public void handleNewPosition(int posIndex) {
                 players.get(p.name).position = cd.index % 40;
                 this.handleNewPosition(cd.index % 40);
             }
+            else if(cd.type==2){
+                gui.animatePlayer(p.name, 10 % 40, p.position, true);
+                players.get(p.name).position = 10 % 40;
+                this.handleNewPosition(10 % 40);
+            }
         } else if (posIndex == 2 || posIndex == 17 || posIndex == 33) {
             Card cd = CC.DrawCardPrint("chest", this.currentPlayer);
             gui.pullCommunityCard(cd.label);
@@ -165,6 +170,11 @@ public void handleNewPosition(int posIndex) {
                 gui.animatePlayer(p.name, cd.index % 40, p.position, true);
                 players.get(p.name).position = cd.index % 40;
                 this.handleNewPosition(cd.index % 40);
+            }
+            else if(cd.type==2){
+                gui.animatePlayer(p.name, 10 % 40, p.position, true);
+                players.get(p.name).position = 10 % 40;
+                this.handleNewPosition(10 % 40);
             }
         } else if (posIndex == 0 || posIndex == 40) {
             p.addMoney(200);
