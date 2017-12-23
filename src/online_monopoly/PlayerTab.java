@@ -22,17 +22,11 @@ public class PlayerTab extends javax.swing.JPanel {
     
 
     PlayerTab(String Name, int Money, ArrayList<Property> prop) {
-        try {
             initComponents();
             this.PName.setText(Name);
             this.Pmoney.setText(Money+"");
             this.properties = prop;
-            UIManager.setLookAndFeel((UIManager.getInstalledLookAndFeels())[1].getClassName());
-        } catch (Exception ex) {}
-        
-        
-        
-        
+
         
     }
 

@@ -222,7 +222,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         this.x = x;
         this.y = y;
        try {
-           UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+//           UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
        } catch (Exception ex) {}
 
         //pass in image side length in pixels
