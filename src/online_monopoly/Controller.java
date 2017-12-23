@@ -32,6 +32,19 @@ public class Controller {
     String[] playerNames = {};
     BoardObject[] boardsObjects;
 
+    
+    public String determineWinner(){
+        String winnerName = playerNames[0];
+        int max = players.get(winnerName).getTotalMoney();
+        for(int i = 1; i < playerNames.length; i++){
+            Player p = players.get(playerNames[i]);
+            if(p.getTotalMoney() > max){
+                winnerName = playerNames[i];
+                max = p.getTotalMoney();
+            }
+        }
+        return winnerName;
+    }
     public Hashtable<String, Player> getPlayers() {
         return players;
     }

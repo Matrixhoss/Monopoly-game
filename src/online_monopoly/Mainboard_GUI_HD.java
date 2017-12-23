@@ -1044,6 +1044,16 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
         
         FinishBtn.setBounds(300, 200,100,30);
         FinishBtn.setVisible(true);
+        FinishBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println(controller.determineWinner());
+                JOptionPane.showMessageDialog(rootPane, "Congratulations " + controller.determineWinner() + " you have WON!!");
+                new MainMenu().setVisible(true);
+                Mainboard_GUI_HD.this.dispose();
+                
+            }
+        });
         c.add(FinishBtn);
         
         //dice panel
