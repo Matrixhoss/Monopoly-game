@@ -215,7 +215,7 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
     public Hashtable<String, Player> players;
     JButton EndTurnBtn = new JButton("End Turn");
     JLabel TimerLbl = new JLabel(timeSliceInSeconds+"");
-    
+    JButton FinishBtn = new JButton("Finish Game");
     
     
     public Mainboard_GUI_HD(int x, int y, HashMap<String, String> playersImagesAssociation) {
@@ -1042,6 +1042,10 @@ public class Mainboard_GUI_HD extends JFrame implements GUIInterface {
             }
         });
         c.add(EndTurnBtn);
+        
+        FinishBtn.setBounds(300, 200,100,30);
+        FinishBtn.setVisible(true);
+        c.add(FinishBtn);
         
         //dice panel
         diceGui = new DiceGui(controller);
