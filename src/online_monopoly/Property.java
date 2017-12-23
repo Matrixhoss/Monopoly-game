@@ -445,8 +445,8 @@ class PropertyStander {
     final public static int YelloGroup = 6;
     final public static int GreenGroup = 7;
     final public static int BlueGroup = 8;
-    final public static int RailRoadGroup = 8;
-    final public static int WaterElectricGroup = 9;
+    final public static int RailRoadGroup = 9;
+    final public static int WaterElectricGroup = 10;
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Groups (Number of properties in group)">
